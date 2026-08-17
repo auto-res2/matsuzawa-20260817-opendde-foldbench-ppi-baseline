@@ -19,6 +19,19 @@ currently true.
 | Evaluation Python | scipy/networkx/pandas/numpy/biopython 1.85/tqdm/parallelbar | Not version-locked — see below |
 | **MSAs** | 323 chains, depth 2 / 1209 / 21549 | **Cannot be re-derived.** Pinned by manifest only |
 
+## The decision taken
+
+Both deviations below are **accepted deliberately**, not overlooked. RIKYU has
+OpenStructure 2.11.1 and no 2.8.0, and building one was judged not worth doing
+before knowing whether it matters.
+
+The test is the reproduction itself: **if the number lands near the published
+0.769, the deviations did not matter enough to chase; if it lands clearly
+below, they become the first place to look** — together with the MSAs. That is
+a real decision rule and it is written here so the eventual number is read
+against the rule that was set before it was known, rather than one invented
+afterwards.
+
 ## Two known deviations
 
 **OpenStructure 2.11.1, where FoldBench declares 2.8.0.** FoldBench's
