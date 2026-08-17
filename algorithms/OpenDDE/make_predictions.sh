@@ -19,7 +19,18 @@ OPENDDE_CLI="${OPENDDE_CLI:-opendde}"
 
 # AF3-dialect JSON -> the proteinChain/dnaSequence/ligand schema that both
 # Protenix and OpenDDE consume. preprocess.py is upstream code, unmodified.
-$PYTHON_PATH ./preprocess.py --af3_input_json="$af3_input_json" --input_dir="$input_dir"
+#
+# Skipped when inputs.json is already there, because by then it is not merely a
+# converted file: the prepare stage has written every chain's unpairedMsaPath
+# into it. Re-running preprocess would regenerate it from the AF3 JSON and drop
+# those paths, and the run would silently fall back to searching MSAs on a
+# compute node -- or, with no egress, to no MSA at all. Delete inputs.json to
+# force reconversion.
+if [ -f "${input_dir}/inputs.json" ]; then
+    echo "inputs.json exists; keeping it (MSA paths from the prepare stage)"
+else
+    $PYTHON_PATH ./preprocess.py --af3_input_json="$af3_input_json" --input_dir="$input_dir"
+fi
 
 export CUDA_VISIBLE_DEVICES=$gpu_id
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"

@@ -124,17 +124,61 @@ def stage_prepare(args: argparse.Namespace) -> int:
     return 0
 
 
+def shard_of(index: int, count: int) -> tuple[int, int]:
+    """This worker's (index, count), preferring explicit args over the launcher.
+
+    Seyval exports RANK/WORLD_SIZE when it starts one process per GPU, which is
+    how a sweep this size gets done at all: 239 assemblies at 25 candidates each
+    do not fit one GPU inside the cluster's four-day wall clock.
+    """
+    import os
+
+    if count is None:
+        count = int(os.environ.get("WORLD_SIZE", "1"))
+    if index is None:
+        index = int(os.environ.get("RANK", "0"))
+    if not 0 <= index < count:
+        raise ValueError(f"shard {index} outside 0..{count - 1}")
+    return index, count
+
+
 def stage_predict(args: argparse.Namespace) -> int:
     """Sample with OpenDDE and convert the output for the evaluators."""
+    index, count = shard_of(args.shard, args.num_shards)
+    input_dir = Path(args.input_dir)
+
+    if count > 1:
+        # Round-robin rather than contiguous blocks: target cost tracks assembly
+        # size, and the targets CSV is not shuffled, so contiguous slices would
+        # hand one worker a run of the largest complexes.
+        full = json.loads((input_dir / "inputs.json").read_text())
+        mine = full[index::count]
+        input_dir = input_dir.parent / f"{input_dir.name}-shard{index}of{count}"
+        input_dir.mkdir(parents=True, exist_ok=True)
+        (input_dir / "inputs.json").write_text(json.dumps(mine, indent=2))
+        # Carried over only so the plugin's five-argument contract still holds;
+        # with inputs.json present the plugin will not read it.
+        (input_dir / "alphafold3_inputs.json").write_text(json.dumps(mine, indent=2))
+        logger.info("shard %d/%d: %d of %d assemblies", index, count, len(mine), len(full))
+
+    # Each shard writes its own prediction_reference.csv; the evaluate stage
+    # concatenates them. One shared path would have the workers overwrite each
+    # other's index. postprocess.py writes into this directory without creating
+    # it, so it is created here.
+    eval_dir = Path(args.evaluation_dir)
+    if count > 1:
+        eval_dir = eval_dir / f"shard{index}of{count}"
+    eval_dir.mkdir(parents=True, exist_ok=True)
+
     script = Path(args.algorithm_dir) / "make_predictions.sh"
     run_cmd(
         [
             "bash",
             str(script),
-            str(Path(args.input_dir) / "alphafold3_inputs.json"),
-            str(args.input_dir),
+            str(input_dir / "alphafold3_inputs.json"),
+            str(input_dir),
             str(args.prediction_dir),
-            str(args.evaluation_dir),
+            str(eval_dir),
             str(args.gpu_id),
         ],
         cwd=Path(args.algorithm_dir),
@@ -142,9 +186,35 @@ def stage_predict(args: argparse.Namespace) -> int:
     return 0
 
 
+def merge_shard_references(evaluation_dir: Path) -> int:
+    """Concatenate the per-shard prediction indexes into the one FoldBench reads.
+
+    Returns the number of prediction rows. A shard that produced no CSV at all
+    is reported rather than skipped: FoldBench merges this file against the
+    targets list with a left join, so a missing shard does not fail loudly, it
+    just quietly lowers the success rate.
+    """
+    shards = sorted(evaluation_dir.glob("shard*/prediction_reference.csv"))
+    if not shards:
+        return 0
+    expected = int(shards[0].parent.name.split("of")[-1])
+    if len(shards) != expected:
+        found = {p.parent.name for p in shards}
+        raise RuntimeError(
+            f"{len(shards)} of {expected} shard indexes present; missing "
+            f"{sorted({f'shard{i}of{expected}' for i in range(expected)} - found)}"
+        )
+    merged = pd.concat([pd.read_csv(p) for p in shards], ignore_index=True)
+    out = evaluation_dir / "prediction_reference.csv"
+    merged.to_csv(out, index=False)
+    logger.info("merged %d shard indexes into %s (%d rows)", len(shards), out, len(merged))
+    return len(merged)
+
+
 def stage_evaluate(args: argparse.Namespace) -> int:
     """Score with FoldBench's own evaluator and summary table."""
     foldbench = Path(args.foldbench_dir)
+    merge_shard_references(Path(args.evaluation_dir))
     # evaluate.py appends the algorithm name to --evaluation_dir itself, so it
     # is handed the parent of the directory postprocess.py wrote into.
     run_cmd(
@@ -196,6 +266,9 @@ def main() -> None:
     # cost before committing to all 239 assemblies.
     p.add_argument("--limit", type=int, default=0)
     p.add_argument("--gpu-id", default="0")
+    # Default to the launcher's RANK/WORLD_SIZE; set explicitly to shard by hand.
+    p.add_argument("--shard", type=int, default=None)
+    p.add_argument("--num-shards", type=int, default=None)
     p.add_argument("--python", default=sys.executable)
     p.add_argument("--eval-python", default="python")
     args = p.parse_args()

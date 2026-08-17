@@ -1,0 +1,31 @@
+# GPU stage: sample FoldBench protein-protein targets with OpenDDE.
+#
+# The container carries the orchestrator, not the model. OpenDDE itself, its
+# virtualenv, its checkpoint and its common assets all live on RIKYU's /data1
+# and are reached through the bind mount, exactly as the earlier multi-node run
+# did. Rebuilding a 2.6 GB checkpoint and a CUDA stack into an image would only
+# create a second copy that can drift from the one whose sha256 we verified.
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+COPY . .
+
+# Where OpenDDE finds checkpoint/opendde.pt and its common assets.
+ENV OPENDDE_ROOT_DIR=/data1/rkp00041/rku00122/opendde-multinode/opendde_data
+# make_predictions.sh defers to these, so the plugin script itself stays free of
+# absolute paths and remains readable as the FoldBench plugin it is.
+ENV OPENDDE_PYTHON=/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python
+ENV OPENDDE_CLI=/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/opendde
+ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+ENV PYTHONPATH=/workspace
+
+CMD ["bash"]
