@@ -23,6 +23,7 @@ Upstream projects, cited once:
 | Piece | Source | Ours? |
 |---|---|---|
 | Model weights | `opendde.pt`, sha256 `7b8266…07cc` | no — hash matches OpenDDE's published manifest |
+| Model install | the shared RIKYU checkout under `plinder_lddt_pli_improvement/model/` | no — read, never copied |
 | Sampling | `opendde pred` — [OpenDDE CLI](https://github.com/aurekaresearch/OpenDDE/blob/main/docs/inference_instructions.md) | no |
 | MSA search | [`runner/msa_search.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/runner/msa_search.py) | no — but see MSA note below |
 | Benchmark targets, ground truths, AF3 inputs | [FoldBench](https://github.com/BEAM-Labs/FoldBench) | no |

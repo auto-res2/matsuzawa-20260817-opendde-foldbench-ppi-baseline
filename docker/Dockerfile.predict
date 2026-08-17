@@ -34,11 +34,11 @@ WORKDIR /workspace
 COPY . .
 
 # Where OpenDDE finds checkpoint/opendde.pt and its common assets.
-ENV OPENDDE_ROOT_DIR=/data1/rkp00041/rku00122/opendde-multinode/opendde_data
+ENV OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
 # make_predictions.sh defers to these, so the plugin script itself stays free of
 # absolute paths and remains readable as the FoldBench plugin it is.
-ENV OPENDDE_PYTHON=/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python
-ENV OPENDDE_CLI=/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/opendde
+ENV OPENDDE_PYTHON=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python
+ENV OPENDDE_CLI=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/opendde
 ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ENV PYTHONPATH=/workspace
 
@@ -48,7 +48,7 @@ ENV FB_STAGE=predict \
     FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
     FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
     FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
-    FB_OPENDDE_SRC=/data1/rkp00041/rku00122/opendde-multinode/opendde-src
+    FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde
 
 # Run products, under rku00122/ as required. Override FB_INPUT_DIR and friends
 # per run to point at the pilot subset instead of the full sweep.
@@ -61,4 +61,4 @@ ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/O
 # already carries pandas, biotite and torch. Installing a second dependency set
 # into the image would only give the two stages different library versions.
 # Sharding comes from RANK/WORLD_SIZE, which the launcher sets.
-CMD ["/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python", "-u", "-m", "src.main"]
+CMD ["/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python", "-u", "-m", "src.main"]
