@@ -1,0 +1,17 @@
+# Please list the required python packages in `dependencies` below.
+# Keep this file limited to dependencies (hydra-core, wandb, plus
+# task-specific libraries) — see AGENTS.md.
+
+[project]
+name = "experiment"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "hydra-core",
+    "wandb",
+]
+
+# `src/` is run with `uv run python -m src.main` from the repository root,
+# never installed as a distribution, so this project is not a package.
+[tool.uv]
+package = false
