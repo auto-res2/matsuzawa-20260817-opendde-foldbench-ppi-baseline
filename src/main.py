@@ -97,9 +97,9 @@ def build_af3_inputs(
     return [e["name"] for e in entries]
 
 
-def run_cmd(cmd: list[str], cwd: Path | None = None) -> None:
+def run_cmd(cmd: list[str], cwd: Path | None = None, env: dict | None = None) -> None:
     logger.info("$ %s", " ".join(str(c) for c in cmd))
-    subprocess.run([str(c) for c in cmd], cwd=cwd, check=True)
+    subprocess.run([str(c) for c in cmd], cwd=cwd, env=env, check=True)
 
 
 def stage_prepare(args: argparse.Namespace) -> int:
@@ -270,9 +270,38 @@ def merge_shard_references(evaluation_dir: Path) -> int:
     return len(merged)
 
 
+def require_ost(extra_bin_dir: str | None) -> dict:
+    """Return an environment where `ost` resolves, or refuse to score.
+
+    FoldBench builds its command as the bare string "ost compare-structures ..."
+    and runs it through bash with `check=False`, so a missing binary is not an
+    error there -- the command fails, no JSON is written, and the target simply
+    has no score. That reads downstream as a low benchmark result rather than as
+    a broken evaluator, which is the one failure this repository keeps having to
+    guard against.
+    """
+    import os
+    import shutil
+
+    env = dict(os.environ)
+    if extra_bin_dir:
+        env["PATH"] = f"{extra_bin_dir}{os.pathsep}{env.get('PATH', '')}"
+    resolved = shutil.which("ost", path=env.get("PATH"))
+    if resolved is None:
+        raise FileNotFoundError(
+            "`ost` (OpenStructure) is not on PATH, and FoldBench's evaluator "
+            "invokes it by bare name without checking the exit code -- scoring "
+            "would silently produce nothing. Point --ost-bin-dir / FB_OST_BIN_DIR "
+            "at the directory holding it."
+        )
+    logger.info("scoring with %s", resolved)
+    return env
+
+
 def stage_evaluate(args: argparse.Namespace) -> int:
     """Score with FoldBench's own evaluator and summary table."""
     foldbench = Path(args.foldbench_dir)
+    env = require_ost(args.ost_bin_dir)
     merge_shard_references(Path(args.evaluation_dir))
     # evaluate.py appends the algorithm name to --evaluation_dir itself, so it
     # is handed the parent of the directory postprocess.py wrote into.
@@ -292,10 +321,12 @@ def stage_evaluate(args: argparse.Namespace) -> int:
             args.target_type,
         ],
         cwd=foldbench,
+        env=env,
     )
     run_cmd(
         [args.eval_python, "task_score_summary.py", "--algorithm_names", ALGORITHM],
         cwd=foldbench,
+        env=env,
     )
     return 0
 
@@ -345,7 +376,8 @@ def main() -> None:
     p.add_argument("--num-shards", type=int, default=None)
     p.add_argument("--python", default=sys.executable)
     p.add_argument("--opendde-cli", **env_default("OPENDDE_CLI", "opendde"))
-    p.add_argument("--eval-python", default="python")
+    p.add_argument("--eval-python", **env_default("FB_EVAL_PYTHON", "python"))
+    p.add_argument("--ost-bin-dir", **env_default("FB_OST_BIN_DIR", None))
     args = p.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
