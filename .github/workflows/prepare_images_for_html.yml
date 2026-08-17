@@ -1,0 +1,93 @@
+name: "Prepare Images for HTML"
+
+on:
+  workflow_dispatch:
+
+env:
+  RESULTS_DIR: ".research/results"
+  DIAGRAMS_DIR: ".research/diagrams"
+
+jobs:
+  convert-and-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v4
+
+      - name: Install PDF to PNG tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+
+      - name: Convert PDFs to PNGs
+        run: |
+          set -e
+          tmp_dir="/tmp/output_images"
+          mkdir -p "$tmp_dir"
+
+          SEARCH_DIRS=""
+          for dir in "$RESULTS_DIR" "$DIAGRAMS_DIR"; do
+            if [ -d "$dir" ]; then
+              SEARCH_DIRS="$SEARCH_DIRS $dir"
+            fi
+          done
+
+          if [ -z "$SEARCH_DIRS" ]; then
+            echo "No source directories found. No results to process."
+            exit 0
+          fi
+
+          echo "Looking for PDFs in:$SEARCH_DIRS ..."
+
+          # Each PDF is converted in place under its own relative path so that
+          # same-named figures from different runs (e.g. results/run-1/accuracy.pdf
+          # and results/run-2/accuracy.pdf) do not overwrite each other.
+          for dir in $SEARCH_DIRS; do
+            find "$dir" -type f -name "*.pdf" -print0 | while IFS= read -r -d '' pdf; do
+              rel="${pdf#"$dir"/}"
+              out="$tmp_dir/${rel%.pdf}"
+              mkdir -p "$(dirname "$out")"
+              echo "Converting $pdf to PNG..."
+              pdftoppm "$pdf" "$out" -png
+            done
+          done
+
+          find "$tmp_dir" -type f -name "*-1.png" -print0 | while IFS= read -r -d '' png; do
+            mv "$png" "${png%-1.png}.png"
+          done
+
+      - name: Copy converted PNGs to gh-pages branch
+        run: |
+          if [ -z "$(find /tmp/output_images -type f -name '*.png' -print -quit 2>/dev/null)" ]; then
+            echo "No PNG images were generated."
+            exit 0
+          fi
+
+          git fetch origin gh-pages || git branch gh-pages
+          git checkout gh-pages
+
+          target_dir="branches/${{ github.ref_name }}/images"
+          mkdir -p "$target_dir"
+          rsync -am --include='*/' --include='*.png' --exclude='*' /tmp/output_images/ "$target_dir/"
+
+      - name: Commit and push to gh-pages
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git add branches/
+
+          if ! git diff --staged --quiet; then
+            git commit -m "Upload PNGs from ${{ github.ref_name }}"
+            for i in {1..5}; do
+              git pull --rebase -X theirs origin main
+              git push && break
+              echo "Push failed on attempt $i. Retrying in $((2**i)) seconds..."
+              sleep $((2**i))
+            done
+          else
+            echo "No changes were made by the agent."
+          fi
