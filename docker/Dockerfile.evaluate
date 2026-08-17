@@ -1,0 +1,55 @@
+# Scoring stage: run FoldBench's evaluator over the sampled structures.
+#
+# PROVENANCE: ours. It builds no evaluator -- FoldBench's evaluate.py and
+# task_score_summary.py do the scoring, unmodified, and OpenStructure does the
+# structural comparison. This image only supplies the interpreter and the PATH
+# they need.
+#   FoldBench     https://github.com/BEAM-Labs/FoldBench
+#   OpenStructure https://openstructure.org
+#
+# CPU only, but not a login-node job: FoldBench fans out to 64 concurrent `ost`
+# processes (eval_by_ost's max_workers default).
+#
+# NOTE ON CMD -- the platform runs this verbatim and ignores the analysis
+# entry_point, so it must invoke the work and take its configuration from ENV.
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+COPY . .
+
+ENV PYTHONPATH=/workspace
+
+# Benchmark inputs, read-only and shared.
+ENV FB_STAGE=evaluate \
+    FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
+    FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
+    FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
+    FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
+    FB_OPENDDE_SRC=/data1/rkp00041/rku00122/opendde-multinode/opendde-src
+
+ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
+    FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
+
+# FoldBench invokes "ost compare-structures ..." by bare name through bash and
+# does not check the exit code, so an unresolvable binary would leave every
+# target unscored and look like a poor result. src/main.py refuses to start
+# unless this directory actually contains it.
+ENV FB_OST_BIN_DIR=/data1/rkp00041/.local/bin
+
+# FoldBench's evaluate.py imports its DockQv2 helper at module scope, so scoring
+# needs parallelbar, biopython and friends even for a protein-protein run that
+# only uses OpenStructure. They live in a venv of their own rather than in
+# OpenDDE's, which stays exactly as shipped. See docs/evaluation-env.md.
+ENV FB_EVAL_PYTHON=/data1/rkp00041/rku00122/foldbench-ppi-baseline/evalenv/bin/python
+
+CMD ["/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python", "-u", "-m", "src.main"]
