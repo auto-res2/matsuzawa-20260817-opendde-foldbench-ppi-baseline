@@ -1,33 +1,34 @@
-"""Fill an OpenDDE input JSON with MSAs, ahead of the GPU stage, and verify them.
+"""Fill an OpenDDE input JSON with MSAs, one target at a time, and verify them.
 
-PROVENANCE: this file is OURS. The search itself is not -- every MSA is fetched
-by OpenDDE's own per-task routine, `runner.msa_search.update_seq_msa`:
+PROVENANCE: this file is OURS, but it searches nothing itself. Every MSA is
+fetched by shelling out to OpenDDE's documented command:
 
-  https://github.com/aurekaresearch/OpenDDE/blob/main/runner/msa_search.py
+    opendde msa -i <one-job.json> -o <msa_dir>
 
-which is a library function and not a command, so a shim is needed either way.
-What we add around it is pacing, depth verification and re-fetching. That is not
-optional decoration -- it is the whole point of the file.
+  CLI      https://github.com/aurekaresearch/OpenDDE
+           docs/inference_instructions.md
+  Pipeline https://github.com/aurekaresearch/OpenDDE
+           docs/msa_template_pipeline.md
 
-OpenDDE's own documentation says why, plainly
-(https://github.com/aurekaresearch/OpenDDE/blob/main/docs/msa_template_pipeline.md):
+The public command is used rather than importing `runner.msa_search` so that
+nothing here reaches into OpenDDE's internals: the CLI is the contract, and a
+reproduction should stand on the interface upstream documents. What we add is
+strictly outside it -- pacing, depth verification, and re-fetching.
 
-    `opendde msa` uses the public ColabFold MMseqs2 API ... The service is
-    shared and rate-limited; for batch runs, provide precomputed A3M files.
+That addition is not decoration. OpenDDE's search catches every exception and
+falls back to a query-only MSA "so inference can still run", and its own docs
+warn that the public ColabFold service "is shared and rate-limited; for batch
+runs, provide precomputed A3M files". Handing it all 239 targets as fast as they
+would go made that fallback fire for 111 of them, silently: the JSON had a valid
+path, the a3m existed, and prediction proceeded in what was effectively
+single-sequence mode. Nothing downstream could tell the difference.
 
-Firing 239 targets at that service as fast as they would go did not fail loudly.
-It returned HTTP 429, the client retried, the retry "succeeded", and the a3m
-written to disk contained the query sequence and nothing else. 128 of 239
-targets came back that way -- 54% -- and every downstream step accepted them:
-the JSON had a valid path, the file existed, and the prediction ran in what was
-effectively single-sequence mode. Nothing in the pipeline could tell the
-difference between a deep MSA and an empty one.
-
-So this module treats a returned MSA as a claim to be checked. Each target is
-fetched on its own with a pause between requests, the depth of what came back is
-counted, and anything at or below the query-only floor is re-fetched with a
-longer pause. A target that will not come back deep after every round is named
-and the run fails, rather than being carried into a benchmark as a silent zero.
+So a returned MSA is treated as a claim to be checked. Each target is fetched on
+its own with a pause, the depth of what came back is counted, and a query-only
+answer is re-fetched with a longer pause -- an empty return being read as
+throttling rather than as a protein with no homologs. Anything still empty after
+every round is named, and the stage exits non-zero rather than letting a silent
+zero into the benchmark.
 """
 
 from __future__ import annotations
@@ -35,16 +36,19 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import shutil
-import sys
+import subprocess
 import time
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
 # An a3m holding only ">query" is what a rate-limited miss looks like on disk.
-# Anything at this depth carries no evolutionary signal at all.
 QUERY_ONLY_DEPTH = 1
+
+# The fields `opendde msa` fills in, and that a re-fetch has to clear first --
+# OpenDDE skips the search when a path is already present, so without this a
+# re-run of a failed target does nothing at all.
+MSA_FIELDS = ("pairedMsa", "unpairedMsa", "pairedMsaPath", "unpairedMsaPath", "msa")
 
 
 def msa_depth(path: str | None) -> int:
@@ -58,62 +62,70 @@ def msa_depth(path: str | None) -> int:
         return sum(1 for line in fh if line.startswith(">"))
 
 
-def chain_msa_state(entry: dict) -> list[tuple[str, int]]:
-    """(unpairedMsaPath, depth) for every protein chain of one job."""
-    state = []
-    for seq in entry.get("sequences", []):
-        chain = seq.get("proteinChain")
-        if chain is None:
-            continue
-        state.append((chain.get("unpairedMsaPath"), msa_depth(chain.get("unpairedMsaPath"))))
-    return state
+def protein_chains(entry: dict) -> list[dict]:
+    return [s["proteinChain"] for s in entry.get("sequences", []) if "proteinChain" in s]
+
+
+def depths(entry: dict) -> list[int]:
+    return [msa_depth(c.get("unpairedMsaPath")) for c in protein_chains(entry)]
 
 
 def entry_is_good(entry: dict) -> bool:
     """True when every protein chain has an MSA deeper than the query alone."""
-    state = chain_msa_state(entry)
-    return bool(state) and all(depth > QUERY_ONLY_DEPTH for _, depth in state)
+    d = depths(entry)
+    return bool(d) and all(x > QUERY_ONLY_DEPTH for x in d)
 
 
-def clear_msa_paths(entry: dict) -> None:
-    """Drop MSA fields so OpenDDE's `need_msa_search` will look again.
+def fetch_one(entry: dict, work_dir: Path, msa_dir: Path, cli: str) -> None:
+    """Run `opendde msa` for a single job and copy the result back into `entry`.
 
-    Without this a re-run is a no-op: the failed entries still carry a path to
-    the empty a3m, so the search is considered already done.
+    The CLI takes a file and writes `<stem>-update-msa.json` beside it, so a
+    one-job file is written per target and the filled-in chains are merged back.
     """
-    for seq in entry.get("sequences", []):
-        chain = seq.get("proteinChain")
-        if chain is None:
-            continue
-        for field in ("pairedMsa", "unpairedMsa", "pairedMsaPath", "unpairedMsaPath", "msa"):
+    name = entry.get("name", "job")
+    work_dir.mkdir(parents=True, exist_ok=True)
+    job_file = work_dir / f"{name}.json"
+
+    for chain in protein_chains(entry):
+        for field in MSA_FIELDS:
             chain.pop(field, None)
+    job_file.write_text(json.dumps([entry], indent=2))
 
+    subprocess.run(
+        [cli, "msa", "-i", str(job_file), "-o", str(msa_dir)],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
 
-def fetch_one(entry: dict, out_dir: Path, update_seq_msa) -> None:
-    """Search one job's MSAs with OpenDDE's own per-task routine."""
-    name = entry.get("name", "unnamed")
-    update_seq_msa(entry, str(out_dir / name / "msa"))
+    updated = job_file.with_name(f"{job_file.stem}-update-msa.json")
+    if not updated.exists():
+        # No update file means the CLI decided there was nothing to search.
+        # Left as-is, the depth check below will catch it.
+        logger.warning("%s: no -update-msa.json written", name)
+        return
+
+    filled = json.loads(updated.read_text())[0]
+    for chain, new_chain in zip(protein_chains(entry), protein_chains(filled)):
+        for field in MSA_FIELDS:
+            if field in new_chain:
+                chain[field] = new_chain[field]
 
 
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--input", required=True, help="OpenDDE inputs.json to fill")
     p.add_argument("--out-dir", required=True, help="where a3m artefacts are cached")
-    p.add_argument("--opendde-src", required=True, help="OpenDDE checkout to import")
-    # Pacing exists because the service is shared. The first pass is polite; a
-    # target that came back empty is retried more slowly still, on the theory
-    # that an empty return means we are being throttled rather than that the
-    # protein has no homologs.
-    p.add_argument("--delay", type=float, default=2.0, help="seconds between requests")
+    p.add_argument("--work-dir", required=True, help="scratch for per-job JSON")
+    p.add_argument("--opendde-cli", default="opendde", help="the `opendde` executable")
+    # Pacing exists because the service is shared. Failures are retried more
+    # slowly still, on the theory that an empty return means throttling.
+    p.add_argument("--delay", type=float, default=3.0, help="seconds between requests")
     p.add_argument("--rounds", type=int, default=4, help="passes over the failures")
     args = p.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
-    sys.path.insert(0, args.opendde_src)
-    from runner.msa_search import update_seq_msa
-
     src = Path(args.input)
-    out_dir = Path(args.out_dir)
     entries = json.loads(src.read_text())
     logger.info("%d jobs in %s", len(entries), src)
 
@@ -126,22 +138,21 @@ def main() -> None:
         logger.info("round %d: %d job(s) need an MSA, %.1fs between requests",
                     rnd, len(todo), delay)
         for i, entry in enumerate(todo, 1):
-            clear_msa_paths(entry)
+            name = entry.get("name")
             try:
-                fetch_one(entry, out_dir, update_seq_msa)
-            except Exception as exc:  # noqa: BLE001 - one target must not stop the sweep
-                logger.warning("%s: search raised %s", entry.get("name"), exc)
-            depths = [d for _, d in chain_msa_state(entry)]
-            logger.info("round %d [%d/%d] %s depth=%s", rnd, i, len(todo),
-                        entry.get("name"), depths)
+                fetch_one(entry, Path(args.work_dir), Path(args.out_dir), args.opendde_cli)
+            except subprocess.CalledProcessError as exc:
+                logger.warning("%s: `opendde msa` exited %d: %s",
+                               name, exc.returncode, (exc.stderr or "")[-300:])
+            logger.info("round %d [%d/%d] %s depth=%s", rnd, i, len(todo), name, depths(entry))
             # Written every round so a killed prefetch keeps what it earned.
             src.write_text(json.dumps(entries, indent=4))
             time.sleep(delay)
 
     bad = [e.get("name") for e in entries if not entry_is_good(e)]
-    depths = sorted(d for e in entries for _, d in chain_msa_state(e))
-    logger.info("MSA depth: min=%s median=%s max=%s over %d chains",
-                depths[0], depths[len(depths) // 2], depths[-1], len(depths))
+    alld = sorted(x for e in entries for x in depths(e))
+    logger.info("MSA depth over %d chains: min=%s median=%s max=%s",
+                len(alld), alld[0], alld[len(alld) // 2], alld[-1])
 
     if bad:
         logger.error("%d job(s) still have a query-only MSA after %d rounds: %s",

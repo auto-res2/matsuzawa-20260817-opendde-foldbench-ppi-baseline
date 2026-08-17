@@ -11,7 +11,9 @@ Upstream projects:
 
 What each step defers to:
   * sampling          -> `opendde pred`, OpenDDE's own CLI at its own defaults
-  * MSA search        -> OpenDDE `runner/msa_search.py`, via src/msa_prefetch.py
+  * MSA search        -> `opendde msa`, OpenDDE's own CLI, one job at a time,
+                         driven by src/msa_prefetch.py (which only paces and
+                         verifies -- it imports nothing from OpenDDE)
   * input conversion  -> FoldBench's Protenix plugin preprocess.py, VERBATIM
                          (algorithms/OpenDDE/preprocess.py)
   * output conversion -> the same plugin's postprocess.py, two path templates
@@ -128,8 +130,10 @@ def stage_prepare(args: argparse.Namespace) -> int:
             str(input_dir / "inputs.json"),
             "--out-dir",
             str(Path(args.msa_dir)),
-            "--opendde-src",
-            str(Path(args.opendde_src)),
+            "--work-dir",
+            str(input_dir / "msa_jobs"),
+            "--opendde-cli",
+            args.opendde_cli,
         ]
     )
     print(json.dumps({"stage": "prepare", "targets": len(targets)}), flush=True)
@@ -340,6 +344,7 @@ def main() -> None:
     p.add_argument("--shard", type=int, default=None)
     p.add_argument("--num-shards", type=int, default=None)
     p.add_argument("--python", default=sys.executable)
+    p.add_argument("--opendde-cli", **env_default("OPENDDE_CLI", "opendde"))
     p.add_argument("--eval-python", default="python")
     args = p.parse_args()
 
