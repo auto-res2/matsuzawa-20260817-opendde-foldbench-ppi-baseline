@@ -182,7 +182,12 @@ def stage_predict(args: argparse.Namespace) -> int:
         eval_dir = eval_dir / f"shard{index}of{count}"
     eval_dir.mkdir(parents=True, exist_ok=True)
 
-    script = Path(args.algorithm_dir) / "make_predictions.sh"
+    # Absolute, because cwd is the plugin directory itself: make_predictions.sh
+    # invokes ./preprocess.py and ./postprocess.py relative to where it runs, so
+    # the cwd has to stay there while the script path must not be resolved
+    # against it a second time.
+    algorithm_dir = Path(args.algorithm_dir).resolve()
+    script = algorithm_dir / "make_predictions.sh"
     run_cmd(
         [
             "bash",
@@ -193,7 +198,7 @@ def stage_predict(args: argparse.Namespace) -> int:
             str(eval_dir),
             str(args.gpu_id),
         ],
-        cwd=Path(args.algorithm_dir),
+        cwd=algorithm_dir,
     )
     return 0
 
