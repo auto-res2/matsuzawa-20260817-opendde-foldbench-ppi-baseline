@@ -216,33 +216,52 @@ def stage_predict(args: argparse.Namespace) -> int:
         ],
         cwd=algorithm_dir,
     )
-    return report_dropped_targets(Path(args.prediction_dir), input_dir)
+    return report_dropped_targets(
+        Path(args.prediction_dir),
+        input_dir,
+        eval_dir / "dropped_targets.json",
+    )
 
 
-def report_dropped_targets(prediction_dir: Path, input_dir: Path) -> int:
-    """Fail if OpenDDE quarantined any target, instead of scoring around it.
+def report_dropped_targets(prediction_dir: Path, input_dir: Path, record_to: Path) -> int:
+    """Fail if any target went missing, and write down WHICH ones.
 
     `opendde pred` moves a target it could not finish into <dump_dir>/ERR
-    (runner/inference.py:274) and carries on. Those targets then have no
-    prediction, FoldBench left-joins them away, and the success rate comes out
-    lower with nothing saying why. A reproduction that quietly drops targets is
-    not a reproduction, so this is an error and names the casualties.
+    (runner/inference.py) and carries on. Those targets then have no prediction,
+    FoldBench left-joins them away, and the success rate comes out lower with
+    nothing saying why.
+
+    Counts alone are not enough. An earlier version of this project reported
+    only n_attempted / n_scored, so a run that lost targets could say how many
+    but never which -- and once the job log aged out, the identity of the
+    casualties was gone for good. There was no way to check whether the losses
+    were random or concentrated in, say, the largest complexes, which is the
+    difference between noise and bias. So the names go to a file that lives
+    beside the results, not to a log line.
     """
     err_dir = prediction_dir / "ERR"
-    dropped = sorted(p.name for p in err_dir.iterdir()) if err_dir.is_dir() else []
-    requested = len(json.loads((input_dir / "inputs.json").read_text()))
-    produced = len([p for p in prediction_dir.iterdir() if p.is_dir() and p.name != "ERR"])
+    quarantined = sorted(p.name for p in err_dir.iterdir()) if err_dir.is_dir() else []
+    requested = [e["name"] for e in json.loads((input_dir / "inputs.json").read_text())]
+    produced = {p.name for p in prediction_dir.iterdir() if p.is_dir() and p.name != "ERR"}
+    absent = sorted(set(requested) - produced - set(quarantined))
 
-    logger.info("targets: %d requested, %d produced, %d quarantined",
-                requested, produced, len(dropped))
-    if dropped:
-        logger.error("OpenDDE quarantined %d target(s) in %s: %s",
-                     len(dropped), err_dir, dropped)
-        return 1
-    if produced < requested:
-        logger.error("%d target(s) produced no output directory at all", requested - produced)
-        return 1
-    return 0
+    record = {
+        "requested": len(requested),
+        "produced": len(produced),
+        "quarantined_targets": quarantined,
+        "absent_targets": absent,
+        "requested_targets": requested,
+    }
+    record_to.parent.mkdir(parents=True, exist_ok=True)
+    record_to.write_text(json.dumps(record, indent=2))
+    logger.info("targets: %d requested, %d produced, %d quarantined, %d absent (recorded in %s)",
+                len(requested), len(produced), len(quarantined), len(absent), record_to)
+
+    if quarantined:
+        logger.error("OpenDDE quarantined %d target(s): %s", len(quarantined), quarantined)
+    if absent:
+        logger.error("%d target(s) produced no output at all: %s", len(absent), absent)
+    return 1 if (quarantined or absent) else 0
 
 
 def merge_shard_references(evaluation_dir: Path) -> int:
@@ -266,7 +285,17 @@ def merge_shard_references(evaluation_dir: Path) -> int:
     merged = pd.concat([pd.read_csv(p) for p in shards], ignore_index=True)
     out = evaluation_dir / "prediction_reference.csv"
     merged.to_csv(out, index=False)
-    logger.info("merged %d shard indexes into %s (%d rows)", len(shards), out, len(merged))
+
+    # Which targets actually reached scoring, by name. FoldBench merges this
+    # file against the targets list with a left join, so a target missing here
+    # is not an error downstream -- it simply never appears in the score, and
+    # counts alone would never reveal which one it was.
+    scored = sorted(merged.pdb_id.unique().tolist())
+    (evaluation_dir / "scored_targets.json").write_text(
+        json.dumps({"n_rows": len(merged), "n_targets": len(scored), "targets": scored}, indent=2)
+    )
+    logger.info("merged %d shard indexes into %s (%d rows over %d targets)",
+                len(shards), out, len(merged), len(scored))
     return len(merged)
 
 
