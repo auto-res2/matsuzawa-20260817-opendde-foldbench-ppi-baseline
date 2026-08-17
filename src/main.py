@@ -388,7 +388,7 @@ STAGES = {
 }
 
 
-def env_default(name: str, fallback: str | None = None):
+def env_default(name: str, fallback: str | None = None, optional: bool = False):
     """Argparse default taken from the environment.
 
     The GPU stage is launched by the container's own CMD, which the execution
@@ -396,11 +396,17 @@ def env_default(name: str, fallback: str | None = None):
     line flags there -- it arrives as environment variables set on the image or
     the job. Every path therefore has an env fallback, and stays a flag for
     running the same code by hand.
+
+    `optional` exists because "has no value" and "must be supplied" are not the
+    same thing, and conflating them cost a 16-task run: --ost-bin-dir is set
+    only in the scoring image, so treating its absence as an error made the
+    predict stage refuse to start over a flag it never reads. A stage must not
+    be required to supply what it does not use.
     """
     import os
 
     value = os.environ.get(name, fallback)
-    return {"default": value, "required": value is None}
+    return {"default": value, "required": value is None and not optional}
 
 
 def main() -> None:
@@ -427,7 +433,7 @@ def main() -> None:
     p.add_argument("--python", default=sys.executable)
     p.add_argument("--opendde-cli", **env_default("OPENDDE_CLI", "opendde"))
     p.add_argument("--eval-python", **env_default("FB_EVAL_PYTHON", "python"))
-    p.add_argument("--ost-bin-dir", **env_default("FB_OST_BIN_DIR", None))
+    p.add_argument("--ost-bin-dir", **env_default("FB_OST_BIN_DIR", None, optional=True))
     args = p.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
