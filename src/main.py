@@ -323,11 +323,32 @@ def stage_evaluate(args: argparse.Namespace) -> int:
         cwd=foldbench,
         env=env,
     )
-    run_cmd(
-        [args.eval_python, "task_score_summary.py", "--algorithm_names", ALGORITHM],
-        cwd=foldbench,
-        env=env,
-    )
+    # task_score_summary.py carries its own defaults -- ./examples paths and a
+    # target list without protein-protein -- so every argument is passed, or it
+    # silently reads somebody else's directory.
+    #
+    # Run twice. `rank` selects the top-1 candidate by the model's own ranking
+    # score, which is the number OpenDDE published and the one to compare. `best`
+    # selects by ground-truth DockQ, which is the oracle: the ceiling reachable
+    # by fixing ranking alone, given these same 25 candidates. The gap between
+    # them prices the ranking axis, and FoldBench computes both for free.
+    eval_root = Path(args.evaluation_dir).parent
+    for metric_type in ("rank", "best"):
+        run_cmd(
+            [
+                args.eval_python,
+                "task_score_summary.py",
+                "--evaluation_dir", str(eval_root),
+                "--target_dir", str(Path(args.targets_dir)),
+                "--output_path", str(eval_root / f"summary_{metric_type}.csv"),
+                "--algorithm_names", ALGORITHM,
+                "--targets", args.target_type,
+                "--metric_type", metric_type,
+            ],
+            cwd=foldbench,
+            env=env,
+        )
+        logger.info("wrote %s", eval_root / f"summary_{metric_type}.csv")
     return 0
 
 
