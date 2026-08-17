@@ -70,10 +70,38 @@ def depths(entry: dict) -> list[int]:
     return [msa_depth(c.get("unpairedMsaPath")) for c in protein_chains(entry)]
 
 
+def search_ran(entry: dict) -> bool:
+    """True when the service actually answered, whatever it found.
+
+    Depth alone cannot decide this, and using it would deadlock the run. A
+    query-only a3m has two very different causes:
+
+      fallback fired   `<msa>/unpaired/` is EMPTY -- the request never landed,
+                       and the exception handler wrote the query out so
+                       inference could proceed. Retry this.
+      genuinely sparse `<msa>/unpaired/` holds uniref.a3m, the environmental
+                       a3m, msa.sh and the manifest -- both databases were
+                       searched and returned almost nothing. 8bbt-assembly1 is
+                       a real example: 241 residues, one UniRef hit. Retrying
+                       forever would never improve it.
+
+    So the artefacts decide whether the search happened; depth is reported but
+    never used to reject.
+    """
+    for chain in protein_chains(entry):
+        path = chain.get("unpairedMsaPath")
+        if not path:
+            return False
+        # <msa_dir>/<name>/msa/0/non_pairing.a3m -> <msa_dir>/<name>/msa/unpaired/
+        unpaired = Path(path).parent.parent / "unpaired"
+        if not (unpaired / "uniref.a3m").exists():
+            return False
+    return True
+
+
 def entry_is_good(entry: dict) -> bool:
-    """True when every protein chain has an MSA deeper than the query alone."""
-    d = depths(entry)
-    return bool(d) and all(x > QUERY_ONLY_DEPTH for x in d)
+    """True when every protein chain has been searched for successfully."""
+    return bool(protein_chains(entry)) and search_ran(entry)
 
 
 def fetch_one(entry: dict, work_dir: Path, msa_dir: Path, cli: str) -> None:
@@ -154,14 +182,25 @@ def main() -> None:
     logger.info("MSA depth over %d chains: min=%s median=%s max=%s",
                 len(alld), alld[0], alld[len(alld) // 2], alld[-1])
 
+    # Reported, never rejected: a searched-but-sparse chain is a fact about the
+    # protein, not a failure of ours. It belongs in the record so the eventual
+    # score can be read against it.
+    sparse = sorted(
+        (min(depths(e)), e.get("name")) for e in entries
+        if entry_is_good(e) and min(depths(e)) <= 10
+    )
+    if sparse:
+        logger.info("%d job(s) searched successfully but have <=10 sequences: %s",
+                    len(sparse), sparse[:15])
+
     if bad:
-        logger.error("%d job(s) still have a query-only MSA after %d rounds: %s",
+        logger.error("%d job(s) were never successfully searched after %d rounds: %s",
                      len(bad), args.rounds, bad)
-        logger.error("Do not run the benchmark on these -- an empty MSA scores "
-                     "like single-sequence mode and silently lowers the result.")
+        logger.error("These carry a fallback MSA, which scores like "
+                     "single-sequence mode and silently lowers the result.")
         raise SystemExit(1)
 
-    logger.info("all %d jobs carry a real MSA", len(entries))
+    logger.info("all %d jobs were searched successfully", len(entries))
 
 
 if __name__ == "__main__":
