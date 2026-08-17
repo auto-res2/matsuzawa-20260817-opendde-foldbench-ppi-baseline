@@ -42,9 +42,13 @@ N_cycle=10
 # exactly these, so the two must not drift apart.
 seeds="42,66,101,2024,8888"
 
-# --use_msa/--use_template are what separate a real FoldBench number from a
-# crippled one; OpenDDE warns at runtime when MSA is off and its own defaults
-# have it on (opendde/config/inference_defaults.py).
+# MSA on, templates off -- both are OpenDDE's own defaults
+# (opendde/config/inference_defaults.py: use_msa True, use_template False), and
+# neither is ours to pick. MSA is what separates a real FoldBench number from a
+# crippled one, and OpenDDE warns at runtime when it is off. Templates are off
+# because the shipped default has them off, the OpenDDE report does not say it
+# evaluated with them, and FoldBench's own reference plugin passes no template
+# flag either. Turning them on additionally needs a kalign binary.
 $OPENDDE_CLI pred \
     -i "${input_dir}/inputs.json" \
     -o "${prediction_dir}" \
@@ -54,7 +58,7 @@ $OPENDDE_CLI pred \
     -e ${N_sample} \
     -n opendde_v1 \
     --use_msa true \
-    --use_template true
+    --use_template "${FB_USE_TEMPLATE:-false}"
 
 # OpenDDE output -> mmCIF that OpenStructure/DockQv2 accept, plus the
 # prediction_reference.csv FoldBench's evaluator reads.

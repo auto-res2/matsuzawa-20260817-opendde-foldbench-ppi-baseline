@@ -18,8 +18,11 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
+# kalign is only reached when templates are enabled, which the baseline leaves
+# off because that is OpenDDE's shipped default. It is installed anyway so that
+# FB_USE_TEMPLATE=true is a flag rather than a rebuild.
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git curl \
+    git curl kalign \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspace
