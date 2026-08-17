@@ -60,6 +60,19 @@ fi
 if [ -z "${CUDA_VISIBLE_DEVICES:-}" ]; then
     export CUDA_VISIBLE_DEVICES=$gpu_id
 fi
+
+# `opendde pred` reads RANK/WORLD_SIZE and distributes the input JSON across
+# them by itself -- the run log shows "[Rank 1] ... [Rank 13]" from a single
+# invocation. Since src/main.py has already split the targets and handed this
+# process its own shard, leaving those variables set makes the work be divided
+# twice: a 15-target shard was split again 16 ways and the process ran "0/1".
+# Every shard then finished after roughly one target, and the missing-target
+# check fired and took the whole job down with it.
+#
+# So the model is told it is alone. The sharding stays where it is visible and
+# ours, in stage_predict.
+export RANK=0
+export WORLD_SIZE=1
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 N_sample=5

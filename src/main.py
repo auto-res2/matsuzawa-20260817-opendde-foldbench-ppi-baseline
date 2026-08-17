@@ -278,7 +278,17 @@ def report_dropped_targets(prediction_dir: Path, input_dir: Path, record_to: Pat
         logger.error("OpenDDE quarantined %d target(s): %s", len(quarantined), quarantined)
     if absent:
         logger.error("%d target(s) produced no output at all: %s", len(absent), absent)
-    return 1 if (quarantined or absent) else 0
+
+    # Recorded, but NOT fatal here. Exiting non-zero from one shard makes srun
+    # cancel the whole step, and that is what it did: a single shard's shortfall
+    # killed fifteen healthy workers three minutes into a sweep. A shard is the
+    # wrong place to decide the sweep is unusable -- it can only see its own
+    # slice, and it cannot know whether another worker is still running.
+    #
+    # The refusal belongs in stage_evaluate, which sees every shard at once and
+    # runs when nothing is left to lose. dropped_targets.json carries the names
+    # there.
+    return 0
 
 
 def merge_shard_references(evaluation_dir: Path) -> int:
@@ -349,6 +359,22 @@ def stage_evaluate(args: argparse.Namespace) -> int:
     foldbench = Path(args.foldbench_dir)
     env = require_ost(args.ost_bin_dir)
     merge_shard_references(Path(args.evaluation_dir))
+
+    # The refusal the predict stage deliberately does not make. Here every
+    # shard's record is present, so "which targets never got predicted" is
+    # finally answerable -- and scoring an incomplete sweep would produce a
+    # number that looks like a poor result rather than a partial one.
+    missing: list[str] = []
+    for record in sorted(Path(args.evaluation_dir).glob("shard*/dropped_targets.json")):
+        data = json.loads(record.read_text())
+        missing += data.get("quarantined_targets", []) + data.get("absent_targets", [])
+    still_missing = sorted(set(missing) - set(
+        pd.read_csv(Path(args.evaluation_dir) / "prediction_reference.csv").pdb_id.unique()
+    ))
+    if still_missing:
+        logger.error("%d target(s) have no prediction and would silently lower "
+                     "the score: %s", len(still_missing), still_missing)
+        return 1
     # evaluate.py appends the algorithm name to --evaluation_dir itself, so it
     # is handed the parent of the directory postprocess.py wrote into.
     run_cmd(
