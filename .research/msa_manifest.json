@@ -1,0 +1,3886 @@
+{
+  "chains": {
+    "7qrj-assembly1#0": {
+      "paired": {
+        "bytes": 192,
+        "depth": 1,
+        "sha256": "fa7e79a09242e89ed0b0609e2f511b27ff5f3b86ebd120f4d8c2d34b27058cbe"
+      },
+      "unpaired": {
+        "bytes": 12836,
+        "depth": 52,
+        "sha256": "c3381c8213ed3f5e998b50d13ba4eabb06f8294edd19c349162fe4f3779f2d4c"
+      }
+    },
+    "7qrr-assembly1#0": {
+      "paired": {
+        "bytes": 161,
+        "depth": 1,
+        "sha256": "84ac0c449d02520acd1546220caf87ac4b03e36b2348a9dd2ac759418b91b51c"
+      },
+      "unpaired": {
+        "bytes": 1590,
+        "depth": 8,
+        "sha256": "34af3e7cef428563549abe2148e98eea89e574fde5de86f78da24e90ee89026f"
+      }
+    },
+    "7quv-assembly1#0": {
+      "paired": {
+        "bytes": 170120,
+        "depth": 921,
+        "sha256": "b2c9e3e278e983257cec2a6b2bf6e42723a98abed9e2c2c1a4fe9159ce9e8097"
+      },
+      "unpaired": {
+        "bytes": 1390987,
+        "depth": 7574,
+        "sha256": "c225f94c96d5d195ec51de59ae336509bda9d8e895e77b2fd525c608c97cf939"
+      }
+    },
+    "7quv-assembly1#1": {
+      "paired": {
+        "bytes": 146664,
+        "depth": 921,
+        "sha256": "854425e85bf69bf5154ae610586f784d89c93e54ef4b5b7b51bf7953920af0bb"
+      },
+      "unpaired": {
+        "bytes": 885556,
+        "depth": 5623,
+        "sha256": "543d9d8b7c5d16c433e60460fd67fd13ab482e03ccf5be8b10c19fb9d9d10e4f"
+      }
+    },
+    "7quv-assembly1#2": {
+      "paired": {
+        "bytes": 53386,
+        "depth": 921,
+        "sha256": "ecfe92bbf7105d9c9f735908e00549a5725444c66ae297d19084b88135661cf2"
+      },
+      "unpaired": {
+        "bytes": 50,
+        "depth": 2,
+        "sha256": "b761397856324d0f4165a06e5bc2a8bb5ed8b3ed8667edb5dfb458cf748b9ded"
+      }
+    },
+    "7qwe-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "23de8e4f93501641123d44c9ee880339b265d138102a9acf290cc8471eda0eea"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "52053a8ef46dffd4c8e6ab95b10d11a2f80b796a8b581101380f4ef66ee08459"
+      }
+    },
+    "7spq-assembly1#0": {
+      "paired": {
+        "bytes": 336,
+        "depth": 1,
+        "sha256": "68ea7242eddf9edc28aa0cf2c368243d0ececd7aadad1a5aac4f1bce97b07e6e"
+      },
+      "unpaired": {
+        "bytes": 5688288,
+        "depth": 13610,
+        "sha256": "8bd24cb3ebebb4ccc12e07485b3228632ab4eba4aa5dbc8eb5975a421a201ee4"
+      }
+    },
+    "7th0-assembly1#0": {
+      "paired": {
+        "bytes": 57,
+        "depth": 1,
+        "sha256": "dc6760a5bb826ef72c1017195544a6e0daafd87434a4a2712204600ea11dfaf1"
+      },
+      "unpaired": {
+        "bytes": 833745,
+        "depth": 7477,
+        "sha256": "dd0861f40bb3e4d0b19bddc04a313311711d022bb45d59439f77e180018c2e96"
+      }
+    },
+    "7txy-assembly1#0": {
+      "paired": {
+        "bytes": 7281124,
+        "depth": 20685,
+        "sha256": "ba97e48e168244d77ef0a2e1d22f5d668ec11dd76d0e77e7d4126857e3995853"
+      },
+      "unpaired": {
+        "bytes": 434288,
+        "depth": 1244,
+        "sha256": "c11da19619dfa7faec975b48f816dcd51197222d6854fa4f189794549579377b"
+      }
+    },
+    "7txy-assembly1#1": {
+      "paired": {
+        "bytes": 8429366,
+        "depth": 20685,
+        "sha256": "88761e5cbc5e7d1e13d5b17d5b9818a23f87dc04045f28955e18cfe17617ff96"
+      },
+      "unpaired": {
+        "bytes": 432299,
+        "depth": 1073,
+        "sha256": "a6cf625028e1f4729d4428e6f3690387c40fe4be90e50bae44f5b9614c851917"
+      }
+    },
+    "7uq2-assembly1#0": {
+      "paired": {
+        "bytes": 97,
+        "depth": 1,
+        "sha256": "7ba42e5d184d3c6710c014e81f3e2b8c398464e6e82eaf542989249f04c3c027"
+      },
+      "unpaired": {
+        "bytes": 83467,
+        "depth": 551,
+        "sha256": "230fb966b7d6936ec510dd7a86ee7be112822b2e1970e50fb77f58479b8482c8"
+      }
+    },
+    "7vub-assembly1#0": {
+      "paired": {
+        "bytes": 162,
+        "depth": 1,
+        "sha256": "713a85e61b61f1e804586f76b5a5bf64cb03a73e4452e704cd930e8a96eb8b1f"
+      },
+      "unpaired": {
+        "bytes": 282019,
+        "depth": 1254,
+        "sha256": "325b15f0b34c31858b6760678e14f68431e696316dd6829bd4e3a34725e42ac7"
+      }
+    },
+    "7wr3-assembly1#0": {
+      "paired": {
+        "bytes": 526714,
+        "depth": 590,
+        "sha256": "5855e3953dd6134d7014a1f99aaf49645219b9f8ab683875c316b5f8ea6c9de1"
+      },
+      "unpaired": {
+        "bytes": 3985950,
+        "depth": 4546,
+        "sha256": "d29862fc549b95d793ec58c1f13fdf5d43c7668e5ae0199c5f3e3acacc5c0e29"
+      }
+    },
+    "7wr3-assembly1#1": {
+      "paired": {
+        "bytes": 127267,
+        "depth": 590,
+        "sha256": "3f271b63fb3440758a17cfe11168d22494dd34c673a0e0d540a9b98116a3477c"
+      },
+      "unpaired": {
+        "bytes": 4616183,
+        "depth": 21171,
+        "sha256": "4d5d1c6a085627c48310b5aff7c56e1b4afa1afe2642b235f20137836fd4d614"
+      }
+    },
+    "7x36-assembly1#0": {
+      "paired": {
+        "bytes": 381,
+        "depth": 1,
+        "sha256": "3257278a47c08b5fbee813d27f6e9b6f029016ed14f193df91d90dc5c9e286a5"
+      },
+      "unpaired": {
+        "bytes": 141762,
+        "depth": 320,
+        "sha256": "44b783924ca43682f576b5b2f2269060c067933820c8151595c389bd0475fb51"
+      }
+    },
+    "7x80-assembly1#0": {
+      "paired": {
+        "bytes": 156,
+        "depth": 1,
+        "sha256": "ed84e073ad6bf96ddc7a56fd36c5cbf33226b5c4ae0c24032cf0b2a1c34eda3b"
+      },
+      "unpaired": {
+        "bytes": 14047,
+        "depth": 66,
+        "sha256": "c9051f3cf44f6d5bf886cb9a6eb76e12be6734ea8b9f7f9dbdc084e60fc4fdde"
+      }
+    },
+    "7xfr-assembly1#0": {
+      "paired": {
+        "bytes": 393777,
+        "depth": 942,
+        "sha256": "02e7ff7be05fc69bba1bee887f597ced881a7fdf3227388523fcc72695cd02aa"
+      },
+      "unpaired": {
+        "bytes": 2563952,
+        "depth": 6353,
+        "sha256": "20df1de3b767585eb928ae2ab804f75e86e588ec1d45d732bb0d4b53990f27ce"
+      }
+    },
+    "7xfr-assembly1#1": {
+      "paired": {
+        "bytes": 124241,
+        "depth": 942,
+        "sha256": "f993f4de475b5facd4b6381a0ec9b8a24220936d9613347f0f6339521ea56ae4"
+      },
+      "unpaired": {
+        "bytes": 80846,
+        "depth": 617,
+        "sha256": "d59e31acc9d538a61fc7c9c8e36e4ce5cb6f210403bd40d33c81f3c5b4261622"
+      }
+    },
+    "7xft-assembly1#0": {
+      "paired": {
+        "bytes": 98,
+        "depth": 1,
+        "sha256": "a4180dac004cc16644db9b498cfaca5d5793e2a8eb7f3750835e22239b950d3d"
+      },
+      "unpaired": {
+        "bytes": 1688112,
+        "depth": 10810,
+        "sha256": "56fdbf7eb2a6dbab0f7878b5f6ade2ea2c153fc12445ad5d68a0c24301ae2a41"
+      }
+    },
+    "7xl7-assembly1#0": {
+      "paired": {
+        "bytes": 70,
+        "depth": 1,
+        "sha256": "4df408609c00c8ec45a5dadf436dd59c83f07ba45d0ea512d9acf9c6ba4ec9be"
+      },
+      "unpaired": {
+        "bytes": 31236,
+        "depth": 257,
+        "sha256": "b83c986961a6e9784ba1a58aed599ffeb1772f8ed61fdaed06989db0e5ac21bc"
+      }
+    },
+    "7xn2-assembly1#0": {
+      "paired": {
+        "bytes": 162,
+        "depth": 1,
+        "sha256": "b75983ea71d4a0f186b6965d1dca597b96ec15c85cc06866e02261a29cfc7b53"
+      },
+      "unpaired": {
+        "bytes": 896203,
+        "depth": 4147,
+        "sha256": "b54ea31691441a8229fc7301090fdc10ab192280c9f6431e177dc475a9e6a9e6"
+      }
+    },
+    "7xpi-assembly1#0": {
+      "paired": {
+        "bytes": 379,
+        "depth": 1,
+        "sha256": "2303797db83dc764b384af89f7c6f1ac7ed1b784ed4ecc7b40af84fd025eafd0"
+      },
+      "unpaired": {
+        "bytes": 2296069,
+        "depth": 5126,
+        "sha256": "bee1de9e0fbef5069123a1d828b9837ff3abd7ad14c8220bde9edca78253180d"
+      }
+    },
+    "7xpt-assembly1#0": {
+      "paired": {
+        "bytes": 385,
+        "depth": 1,
+        "sha256": "2dba4994836ba57fa4428a85242312e6d016f0d1cef9e4fb4b26b4b97e34dd9b"
+      },
+      "unpaired": {
+        "bytes": 613456,
+        "depth": 1372,
+        "sha256": "90c4b134b10231226e25351fb8a11a85580858997c0533070d32949dc34d6dc4"
+      }
+    },
+    "7xrb-assembly1#0": {
+      "paired": {
+        "bytes": 240,
+        "depth": 1,
+        "sha256": "06b74efe0dd4622a0515e025bb339ec32feda3c9a738c77b6beb41f5499e80ab"
+      },
+      "unpaired": {
+        "bytes": 368082,
+        "depth": 1206,
+        "sha256": "7416e43b9df36b3b3e4c4c4651f0e8c5f77dd66a920ab56ce211b99ca4864c0f"
+      }
+    },
+    "7xvq-assembly1#0": {
+      "paired": {
+        "bytes": 96,
+        "depth": 1,
+        "sha256": "841c7447bab06c5b289a73b15db4c73aa7ef0a1ffe13ce1e6c7e1f9ee235aa7e"
+      },
+      "unpaired": {
+        "bytes": 790,
+        "depth": 6,
+        "sha256": "94787162e949817fb6627cd807a7a0e3b6c8bf6f8cac1dd60d30a355f19e0551"
+      }
+    },
+    "7y0l-assembly1#0": {
+      "paired": {
+        "bytes": 378,
+        "depth": 1,
+        "sha256": "3d7859023d69dcb06f13db64bb5f94796eb56b54d13e0d3557444512eb660361"
+      },
+      "unpaired": {
+        "bytes": 2731564,
+        "depth": 6186,
+        "sha256": "c4362f6607d9e65ebddc9a15caa57fc603008cf7905c55bc9f925f4b8c48f9a4"
+      }
+    },
+    "7y16-assembly1#0": {
+      "paired": {
+        "bytes": 166,
+        "depth": 1,
+        "sha256": "ab0975f6db36afc7350cc6dc99e0c9aa4e1453cbae66a259e169385fa5c2b488"
+      },
+      "unpaired": {
+        "bytes": 444938,
+        "depth": 1962,
+        "sha256": "8e59a54e69cf36b02f4cf7f2eff875f7592a12083c8097a7c3299310010985d9"
+      }
+    },
+    "7y37-assembly1#0": {
+      "paired": {
+        "bytes": 37,
+        "depth": 1,
+        "sha256": "b682837adda00194769c5d0a6a4db72a785a81d9db83178e63c410f993fae3a8"
+      },
+      "unpaired": {
+        "bytes": 72,
+        "depth": 2,
+        "sha256": "9060d1599c8f78e93706ea1560a765d90b47a170c7a10a3e458ac2b898595ec3"
+      }
+    },
+    "7ydo-assembly1#0": {
+      "paired": {
+        "bytes": 91,
+        "depth": 1,
+        "sha256": "87dca7b74d33ef5639f9c2ad23f897d089d652f316b88b963dcceb301707200c"
+      },
+      "unpaired": {
+        "bytes": 154482,
+        "depth": 1090,
+        "sha256": "aa5efeded7652631b15c29577c7f8c91ea68627eccfc2dcb0b29bd4311ad45f2"
+      }
+    },
+    "7yf2-assembly1#0": {
+      "paired": {
+        "bytes": 283,
+        "depth": 1,
+        "sha256": "d3f8dc5b6698b6efeef8d4ebbfe74aab98e67642cb725d9b6b067f0dd2d789ac"
+      },
+      "unpaired": {
+        "bytes": 730104,
+        "depth": 2107,
+        "sha256": "6c882c6e19ce0c0a5bb898c8a6446edad64d7286db41a9dfe39c53810d210370"
+      }
+    },
+    "7yf2-assembly1#1": {
+      "paired": {
+        "bytes": 21,
+        "depth": 1,
+        "sha256": "abb764e92188ef0a19c6a94ec51155afc663bd3ed11b96a412b6681b1adbba00"
+      },
+      "unpaired": {
+        "bytes": 40,
+        "depth": 2,
+        "sha256": "0c125fa9ab876a3b51b46b6782cdd4c32cccc9d15863d449d9ecc248c3de9ebc"
+      }
+    },
+    "7yfu-assembly1#0": {
+      "paired": {
+        "bytes": 53,
+        "depth": 1,
+        "sha256": "f9b8d5c73f58a9490fa3a237287ef3ee6f4ab2d47987732764a9e9beea782944"
+      },
+      "unpaired": {
+        "bytes": 69360,
+        "depth": 639,
+        "sha256": "c4234f93a607ba3cfbd113e945c9b1c1e5894f50875f7c9bd202db062a695e3e"
+      }
+    },
+    "7yls-assembly1#0": {
+      "paired": {
+        "bytes": 1828022,
+        "depth": 7919,
+        "sha256": "61681e207112ecbfc894475cae669c9d380ec0e01009e8d84a5b3f45ddd0b645"
+      },
+      "unpaired": {
+        "bytes": 1353922,
+        "depth": 5900,
+        "sha256": "28670cda756b79360b1fffb2d6495f4a956af596533869406a8e5a5801ec01da"
+      }
+    },
+    "7yls-assembly1#1": {
+      "paired": {
+        "bytes": 4063709,
+        "depth": 7919,
+        "sha256": "2534d1df41c04c8990da503db17d18565daafe4818b38d76908b86302b2f533a"
+      },
+      "unpaired": {
+        "bytes": 7057357,
+        "depth": 13943,
+        "sha256": "ee7e78d52201dbc8e9498d301c6e7eebbc0145e35d12c689ad9d89957a52daaf"
+      }
+    },
+    "7ytu-assembly1#0": {
+      "paired": {
+        "bytes": 6034,
+        "depth": 40,
+        "sha256": "e5cbaa9c2911514ad21411d7f8a93fe0d9d67634ecdd8ebce3d9302388adfa24"
+      },
+      "unpaired": {
+        "bytes": 8990,
+        "depth": 61,
+        "sha256": "e458c465ea19fb462330a704c6f05160395a8dd93ce7ee68c90eda2db56b975c"
+      }
+    },
+    "7ytu-assembly1#1": {
+      "paired": {
+        "bytes": 5519,
+        "depth": 40,
+        "sha256": "e3547e21e0d5a309ccc620878a82ba5ad1349e67d647d9398973959a49cdbc53"
+      },
+      "unpaired": {
+        "bytes": 7864,
+        "depth": 58,
+        "sha256": "741f3979d6d04f0ed597aa85888a0294b35733e2a5054c64a952b756dfd9342a"
+      }
+    },
+    "7yuj-assembly1#0": {
+      "paired": {
+        "bytes": 158,
+        "depth": 1,
+        "sha256": "aab159a3f2b524ac3f15a8012bb8fa08194d5bc5dbdcfde9689e62314e2ecf94"
+      },
+      "unpaired": {
+        "bytes": 1833034,
+        "depth": 8341,
+        "sha256": "9344594c2a1e7a604dece192fec249982b3e781cfeb8782c2f2c9bc697ad694a"
+      }
+    },
+    "7yul-assembly1#0": {
+      "paired": {
+        "bytes": 111,
+        "depth": 1,
+        "sha256": "0ae547afc823aefd1d14639261a89669668165180f62b343e7b64a5f94f0805b"
+      },
+      "unpaired": {
+        "bytes": 109932,
+        "depth": 652,
+        "sha256": "3cb0c32e5edfc552728c02e89b70f461b519a6409692baa98d60cd6e6cb878e5"
+      }
+    },
+    "7yzt-assembly1#0": {
+      "paired": {
+        "bytes": 323,
+        "depth": 1,
+        "sha256": "a1a41b67b6dfe987e2c16e92d21fea840598e45baa41f4b8733566cd2163b206"
+      },
+      "unpaired": {
+        "bytes": 2775579,
+        "depth": 7055,
+        "sha256": "f907dfbf5f6f9d1a31b788013c9d6d948d94eec234e6f355952569b34bf4f775"
+      }
+    },
+    "7z8z-assembly1#0": {
+      "paired": {
+        "bytes": 40544,
+        "depth": 325,
+        "sha256": "ef49ddcaf0490cd6b6be927ac1c23c152fe8bffed6b44a818f58329b1732b1ed"
+      },
+      "unpaired": {
+        "bytes": 43170,
+        "depth": 351,
+        "sha256": "189abbdf7982e0d82ae43428d075757435dd106fbd1a3993a958a57cdb295bf9"
+      }
+    },
+    "7z8z-assembly1#1": {
+      "paired": {
+        "bytes": 33015,
+        "depth": 325,
+        "sha256": "4e13a153bc1fab697ffdcd20a99ccaf0f2d50268311b0bc8feea4209a2f463e3"
+      },
+      "unpaired": {
+        "bytes": 39961,
+        "depth": 395,
+        "sha256": "0bcd1c98bc6f5b28c1b0af62a36fd16fcf846dce93b2fa2adac66d3aaabff7ed"
+      }
+    },
+    "7zhf-assembly1#0": {
+      "paired": {
+        "bytes": 282,
+        "depth": 1,
+        "sha256": "720ea03c06e17294aa9dfc625f10d04ca7f8bb044a02c68a91c30cecad9bf918"
+      },
+      "unpaired": {
+        "bytes": 2449024,
+        "depth": 6994,
+        "sha256": "968ad5426f2e8b31d1ae655479d7a13f32d9b7aee878d06a153b5bd52966f525"
+      }
+    },
+    "7zop-assembly1#0": {
+      "paired": {
+        "bytes": 155,
+        "depth": 1,
+        "sha256": "75db6d3ceb2768c01c36f2a4806fad523201b4bcbcbdce0ada22862d8a1b15ce"
+      },
+      "unpaired": {
+        "bytes": 1047662,
+        "depth": 4941,
+        "sha256": "1488290160e0581f332b13dfc881350725ee95ef1a1da0e35b2a2b4568005b2c"
+      }
+    },
+    "7ztw-assembly1#0": {
+      "paired": {
+        "bytes": 158,
+        "depth": 1,
+        "sha256": "74d12c78a485f5eaa0940f85923e548d1269076a92cd48a532dc8906e2f72013"
+      },
+      "unpaired": {
+        "bytes": 31736,
+        "depth": 149,
+        "sha256": "b2f74949f276f9c7d877803a9cbc8d24a1575bad943b6b50bcc150b1b240b19c"
+      }
+    },
+    "8a2g-assembly1#0": {
+      "paired": {
+        "bytes": 154,
+        "depth": 1,
+        "sha256": "19afd538527b77f4e51bc62b042f310449455fe272b143389ea3f80d1ca22aee"
+      },
+      "unpaired": {
+        "bytes": 31882,
+        "depth": 152,
+        "sha256": "735ebf0873ddc43da30fe3acee737a076f60ea326ff9b0c1160ef76bfe11ac13"
+      }
+    },
+    "8a4o-assembly1#0": {
+      "paired": {
+        "bytes": 239,
+        "depth": 1,
+        "sha256": "b9aeae125864d3c7526d39aa64784d4683c3658a388f2dcb2b505a9c770db707"
+      },
+      "unpaired": {
+        "bytes": 7644,
+        "depth": 26,
+        "sha256": "dc420d6ba27803525bf5a78701564f3d2e5fbc5b209f8ceeb0ba6bc49af8b21f"
+      }
+    },
+    "8a50-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "ca4b23a97f09ff917cc60cac65a1007d6eb7448e2df778d58d332966a570d99c"
+      },
+      "unpaired": {
+        "bytes": 26121,
+        "depth": 286,
+        "sha256": "a37fad22aa454a4fc58542c1666e7bdc560504ad68ed1df0dbd8494f7880a3d2"
+      }
+    },
+    "8a51-assembly1#0": {
+      "paired": {
+        "bytes": 16614,
+        "depth": 178,
+        "sha256": "a6240bcb7b514759191c7b12d1391afc94dc3f01387dcdc2b5d6cb4d37373b80"
+      },
+      "unpaired": {
+        "bytes": 26121,
+        "depth": 286,
+        "sha256": "2676c3a903476addfd746cf6ca363a56b148a9f62f42b85fd838f7b5be58c503"
+      }
+    },
+    "8a51-assembly1#1": {
+      "paired": {
+        "bytes": 18530,
+        "depth": 178,
+        "sha256": "9bb32c9da203c5fdfe7cd272bf022e8bdf6f948ee58f23e4750923ccf53a12d1"
+      },
+      "unpaired": {
+        "bytes": 42284,
+        "depth": 411,
+        "sha256": "45ca017e2c77671dc481eddb497f690e18a238370c1dbb6a0a73c3cd69c3d64a"
+      }
+    },
+    "8a8o-assembly1#0": {
+      "paired": {
+        "bytes": 10645577,
+        "depth": 15689,
+        "sha256": "bcf5971ff593a1cb74c20965a5b341fe6cc07420fee7cb7321ae99c79c02f3bf"
+      },
+      "unpaired": {
+        "bytes": 4666057,
+        "depth": 7213,
+        "sha256": "e5d8645cdedfa38b8c68fdfeaa667b827cb41827d0ed0287c9c18d4168aef0bb"
+      }
+    },
+    "8a8o-assembly1#1": {
+      "paired": {
+        "bytes": 2667796,
+        "depth": 15689,
+        "sha256": "f39b08ab9230093801acb340101a9c53c793cdddb90856182017498e83983346"
+      },
+      "unpaired": {
+        "bytes": 2819009,
+        "depth": 16723,
+        "sha256": "c7f6337df02b24220f97328f0ec89c10640cd82563af2947b9d6ec74ffd5265a"
+      }
+    },
+    "8aa9-assembly1#0": {
+      "paired": {
+        "bytes": 206,
+        "depth": 1,
+        "sha256": "fbf5f56a39b2fe557ea59db2ced0e64c27c864af5b309245c1e3cad250f07b18"
+      },
+      "unpaired": {
+        "bytes": 1522273,
+        "depth": 5731,
+        "sha256": "89d9d8d3708465b5890b69849220848f1ba99ba03e4f6a1bfe6b50944303a02e"
+      }
+    },
+    "8abt-assembly1#0": {
+      "paired": {
+        "bytes": 259,
+        "depth": 1,
+        "sha256": "ad691bb73de49d96db8cbd495bcefb4e884804fa3bfe9ce7e3bc57af38a8baae"
+      },
+      "unpaired": {
+        "bytes": 1540369,
+        "depth": 4818,
+        "sha256": "c76dd2cef40e1eec6d6d78261e046c064a9100653a9a5d2d46e667f8e5e9a47c"
+      }
+    },
+    "8acx-assembly1#0": {
+      "paired": {
+        "bytes": 152,
+        "depth": 1,
+        "sha256": "14579d4c7561b8966c1979220a0e809a59730b76a5e2cb0db865079c668d8740"
+      },
+      "unpaired": {
+        "bytes": 15899,
+        "depth": 76,
+        "sha256": "a0e8b42b632bc42e35a394b661b6836d72fa86f83f9c288e2aee32a258cc2752"
+      }
+    },
+    "8ad2-assembly1#0": {
+      "paired": {
+        "bytes": 174,
+        "depth": 1,
+        "sha256": "71c97e183689dda334177fdc082bf6453f71258e227cd5d467e9413ea2d83fc2"
+      },
+      "unpaired": {
+        "bytes": 847573,
+        "depth": 3508,
+        "sha256": "4adfe4a2f91e4420a564704b79992de0643f7bb349d10fb921d5737b07d82fec"
+      }
+    },
+    "8ada-assembly1#0": {
+      "paired": {
+        "bytes": 80,
+        "depth": 1,
+        "sha256": "bdcf1503a85dd714b988529bcd7a048eb02ab3b30ff31417cb393f55f1630e78"
+      },
+      "unpaired": {
+        "bytes": 678136,
+        "depth": 5081,
+        "sha256": "934bede96f3af5d689f61dd3f747a9bc6dfd6ba5c15a0755c5091afed2bf60d9"
+      }
+    },
+    "8adb-assembly1#0": {
+      "paired": {
+        "bytes": 44448,
+        "depth": 151,
+        "sha256": "8ae512808379b23d574e8d4f23548a27c444c8fbda103d97fb13e41802641abc"
+      },
+      "unpaired": {
+        "bytes": 11248,
+        "depth": 39,
+        "sha256": "f6dbb8a81efaa2e8e13955b89c9d4ab431ff4e49cecd8823de22bc088f1939e2"
+      }
+    },
+    "8adb-assembly1#1": {
+      "paired": {
+        "bytes": 20391,
+        "depth": 151,
+        "sha256": "bc76ad8712971da2f048066a199f499149c1af10832325f540b019761c3c04d1"
+      },
+      "unpaired": {
+        "bytes": 2974363,
+        "depth": 21549,
+        "sha256": "1ce8b4505bb19a0e4702fab8fed2263ce51f2505d796e1281555dbf6f394d411"
+      }
+    },
+    "8amy-assembly1#0": {
+      "paired": {
+        "bytes": 97,
+        "depth": 1,
+        "sha256": "1ab0e39d93d64a24a3d81e59a68f1bba2d799cc706c479cd6f5ec115371fad94"
+      },
+      "unpaired": {
+        "bytes": 1082,
+        "depth": 8,
+        "sha256": "46b1e93ce5f97e9a4397e553a06440d554689e2dec2088aaccd29e37f40b5d86"
+      }
+    },
+    "8an5-assembly1#0": {
+      "paired": {
+        "bytes": 20520,
+        "depth": 79,
+        "sha256": "b9fc06a5e7bd717ea658fe572682d48a17e9fe501b5ea9a6dcf2110b4637136c"
+      },
+      "unpaired": {
+        "bytes": 825859,
+        "depth": 3193,
+        "sha256": "465f5345783d95115f27b4bf26b4a5197d0ec3bb9a511b3c786c952432859cd4"
+      }
+    },
+    "8an5-assembly1#1": {
+      "paired": {
+        "bytes": 9917,
+        "depth": 79,
+        "sha256": "9cb77c4a363d89deec11bb40c50dab7f284698c44804510d748f5e046c59c9b1"
+      },
+      "unpaired": {
+        "bytes": 110042,
+        "depth": 871,
+        "sha256": "b9b6c27bdc61b878bad7be1b6a996a0fde450f534225be67b33f010ce5c962df"
+      }
+    },
+    "8and-assembly1#0": {
+      "paired": {
+        "bytes": 108,
+        "depth": 1,
+        "sha256": "c1504c305bf6a1b467ad2f57af0caaaf045133a71599d7322d3a0897a2a07869"
+      },
+      "unpaired": {
+        "bytes": 134079,
+        "depth": 822,
+        "sha256": "382162916e7e4ac9a74f7fce73ba4605a6ac30267b3aa3d0c2036ae93a00fd64"
+      }
+    },
+    "8avz-assembly1#0": {
+      "paired": {
+        "bytes": 335,
+        "depth": 1,
+        "sha256": "5e5f51ba5e7765533e6d80a22fcacc1577484a6aa852709d87c7184a87088183"
+      },
+      "unpaired": {
+        "bytes": 3997991,
+        "depth": 10002,
+        "sha256": "547d975ff8ec12c0dd668e65bf73283e34febc0c8c1c0f22e6a7fd5021931e5e"
+      }
+    },
+    "8axi-assembly1#0": {
+      "paired": {
+        "bytes": 584,
+        "depth": 1,
+        "sha256": "df0b67c5d76409b351c46b879fce07d611da1b9795afaf39abbe254622675c20"
+      },
+      "unpaired": {
+        "bytes": 560406,
+        "depth": 866,
+        "sha256": "f792d9f8a3f9527e130fea10b857d59d21dd0bcf4886f8d6a0b8972be0a64ae3"
+      }
+    },
+    "8axo-assembly1#0": {
+      "paired": {
+        "bytes": 44,
+        "depth": 1,
+        "sha256": "8b95a117eeb8a9be109a5b2ec08e0e01992c6fe7c48679fa5ebcd5840d14b1d3"
+      },
+      "unpaired": {
+        "bytes": 3810,
+        "depth": 42,
+        "sha256": "d3f8a30cae2a4c4e8610bd64b811f25a0c09a8c3f718536ee306fd6565639273"
+      }
+    },
+    "8axr-assembly1#0": {
+      "paired": {
+        "bytes": 41,
+        "depth": 1,
+        "sha256": "e1430e6c7d46828407c877f2f52cbb7d3ac3e90868cc1b063bd0eaa4d14b613f"
+      },
+      "unpaired": {
+        "bytes": 33571,
+        "depth": 358,
+        "sha256": "39ab0810bfbf17391c948f2fae6dc3dc9b9fbe2db8bc6aea7ca78770c968b396"
+      }
+    },
+    "8b3w-assembly1#0": {
+      "paired": {
+        "bytes": 368,
+        "depth": 1,
+        "sha256": "b39f24a6fa27560491df56e164e3ea4ebbe25e57091816cd3a26946c5ebcb159"
+      },
+      "unpaired": {
+        "bytes": 20545,
+        "depth": 49,
+        "sha256": "cdd78aeade8183b6cee6880dd9ffc96c0cc031c7a6f80c6c7ccd7e465f23fd2a"
+      }
+    },
+    "8b45-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "4907682b1b1f241369d01046cf16272980f13ce24f93ccea8ee6ed71c5394c44"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "9812946e9c7d5f15f82c9d60809df87823bcdcf1bb832ed68ae2c7ea7fe0d179"
+      }
+    },
+    "8b46-assembly1#0": {
+      "paired": {
+        "bytes": 171707,
+        "depth": 637,
+        "sha256": "faae019489220ec7bf3cfc66ddadf98ac7465082e206c7d3cea72cd46be6dab8"
+      },
+      "unpaired": {
+        "bytes": 1485776,
+        "depth": 5355,
+        "sha256": "4c6a19f1a684ad5fb1892221ff3c4d87c8e50920e91fd121358ad75abb4a182a"
+      }
+    },
+    "8b46-assembly1#1": {
+      "paired": {
+        "bytes": 68921,
+        "depth": 637,
+        "sha256": "18ab47285539d1a21b0874177ea2aa01d1aaf7d322e3860ea2fac793c05e5c45"
+      },
+      "unpaired": {
+        "bytes": 77055,
+        "depth": 710,
+        "sha256": "9377f19bd70e6de7c7f74688a105027ccae15ea89935805c2b24aef6baf4ac50"
+      }
+    },
+    "8bbt-assembly1#0": {
+      "paired": {
+        "bytes": 249,
+        "depth": 1,
+        "sha256": "e969614faac44c817d260571ca9922652213615f51d7c393d4470771636aab8b"
+      },
+      "unpaired": {
+        "bytes": 800,
+        "depth": 3,
+        "sha256": "48f1d743ae3632e84c7d92641e58d685cab68f6903ca8a372634f239071ab9e6"
+      }
+    },
+    "8bds-assembly1#0": {
+      "paired": {
+        "bytes": 558266,
+        "depth": 3415,
+        "sha256": "6eed55ab372b6bdafa225904c835707fdb44a1ea18904ee2ad754638e5ff33ed"
+      },
+      "unpaired": {
+        "bytes": 701616,
+        "depth": 4185,
+        "sha256": "613e9ad542a67f5d45f1e17d1d950cf9f0941e88b2ab16ba7fa5b1400254b734"
+      }
+    },
+    "8bds-assembly1#1": {
+      "paired": {
+        "bytes": 538568,
+        "depth": 3415,
+        "sha256": "135b33ba9e1da46d32485b7afb3f8b5c3fedf05e921ab9dfe129ad2d6ecf5da6"
+      },
+      "unpaired": {
+        "bytes": 721147,
+        "depth": 4409,
+        "sha256": "c5c3b45464a925d43974c185047695347d8bc02481376f9a21dae6181d9559af"
+      }
+    },
+    "8bds-assembly1#2": {
+      "paired": {
+        "bytes": 730290,
+        "depth": 3415,
+        "sha256": "37cde8e2d62560906db73a0ff2994a738559457f49aa262c1a8f8090982bfa49"
+      },
+      "unpaired": {
+        "bytes": 836464,
+        "depth": 3681,
+        "sha256": "a5e4d5b90ca64d0e5d59fa3c7c7dc143710ddb204ff6a4e8d80bc88ef77a20a7"
+      }
+    },
+    "8bds-assembly1#3": {
+      "paired": {
+        "bytes": 659858,
+        "depth": 3415,
+        "sha256": "e43e229c8640a5db8aec557d42de9f883ad87a481c654e3dab93e069f3352d47"
+      },
+      "unpaired": {
+        "bytes": 2103039,
+        "depth": 10881,
+        "sha256": "763a534ab1d8a78ff45d6f25743c654f701bb52636c213b87fed2257b1558343"
+      }
+    },
+    "8bey-assembly1#0": {
+      "paired": {
+        "bytes": 424,
+        "depth": 1,
+        "sha256": "44623809aab4b65d7d36fef8ed2226678f2be3ba1fd87908cbe9b94b17c85d36"
+      },
+      "unpaired": {
+        "bytes": 26532,
+        "depth": 55,
+        "sha256": "e7bb421798e4be5486eb769c90d9874620884f6c60c9efa2fd3bade88a561dba"
+      }
+    },
+    "8biy-assembly1#0": {
+      "paired": {
+        "bytes": 139,
+        "depth": 1,
+        "sha256": "3ba657bf687c744a06da73877853dba4eaf3eb689550df6911783624e00ac3e6"
+      },
+      "unpaired": {
+        "bytes": 1306357,
+        "depth": 6591,
+        "sha256": "8b6c0685b1d16a681b637cdb4c7c59fb93aae108905a18bcbc4a160116c32328"
+      }
+    },
+    "8bjj-assembly1#0": {
+      "paired": {
+        "bytes": 1147005,
+        "depth": 2584,
+        "sha256": "21ac5b25170f3ae605cf2663063c58bef118744516e63e4f8270ef37cce729d4"
+      },
+      "unpaired": {
+        "bytes": 9630553,
+        "depth": 21060,
+        "sha256": "c77f9a2a83680a7bdc76806bdfb334599fbf342afde5fbcd7d42436d0e325543"
+      }
+    },
+    "8bjj-assembly1#1": {
+      "paired": {
+        "bytes": 525844,
+        "depth": 2584,
+        "sha256": "8cce226635207395f12ae794bdad160edff65a80988aafa47c77c302fd6b48c6"
+      },
+      "unpaired": {
+        "bytes": 405110,
+        "depth": 1986,
+        "sha256": "515e4d5e4590d01858eb1f7dd80b38bef4380fe3f764a12e8ea36151d6e18e05"
+      }
+    },
+    "8bjj-assembly1#2": {
+      "paired": {
+        "bytes": 1180196,
+        "depth": 2584,
+        "sha256": "1d61f54c4df094fca08756a2bfa052f1266166e52ca13ffe864d13595dc3e7e3"
+      },
+      "unpaired": {
+        "bytes": 392576,
+        "depth": 816,
+        "sha256": "156fbcce3ed0a0880aa4b0b805fd909beaf881da6ab58c1e3551dd9e4289fae3"
+      }
+    },
+    "8bny-assembly1#0": {
+      "paired": {
+        "bytes": 169,
+        "depth": 1,
+        "sha256": "7aa9a689a39ffbd8f59a96cee263bf4164e2945081fa5c536343e9f5da418139"
+      },
+      "unpaired": {
+        "bytes": 2212271,
+        "depth": 9951,
+        "sha256": "d50da1d56c13accb24d2763dab4045a6b0ffcaada278bb69f773bcf38bfda6ad"
+      }
+    },
+    "8bry-assembly1#0": {
+      "paired": {
+        "bytes": 426,
+        "depth": 1,
+        "sha256": "7e207c5a3a9dd76a802ad69e3895b33ae2bfb5ab79887b86a071fb848ee017b9"
+      },
+      "unpaired": {
+        "bytes": 1771228,
+        "depth": 3630,
+        "sha256": "332daa1f7f8a1a6196c1cf4eaa82b451e16da9e3aa729dfbea059ac14e18ecde"
+      }
+    },
+    "8btj-assembly1#0": {
+      "paired": {
+        "bytes": 461,
+        "depth": 1,
+        "sha256": "ee71458035694e55f41f1298f1aaf76737c41ba256ee071665ad162ff253ef39"
+      },
+      "unpaired": {
+        "bytes": 42210,
+        "depth": 81,
+        "sha256": "80c3d7f24e280706503866b450928d57e9f58ec1cf955f9efb9a8bea674c87e9"
+      }
+    },
+    "8buy-assembly1#0": {
+      "paired": {
+        "bytes": 152,
+        "depth": 1,
+        "sha256": "89e051c32b13aff26eeeef895b34837b1c606c97d244797952b925e20eca1b2f"
+      },
+      "unpaired": {
+        "bytes": 92224,
+        "depth": 437,
+        "sha256": "fb5103c2ccf661c746fde15b462497818cf82c1b24a69aca6c7c302b4dc4db8a"
+      }
+    },
+    "8bvk-assembly1#0": {
+      "paired": {
+        "bytes": 267,
+        "depth": 1,
+        "sha256": "52ddc9536591f3728f7ffd8cbb28b7d051a67c56424a0b8174de01200b1b05af"
+      },
+      "unpaired": {
+        "bytes": 2646339,
+        "depth": 7977,
+        "sha256": "a5a317f0faf1381c23112fd2bd2c4beebb3815b1357404f944420cd07d7cc947"
+      }
+    },
+    "8bz2-assembly1#0": {
+      "paired": {
+        "bytes": 104,
+        "depth": 1,
+        "sha256": "48182db4d36b98e91d7e3d1895bbbbb2f07bef8c893145666d2b919f36441ed7"
+      },
+      "unpaired": {
+        "bytes": 2539308,
+        "depth": 15854,
+        "sha256": "aec992523b84bc73dc0dcbefd2a0b347d30ca993b6b6a7e41d7bce6310303558"
+      }
+    },
+    "8c0h-assembly1#0": {
+      "paired": {
+        "bytes": 392,
+        "depth": 1,
+        "sha256": "4cfbba2b7d18b22fd3ae03c9f88fd455c25f31d6ba7f70b4ff36bbc2b4cd602a"
+      },
+      "unpaired": {
+        "bytes": 5794038,
+        "depth": 12695,
+        "sha256": "ef3ff3830962dd06dd6755ea1f18b859a9a569335f82906b6158f71b00830f85"
+      }
+    },
+    "8clo-assembly1#0": {
+      "paired": {
+        "bytes": 323,
+        "depth": 1,
+        "sha256": "b6c99d3fe7c559c78864e90bd92f37b839579b645f96aff2a9aee2dffb415185"
+      },
+      "unpaired": {
+        "bytes": 1261239,
+        "depth": 3288,
+        "sha256": "b62bbd49c3069cece83afc398ea6d68db953baa7c2d27a46210cbb621178e8d4"
+      }
+    },
+    "8cqm-assembly1#0": {
+      "paired": {
+        "bytes": 246,
+        "depth": 1,
+        "sha256": "7ea23bf30169b7659e987618dfd1298283acc5f171a008bd6302337a8b4e4562"
+      },
+      "unpaired": {
+        "bytes": 285026,
+        "depth": 918,
+        "sha256": "21adf4a3d36334cf341b7512dc382172dd7591dcf505865f8114783e81acfc9b"
+      }
+    },
+    "8d0p-assembly1#0": {
+      "paired": {
+        "bytes": 330,
+        "depth": 1,
+        "sha256": "a41be87f30c6e17f9fee85c8ee69cf19500a14428ba56c4c13f239165261c817"
+      },
+      "unpaired": {
+        "bytes": 4419014,
+        "depth": 10896,
+        "sha256": "a958befcdb1c5efc5b5af53bc6030485103ee276ce074507f00e1328316bf583"
+      }
+    },
+    "8dpa-assembly1#0": {
+      "paired": {
+        "bytes": 156,
+        "depth": 1,
+        "sha256": "75fec977824b2a2208717a3cb00495945b5ad344378d7bd1e9b0c6f8589b32c0"
+      },
+      "unpaired": {
+        "bytes": 1018574,
+        "depth": 4804,
+        "sha256": "5a24c46ff306a8908cf053ff95571f71cae5b1ba076543c21768a36f7b946f0b"
+      }
+    },
+    "8ebb-assembly1#0": {
+      "paired": {
+        "bytes": 4150,
+        "depth": 18,
+        "sha256": "22e445b6fae546081f50564243031cf1dcbbab0d4b84871b4fc013ee07ed2289"
+      },
+      "unpaired": {
+        "bytes": 37720,
+        "depth": 162,
+        "sha256": "70a62b2080a1e27fce9bcef066877acf75f699223e41d468878fb0b8b1cbf432"
+      }
+    },
+    "8ebb-assembly1#1": {
+      "paired": {
+        "bytes": 1885,
+        "depth": 18,
+        "sha256": "e24c720908ae4bb64f8e3790b19124230175a5c7c208d055ed750e5c0ff6c48e"
+      },
+      "unpaired": {
+        "bytes": 2624,
+        "depth": 26,
+        "sha256": "415674f77be2093a1bfcff6267dffe78ee9c2d608752d237595d934f8d5e98df"
+      }
+    },
+    "8ey4-assembly1#0": {
+      "paired": {
+        "bytes": 35626,
+        "depth": 273,
+        "sha256": "e60e391b14859f9a8aeef2458eab896d929f19a22e07933481c9db84a781738c"
+      },
+      "unpaired": {
+        "bytes": 789291,
+        "depth": 6013,
+        "sha256": "a8c9f169358995787ba8ec193218acd410525e6aece7ade31b0901a01b8a5e6a"
+      }
+    },
+    "8ey4-assembly1#1": {
+      "paired": {
+        "bytes": 41816,
+        "depth": 273,
+        "sha256": "147a0acfdb5e84d87b42e3c91e2b02678f00dc5bc04ad6422ec5a25408f1fc79"
+      },
+      "unpaired": {
+        "bytes": 376362,
+        "depth": 2470,
+        "sha256": "35e7c19362d8b5699bd154c5c4181a9e01bdf16dfd12d90244ac2e7a95b0cf14"
+      }
+    },
+    "8fcf-assembly1#0": {
+      "paired": {
+        "bytes": 103,
+        "depth": 1,
+        "sha256": "c832d981ea699e210bad439aac982bd3adf124db463087aa45133759b6fee213"
+      },
+      "unpaired": {
+        "bytes": 23123,
+        "depth": 148,
+        "sha256": "44864e7f91c0639c53b31713f19c3c5ba7b779dc9c8145764b7c8bd122c56be5"
+      }
+    },
+    "8ff9-assembly1#0": {
+      "paired": {
+        "bytes": 164,
+        "depth": 1,
+        "sha256": "4950060b21b24867a41476d7d3ff0fe7573db96e446a743360b2f4b78b668823"
+      },
+      "unpaired": {
+        "bytes": 2606281,
+        "depth": 11796,
+        "sha256": "2b1ff83cbde6d2f056738799bee807c0018a2a33ae543db098f9f2702fb89563"
+      }
+    },
+    "8fmg-assembly1#0": {
+      "paired": {
+        "bytes": 396,
+        "depth": 1,
+        "sha256": "cf67f86949243ce39a24b0af91e3071ab94e71ea2e987ced5c14fbe561cb995e"
+      },
+      "unpaired": {
+        "bytes": 1654909,
+        "depth": 3648,
+        "sha256": "d5496ebff82d6615a40f1ecf7be06902405308e17cf38d8483aa2311fec21851"
+      }
+    },
+    "8fnr-assembly1#0": {
+      "paired": {
+        "bytes": 118,
+        "depth": 1,
+        "sha256": "7922139bd22cec89256df3eaa2377807a6182fca351a375fb4549704ff6692d7"
+      },
+      "unpaired": {
+        "bytes": 1336597,
+        "depth": 7561,
+        "sha256": "b394f454e1fbab4840f4abdab0d1cbc5835c155fb48bdbe6ff252441624e84c0"
+      }
+    },
+    "8g0p-assembly1#0": {
+      "paired": {
+        "bytes": 142924,
+        "depth": 685,
+        "sha256": "4dc622f44c856d4bd261727228ef611f0f934eca5c426efbf0bd1e282c187322"
+      },
+      "unpaired": {
+        "bytes": 173970,
+        "depth": 804,
+        "sha256": "fde2257a993c5f9c04f8c0697863adb271392085681b4b179656aaaf04aa9c2e"
+      }
+    },
+    "8g0p-assembly1#1": {
+      "paired": {
+        "bytes": 110296,
+        "depth": 685,
+        "sha256": "ff879a600bf82dcbc0b937a89d8d9c6c9cc2baceef5c010de842911e3e3b5b03"
+      },
+      "unpaired": {
+        "bytes": 54873,
+        "depth": 343,
+        "sha256": "35095d530f1f618e9b8d9064f309cc70fe5fb50069d55f8f2d9118205297c361"
+      }
+    },
+    "8g4k-assembly1#0": {
+      "paired": {
+        "bytes": 112,
+        "depth": 1,
+        "sha256": "f12e4d38b86d55f48243691ca59a945c2329e38f5b27d79bc3bc516f36313dd0"
+      },
+      "unpaired": {
+        "bytes": 392,
+        "depth": 3,
+        "sha256": "a91be0675c3fa6d6956c9a72c078dcf1357b5b4511978cbbc8274146de69f9f2"
+      }
+    },
+    "8g4k-assembly1#1": {
+      "paired": {
+        "bytes": 119,
+        "depth": 1,
+        "sha256": "48fc5d32d335309de60419b98b3ff0b6d98477bfa13be700dd5738c7614042bf"
+      },
+      "unpaired": {
+        "bytes": 138529,
+        "depth": 787,
+        "sha256": "6043e5c62ccd82b599e67f2d814ef83dd5878771625d04814ea2275246c25de4"
+      }
+    },
+    "8gad-assembly1#0": {
+      "paired": {
+        "bytes": 113,
+        "depth": 1,
+        "sha256": "48bbd331819b88af17ffc14ebac46e2dbc5fdb3b771ed54fee730fbde485e241"
+      },
+      "unpaired": {
+        "bytes": 224,
+        "depth": 2,
+        "sha256": "ff3391f212caddf8089b588a5cc617842b4bf34b87fa50b5853547d9d548b925"
+      }
+    },
+    "8gjg-assembly1#0": {
+      "paired": {
+        "bytes": 182,
+        "depth": 1,
+        "sha256": "a99eae43c14bf78626699d78c57ad5dcb5a8ce39ccf96413b2f9352b53ec6fff"
+      },
+      "unpaired": {
+        "bytes": 362,
+        "depth": 2,
+        "sha256": "f38f5cd68f784a4427d2bcb8ebf53f27f1c288b293e0000c2689fb21643d2b45"
+      }
+    },
+    "8gjg-assembly1#1": {
+      "paired": {
+        "bytes": 33,
+        "depth": 1,
+        "sha256": "3ea78a240e4c6bf6ccc8a912239fcbd3a8df8955cbefadc6f3c63df837651a87"
+      },
+      "unpaired": {
+        "bytes": 101727,
+        "depth": 1192,
+        "sha256": "e525d6739d1709348a93f78663fc3c1e23ed48ec9e68a11c32e4bc886ae97fa6"
+      }
+    },
+    "8gji-assembly1#0": {
+      "paired": {
+        "bytes": 182,
+        "depth": 1,
+        "sha256": "79df3b9f768f18dca56b286072ba1ecc7abd9435c93f0fcc51bbb95253e18297"
+      },
+      "unpaired": {
+        "bytes": 362,
+        "depth": 2,
+        "sha256": "75632ebfe60c5951c2dd401cda11310a324f0bb68f4736d5c4a266d3b9cd507f"
+      }
+    },
+    "8gji-assembly1#1": {
+      "paired": {
+        "bytes": 37,
+        "depth": 1,
+        "sha256": "e56c1c86cabe74a17d9a1012d6d27efb0cbfd01ce2bed0ac1fffbd7cbe5aad20"
+      },
+      "unpaired": {
+        "bytes": 160929,
+        "depth": 1807,
+        "sha256": "2b870447b19067a686b905e20ee9af54b067886979aa3564c38968806f3db03b"
+      }
+    },
+    "8goj-assembly1#0": {
+      "paired": {
+        "bytes": 31,
+        "depth": 1,
+        "sha256": "faba73c580105b8ee43c5b0f01578526c2bee5d72bcdb74b95efec9509c5a8c6"
+      },
+      "unpaired": {
+        "bytes": 60,
+        "depth": 2,
+        "sha256": "4e3abdccfcbd745f1b0dae9ef0fb5d516879fe2cdaa08cd8ec8b6b9b8b62c47c"
+      }
+    },
+    "8goj-assembly1#1": {
+      "paired": {
+        "bytes": 31,
+        "depth": 1,
+        "sha256": "28c88b602eddd2f2b6e3fa756a1e9eef67afcaac6d58e66f584c019be75eb14f"
+      },
+      "unpaired": {
+        "bytes": 60,
+        "depth": 2,
+        "sha256": "454e6b50a4fb5fae7d7c408e8396addf5c608b42e582dbbd78767e327c973d3e"
+      }
+    },
+    "8gps-assembly1#0": {
+      "paired": {
+        "bytes": 252,
+        "depth": 1,
+        "sha256": "bea7a8b246f171e2f1ff1d57d771c80602617fb115260f90e31ca25e58ebf6dd"
+      },
+      "unpaired": {
+        "bytes": 2861166,
+        "depth": 9165,
+        "sha256": "e30aeb4df0bb5f99073af715e7ed57db2676b48fba4db4229eaf325480835110"
+      }
+    },
+    "8gpv-assembly1#0": {
+      "paired": {
+        "bytes": 263,
+        "depth": 1,
+        "sha256": "839b1f45abda2d6f2da856bf5c9064051a80c84b4ea5c4f33079968d5d97e599"
+      },
+      "unpaired": {
+        "bytes": 3353547,
+        "depth": 10376,
+        "sha256": "32d04fcbc9adde950ac1b50e794186e12dba9e2f753d5863c0cd0d13c85b3fba"
+      }
+    },
+    "8gqp-assembly1#0": {
+      "paired": {
+        "bytes": 28,
+        "depth": 1,
+        "sha256": "84c00c8da195cf8fbc097086f6a9f4833fb41352babd749c85ca0756239081df"
+      },
+      "unpaired": {
+        "bytes": 54,
+        "depth": 2,
+        "sha256": "3043e0c88f1a014ebf64f459ae1364f24c7dc9c2f709bd62f8c84a690ea936ae"
+      }
+    },
+    "8gy0-assembly1#0": {
+      "paired": {
+        "bytes": 333,
+        "depth": 1,
+        "sha256": "9642dc3132ec46da80232a1ca1219e1849cb79efe3a239ce52a67aaf4efb4e76"
+      },
+      "unpaired": {
+        "bytes": 855147,
+        "depth": 2177,
+        "sha256": "37811f1871b217054587b6b53df3f1aca9c298b74b8d693a78e061833d714070"
+      }
+    },
+    "8gzo-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "42bfcde76c3de6fbb4991a4d74f6e80b87f51fe399a032be9ac92a67b6ba9eba"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "b5ba177b6e989560659f307ef2a9a900a7b465f581fa0a1219c937e0a0c868a8"
+      }
+    },
+    "8gzo-assembly1#1": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "bea9d31f0937e839202dd7e4fc7efb9c7390776be9fa5387c833bb499e28af3f"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "0155080096fbf59a911418ae8878f82ffc4e7c1e5d25e8a6e7cafe791199ec34"
+      }
+    },
+    "8gzo-assembly1#2": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "e021a554b825baf4ab8d0ffd9bd38529db1dca0f7b26e49ed73700f7084afc41"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "3afac5a213f40190880f4af8a6a2426c17d84107f97955ef578524aa20fe23c4"
+      }
+    },
+    "8h0e-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "42bfcde76c3de6fbb4991a4d74f6e80b87f51fe399a032be9ac92a67b6ba9eba"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "b5ba177b6e989560659f307ef2a9a900a7b465f581fa0a1219c937e0a0c868a8"
+      }
+    },
+    "8h0e-assembly1#1": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "b7c62f37c661945c757ad575607f3bdb2754d4e8db25ae3fbe1385499fca2bfd"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "a502fc3fe800a4250a7278d25c319a4193503ef6e3de8bde57e5c1abd4a96fc7"
+      }
+    },
+    "8h0e-assembly1#2": {
+      "paired": {
+        "bytes": 39,
+        "depth": 1,
+        "sha256": "2611d4736675ec851af970c94bb58347cb0d38e503e17a0f26ede56ac6108971"
+      },
+      "unpaired": {
+        "bytes": 76,
+        "depth": 2,
+        "sha256": "07a8bffe682555aa3466e26ef50440c4bb275ff4e43a2b050aebf349203cd225"
+      }
+    },
+    "8h0f-assembly1#0": {
+      "paired": {
+        "bytes": 39,
+        "depth": 1,
+        "sha256": "8fb1f6508bc1c76e96138b008efbd128fca778d15ebb9b6787df30c69142d984"
+      },
+      "unpaired": {
+        "bytes": 76,
+        "depth": 2,
+        "sha256": "6c673cb3b12a6ab1cb1090a2d679fc02bef3d1d2656738d84dd87c5d58456955"
+      }
+    },
+    "8h0f-assembly1#1": {
+      "paired": {
+        "bytes": 39,
+        "depth": 1,
+        "sha256": "fda704ab2dd39ae444e25d0ffd1121e601b13a98c2573358aa81ae11a3e2012b"
+      },
+      "unpaired": {
+        "bytes": 76,
+        "depth": 2,
+        "sha256": "6ec11c4c142180b013c3da48f0e296a4ae22589ebb737e5ed364895203456bca"
+      }
+    },
+    "8h0f-assembly1#2": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "0a8485f7d7642848a894c29fb72cc0216df174842b5e123e3ad70da1186a1296"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "4dabcc216611afaacb0e69681cb44477ae0ff957afae0d70e7c3bea4a382d991"
+      }
+    },
+    "8h0n-assembly1#0": {
+      "paired": {
+        "bytes": 4668675,
+        "depth": 10527,
+        "sha256": "0b74ca2e015604ae62fec6d6722d6e15648b2a95bafe7527a9df6793825e9aeb"
+      },
+      "unpaired": {
+        "bytes": 1181304,
+        "depth": 2643,
+        "sha256": "e1d0a14bc86d52a79297373114b6b92ae79bb14aa315b866c8b922e90880949f"
+      }
+    },
+    "8h0n-assembly1#1": {
+      "paired": {
+        "bytes": 3299966,
+        "depth": 10527,
+        "sha256": "1890202fbe200d9f531118da8b9ea73be970fb0d6fe66222236fbc185181b5a0"
+      },
+      "unpaired": {
+        "bytes": 1499700,
+        "depth": 4795,
+        "sha256": "9625a12761aa382167be7f7db19cdafecb444d2fbf0c7fa691bb4cbfefe4a11a"
+      }
+    },
+    "8h1m-assembly1#0": {
+      "paired": {
+        "bytes": 429,
+        "depth": 1,
+        "sha256": "a8380a747c5392fade36a503d02094a6d0279e6ddf6e6f02bbc0eff54a09cb46"
+      },
+      "unpaired": {
+        "bytes": 2091251,
+        "depth": 4241,
+        "sha256": "7635f6417c0c52f15fb6ce9f2657913510979a35eb90cc6d391a7ef02f36035d"
+      }
+    },
+    "8h6q-assembly1#0": {
+      "paired": {
+        "bytes": 374,
+        "depth": 1,
+        "sha256": "7ed41c53b85a433dfb6c4669e6de76b961695812f62b5f329f4446432cd26fc9"
+      },
+      "unpaired": {
+        "bytes": 498640,
+        "depth": 1152,
+        "sha256": "c6c8cb4d42c4d41020872b3fb84ce4b092e618957bea7761c2b5ad1bef436e50"
+      }
+    },
+    "8h7a-assembly1#0": {
+      "paired": {
+        "bytes": 94,
+        "depth": 1,
+        "sha256": "e8e92161f1714b569094fb12009c1b12f0a6fc726fd6ecd278a7a88259e5caa2"
+      },
+      "unpaired": {
+        "bytes": 211876,
+        "depth": 1418,
+        "sha256": "fbc9cd4be6c1a0b9f1f0f1ff9fb7a92b3d41bee47e3150be4a70db9b969cf180"
+      }
+    },
+    "8hfp-assembly1#0": {
+      "paired": {
+        "bytes": 176830,
+        "depth": 1260,
+        "sha256": "a237e1d1958e14430472d4d9d23e03842a1490d54938354c35f32d720c0f7341"
+      },
+      "unpaired": {
+        "bytes": 228199,
+        "depth": 1645,
+        "sha256": "f5ec01c11eeb5b7d8dda25471a1d4ca0257774a5b08ea727fca004a783272d64"
+      }
+    },
+    "8hfp-assembly1#1": {
+      "paired": {
+        "bytes": 224310,
+        "depth": 1260,
+        "sha256": "3fe5e6da2fcd6b233e1836cd71aa00bcd4eef93a8efdeed6f3a162fc7384c068"
+      },
+      "unpaired": {
+        "bytes": 475738,
+        "depth": 2687,
+        "sha256": "4ef241670870615914ef9207a435c6adec7f47f530f25c4e63365744124c5da9"
+      }
+    },
+    "8hfw-assembly1#0": {
+      "paired": {
+        "bytes": 312,
+        "depth": 1,
+        "sha256": "4f7399c4b72684a1407040cb220443931c41d4597eaa47723659f8a7f46051e3"
+      },
+      "unpaired": {
+        "bytes": 2690650,
+        "depth": 7289,
+        "sha256": "e57a5f865914321a2784ab94c7cbb1cfc8901fee901a1dce24db0d9f10b7785a"
+      }
+    },
+    "8hhi-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "8858d3893a174355941071e598269a6915b2bf040a35251cdc9d8a3e6bb0cf89"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "9114d0627c6f0286d3016a1dff8e42cbee013a82c3bf467c08d36a030e7b171c"
+      }
+    },
+    "8hhj-assembly1#0": {
+      "paired": {
+        "bytes": 4778,
+        "depth": 28,
+        "sha256": "bb0634a366780553e8009d1c4b9fbcf4a8c94c091f0c36fbefe12237cd879e6c"
+      },
+      "unpaired": {
+        "bytes": 22977,
+        "depth": 135,
+        "sha256": "0644be1f0d42605eb37335865f6c991a5969b8423925997d6e316b274281375a"
+      }
+    },
+    "8hhj-assembly1#1": {
+      "paired": {
+        "bytes": 6266,
+        "depth": 28,
+        "sha256": "a896c1dc0cf203c3c079b328dc39f35b53a802c19ab684390f54634cb2768af7"
+      },
+      "unpaired": {
+        "bytes": 255076,
+        "depth": 1116,
+        "sha256": "485254c6d5795ffcff2adb04104526aa4b793682c2c347ca7bb9168f9589c2c5"
+      }
+    },
+    "8hhv-assembly1#0": {
+      "paired": {
+        "bytes": 496,
+        "depth": 1,
+        "sha256": "82914ca066849e021c7abb99613b31d7da3d61962cef574cc0058158230b8342"
+      },
+      "unpaired": {
+        "bytes": 3246268,
+        "depth": 5678,
+        "sha256": "3b802ec89ca66e3b22c8fc49293204c7a90c6317fb74970fe4c7d616121c1d43"
+      }
+    },
+    "8htd-assembly1#0": {
+      "paired": {
+        "bytes": 241,
+        "depth": 1,
+        "sha256": "f6698432b3205c9dbccdcd3653f87e1fe5bf288d3be640e81a42cefb4be7b496"
+      },
+      "unpaired": {
+        "bytes": 1662,
+        "depth": 6,
+        "sha256": "06262c48a453ee854349e9fcbecf674179dd552a24d7b85db1d06ee7a0ddfe88"
+      }
+    },
+    "8htd-assembly1#1": {
+      "paired": {
+        "bytes": 84,
+        "depth": 1,
+        "sha256": "b64c204a2dbc9c0d1a0f37a9c2512374b4b71d7a1a62cbf365c4f5a69838082a"
+      },
+      "unpaired": {
+        "bytes": 2977763,
+        "depth": 21413,
+        "sha256": "f879d48af7869280d220448ba9545bf60d2e3733680a8390827f442ae64c7776"
+      }
+    },
+    "8htw-assembly1#0": {
+      "paired": {
+        "bytes": 189,
+        "depth": 1,
+        "sha256": "668330731bdc40d1a742d17c48aeae199d7ba3a51ae2789875ab9611aa6ddac4"
+      },
+      "unpaired": {
+        "bytes": 48627,
+        "depth": 196,
+        "sha256": "a436a54e2febe8e023268c67e982b095bea8b8e92d2a6cd78cc02767d23d64f0"
+      }
+    },
+    "8huc-assembly1#0": {
+      "paired": {
+        "bytes": 283,
+        "depth": 1,
+        "sha256": "846c9ef3086dea84c425ab0cebd4a3670b763b6367f9c8da9042d8ee29ea7f92"
+      },
+      "unpaired": {
+        "bytes": 3170418,
+        "depth": 9024,
+        "sha256": "dea0fe58ce44a805b77d3db326800ae24c76ac9bed313e6b2c4aaf0c02218265"
+      }
+    },
+    "8i82-assembly1#0": {
+      "paired": {
+        "bytes": 294,
+        "depth": 1,
+        "sha256": "ad12b0cc953618fc20ede97aa8be8a1acd437c39ea8ad1cf26606f27cec4a4e3"
+      },
+      "unpaired": {
+        "bytes": 1179442,
+        "depth": 3340,
+        "sha256": "e87cdbd64753580c0eab739e49d28fb766d486bcc67b791c4aeface64c82f178"
+      }
+    },
+    "8i82-assembly1#1": {
+      "paired": {
+        "bytes": 14,
+        "depth": 1,
+        "sha256": "9394380b65e9794c057b36b19922e554c378566927969ff06cbc7503a76272a6"
+      },
+      "unpaired": {
+        "bytes": 26,
+        "depth": 2,
+        "sha256": "6349feec483c7be8d0c715eb8d9361241efbaf67baa5f482f54981841be6f171"
+      }
+    },
+    "8ic7-assembly1#0": {
+      "paired": {
+        "bytes": 875,
+        "depth": 1,
+        "sha256": "5630adf7fd497a5fce0083594fcc58e1872f5dec206fd719ce3830bb3e93f5e3"
+      },
+      "unpaired": {
+        "bytes": 7012339,
+        "depth": 7317,
+        "sha256": "c06e98c7c95537df384a9d6a9bc079fe3f85f4a7bfd21c69a2da5f40f13d6e4d"
+      }
+    },
+    "8ifx-assembly1#0": {
+      "paired": {
+        "bytes": 17549532,
+        "depth": 42772,
+        "sha256": "9d93ddd091000a1c55d483b6be0f778b676b4986784a18ae44274bb8a7c736cb"
+      },
+      "unpaired": {
+        "bytes": 7792333,
+        "depth": 18711,
+        "sha256": "aaaadf5bcef047e734335c94069ee22c9af0cd21e18cc3b3f09cb31ffff90494"
+      }
+    },
+    "8ifx-assembly1#1": {
+      "paired": {
+        "bytes": 12042013,
+        "depth": 42772,
+        "sha256": "69c493f20d627639855c732ac286338d45a009cded42912571f67f0ef91991c3"
+      },
+      "unpaired": {
+        "bytes": 671692,
+        "depth": 2474,
+        "sha256": "5aaa4e582328655bbe40d66a04e994aff5c0a2f2807434fb3192c734694c8c7a"
+      }
+    },
+    "8ih8-assembly1#0": {
+      "paired": {
+        "bytes": 1740846,
+        "depth": 9226,
+        "sha256": "ed38f32c71d79e7ddd1daacbdf5cb1220ea84ae3769994d34e2950dade8a0eb0"
+      },
+      "unpaired": {
+        "bytes": 1368667,
+        "depth": 7271,
+        "sha256": "7183ca26c3bed3ea5c106dac5b6f9aec601327f5fdef480cdccd28e57860ef34"
+      }
+    },
+    "8ih8-assembly1#1": {
+      "paired": {
+        "bytes": 2046428,
+        "depth": 9226,
+        "sha256": "d3fac62d40b4751380f27bc0bf0c25b39f115b03ba906dcfc4e50b7d51072b16"
+      },
+      "unpaired": {
+        "bytes": 801546,
+        "depth": 3814,
+        "sha256": "41ac8b34f6b6441ee833a0d24c6b89349afb60ea77f724b943d4435b8c74ff44"
+      }
+    },
+    "8iha-assembly1#0": {
+      "paired": {
+        "bytes": 137,
+        "depth": 1,
+        "sha256": "61422fe7ec83df7b56fb8f68f9c5f42cf3baace33841fb81e51743eb36f70632"
+      },
+      "unpaired": {
+        "bytes": 514985,
+        "depth": 2616,
+        "sha256": "604ee05a81995e517f99114bebc0555c900040924998b118d81c15536be5883f"
+      }
+    },
+    "8ioo-assembly1#0": {
+      "paired": {
+        "bytes": 346,
+        "depth": 1,
+        "sha256": "ec8e755b79cc4bc92d6ec30229a053c455051296e97c2c61135aea89f7720924"
+      },
+      "unpaired": {
+        "bytes": 3384963,
+        "depth": 8294,
+        "sha256": "2bd832d97af15fcea2bc37f8c8c3c7b270bbdfefee8f78065a3e781fcaf62e80"
+      }
+    },
+    "8ipg-assembly1#0": {
+      "paired": {
+        "bytes": 52,
+        "depth": 1,
+        "sha256": "44a6689adf325375080ad6b8dfff99026e2b6b00f50840dd92a561ccba577d50"
+      },
+      "unpaired": {
+        "bytes": 112474,
+        "depth": 1111,
+        "sha256": "4ea55393420346bb56ada7332f3af4cbea88f24d90995a9f39392627c30218f8"
+      }
+    },
+    "8ipg-assembly1#1": {
+      "paired": {
+        "bytes": 41,
+        "depth": 1,
+        "sha256": "70962a9817ed64e2c779691712732c710e1fd8dcc326722efb9f171f94e09a35"
+      },
+      "unpaired": {
+        "bytes": 80,
+        "depth": 2,
+        "sha256": "27c0c4b9d7b687661c694e9a66ce3c434eebd055436f2b552d8f3b6618b2b76b"
+      }
+    },
+    "8ipj-assembly1#0": {
+      "paired": {
+        "bytes": 169570,
+        "depth": 381,
+        "sha256": "ab29bcd796cf76eb6b59fe5531f24a38bac41bcd78e3c2e6fb671e802bfec6e6"
+      },
+      "unpaired": {
+        "bytes": 154190,
+        "depth": 356,
+        "sha256": "7368d826027a2dd7820b14a7201045eb0de6ddbf975e5f44a1db226362c712a9"
+      }
+    },
+    "8ipj-assembly1#1": {
+      "paired": {
+        "bytes": 51779,
+        "depth": 381,
+        "sha256": "362d15cf949cfefb5188cb33a32287f9532cc962c879c4ca98fb8f8999343eb5"
+      },
+      "unpaired": {
+        "bytes": 2942324,
+        "depth": 21476,
+        "sha256": "8266a26ec8f3168fa4839a9d1e5ac5de819f275891e7df9143bea174b03964f0"
+      }
+    },
+    "8iq5-assembly1#0": {
+      "paired": {
+        "bytes": 620,
+        "depth": 1,
+        "sha256": "1bc9804baf0362c405544853fc96cbf636a77576ed82f6e715b7ce2b7701eb9a"
+      },
+      "unpaired": {
+        "bytes": 448863,
+        "depth": 660,
+        "sha256": "cec0f7bbfdb1f65921bcc6a26f4c0f4b2df403b5445f287f2a61b621c96b59af"
+      }
+    },
+    "8iq8-assembly1#0": {
+      "paired": {
+        "bytes": 293,
+        "depth": 1,
+        "sha256": "08c688013abedce85a0580a3252ef1135876f7066c062032b6887779d268592a"
+      },
+      "unpaired": {
+        "bytes": 624608,
+        "depth": 1781,
+        "sha256": "f29bb1fc99b170926a3145e1f7925b0f18da082095e9a581a2080d8767c4b638"
+      }
+    },
+    "8iqa-assembly1#0": {
+      "paired": {
+        "bytes": 251,
+        "depth": 1,
+        "sha256": "a734538ec97f654bd67c0c9e3eaa1dedd6cbbf99532621db846ad480f94af383"
+      },
+      "unpaired": {
+        "bytes": 1912990,
+        "depth": 6165,
+        "sha256": "086c65c221525f7662821d863ee59977db46c0425f951822d9b9de2003517dcc"
+      }
+    },
+    "8iw5-assembly1#0": {
+      "paired": {
+        "bytes": 59,
+        "depth": 1,
+        "sha256": "8b174f44510c6eda6a2dde398d94ab05ef0c7328866790bcfbba1bb38626bc70"
+      },
+      "unpaired": {
+        "bytes": 113034,
+        "depth": 1007,
+        "sha256": "701f27c92007330cd072a9ed6bb88c372150be99fd55e9575e4842d0b4f29d95"
+      }
+    },
+    "8ixw-assembly1#0": {
+      "paired": {
+        "bytes": 182,
+        "depth": 1,
+        "sha256": "a198e7fd9165c49df317b44c17653abfe5efc4961894dddf65c45643fbcdb16c"
+      },
+      "unpaired": {
+        "bytes": 600,
+        "depth": 3,
+        "sha256": "a1f55ea2acccb91ec80f669a2bcb50956f1a6dccc5ea49921d558a0b8f2e5062"
+      }
+    },
+    "8j0l-assembly1#0": {
+      "paired": {
+        "bytes": 227,
+        "depth": 1,
+        "sha256": "1b7d5fb909c7acc243adb068fbf0ce0e71a2ad0167ba18d458a6893b194d3825"
+      },
+      "unpaired": {
+        "bytes": 648563,
+        "depth": 2279,
+        "sha256": "ba88eed75ac4986173b127706e55637375e1bbeb92497c6b00a50d912622b626"
+      }
+    },
+    "8j2w-assembly1#0": {
+      "paired": {
+        "bytes": 347,
+        "depth": 1,
+        "sha256": "ed993efbed2a3db5f35d9e7bd8261c818a17ee1ffa32e8b91f35aeffce712464"
+      },
+      "unpaired": {
+        "bytes": 2801590,
+        "depth": 6866,
+        "sha256": "77960632c4c79584d55d3c58af093e1ebad7a5f3c539ffcd10683694b18d1c1d"
+      }
+    },
+    "8j48-assembly1#0": {
+      "paired": {
+        "bytes": 60,
+        "depth": 1,
+        "sha256": "ae19841f5914ec8f466cb026e374fa2e92268dbf241b5dc751ecbd7e6dd7599d"
+      },
+      "unpaired": {
+        "bytes": 1212509,
+        "depth": 10830,
+        "sha256": "02a7dfe3519b0913320a6aa8ee8d62d41751c5fc943c7da480dcd74a1e5621e3"
+      }
+    },
+    "8j48-assembly1#1": {
+      "paired": {
+        "bytes": 112,
+        "depth": 1,
+        "sha256": "b2077930f21e6e4ea2aec0e0a0affdd47c28788968c5a4db6bb9b4b3064a8649"
+      },
+      "unpaired": {
+        "bytes": 36476,
+        "depth": 213,
+        "sha256": "7cec851ec4ab1267e403421229a52055acaf8a3061a5e8cfc5462b47302626b8"
+      }
+    },
+    "8j49-assembly1#0": {
+      "paired": {
+        "bytes": 74,
+        "depth": 1,
+        "sha256": "624f0c8b1fec6650528dd9a532b898f6d8e9e4cda30f45c8649d3d0396fe8ac0"
+      },
+      "unpaired": {
+        "bytes": 461322,
+        "depth": 3614,
+        "sha256": "a60438f4f6ea0d943c476436fcacecd99d345a1b6b182c6138fc1f14ce514291"
+      }
+    },
+    "8j49-assembly1#1": {
+      "paired": {
+        "bytes": 108,
+        "depth": 1,
+        "sha256": "253919b5253b46ab5fe6ca21a1ef5f82efd19812c1e9f2b2ba174c09fe914690"
+      },
+      "unpaired": {
+        "bytes": 35920,
+        "depth": 216,
+        "sha256": "e24e03ba5fd18c74a51ef6c6962931899a04c87041d6c79b5905d95b35453a82"
+      }
+    },
+    "8jca-assembly1#0": {
+      "paired": {
+        "bytes": 376627,
+        "depth": 1596,
+        "sha256": "d92038feb70b2b589febd7be2d84a0e9ba551f20c5e71f113e1fcb00713316a0"
+      },
+      "unpaired": {
+        "bytes": 2246515,
+        "depth": 9465,
+        "sha256": "0a7c5920612ad2885b175be8437f8e27aa88c905881fb355a2060fdd6a79706a"
+      }
+    },
+    "8jca-assembly1#1": {
+      "paired": {
+        "bytes": 384392,
+        "depth": 1596,
+        "sha256": "431644e4f5f47bbb6f2982044c0246c1bb59b82f157c794e5ad088c3726d30ba"
+      },
+      "unpaired": {
+        "bytes": 473623,
+        "depth": 1969,
+        "sha256": "7ea7013bdf7e94d03e245bfc1e617c19e05cecd2a3d198660d1da9da9d429917"
+      }
+    },
+    "8jd7-assembly1#0": {
+      "paired": {
+        "bytes": 537,
+        "depth": 1,
+        "sha256": "ad698633c87b689dc2b499aad265e29fca2b815c8b0a40b2505e30630c9ddb95"
+      },
+      "unpaired": {
+        "bytes": 430336,
+        "depth": 696,
+        "sha256": "e8c53c4727f00782f847e19f7b4e7486de517c749b9e8971d5df72ebe612ce08"
+      }
+    },
+    "8jdh-assembly1#0": {
+      "paired": {
+        "bytes": 174,
+        "depth": 1,
+        "sha256": "7764f02ca4ea11548dfdc267c6e5642e8c09353594a3ff53f4189437f0a448e8"
+      },
+      "unpaired": {
+        "bytes": 54744,
+        "depth": 243,
+        "sha256": "3660e47c4827036dc4545ee5b146e0f1f3e625943b41395956fdea2bc82b013f"
+      }
+    },
+    "8ji7-assembly1#0": {
+      "paired": {
+        "bytes": 257,
+        "depth": 1,
+        "sha256": "dcb7a888284f73ff415ed67e60ab30a66c29f342aa898cc6b286d985a16525cf"
+      },
+      "unpaired": {
+        "bytes": 306470,
+        "depth": 971,
+        "sha256": "1e66d7c3a5cb372cc6b870cef4945efb2669544c99e26981da33e6e3e44758ff"
+      }
+    },
+    "8jmq-assembly1#0": {
+      "paired": {
+        "bytes": 87726,
+        "depth": 319,
+        "sha256": "b030b8fa8df32ed7382becbaea22744df85588144107c8ebf6d365582d946fe7"
+      },
+      "unpaired": {
+        "bytes": 243754,
+        "depth": 919,
+        "sha256": "b53c5b7b83ca713ce37f59eb60732de99c1ec43e72d4965576ec2e8d5c42416b"
+      }
+    },
+    "8jmq-assembly1#1": {
+      "paired": {
+        "bytes": 81700,
+        "depth": 319,
+        "sha256": "6a2084cea4093abf392102cca9ca28f3c299bbc1b89d192d4df66d7cb01290c3"
+      },
+      "unpaired": {
+        "bytes": 229538,
+        "depth": 929,
+        "sha256": "6a622140dbf60d48de3a20bae3c8a527e069d8fa8d36e578dfd388feb01e8b5e"
+      }
+    },
+    "8jqf-assembly1#0": {
+      "paired": {
+        "bytes": 313,
+        "depth": 1,
+        "sha256": "1fa6edb7694df97527294127274054431afcf9c01ac9947331471ab026aa9a6c"
+      },
+      "unpaired": {
+        "bytes": 3386387,
+        "depth": 8995,
+        "sha256": "25a2dad38d4bf512857f511af0e11ea331bc092c52e23e428d252e2602e2bd2d"
+      }
+    },
+    "8ju7-assembly1#0": {
+      "paired": {
+        "bytes": 113,
+        "depth": 1,
+        "sha256": "198ecce17bca82814a253f6d4aee44375c443d8edd4973d1f71eabb7ad3841ae"
+      },
+      "unpaired": {
+        "bytes": 7031,
+        "depth": 42,
+        "sha256": "4387b85e9537b113e4f891e43e9402973f9d1c704e37c41da29b745872ae5810"
+      }
+    },
+    "8jyv-assembly1#0": {
+      "paired": {
+        "bytes": 251,
+        "depth": 1,
+        "sha256": "5208c055b0649059d81ff260ebcf39fbabf4c3b5528a9373c5c99c2ab47ad823"
+      },
+      "unpaired": {
+        "bytes": 13264,
+        "depth": 44,
+        "sha256": "c209ff7cca0880fa0eac92633ae1ffdd326d5bc1dc20abb25dc8c8b14fba7826"
+      }
+    },
+    "8jzt-assembly1#0": {
+      "paired": {
+        "bytes": 1353641,
+        "depth": 10267,
+        "sha256": "7fce4ba7c29b613fd554924947e0bb310f888bb23232d0d51a79f0b314c17173"
+      },
+      "unpaired": {
+        "bytes": 2035166,
+        "depth": 15390,
+        "sha256": "9756211cf4685ed5627e4781a94843d2c368155024a4d5248716145d86099b1d"
+      }
+    },
+    "8jzt-assembly1#1": {
+      "paired": {
+        "bytes": 2239090,
+        "depth": 10267,
+        "sha256": "5b152b8fa6fd43869f2ae7a4127da7db461af99e85ff8a1b1d88df2472322dc2"
+      },
+      "unpaired": {
+        "bytes": 772918,
+        "depth": 3750,
+        "sha256": "0bbbc41510e111deee189d1bb504e5c3e164aaa87edf5037c414b9deeb8f01a8"
+      }
+    },
+    "8k4w-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "467404fecec36ac115be53aa0487c61c2d8d2164818238732fc2dfb7de1f1bcf"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "2848621967cf74f61a474047fc46e676bd55a7725d7081f5bf0690722315d5ab"
+      }
+    },
+    "8k7y-assembly1#0": {
+      "paired": {
+        "bytes": 689,
+        "depth": 1,
+        "sha256": "d63c6c7f1d9d2d36c08276c18cc2526313f0e660234b9d94157fe168fda97078"
+      },
+      "unpaired": {
+        "bytes": 6122043,
+        "depth": 8039,
+        "sha256": "e268a42b4365e7cc19fa71f75f23406b2efd9d0da2a96245d33a528584fdc987"
+      }
+    },
+    "8k8f-assembly1#0": {
+      "paired": {
+        "bytes": 207,
+        "depth": 1,
+        "sha256": "315b40b833d0f0f32fec846360a57a6cc0623bb4bbcc7b8cd715befa9ab5e488"
+      },
+      "unpaired": {
+        "bytes": 412,
+        "depth": 2,
+        "sha256": "1fa6623e5b32fd63f6ad10142342784cb9a093f83a71d138b4bd3a7ee096bb23"
+      }
+    },
+    "8kbh-assembly1#0": {
+      "paired": {
+        "bytes": 80906,
+        "depth": 423,
+        "sha256": "f6852431178b4d558adbb5d2e6a7cb9bc0a3ae458a581c8c951bdc37e6511239"
+      },
+      "unpaired": {
+        "bytes": 297786,
+        "depth": 1564,
+        "sha256": "17c5a0c8a438766bc8c22441706c24545fdbd0556e8685a147e7949cceee9313"
+      }
+    },
+    "8kbh-assembly1#1": {
+      "paired": {
+        "bytes": 80063,
+        "depth": 423,
+        "sha256": "a17c5f5a7a925a79470e5a2c2973d3fb2f7234eaed2316b636c30ae09ab4abd5"
+      },
+      "unpaired": {
+        "bytes": 298202,
+        "depth": 1583,
+        "sha256": "5a64c59e092b98fa320afbe259e045a541ba5e1889f9a7c6e22196e712e379ab"
+      }
+    },
+    "8kbm-assembly1#0": {
+      "paired": {
+        "bytes": 112,
+        "depth": 1,
+        "sha256": "fdad5ba0eb224997e440764d3851a366e1495027a921d5edd82263d78f632dd2"
+      },
+      "unpaired": {
+        "bytes": 568818,
+        "depth": 3427,
+        "sha256": "fa06f649176d8d8ad9178c428608b6034ad4a917c29bf92017875d52ed5b11ba"
+      }
+    },
+    "8kc1-assembly1#0": {
+      "paired": {
+        "bytes": 95,
+        "depth": 1,
+        "sha256": "928ff000faeabc6896811d7d4b9e3056052fb9c28bf3e817898fda41a39f40ab"
+      },
+      "unpaired": {
+        "bytes": 188,
+        "depth": 2,
+        "sha256": "f9b1619e085e7da30344b9c970bc13dc93f7bd552370d8f13c262fc371522f2a"
+      }
+    },
+    "8kce-assembly1#0": {
+      "paired": {
+        "bytes": 321,
+        "depth": 1,
+        "sha256": "f6fdd22ab4821058f14cfe049d8387149c8226de1b9aeb963f151aa75117740f"
+      },
+      "unpaired": {
+        "bytes": 841703,
+        "depth": 2184,
+        "sha256": "7aea8b09d99e50778be368d53f1d5dc508f1d0ce9418a50df7343cf177f99768"
+      }
+    },
+    "8kck-assembly1#0": {
+      "paired": {
+        "bytes": 222,
+        "depth": 1,
+        "sha256": "6ce13176ed7331a93ca7e470b9ee1880ee7ffa8da7ccc37f916b49536e5d5a42"
+      },
+      "unpaired": {
+        "bytes": 442,
+        "depth": 2,
+        "sha256": "a747b1dace92cbcfb4caf802737c4d5d75220a31f8b21b51eec0d33315ff91d4"
+      }
+    },
+    "8of7-assembly1#0": {
+      "paired": {
+        "bytes": 161,
+        "depth": 1,
+        "sha256": "c387f68b6d2aa68b5e036229c32bbdd07e5ea2cce94b73e7c74c4c93a341ea54"
+      },
+      "unpaired": {
+        "bytes": 23593,
+        "depth": 109,
+        "sha256": "f88d4b3d5a1a0d9168a551ef2f0419795ce7468f6504936a808e99df293104b8"
+      }
+    },
+    "8oi4-assembly1#0": {
+      "paired": {
+        "bytes": 406,
+        "depth": 1,
+        "sha256": "73d58d47bba7b355a701ebed583f7f0a792124543ad45cceaf3abc3bc7b2e438"
+      },
+      "unpaired": {
+        "bytes": 1656274,
+        "depth": 3567,
+        "sha256": "de1da328e319ed3439e92f2f83caad0b69108a3dbcdf185a64c90f7fa51f69b5"
+      }
+    },
+    "8oij-assembly1#0": {
+      "paired": {
+        "bytes": 185,
+        "depth": 1,
+        "sha256": "9bd1b231ed8b80e0f1bd96ee5490fbbd048049dba989a0550a76740a7b51d9e5"
+      },
+      "unpaired": {
+        "bytes": 158283,
+        "depth": 627,
+        "sha256": "7fe49b3b67d4b81ba5c59029429a624116f01561bef29e398054f966e8fd2d80"
+      }
+    },
+    "8oij-assembly1#1": {
+      "paired": {
+        "bytes": 43,
+        "depth": 1,
+        "sha256": "f1588363dc92fa6d136e1d689b0a6e5d65bac359447c5599df5a262f0f86c980"
+      },
+      "unpaired": {
+        "bytes": 84,
+        "depth": 2,
+        "sha256": "ff273e7d71a5050b4e015b355ef112dce41aa436328402184d9cef011c51e4ae"
+      }
+    },
+    "8ok4-assembly1#0": {
+      "paired": {
+        "bytes": 423,
+        "depth": 1,
+        "sha256": "8ef266d49d99ba888f534f1aeb62e9f281aa8e639c8873d374c25029593d0477"
+      },
+      "unpaired": {
+        "bytes": 68478,
+        "depth": 144,
+        "sha256": "867bc2b41f38974d5fbdb025489abc1150f0904889733a1f410281afbd20b79f"
+      }
+    },
+    "8on4-assembly1#0": {
+      "paired": {
+        "bytes": 247,
+        "depth": 1,
+        "sha256": "3d9ec931144254804c9f5c999dbee0bdbd789967c661f12c84b7ecf57b3f2827"
+      },
+      "unpaired": {
+        "bytes": 2326998,
+        "depth": 7538,
+        "sha256": "619c4a3934ab3934200a101457fae45b12ca29d5a41d4a1a7401c7cfc3a78170"
+      }
+    },
+    "8onb-assembly1#0": {
+      "paired": {
+        "bytes": 160,
+        "depth": 1,
+        "sha256": "13106771b495a49c995de868b522973b68050c2a6b750b0ae3631f9aeb88aa9f"
+      },
+      "unpaired": {
+        "bytes": 2343586,
+        "depth": 10548,
+        "sha256": "3fc4e278c7a96b6927b8d66c01fec15018d7f8152ccca99be202ee87d2455e0d"
+      }
+    },
+    "8onf-assembly1#0": {
+      "paired": {
+        "bytes": 294,
+        "depth": 1,
+        "sha256": "e846f9e365870370bfc22f8bbfa045c3ba4af30c502e841475364884ae4414fc"
+      },
+      "unpaired": {
+        "bytes": 3507625,
+        "depth": 9778,
+        "sha256": "9fdad6bcccd72eca25f65585fa55c012760867f09ea674eda33ce037d65dc6c6"
+      }
+    },
+    "8oq1-assembly1#0": {
+      "paired": {
+        "bytes": 718,
+        "depth": 1,
+        "sha256": "8073d373902e44399467cbcacbdff61634bc8090e4ee65e6176052688226b722"
+      },
+      "unpaired": {
+        "bytes": 154336,
+        "depth": 198,
+        "sha256": "0004c2b2dc13707ac10db8992ca3f859955c14e8020e10b70632dcc300c3baec"
+      }
+    },
+    "8osw-assembly1#0": {
+      "paired": {
+        "bytes": 349,
+        "depth": 1,
+        "sha256": "20a739aea99e2fb6ddb62340cbd07849ffee820f5ff1967b9d7e1de572186535"
+      },
+      "unpaired": {
+        "bytes": 4077010,
+        "depth": 9949,
+        "sha256": "b3d966bf211a7d14728ea7888d08d171e69e5b59c7f57572decea3976a4a6d7a"
+      }
+    },
+    "8ows-assembly1#0": {
+      "paired": {
+        "bytes": 8996,
+        "depth": 48,
+        "sha256": "8829747616ac42973c495db6d8b8164a7a25ef01c5a6b27b695dc26de7e40330"
+      },
+      "unpaired": {
+        "bytes": 121517,
+        "depth": 651,
+        "sha256": "36b5dfa3288d97a517a2c32c722335ee6a27ba45411d8cd9c027dc0df847f557"
+      }
+    },
+    "8ows-assembly1#1": {
+      "paired": {
+        "bytes": 9706,
+        "depth": 48,
+        "sha256": "26c0559c7bea35440a5db20d40859b67d4721c2429a56c7bb9e7560151f6fec1"
+      },
+      "unpaired": {
+        "bytes": 21495,
+        "depth": 107,
+        "sha256": "398553aedb2cd61bdc70d1de0c514b5fbdba266d6ce8525ff123cb65ae83af9d"
+      }
+    },
+    "8p6k-assembly1#0": {
+      "paired": {
+        "bytes": 121,
+        "depth": 1,
+        "sha256": "c0f75ea698f5a272957f6708e9c6b6372bbae96f9e84a679ba10985544625753"
+      },
+      "unpaired": {
+        "bytes": 11749,
+        "depth": 69,
+        "sha256": "6595e872fa278db0d3fabc4fef61e02152dc86f3f54c1e5b4c52fea44edec15f"
+      }
+    },
+    "8p6m-assembly1#0": {
+      "paired": {
+        "bytes": 152,
+        "depth": 1,
+        "sha256": "7c4bfd17640355111930d86c98ed981d5ab394046f37e3e7bedcd243335052e3"
+      },
+      "unpaired": {
+        "bytes": 2817992,
+        "depth": 13329,
+        "sha256": "c79711fc92c5e0338c1a2a30dcfb8403e5c615c47f77d6ee34ae3d15a9aa7af0"
+      }
+    },
+    "8p9c-assembly1#0": {
+      "paired": {
+        "bytes": 112165,
+        "depth": 923,
+        "sha256": "78f9c2ec722afc437c32f91e31bfbbace0d7dc177420f617ceec5e5d4fe329bb"
+      },
+      "unpaired": {
+        "bytes": 127969,
+        "depth": 1044,
+        "sha256": "0a83b4bcc79a119b8193672be37c8c35f7b5afb520be249b541325804e960171"
+      }
+    },
+    "8p9c-assembly1#1": {
+      "paired": {
+        "bytes": 104926,
+        "depth": 923,
+        "sha256": "eb7045f37f5cb06463f69671fe81d618e75bae6974ef9bee76d515b1f2e3b83b"
+      },
+      "unpaired": {
+        "bytes": 143405,
+        "depth": 1279,
+        "sha256": "2c8891ca79ed31aaf0f85ad5a67ab3fb7fd155449921cefea2257085138ccfa5"
+      }
+    },
+    "8p9c-assembly1#2": {
+      "paired": {
+        "bytes": 205938,
+        "depth": 923,
+        "sha256": "65e9e8f20dae587032d709714312b6086d17fc8a0eaeae4b0fd0d3e02df099ba"
+      },
+      "unpaired": {
+        "bytes": 4148869,
+        "depth": 18418,
+        "sha256": "2b76a667f7dc2ad70810e809d122aa513c159393651369af932bc6f0a2052cfe"
+      }
+    },
+    "8p9r-assembly1#0": {
+      "paired": {
+        "bytes": 90,
+        "depth": 1,
+        "sha256": "918520e360845f2429b8d2bac50bdc1d29c34c5a3f22f941ff4a1278518e9c23"
+      },
+      "unpaired": {
+        "bytes": 1183678,
+        "depth": 8188,
+        "sha256": "1566048cf59892978de294b92b5a8fdbb065d1b01a571819615a2f1a0be4ed4f"
+      }
+    },
+    "8p9r-assembly1#1": {
+      "paired": {
+        "bytes": 31,
+        "depth": 1,
+        "sha256": "008e5e7b2b33f727fcb1c6a6b4d62a95deb460c42f4d1901dc99c24c1bdbcba2"
+      },
+      "unpaired": {
+        "bytes": 4432,
+        "depth": 55,
+        "sha256": "53b363732f5f89c0d845fad8a36fe10b83f6048e860491385fbca55e9b03dd77"
+      }
+    },
+    "8pb3-assembly1#0": {
+      "paired": {
+        "bytes": 330,
+        "depth": 1,
+        "sha256": "9475569cb346b4c8d1657f20b443fb295a3e17d93f5e6eab9ee869b15bc028b0"
+      },
+      "unpaired": {
+        "bytes": 2528032,
+        "depth": 6382,
+        "sha256": "28edcd5c6c96b5e5e176509d5bad950bbec86d7acf1df277821c123e8c968d32"
+      }
+    },
+    "8phb-assembly1#0": {
+      "paired": {
+        "bytes": 414,
+        "depth": 1,
+        "sha256": "1c87b1c91eab4ba8e81fd291e8f1e984bf76ef6a532d1172ec80aec6932ddc53"
+      },
+      "unpaired": {
+        "bytes": 126407,
+        "depth": 267,
+        "sha256": "df13e115a993733505fc6106040a0ffe4a761898ded15e3375a7edbefdce9433"
+      }
+    },
+    "8pni-assembly1#0": {
+      "paired": {
+        "bytes": 200,
+        "depth": 1,
+        "sha256": "f6b3cde58fa18e9d41af6979649163f6e04898b6fe87fe5e770a911086166645"
+      },
+      "unpaired": {
+        "bytes": 998193,
+        "depth": 3860,
+        "sha256": "d94907fef84612b42574ef935835164da1c37329039346db0a8a52e5d3ca80ce"
+      }
+    },
+    "8pqr-assembly1#0": {
+      "paired": {
+        "bytes": 162,
+        "depth": 1,
+        "sha256": "c3c08704292cf61957a1c5bd09d365accb500a66a4d724b81c9e50b5b6024f9c"
+      },
+      "unpaired": {
+        "bytes": 448206,
+        "depth": 2024,
+        "sha256": "fba7ea7e6b4c3a0f76bc8ca337065e9b9d1959c29d55f073a153a2d2049a9140"
+      }
+    },
+    "8pr6-assembly1#0": {
+      "paired": {
+        "bytes": 93,
+        "depth": 1,
+        "sha256": "6c0fb97e8a22a140cabfc011eb73b0fdcadf753fa59855ac98f254dd21b6fb3a"
+      },
+      "unpaired": {
+        "bytes": 891589,
+        "depth": 6109,
+        "sha256": "12ed0a5845ebcc668a4d14f92e6005e93cfbdee4ec6d4ef88598cefa392124d5"
+      }
+    },
+    "8pu1-assembly1#0": {
+      "paired": {
+        "bytes": 23527,
+        "depth": 175,
+        "sha256": "713d1028a2edffac3befedbcba9623b1aa521d827024205d4cbda93b4b57e308"
+      },
+      "unpaired": {
+        "bytes": 85779,
+        "depth": 650,
+        "sha256": "98b24bf7d9482279bd936bdd4252d63e6df748c8c6aa34d1f163941bd21bbbf4"
+      }
+    },
+    "8pu1-assembly1#1": {
+      "paired": {
+        "bytes": 48653,
+        "depth": 175,
+        "sha256": "1f58c891eba674cebe6f0955c8999bb11cc4018a4b3bfb8a214923036b6032c3"
+      },
+      "unpaired": {
+        "bytes": 335997,
+        "depth": 1209,
+        "sha256": "352e05323b67d3cd41a955ffd8d66f6d7aebe6141110a991737be5848913cc9e"
+      }
+    },
+    "8q00-assembly1#0": {
+      "paired": {
+        "bytes": 1046671,
+        "depth": 2490,
+        "sha256": "fcbdfe12586c200eb0fc8e5db44cabf14b497afc741e7bb0f809802b6adf43d7"
+      },
+      "unpaired": {
+        "bytes": 2592493,
+        "depth": 6965,
+        "sha256": "03673ce98e7e7ed627c2aacdf9364ee1fb7c8b3363cc105d5ac1e67931eb4074"
+      }
+    },
+    "8q00-assembly1#1": {
+      "paired": {
+        "bytes": 339956,
+        "depth": 2490,
+        "sha256": "2c56fa5dc4d94890b5c5ba831eaf8f651fddfe17b5265b94fbdcdacb2bf1e85f"
+      },
+      "unpaired": {
+        "bytes": 2988463,
+        "depth": 21488,
+        "sha256": "b7645ff4014ee40a4a948f409efbef1b2cc653c1025383a2c3cfd36293170217"
+      }
+    },
+    "8q1k-assembly1#0": {
+      "paired": {
+        "bytes": 430,
+        "depth": 1,
+        "sha256": "b80614368ac820c6a6875caa3ee935fd213d1712cebcdf44d7636585016eedc3"
+      },
+      "unpaired": {
+        "bytes": 2519027,
+        "depth": 5060,
+        "sha256": "a611064877c6b10abf296df96702159d712e49660335c2a4e4448ff444155774"
+      }
+    },
+    "8q1w-assembly1#0": {
+      "paired": {
+        "bytes": 97,
+        "depth": 1,
+        "sha256": "31941c5692c723a55de213ccf5ab1b7786da50b6362438989bfb26de315adacf"
+      },
+      "unpaired": {
+        "bytes": 1058353,
+        "depth": 6576,
+        "sha256": "ea01f95a74bc606f9ac175c3bb8843e51f45968c70d2a81fc27014a2310365b0"
+      }
+    },
+    "8q29-assembly1#0": {
+      "paired": {
+        "bytes": 256,
+        "depth": 1,
+        "sha256": "2bf1eef84989e7a0ef88a9706168986c36dfab1058ecbebdb16910b914955975"
+      },
+      "unpaired": {
+        "bytes": 98152,
+        "depth": 312,
+        "sha256": "1ae46c51cc24f2e2f8ba1e6b8f4952e952ffd4aa9c03c2e65db7f40f7b643347"
+      }
+    },
+    "8q6q-assembly1#0": {
+      "paired": {
+        "bytes": 46228,
+        "depth": 253,
+        "sha256": "a66678ecbdaf0b93c7fe087e423ead039069161a0b251762732e7fb56e973064"
+      },
+      "unpaired": {
+        "bytes": 1197086,
+        "depth": 6595,
+        "sha256": "acc0c5c34285c291594a39c0c86b16447c9cf2eafb396b1b6a634ae88d37484a"
+      }
+    },
+    "8q6q-assembly1#1": {
+      "paired": {
+        "bytes": 65905,
+        "depth": 253,
+        "sha256": "ff2edafcb289398a574a5d467f0f3db901d70a7ba3de3b60cdf54340f6f12ec1"
+      },
+      "unpaired": {
+        "bytes": 39938,
+        "depth": 156,
+        "sha256": "f333e1d58780c97f7a1f12bbd0e240a25e8f0cb44bdc3a53e1fc947a4be0555c"
+      }
+    },
+    "8q70-assembly1#0": {
+      "paired": {
+        "bytes": 287,
+        "depth": 1,
+        "sha256": "31b82732c131958229e1a6e5d3db7a26e784357ac6fc813fb545885f5135cef5"
+      },
+      "unpaired": {
+        "bytes": 3849065,
+        "depth": 10462,
+        "sha256": "0a9bd1b18223bb008fe54eab607da0a83edf9aaee65f4748d78e5831b2207fc4"
+      }
+    },
+    "8q9n-assembly1#0": {
+      "paired": {
+        "bytes": 103,
+        "depth": 1,
+        "sha256": "3631330017a6864e7e771d74baa44641175ec16d68eb288efdbaa6bd7cd25ee1"
+      },
+      "unpaired": {
+        "bytes": 1738536,
+        "depth": 11323,
+        "sha256": "ec8ee831039062858a3f719c1a3d1fc91656fcfe68f6cab33520a2128fa984b8"
+      }
+    },
+    "8q9n-assembly1#1": {
+      "paired": {
+        "bytes": 27,
+        "depth": 1,
+        "sha256": "f1c645e06c6f1ec5360d3fadfb92b1c3bea30fc5cac52a36796596ea4dabec59"
+      },
+      "unpaired": {
+        "bytes": 52,
+        "depth": 2,
+        "sha256": "879b72755827ff549a2e97949fddb96b911fd08e11d8ab8a22b3240fff274904"
+      }
+    },
+    "8qab-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "24429366af1ce8d9c263fb79bf835d4f8fdef0634dc06e5c3bfc3b9aba130be0"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "1ef57aa221399a6349636ab4726ce5d8b0197ab5d727701fdc2a308befe657f3"
+      }
+    },
+    "8qfl-assembly1#0": {
+      "paired": {
+        "bytes": 192,
+        "depth": 1,
+        "sha256": "b9d2f41a8e2408dca824f499e2657a8a26370d431a2b0f3af95f73f9a4575693"
+      },
+      "unpaired": {
+        "bytes": 1633820,
+        "depth": 6444,
+        "sha256": "294049820885be4672856122632957d743f3dc580774e16c63862f58cfd3e290"
+      }
+    },
+    "8qjk-assembly1#0": {
+      "paired": {
+        "bytes": 104,
+        "depth": 1,
+        "sha256": "8e2763da2ed7e0cac7c80ab54463c43caf1c7c1715b3f334740db498dfc9b668"
+      },
+      "unpaired": {
+        "bytes": 25597,
+        "depth": 161,
+        "sha256": "81a2df825c61bd43951189b2748a89c66e8f0f9e6b4fea9a5dfddd1531e048a3"
+      }
+    },
+    "8qk8-assembly1#0": {
+      "paired": {
+        "bytes": 173,
+        "depth": 1,
+        "sha256": "d90269922ee6de270b133e2b28ff06bb568887d95865493f8030a4a990168621"
+      },
+      "unpaired": {
+        "bytes": 2101591,
+        "depth": 8171,
+        "sha256": "2882cd8daeec8110155ea3fa95d9b6058dd1ec8e7e63b3c08c9ec3b417f26676"
+      }
+    },
+    "8qvc-assembly1#0": {
+      "paired": {
+        "bytes": 318401,
+        "depth": 755,
+        "sha256": "ca02ee23739c8bbd2b2115c48b17f160b2bd39cfdfa5a764684ad393c4416a98"
+      },
+      "unpaired": {
+        "bytes": 1002475,
+        "depth": 2387,
+        "sha256": "5ad6890245fe682008d53c6f340b288af27bb0b06002b305cb27a4a2cf90d272"
+      }
+    },
+    "8qvc-assembly1#1": {
+      "paired": {
+        "bytes": 146898,
+        "depth": 755,
+        "sha256": "52e0a4f5add619a29205d425dc7d60e3621a613e22e3066c8e44142488aa050b"
+      },
+      "unpaired": {
+        "bytes": 414958,
+        "depth": 2162,
+        "sha256": "4119da63cfa3883443df4a14b0011f4fca752fa824299f758d2ba2aa4323b0f8"
+      }
+    },
+    "8r5w-assembly1#0": {
+      "paired": {
+        "bytes": 135,
+        "depth": 1,
+        "sha256": "273bf30ddfd3f75fd8f29d45de95f07959ed00200621b6175e31b84be76a9663"
+      },
+      "unpaired": {
+        "bytes": 327396,
+        "depth": 1675,
+        "sha256": "59e6321f3c3a93373e961217eb52a70db925b667eeb01b49a50b036452abf643"
+      }
+    },
+    "8r7a-assembly1#0": {
+      "paired": {
+        "bytes": 795,
+        "depth": 4,
+        "sha256": "f6d251916293576fabeaef7188deb8028fdcf22b050fd7e4af60135cb79ced7a"
+      },
+      "unpaired": {
+        "bytes": 2514883,
+        "depth": 11463,
+        "sha256": "4c6a8292f791f6942d3096434a8df1eefd883cf58356c9db25ba21b04a1b8994"
+      }
+    },
+    "8r7a-assembly1#1": {
+      "paired": {
+        "bytes": 779,
+        "depth": 4,
+        "sha256": "268aac474a98bd0e4cecf0548843b255bb0a5d3a7d90096d2587e72d8b65bac7"
+      },
+      "unpaired": {
+        "bytes": 2759,
+        "depth": 14,
+        "sha256": "2eb814bc965717d17eb55dd24a5e5778fe7ffc27316e47297210aa7ffeefba8a"
+      }
+    },
+    "8r7i-assembly1#0": {
+      "paired": {
+        "bytes": 643,
+        "depth": 1,
+        "sha256": "794e8727ec9df8f0efd1ae3cc04dbbcd4cb6cff68c7a2755c1c218dd8f184a9b"
+      },
+      "unpaired": {
+        "bytes": 10139903,
+        "depth": 14327,
+        "sha256": "088a03d10be1caf20992d266e157dddf5b553e12058e07f157880b57b40fc858"
+      }
+    },
+    "8r9t-assembly1#0": {
+      "paired": {
+        "bytes": 43,
+        "depth": 1,
+        "sha256": "16ae2789382d8491be06eb1852b33f602b08d9b3fcd2876b204cc7c464a8941d"
+      },
+      "unpaired": {
+        "bytes": 4195,
+        "depth": 43,
+        "sha256": "01735d4927ea01c441513432f415b82b074edf009fee8b00abb616118e8c6760"
+      }
+    },
+    "8rja-assembly1#0": {
+      "paired": {
+        "bytes": 27920868,
+        "depth": 43611,
+        "sha256": "6f081740bbcdf4c798aba4ab97d1c56401b5753f6cb9710200fe0d0788ef858c"
+      },
+      "unpaired": {
+        "bytes": 9874053,
+        "depth": 15520,
+        "sha256": "c081cc7b1662eb864d72e36df9f2cc114984654ff006386194e6288839212b9c"
+      }
+    },
+    "8rja-assembly1#1": {
+      "paired": {
+        "bytes": 24052099,
+        "depth": 43611,
+        "sha256": "3d5bf28cc390c176c1bcd39bdd48ad95794187300f68e228e5a1768092a90df2"
+      },
+      "unpaired": {
+        "bytes": 3364359,
+        "depth": 6652,
+        "sha256": "cfdbd505257ed9c153c046a404907c277c214cf66b7ff811b76ae01bd0863457"
+      }
+    },
+    "8rja-assembly1#2": {
+      "paired": {
+        "bytes": 12844158,
+        "depth": 43611,
+        "sha256": "57744e1e3d236f4b0625bb4932f4e45aae32bf67aa41e16aa087212c26961c96"
+      },
+      "unpaired": {
+        "bytes": 1430956,
+        "depth": 4327,
+        "sha256": "5a79f0f0e2dbe40be9f340f5d86097373e2982e7c583b310e188f69b45a50538"
+      }
+    },
+    "8rja-assembly1#3": {
+      "paired": {
+        "bytes": 8318482,
+        "depth": 43611,
+        "sha256": "cb27800b66d329a4744f0ff7f350d53abfb286b4c153b646c6990d6c923d0b7a"
+      },
+      "unpaired": {
+        "bytes": 1160707,
+        "depth": 5978,
+        "sha256": "eb385169e72954a2e751591108e3e19e1771e074bf9d7d50a9fe3cd039770014"
+      }
+    },
+    "8rja-assembly1#4": {
+      "paired": {
+        "bytes": 18295296,
+        "depth": 43611,
+        "sha256": "b5e8b0b89a7f8ac12c9f2b4b8606c5408f3012045cfddacb44d741b8bd080477"
+      },
+      "unpaired": {
+        "bytes": 5716931,
+        "depth": 13282,
+        "sha256": "94cafe7678fd2a169c6dd719a60f02c2cdb28136aad431160d897c38563edb17"
+      }
+    },
+    "8rja-assembly1#5": {
+      "paired": {
+        "bytes": 6368317,
+        "depth": 43611,
+        "sha256": "d7251348fddfa153f3a689e42acf2171a5b18a01cf583f11e1db53c298ceb88d"
+      },
+      "unpaired": {
+        "bytes": 1597465,
+        "depth": 10637,
+        "sha256": "8d9f90aab0afd7292b279b0416487ec91d2b657926b8d1da626cf2c10e1eb9a2"
+      }
+    },
+    "8rkh-assembly1#0": {
+      "paired": {
+        "bytes": 245,
+        "depth": 1,
+        "sha256": "088459fe648aa47ecdfc67bea7ea5b1a54ce2e4a76d8855f4251e1aca80185f5"
+      },
+      "unpaired": {
+        "bytes": 156856,
+        "depth": 515,
+        "sha256": "fddad1938a97539d5b96fcfac87d2867c15316fdb09e5a6f94665bc7b85ea521"
+      }
+    },
+    "8rlk-assembly1#0": {
+      "paired": {
+        "bytes": 399,
+        "depth": 1,
+        "sha256": "4505c5a4e44b87ab14fdeab7b3180d38bf2df11cebe5c33adca1bce3377a743d"
+      },
+      "unpaired": {
+        "bytes": 4055652,
+        "depth": 8753,
+        "sha256": "fbaa010fbc673d3b6894ef183a6473b584fea897efa64a61d8da67018cd4adf9"
+      }
+    },
+    "8rpx-assembly1#0": {
+      "paired": {
+        "bytes": 179,
+        "depth": 1,
+        "sha256": "aeb9082054610d5e4e23009d0121383e4468d349be8b6dbb13816d65b23ae08e"
+      },
+      "unpaired": {
+        "bytes": 494388,
+        "depth": 2078,
+        "sha256": "a920d2cacd223c99bc9ce2708416613c6b99f3dffb4fe233e943ab1f622474ba"
+      }
+    },
+    "8rue-assembly1#0": {
+      "paired": {
+        "bytes": 381,
+        "depth": 1,
+        "sha256": "c550ea10ea21094a4e6206fae4895145cfacfc082696a5740f0d5b31d551f99e"
+      },
+      "unpaired": {
+        "bytes": 3569875,
+        "depth": 8098,
+        "sha256": "181dcce76524c7bd0a70cdf7dc621a2cc81691385eb2ebc6c199215714f31cf4"
+      }
+    },
+    "8rxa-assembly1#0": {
+      "paired": {
+        "bytes": 107,
+        "depth": 1,
+        "sha256": "4897155085fcdfa412d400ab08f40fbd5b9a6811f1ce6af175195f179058605e"
+      },
+      "unpaired": {
+        "bytes": 47293,
+        "depth": 290,
+        "sha256": "5a3c4cea903b924d0ab6fc448d74eee7ed32c5a58ab5e7ffd05aaa1dfff58c99"
+      }
+    },
+    "8s0u-assembly1#0": {
+      "paired": {
+        "bytes": 269,
+        "depth": 1,
+        "sha256": "56098e757120f7ff53ef3fab4d3abf4413a40e112f07194e66ed8707d07826e6"
+      },
+      "unpaired": {
+        "bytes": 155121,
+        "depth": 447,
+        "sha256": "031d2a26ea81143644490a23ac8857b38078fe580b5517863e63663c2fd975c8"
+      }
+    },
+    "8s1j-assembly1#0": {
+      "paired": {
+        "bytes": 314,
+        "depth": 1,
+        "sha256": "5ee2a3ccc93bbc3ab8b6c33b821b08da82271ecadd04f36fd7fbc2c2fb3794b2"
+      },
+      "unpaired": {
+        "bytes": 171583,
+        "depth": 459,
+        "sha256": "5f4d740edf0137a28a86697809052c91dfb8ca244d48909847376c87777111a6"
+      }
+    },
+    "8sbq-assembly1#0": {
+      "paired": {
+        "bytes": 287,
+        "depth": 1,
+        "sha256": "a3a31672737bc3d9343de461bea7ccd0bbdcc823244c07ddc2b71eb248739f92"
+      },
+      "unpaired": {
+        "bytes": 1375695,
+        "depth": 4001,
+        "sha256": "12abeedc23cfad4dc165fe7a319176a5d5e3f7051486d51423cd273accd52f02"
+      }
+    },
+    "8sm6-assembly1#0": {
+      "paired": {
+        "bytes": 380,
+        "depth": 1,
+        "sha256": "901f055fa8f4f99629a001cace1f98b56c6a935549ab8bf6a5f39cdc2e19f99d"
+      },
+      "unpaired": {
+        "bytes": 2947115,
+        "depth": 6651,
+        "sha256": "f9fe6f5758c954a00969812b2536ae613f8ecd5856dc3fc2ac51e348210e0529"
+      }
+    },
+    "8smf-assembly1#0": {
+      "paired": {
+        "bytes": 98,
+        "depth": 1,
+        "sha256": "c5984f21c855b3627da4242ad8539aaefd86303480adda4e192d2af3158e7d4e"
+      },
+      "unpaired": {
+        "bytes": 561626,
+        "depth": 3658,
+        "sha256": "4a9b7caa084bb9be3f47eb91f532c943a69e3f8251ac977c57d4f2d594bfac33"
+      }
+    },
+    "8smq-assembly1#0": {
+      "paired": {
+        "bytes": 181,
+        "depth": 1,
+        "sha256": "2ab981373fe43e389995765e68e6ac8679a063a0efc23ab3dd5cda90ca3415fe"
+      },
+      "unpaired": {
+        "bytes": 9930,
+        "depth": 42,
+        "sha256": "e6a79b9188fc12f9d5a14dd1b89e6a238f8710e1705f7903ee4c97d0501c8b34"
+      }
+    },
+    "8srz-assembly1#0": {
+      "paired": {
+        "bytes": 100,
+        "depth": 1,
+        "sha256": "c2072516d8c20c019b1d2e9d4095a79072358ec64fa90620db5defe2903e88ec"
+      },
+      "unpaired": {
+        "bytes": 2072,
+        "depth": 14,
+        "sha256": "f9993f0b83fe10afe8c4f35df64c182db92d0101c0de81e8ad76d5fc27aa3301"
+      }
+    },
+    "8ss1-assembly1#0": {
+      "paired": {
+        "bytes": 108,
+        "depth": 1,
+        "sha256": "e135b70e6eeabe1598848179befbb7e54ea260eaac75fc32ebae70daf90bddff"
+      },
+      "unpaired": {
+        "bytes": 2327,
+        "depth": 15,
+        "sha256": "b5261eece6bcc7b0588febc26cb28f24598d6d8fa585be027cf41be4237186ea"
+      }
+    },
+    "8t0p-assembly1#0": {
+      "paired": {
+        "bytes": 7964,
+        "depth": 47,
+        "sha256": "cf9718577b5985f77d88c9c2393591af9074b36823330f97a39c5e6a7a599e6b"
+      },
+      "unpaired": {
+        "bytes": 12237,
+        "depth": 74,
+        "sha256": "e0b7ccf6f92147804a39082b72c27dcbf5e21df3f50d691a7410bd4ede6ddf72"
+      }
+    },
+    "8t0p-assembly1#1": {
+      "paired": {
+        "bytes": 10102,
+        "depth": 47,
+        "sha256": "31e4eaa81fa0cb89910e726f72a4c35a293d3fd5cb8a8099833f99b020b0ce87"
+      },
+      "unpaired": {
+        "bytes": 14985,
+        "depth": 71,
+        "sha256": "69305bbfb25d7c332678a89fa474f50835a91bf450c8764fec9880069262f39d"
+      }
+    },
+    "8t0p-assembly1#2": {
+      "paired": {
+        "bytes": 2694,
+        "depth": 47,
+        "sha256": "1d44144ae25ab07011e4521952ee7e60a55b37db96bf63cb47756ff53ad630b7"
+      },
+      "unpaired": {
+        "bytes": 50,
+        "depth": 2,
+        "sha256": "3c361e5e0794fecc01332aefc329d3eb662aa22cb27f27f985cb6591562954b0"
+      }
+    },
+    "8t48-assembly1#0": {
+      "paired": {
+        "bytes": 104284,
+        "depth": 438,
+        "sha256": "70174cb57a426540b8f29e3052ea1b0ec44f9074c7a0d1e4cfaf552f9e0b58f0"
+      },
+      "unpaired": {
+        "bytes": 5073059,
+        "depth": 21050,
+        "sha256": "2369374e2d56f2618fd17e5ed2721ca48ce33a934687ab601856ebb0e0aed7fd"
+      }
+    },
+    "8t48-assembly1#1": {
+      "paired": {
+        "bytes": 57808,
+        "depth": 438,
+        "sha256": "178d9b41678e088f57d40cee550786cc8ccfbcdeb70fd43b657ed0eddbb24367"
+      },
+      "unpaired": {
+        "bytes": 91884,
+        "depth": 698,
+        "sha256": "8bef4953e1b4f2fc6b199113922b7c941eac48fda87d72fe3892ee7125df0dbe"
+      }
+    },
+    "8tcs-assembly1#0": {
+      "paired": {
+        "bytes": 278,
+        "depth": 1,
+        "sha256": "5fe6924ebe96147ab4350a0bdb32c70f22af3ffce7d1b16a7a02b8c6901833c1"
+      },
+      "unpaired": {
+        "bytes": 3178230,
+        "depth": 9171,
+        "sha256": "bfa6f2481344933fa1fa64b36f443fe969ad6da422398683f850c28560a875bd"
+      }
+    },
+    "8th1-assembly1#0": {
+      "paired": {
+        "bytes": 172,
+        "depth": 1,
+        "sha256": "62dd9cc883b655b117c23cc24c1bbbaaa1ef02c38240a16a6ee3ce79b9c300e3"
+      },
+      "unpaired": {
+        "bytes": 1250677,
+        "depth": 5444,
+        "sha256": "3fcf7458a802367c12050ed512432c95f607f71e81f19a948fc6a6c3fd52b90d"
+      }
+    },
+    "8th1-assembly1#1": {
+      "paired": {
+        "bytes": 33,
+        "depth": 1,
+        "sha256": "a0f02a00da93269afe4485dcea8a0374c41f5e8a5ba3cf33a06af48487abac0f"
+      },
+      "unpaired": {
+        "bytes": 397,
+        "depth": 6,
+        "sha256": "44dda4a959139fa28a8add58ea76c79005aaaf3d2ad6439fb3d7f3f1272c3cee"
+      }
+    },
+    "8tlf-assembly1#0": {
+      "paired": {
+        "bytes": 152,
+        "depth": 1,
+        "sha256": "becec85b4b355057e32cb2c6d490eae17fbe344e8d54e67d14b3ee57aa9127fe"
+      },
+      "unpaired": {
+        "bytes": 1125844,
+        "depth": 5313,
+        "sha256": "521345fef71c2a4f577654d3222dd9a8f159f1f8a13694db25cf4e739daff77d"
+      }
+    },
+    "8tn8-assembly1#0": {
+      "paired": {
+        "bytes": 269,
+        "depth": 1,
+        "sha256": "c2aa2395137e1589b95fecd2ea22f04689015a8768e5cfcf97e127f1c648bc82"
+      },
+      "unpaired": {
+        "bytes": 1836,
+        "depth": 6,
+        "sha256": "b4dd0635376b1e21265b7d8c706907b3a0c32b7c217c5819f8042f5d167b6522"
+      }
+    },
+    "8tnd-assembly1#0": {
+      "paired": {
+        "bytes": 155,
+        "depth": 1,
+        "sha256": "1ef7348d3ced9371b5773da3ca74ddbb32dae7757413622e5858c969e4e136d4"
+      },
+      "unpaired": {
+        "bytes": 308,
+        "depth": 2,
+        "sha256": "37a550b3f6134943c748174c5bbe6008a2752bc2893775f4957813cdb8b3ead6"
+      }
+    },
+    "8tto-assembly1#0": {
+      "paired": {
+        "bytes": 61,
+        "depth": 1,
+        "sha256": "a7f1710b6d4f9401cb24301faaddc44da3e9201183fb52ce7401abfefa5a3cd0"
+      },
+      "unpaired": {
+        "bytes": 3779,
+        "depth": 35,
+        "sha256": "55c46e14b5cbaad56474d6d7a8b251b8db78bb40afe9edb97155faa397bd2087"
+      }
+    },
+    "8tw0-assembly1#0": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "d0fde96f6b0e1ffe54e5fcac93e0875a3809f43c769748389d8467ee68f28db7"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "b8006834f8ef0c781231bf425ae9d9ed20f04fb7b2e5b6d5ac0898e68a5ea031"
+      }
+    },
+    "8tw0-assembly1#1": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "6cd629a8e68103b83047555aa4db8e7a06e58c10296c545fe62df1534a715506"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "0fc5451073be19ca62b607e7304bb8b21873eb806a6b1630e2925715971356ff"
+      }
+    },
+    "8tw0-assembly1#2": {
+      "paired": {
+        "bytes": 40,
+        "depth": 1,
+        "sha256": "47350d7f043b8dd9c80402b4ce449ec948b39cbba824e012084996bf678ccae6"
+      },
+      "unpaired": {
+        "bytes": 78,
+        "depth": 2,
+        "sha256": "00d68bf5d31902542fb6fa1ef36b8d7d10f2e9467c4b96461dee792db451c97b"
+      }
+    },
+    "8u12-assembly1#0": {
+      "paired": {
+        "bytes": 83,
+        "depth": 1,
+        "sha256": "dddf8ed1e88558c883777399d674da9a73433336554f51f6bfa0065b1fd7e296"
+      },
+      "unpaired": {
+        "bytes": 62591,
+        "depth": 464,
+        "sha256": "d32648e6d18488063cb6aafa954bb6caeca60b4d1068d5d1ec5c7f2758ba675e"
+      }
+    },
+    "8u48-assembly1#0": {
+      "paired": {
+        "bytes": 290,
+        "depth": 1,
+        "sha256": "0f7bcbb5b108080ba47fdac87dbef4301b4b14580e5868eca81fc95418e864e0"
+      },
+      "unpaired": {
+        "bytes": 720528,
+        "depth": 2016,
+        "sha256": "de5bcb1a921b784d69d18f6426353ff8a7e85eed4c7b78783b1485f081897f2b"
+      }
+    },
+    "8upb-assembly1#0": {
+      "paired": {
+        "bytes": 72,
+        "depth": 1,
+        "sha256": "d955d1ec9086138d2f3c477dbb75f49a476be9b2403f008c1beebe40b3d0b99d"
+      },
+      "unpaired": {
+        "bytes": 142,
+        "depth": 2,
+        "sha256": "f01774eb5811a0823f545c77e1e0df1590f2e4e0894a14fd1a3eaca6f45bcc03"
+      }
+    },
+    "8upc-assembly1#0": {
+      "paired": {
+        "bytes": 193,
+        "depth": 1,
+        "sha256": "c29146ba6165a3c04584c1bacda461b54d03f19cec09c18609e94a4e33ada540"
+      },
+      "unpaired": {
+        "bytes": 1508959,
+        "depth": 5990,
+        "sha256": "c853211d087e84821e8489e6f01ea08198c60c7781cdd513d2819c57e497d4b2"
+      }
+    },
+    "8utk-assembly1#0": {
+      "paired": {
+        "bytes": 64,
+        "depth": 1,
+        "sha256": "3d669b603c3990d776d91f35b687527bbde3aa90f06d73af6d4ac7e37d662bd1"
+      },
+      "unpaired": {
+        "bytes": 126,
+        "depth": 2,
+        "sha256": "faf54528e51553aa966a687252e54846689dfaffc099056b107a2d0dee8f493a"
+      }
+    },
+    "8vij-assembly1#0": {
+      "paired": {
+        "bytes": 124,
+        "depth": 1,
+        "sha256": "25cf6b88f822204fc0fce52439c7019e084d205a2903940852ae3250b11530a5"
+      },
+      "unpaired": {
+        "bytes": 1321285,
+        "depth": 7260,
+        "sha256": "84ff86fd76fb524f5b756f6356bdb966ff4016e38be9676a47d3e1cb216c040c"
+      }
+    },
+    "8vva-assembly1#0": {
+      "paired": {
+        "bytes": 87,
+        "depth": 1,
+        "sha256": "cc775f7eb252b40d52a616eb16ba1ac311abfedf4fafee1f605511ab1f63ec1a"
+      },
+      "unpaired": {
+        "bytes": 40221,
+        "depth": 293,
+        "sha256": "1da92ce079f57996f219a6decc9e44d2e7e040770fad555e8d982b08e0e8bb7f"
+      }
+    },
+    "8whi-assembly1#0": {
+      "paired": {
+        "bytes": 411164,
+        "depth": 1343,
+        "sha256": "f7e5f2787060d7dd50aa3ebe418a77d422e34859fab230caaac1c92385ecf269"
+      },
+      "unpaired": {
+        "bytes": 691847,
+        "depth": 2256,
+        "sha256": "5c9d77ab758a3f2baa14c7361e58b6b2f3d7265e03abddd906b95fa5fe8c3b81"
+      }
+    },
+    "8whi-assembly1#1": {
+      "paired": {
+        "bytes": 238663,
+        "depth": 1343,
+        "sha256": "317dc0c547577bef0a95ce001f40851ceacbbd3cae11f8c196bf8b46d07e4953"
+      },
+      "unpaired": {
+        "bytes": 359578,
+        "depth": 2031,
+        "sha256": "81664e85fd12483ddb4055b8a8346d1688601d9b787bf66a4a7344b2173259cf"
+      }
+    },
+    "8wk1-assembly1#0": {
+      "paired": {
+        "bytes": 1772,
+        "depth": 6,
+        "sha256": "be87fc1778c687b5eafe21af5620ffbc78b8bc7839b29dad03bd250e571c9068"
+      },
+      "unpaired": {
+        "bytes": 5463853,
+        "depth": 18024,
+        "sha256": "12f9e5e1f061c9e868dcf62af5a1147607aa5ea0e5d2f91e87b440daac35b4dc"
+      }
+    },
+    "8wk1-assembly1#1": {
+      "paired": {
+        "bytes": 1519,
+        "depth": 6,
+        "sha256": "4b836759c2fa88c9b54a684dd35ebbdcae46601cefa658dcc227b93ddd277805"
+      },
+      "unpaired": {
+        "bytes": 535728,
+        "depth": 2045,
+        "sha256": "2476d7f4f76ba21b2278f707a3a7602ca51bb29fd0c90adb8d315ae0e937dedd"
+      }
+    },
+    "8wmt-assembly1#0": {
+      "paired": {
+        "bytes": 262,
+        "depth": 1,
+        "sha256": "155f95e21f5c6b571b5aa78f1a42096344e3d34fec923e2ac51caaf85178f693"
+      },
+      "unpaired": {
+        "bytes": 3391570,
+        "depth": 10554,
+        "sha256": "cb3df1961caa7c91baceae9e9398496cf796c7330156736754e9d60123e780ec"
+      }
+    },
+    "8wnh-assembly1#0": {
+      "paired": {
+        "bytes": 261,
+        "depth": 1,
+        "sha256": "0a0c7af71102433de370c037a4fbd3d2b7ae628c69bf6d6ea460f8e50ce0ec77"
+      },
+      "unpaired": {
+        "bytes": 2780288,
+        "depth": 8660,
+        "sha256": "4773eea1ef9f5650fb6a73ad563295954c2048dc1c860300863e3916b2b8bf78"
+      }
+    },
+    "8woj-assembly1#0": {
+      "paired": {
+        "bytes": 84,
+        "depth": 1,
+        "sha256": "9811b3c85482a182d36d4d82e29e2251debf56462d442e55f1cfe6a545740f93"
+      },
+      "unpaired": {
+        "bytes": 12232,
+        "depth": 92,
+        "sha256": "4ec681f8f4ae12e925678b69e9fca07db38747841e89bd70fd798944256f1185"
+      }
+    },
+    "8wt4-assembly1#0": {
+      "paired": {
+        "bytes": 99352,
+        "depth": 399,
+        "sha256": "bd2adfec3107cff9e6772773252f8b4c397d1cd89524805816130ab66c739801"
+      },
+      "unpaired": {
+        "bytes": 56060,
+        "depth": 227,
+        "sha256": "5549bc9eada58284aae25a445037cd3ce71917cf647d793e6b1dd715771695ee"
+      }
+    },
+    "8wt4-assembly1#1": {
+      "paired": {
+        "bytes": 80768,
+        "depth": 399,
+        "sha256": "0e76f160c066a0052b30352e0f1e8eda1efbb8463a655ad9b5c5cdb3b231f871"
+      },
+      "unpaired": {
+        "bytes": 2153001,
+        "depth": 10518,
+        "sha256": "b96cd00d5442b3b41d632480edc31c7778fe1a9690e904b124085c587206e23e"
+      }
+    },
+    "8wwy-assembly1#0": {
+      "paired": {
+        "bytes": 180084,
+        "depth": 838,
+        "sha256": "701c0aa516c05673e9ca38a79e469a2da4970a198fadd03409042756cc3b34bb"
+      },
+      "unpaired": {
+        "bytes": 157840,
+        "depth": 740,
+        "sha256": "87c20a67ac557dde907e00bd87490bc3aab82fe85dab1a11cb8d8e56f709cfc8"
+      }
+    },
+    "8wwy-assembly1#1": {
+      "paired": {
+        "bytes": 178110,
+        "depth": 838,
+        "sha256": "04b027f536f62f0da3c5ac18e6d464226e00e8d4ef31298d2a4d0631425fbd04"
+      },
+      "unpaired": {
+        "bytes": 175220,
+        "depth": 839,
+        "sha256": "54cc67f53f3ecce4a5a222df48204b869996f3430e9788d10824dfae39c67d07"
+      }
+    },
+    "8x3g-assembly1#0": {
+      "paired": {
+        "bytes": 14183161,
+        "depth": 31309,
+        "sha256": "93427d10034f3676f4cb6792c06169554c8f5866855895b37c051822f378b5f7"
+      },
+      "unpaired": {
+        "bytes": 939248,
+        "depth": 2107,
+        "sha256": "428c45b4afab5c58f702b64d858f1215e1b9913296cc3a0d782bc4410048c10b"
+      }
+    },
+    "8x3g-assembly1#1": {
+      "paired": {
+        "bytes": 13266402,
+        "depth": 31309,
+        "sha256": "3738afb8f5475696d12a028ee21289d0ae122b3c2ef021ef5e51ea09c3a4acee"
+      },
+      "unpaired": {
+        "bytes": 1549376,
+        "depth": 3727,
+        "sha256": "0ca7d02130605db186520a0281d0b169ad9dc76f21828dc205e5b9086f80f2fe"
+      }
+    },
+    "8x6v-assembly1#0": {
+      "paired": {
+        "bytes": 269,
+        "depth": 1,
+        "sha256": "1079bbd3b52313dec84974fc1f2f23f1605393939d7e38c133bb8213500d0bad"
+      },
+      "unpaired": {
+        "bytes": 1045875,
+        "depth": 3172,
+        "sha256": "67e1e61ff1aefcb1255d6b669ce1ff68847f104f13449fd8824a8b3d5f761489"
+      }
+    },
+    "8ye5-assembly1#0": {
+      "paired": {
+        "bytes": 137,
+        "depth": 1,
+        "sha256": "9c266099f0f3a0304852c18e64a2d310c887d87d9413cc032a86c60598002851"
+      },
+      "unpaired": {
+        "bytes": 1458366,
+        "depth": 7389,
+        "sha256": "566b1d0836872076d6b89aee7237859109c052625e60c545b30838c003a2fc77"
+      }
+    },
+    "8yk2-assembly1#0": {
+      "paired": {
+        "bytes": 708,
+        "depth": 1,
+        "sha256": "7e74d91f92e937ea3e868202ca4610669fa140d8c4023e5b852aaa55894a2891"
+      },
+      "unpaired": {
+        "bytes": 5551108,
+        "depth": 7236,
+        "sha256": "312672484ec2a20051a227092b85a3d56660809a7adca534a47e6f7406e49316"
+      }
+    },
+    "8yla-assembly1#0": {
+      "paired": {
+        "bytes": 347,
+        "depth": 1,
+        "sha256": "ae22c1f669a1e1f1e910ecd4b3dac8435774f6a8ff369b3fdebf1d11d3d6a438"
+      },
+      "unpaired": {
+        "bytes": 115383,
+        "depth": 286,
+        "sha256": "9909a9052eba18f3c41da7d9c56d51ba58aaf9276896e72f8dd7ee2e414705f7"
+      }
+    },
+    "8z2m-assembly1#0": {
+      "paired": {
+        "bytes": 300,
+        "depth": 1,
+        "sha256": "f4fd900ca89723d3c533ab5434f45003a3015586ec3799b8f95041b94c4fff4b"
+      },
+      "unpaired": {
+        "bytes": 119538,
+        "depth": 332,
+        "sha256": "ef389aa43ed7909850548bd732fc3e2dc69dc77d640e59b8daaaac335102d643"
+      }
+    },
+    "8z4f-assembly1#0": {
+      "paired": {
+        "bytes": 311,
+        "depth": 1,
+        "sha256": "2af5b4030a8a98928e6d584a682d0f0f547d004406fe0f7789d7b1d0f6ec39af"
+      },
+      "unpaired": {
+        "bytes": 35008,
+        "depth": 94,
+        "sha256": "76dc1be054024d6a45726ca69e9108e0aad335c37f0258650b6c2213ac075c4e"
+      }
+    },
+    "8zlz-assembly1#0": {
+      "paired": {
+        "bytes": 138,
+        "depth": 1,
+        "sha256": "62de619bb2753d5ca7e55dafb91aba92e1252ceeae83b54ad6d86a4033046b07"
+      },
+      "unpaired": {
+        "bytes": 60591,
+        "depth": 312,
+        "sha256": "8e263eb1360239fc45c00931a7eff5c3ada9e4c941c46d36de11b486c3ba318d"
+      }
+    },
+    "8zlz-assembly1#1": {
+      "paired": {
+        "bytes": 23,
+        "depth": 1,
+        "sha256": "79827cccf250894973895110b553aa70c002fdaddd4e7a064ea281129f625a12"
+      },
+      "unpaired": {
+        "bytes": 44,
+        "depth": 2,
+        "sha256": "b174933325a0ceee92b1329ecff9c2900ccb814c62dfb9d0c64d5cc810855f1e"
+      }
+    },
+    "8zmm-assembly1#0": {
+      "paired": {
+        "bytes": 35,
+        "depth": 1,
+        "sha256": "7ecef5dee4b07ef8c4130c4a9b1345980b61456cc45fc4f4e846b7549cb56910"
+      },
+      "unpaired": {
+        "bytes": 68,
+        "depth": 2,
+        "sha256": "e8af717f195a30dc50782d1bf4f2e69793c854a912e2839d2a278c05bd748d99"
+      }
+    },
+    "8zmw-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "08ce5aa92ef5fe9cfb45be6120e45f180c343175943231ee53d53d3b66886eb1"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "9708a46d36320049b37720b12e0ecaf23ed82a88562f05ef5f7374c6d473b9da"
+      }
+    },
+    "9ard-assembly1#0": {
+      "paired": {
+        "bytes": 140,
+        "depth": 1,
+        "sha256": "97b4377ff21cb3457b30db7631d398468ac89efc7b7ecb5f6eed51e41050ffed"
+      },
+      "unpaired": {
+        "bytes": 21730,
+        "depth": 108,
+        "sha256": "12203b63c884affaae5c0e3ac71c2aa9633ca16f1ec121d6ff4a77b37f65b0a2"
+      }
+    },
+    "9asx-assembly1#0": {
+      "paired": {
+        "bytes": 1962329,
+        "depth": 6431,
+        "sha256": "c39e87d8cc02e993a8e050b57086898323aa42698ce42faa77f4f5b76ae630ed"
+      },
+      "unpaired": {
+        "bytes": 4211496,
+        "depth": 13919,
+        "sha256": "d24a34c73291b98b7e0415751cd7bc248d1ba7118f115088e495517ef415e83b"
+      }
+    },
+    "9asx-assembly1#1": {
+      "paired": {
+        "bytes": 1957784,
+        "depth": 6431,
+        "sha256": "711a6a9be4f4b8b57d4f34309c6434d79a34b342e8a5d856d9e7a049a88d3cb9"
+      },
+      "unpaired": {
+        "bytes": 3640498,
+        "depth": 12084,
+        "sha256": "cc5072bf350635c654c157a3cd0c0c559666543ed2f8f309267f3d423296c9a3"
+      }
+    },
+    "9asx-assembly1#2": {
+      "paired": {
+        "bytes": 900428,
+        "depth": 6431,
+        "sha256": "2369ac103c522dd6160e9ceea6f9ea2c65586b02b33593e42494d6659b7ffffe"
+      },
+      "unpaired": {
+        "bytes": 63716,
+        "depth": 388,
+        "sha256": "7f2a65719dc4d2b6a3583e1ccd0a2b196144db4bdfe0170b8336f766921ab171"
+      }
+    },
+    "9biy-assembly1#0": {
+      "paired": {
+        "bytes": 205645,
+        "depth": 601,
+        "sha256": "440d33970394d71313121827800752ba0bb931a378efe858b9c28ef821178c81"
+      },
+      "unpaired": {
+        "bytes": 173387,
+        "depth": 509,
+        "sha256": "a8c8f2c76169b8f1503d17e46a6595c1a7c12de0487bb868b1af097f0e5a392c"
+      }
+    },
+    "9biy-assembly1#1": {
+      "paired": {
+        "bytes": 90386,
+        "depth": 601,
+        "sha256": "6c9f4bfe843d01f8a612366540013c5153113f1389bed6e8ca8e85ce6d25b18f"
+      },
+      "unpaired": {
+        "bytes": 163780,
+        "depth": 1093,
+        "sha256": "64363d43a0c70b1fdd613dd0c30c9e462c3cae9fb42ab6d8c617a0c82365ccaf"
+      }
+    },
+    "9bk6-assembly1#0": {
+      "paired": {
+        "bytes": 112,
+        "depth": 1,
+        "sha256": "273122aa60bd433ee8834b1c9ee63f9143890c5d3788f185297948000f1c8d73"
+      },
+      "unpaired": {
+        "bytes": 222,
+        "depth": 2,
+        "sha256": "57a2159a4d5464f168cff03d7a3745df4a0f1b8c04fa8512b82c2e8ce098f1d3"
+      }
+    },
+    "9bk6-assembly1#1": {
+      "paired": {
+        "bytes": 68,
+        "depth": 1,
+        "sha256": "91045231f093d1c8482859df0e2624015c291762984b4d1e6a976eba086c9c40"
+      },
+      "unpaired": {
+        "bytes": 88072,
+        "depth": 744,
+        "sha256": "3714a53c00d09fdc25fa12995eb28007346b725aa941e3356fc1925e277c9a09"
+      }
+    },
+    "9bka-assembly1#0": {
+      "paired": {
+        "bytes": 152,
+        "depth": 1,
+        "sha256": "201b83e2c5ea916f027eb9c54192de08fc74d1222d0260bec3a7cd963d9babe2"
+      },
+      "unpaired": {
+        "bytes": 1810057,
+        "depth": 8674,
+        "sha256": "f1ad917b1438a7c04332c737dec11da09e2417156d65f071069a8eb85da6a02c"
+      }
+    },
+    "9bt4-assembly1#0": {
+      "paired": {
+        "bytes": 10774022,
+        "depth": 22105,
+        "sha256": "c805d86f6d267f453395bed8cbd6251340cc59a19297a47b52abaf20e383d45b"
+      },
+      "unpaired": {
+        "bytes": 6031395,
+        "depth": 12695,
+        "sha256": "796821cdc0dc5445671c09d2cc69fc7326854b4351496eaf2264035c18e7e913"
+      }
+    },
+    "9bt4-assembly1#1": {
+      "paired": {
+        "bytes": 8660526,
+        "depth": 22105,
+        "sha256": "e423ccd2daf702428cfd899b2d4bdfe9aded6ac84ea3a5e475d83905f5b747c7"
+      },
+      "unpaired": {
+        "bytes": 3862631,
+        "depth": 10341,
+        "sha256": "dc58e3d38706d3dfcfd20aaa663f103f15904c25b2692ad425bf420d605c91e6"
+      }
+    },
+    "9bt4-assembly1#2": {
+      "paired": {
+        "bytes": 2875900,
+        "depth": 22105,
+        "sha256": "0dbe4cec06d5aa7cd6e7ef847fdd9f11a88d686b93b2e8046cf3ee747bdb8f49"
+      },
+      "unpaired": {
+        "bytes": 1854114,
+        "depth": 12472,
+        "sha256": "1818ea6777751537d3445686487937f2549272786b20c42b49fc44fc09a8a79a"
+      }
+    },
+    "9bt4-assembly1#3": {
+      "paired": {
+        "bytes": 5736515,
+        "depth": 22105,
+        "sha256": "78fc82a8e936869288ae9ea6b858bff524476b81908ee6b479ac83f12018d7c2"
+      },
+      "unpaired": {
+        "bytes": 2923420,
+        "depth": 11518,
+        "sha256": "60ddb824951d04941d7bca813507f2dbe14a0678e5642c580320e89a6674d536"
+      }
+    },
+    "9c5s-assembly1#0": {
+      "paired": {
+        "bytes": 24,
+        "depth": 1,
+        "sha256": "54d948ac8d2776ef736a332dd6aca68402e1af1b39be98c49a26e742617cdd3d"
+      },
+      "unpaired": {
+        "bytes": 46,
+        "depth": 2,
+        "sha256": "1eae09d6722f744cf30ba1f39c444707bc8a7ca694180a367e8a306163e6630e"
+      }
+    },
+    "9c68-assembly1#0": {
+      "paired": {
+        "bytes": 193,
+        "depth": 1,
+        "sha256": "dc8676ebad78abbcbe60a9a73a25de205dba08422790c26c560c2f5bb8293db1"
+      },
+      "unpaired": {
+        "bytes": 92138,
+        "depth": 351,
+        "sha256": "afe6ff0d4c4281df30d5cb673ea944dbb29f0fd79b904aca86e9425d58483c2f"
+      }
+    },
+    "9c90-assembly1#0": {
+      "paired": {
+        "bytes": 69,
+        "depth": 1,
+        "sha256": "a31f0c86e9967407f98345cbbb37c5758b2fb83cb50d9b14976ea975a49e2861"
+      },
+      "unpaired": {
+        "bytes": 38102,
+        "depth": 316,
+        "sha256": "3b610498237d14f8cf39b15d9b729fbf80b8cdd6dcf6d338825aa8084c475723"
+      }
+    },
+    "9cys-assembly1#0": {
+      "paired": {
+        "bytes": 525155,
+        "depth": 1731,
+        "sha256": "b2c4626365b71cb42228324a3fa78244bc486d02f802fc08bec9f7621edfe901"
+      },
+      "unpaired": {
+        "bytes": 628221,
+        "depth": 2112,
+        "sha256": "0e23d49e7f44b90065fb0c7a6c163db4005acc069764a520a4ecedfa2c2bbe3d"
+      }
+    },
+    "9cys-assembly1#1": {
+      "paired": {
+        "bytes": 679911,
+        "depth": 1731,
+        "sha256": "8d076afdbc132d87a05bd9ba8811debd66a29bde81e4b8e2b287fa78ce72b764"
+      },
+      "unpaired": {
+        "bytes": 914996,
+        "depth": 2362,
+        "sha256": "a3fe59513a0d17416280b93267f0e694ae9924139e9a5a18608367ebbac49234"
+      }
+    },
+    "9eqo-assembly1#0": {
+      "paired": {
+        "bytes": 73,
+        "depth": 1,
+        "sha256": "d5c4c7429a1c5813617a97e007c82cf8c9961379bb7fbdc7df4df540bb016938"
+      },
+      "unpaired": {
+        "bytes": 8961,
+        "depth": 73,
+        "sha256": "42f4455b23c7032b4a32500a79e5cdbc8cf5c92cda65ef5235cdacefe152ce9f"
+      }
+    },
+    "9f2c-assembly1#0": {
+      "paired": {
+        "bytes": 67,
+        "depth": 1,
+        "sha256": "f3219a8ea99ae550517d66a8464704175f9fac2e08dc287e787b784edd786746"
+      },
+      "unpaired": {
+        "bytes": 356429,
+        "depth": 3027,
+        "sha256": "7890272bc2979d25432f9ba15b1d880931fdec4daf4e9fb922579af07c55fa30"
+      }
+    },
+    "9fvt-assembly1#0": {
+      "paired": {
+        "bytes": 527,
+        "depth": 1,
+        "sha256": "7b71c54dcfa6c8192e1c3bc6bc13ace686d78f72bfdfbd03f3e2c0bfb0ad643a"
+      },
+      "unpaired": {
+        "bytes": 5814974,
+        "depth": 9853,
+        "sha256": "0c06d0866e73a8fca32a0024f6b1c3a863afba68c7c074e275cab591eee73842"
+      }
+    },
+    "9gsq-assembly1#0": {
+      "paired": {
+        "bytes": 209,
+        "depth": 1,
+        "sha256": "43e3239879c7fa148401ac8b192c341e1f1509e95545f5c4e4c5cf051499e1b1"
+      },
+      "unpaired": {
+        "bytes": 15958,
+        "depth": 61,
+        "sha256": "e80752e673e8af427ab84f1767669616e4d99000499e16205b99a1b2094a6150"
+      }
+    },
+    "9j1r-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "fe22b9c200a558f2d0b165ffc6ff7c4d602ff39193f7ec6e92569e4a05b4ee74"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "710c687d38acdd874c80bbaa80b515f8fc72a822b3d3ea0e08e8fbd30a8d9b64"
+      }
+    },
+    "9j23-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "e119f3550b725d23436266db2139f6e2cd65c42ba5eb3eeae262499a7ef2a910"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "e794f068209ffbe07eb566e7996b47c5af21dc338ef2f4dc0017e0f00843b695"
+      }
+    },
+    "9j26-assembly1#0": {
+      "paired": {
+        "bytes": 38,
+        "depth": 1,
+        "sha256": "e373c7990c63fdc92bfd8412f823286853c419bd06c50979ef69c3fd74d9c223"
+      },
+      "unpaired": {
+        "bytes": 74,
+        "depth": 2,
+        "sha256": "8a4574e05d5a64f39792f0fa1e8eaf0bbbdd85991044c2813556ca82579d04f6"
+      }
+    },
+    "9jf5-assembly1#0": {
+      "paired": {
+        "bytes": 5277,
+        "depth": 10,
+        "sha256": "dca029b266f64d9eb9ec2b1d18752759704a3bd2bb55ff0d8378575e831a2577"
+      },
+      "unpaired": {
+        "bytes": 1492858,
+        "depth": 2793,
+        "sha256": "b61d80f1a847b65bd4c9b11e01c95e90883458a8c30fe6c8b4c9a8a03a8047e8"
+      }
+    },
+    "9jf5-assembly1#1": {
+      "paired": {
+        "bytes": 995,
+        "depth": 10,
+        "sha256": "c5eaeec9ae1f72b12f9cdf4af9ffa7fd0335d8525125a0167835bbf111cbceba"
+      },
+      "unpaired": {
+        "bytes": 25204,
+        "depth": 238,
+        "sha256": "9ac230a1e31ea036d0290be5d34e8381aa6571f1725ad12a9981558314b2d366"
+      }
+    },
+    "9jst-assembly1#0": {
+      "paired": {
+        "bytes": 43,
+        "depth": 1,
+        "sha256": "871c8c63e2b53111dddf8527f41b3692388e33e926c9a4ffa4267686d0a2e931"
+      },
+      "unpaired": {
+        "bytes": 106261,
+        "depth": 1091,
+        "sha256": "e4c1b46d2e7608e5fb239693dd15ea07a020473d4ccb2742b4c1ed454c265079"
+      }
+    }
+  },
+  "depth_max": 21549,
+  "depth_median": 1209,
+  "depth_min": 2,
+  "n_chains": 323,
+  "n_targets": 239,
+  "source": "https://api.colabfold.com (opendde msa, mode env / pairgreedy)"
+}
