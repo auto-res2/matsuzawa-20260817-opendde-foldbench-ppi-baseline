@@ -109,10 +109,14 @@ python -m src.main --stage predict  ...
 python -m src.main --stage evaluate ...
 ```
 
-Paths for the RIKYU deployment are in `config/run/baseline-pretrained.yaml`.
-Use `--limit` to run the pilot subset before committing to all 239 assemblies:
-the full sweep is roughly 150× the per-target cost of our earlier low-budget
-run, so cost is measured before it is spent.
+Paths for the RIKYU deployment live in `docker/Dockerfile.predict` as `FB_*`
+environment variables, and nowhere else. There is deliberately no config file:
+the execution platform runs a committed image's `CMD` verbatim and ignores
+per-run flags, so a YAML would not be read — and an unread config drifts. One
+did, here: it claimed `use_template: true` for a run that had templates off.
+Only what executes is allowed to describe the run.
+
+`FB_LIMIT` runs a pilot subset before committing to all 239 assemblies.
 
 ## Recorded alongside the headline number
 
