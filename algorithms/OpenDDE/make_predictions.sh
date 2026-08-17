@@ -41,7 +41,24 @@ else
     $PYTHON_PATH ./preprocess.py --af3_input_json="$af3_input_json" --input_dir="$input_dir"
 fi
 
-export CUDA_VISIBLE_DEVICES=$gpu_id
+# Slurm hands each task its own GPU and already exports CUDA_VISIBLE_DEVICES
+# for it, so the device is index 0 from inside every task. Only override that
+# when the launcher has not set it -- clobbering Slurm's value would point a
+# task at a card it was not given.
+if [ -z "${CUDA_VISIBLE_DEVICES:-}" ]; then
+    export CUDA_VISIBLE_DEVICES=$gpu_id
+fi
+
+# OpenDDE selects its device by LOCAL_RANK (opendde/utils/environment.py,
+# select_torch_device). Under srun that variable is the task's index on its
+# node -- 0..3 with four tasks per node -- so tasks 1-3 asked for CUDA device
+# 1, 2 and 3 and died with "device index N is unavailable; detected 1 CUDA
+# device(s)". Each task can only ever see one card, and it is index 0.
+#
+# This is what actually killed the 16- and 8-GPU sweeps. The single-GPU runs
+# survived because their LOCAL_RANK happened to be 0, which made it look like a
+# concurrency limit and sent us halving the GPU count for nothing.
+export LOCAL_RANK=0
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 N_sample=5

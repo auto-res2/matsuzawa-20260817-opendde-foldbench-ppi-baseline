@@ -198,6 +198,23 @@ def stage_predict(args: argparse.Namespace) -> int:
         eval_dir = eval_dir / f"shard{index}of{count}"
     eval_dir.mkdir(parents=True, exist_ok=True)
 
+    # Stamp who is writing here. Output directories carry no record of which run
+    # produced them, and that cost us a wrong conclusion: a single-GPU probe was
+    # still running when an 8-GPU sweep was launched, the probe recreated the
+    # directories and kept writing, and its structures were read as proof that
+    # the sweep worked. It had already failed. A marker makes the question
+    # answerable from disk.
+    import os as _os
+    (eval_dir / "run_marker.json").write_text(json.dumps({
+        "slurm_job_id": _os.environ.get("SLURM_JOB_ID"),
+        "slurm_step_id": _os.environ.get("SLURM_STEP_ID"),
+        "hostname": _os.environ.get("SLURMD_NODENAME") or _os.uname().nodename,
+        "rank": index,
+        "world_size": count,
+        "local_rank_env": _os.environ.get("LOCAL_RANK"),
+        "cuda_visible_devices": _os.environ.get("CUDA_VISIBLE_DEVICES"),
+    }, indent=2))
+
     # Absolute, because cwd is the plugin directory itself: make_predictions.sh
     # invokes ./preprocess.py and ./postprocess.py relative to where it runs, so
     # the cwd has to stay there while the script path must not be resolved
