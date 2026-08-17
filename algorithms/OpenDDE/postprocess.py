@@ -4,16 +4,27 @@ postprocess for algorithm.
 2. Convert predictions from the algorithm output format to a format supported by OpenStructure and DockQv2. If the sample test succeeds, you can obtain the scores for each target in ./outputs/evaluation/{algorithm}.
 You can use PostProcess.postprocess() to perform postprocessing.
 
---------------------------------------------------------------------------
-Provenance: this file is FoldBench's own Protenix plugin
-(`FoldBench/algorithms/Protenix/postprocess.py`), vendored unchanged at
-vendor/foldbench-protenix-plugin/postprocess.py. The only edit is the two
-output-path templates below: OpenDDE's DataDumper names its artefacts
-`{pdb_id}_sample_{rank}.cif` (runner/dumper.py:184) where Protenix writes
-`{pdb_id}_seed_{seed}_sample_{sample}.cif`. Everything else -- the entity-table
-fixup OpenStructure and DockQv2 require, and the prediction_reference.csv
-contract -- is upstream code and must stay that way.
---------------------------------------------------------------------------
+==========================================================================
+PROVENANCE: upstream code, TWO LINES CHANGED.
+
+  Source: FoldBench, algorithms/Protenix/postprocess.py
+          https://github.com/BEAM-Labs/FoldBench
+  Unmodified copy for diffing: vendor/foldbench-protenix-plugin/postprocess.py
+
+The only edit is the two output-path templates below. OpenDDE's DataDumper
+names its artefacts `{pdb_id}_sample_{rank}.cif`
+(https://github.com/aurekaresearch/OpenDDE/blob/main/runner/dumper.py, the
+`_get_dump_dir` / dump_predictions pair) where Protenix writes
+`{pdb_id}_seed_{seed}_sample_{sample}.cif`.
+
+Everything else is upstream and must stay that way: the entity-table fixup
+OpenStructure and DockQv2 require, and the prediction_reference.csv contract
+(pdb_id, seed, sample, ranking_score, prediction_path) that FoldBench's
+evaluate.py reads.
+
+  `git diff --no-index vendor/foldbench-protenix-plugin/postprocess.py \
+                       algorithms/OpenDDE/postprocess.py`
+==========================================================================
 """
 
 import argparse

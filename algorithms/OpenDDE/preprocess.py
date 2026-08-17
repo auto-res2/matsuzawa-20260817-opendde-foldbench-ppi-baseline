@@ -1,5 +1,21 @@
+# =============================================================================
+# PROVENANCE: NOT OUR CODE. No functional change -- this header, and one
+# stripped trailing space in the docstring below, are the entire diff.
+#
+#   Source: FoldBench, algorithms/Protenix/preprocess.py
+#           https://github.com/BEAM-Labs/FoldBench
+#   Copy kept for diffing at: vendor/foldbench-protenix-plugin/preprocess.py
+#   Check it:  diff vendor/foldbench-protenix-plugin/preprocess.py \
+#                   algorithms/OpenDDE/preprocess.py
+#
+# It works unchanged for OpenDDE because OpenDDE consumes the same
+# proteinChain/rnaSequence/dnaSequence/ligand schema Protenix does
+# (https://github.com/aurekaresearch/OpenDDE/blob/main/docs/infer_json_format.md).
+# Do not "improve" this file -- its value is that it is byte-identical to the
+# converter the benchmark's own reference model uses.
+# =============================================================================
 """
-preprocess for algorithm. 
+preprocess for algorithm.
 For example, you generally need to convert AF3 input JSON files to the algorithm expected format.
 You can use PreProcess.preprocess() to perform preprocessing.
 """

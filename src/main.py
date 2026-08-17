@@ -1,16 +1,28 @@
 """Reproduce OpenDDE's published FoldBench protein-protein number.
 
-This is an orchestrator, not an implementation. Everything that decides a score
-belongs to somebody else and is called, not reimplemented:
+PROVENANCE: this file is OURS. It is an orchestrator, not an implementation --
+everything that decides a score belongs to somebody else and is called here
+rather than reimplemented.
 
-  * sampling            -> `opendde pred` (OpenDDE's own CLI, its own defaults)
-  * MSA search          -> `runner/msa_search.py` (OpenDDE's own client)
-  * input conversion    -> FoldBench's Protenix plugin `preprocess.py`, verbatim
-  * output conversion   -> the same plugin's `postprocess.py`, two path templates changed
-  * scoring             -> FoldBench's `evaluate.py` (OpenStructure) and
-                           `task_score_summary.py`, both unmodified
+Upstream projects:
+  OpenDDE    https://github.com/aurekaresearch/OpenDDE   (arXiv:2607.03787)
+  FoldBench  https://github.com/BEAM-Labs/FoldBench      (Nat Commun,
+             doi:10.1038/s41467-025-67127-3)
 
-What is left here is target selection and stage sequencing.
+What each step defers to:
+  * sampling          -> `opendde pred`, OpenDDE's own CLI at its own defaults
+  * MSA search        -> OpenDDE `runner/msa_search.py`, via src/msa_prefetch.py
+  * input conversion  -> FoldBench's Protenix plugin preprocess.py, VERBATIM
+                         (algorithms/OpenDDE/preprocess.py)
+  * output conversion -> the same plugin's postprocess.py, two path templates
+                         changed (algorithms/OpenDDE/postprocess.py)
+  * scoring           -> FoldBench's own evaluate.py (OpenStructure/DockQv2)
+                         and task_score_summary.py, both unmodified and invoked
+                         as subprocesses in stage_evaluate
+
+OURS, and therefore the part to distrust first: target selection, the AF3-JSON
+name rewrite, stage sequencing, sharding, and the two drop-detectors
+(report_dropped_targets, merge_shard_references).
 
 Stages exist because the work has three different homes. `prepare` needs the
 network (the ColabFold MMseqs2 service) and so runs on the login node;

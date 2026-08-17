@@ -1,11 +1,20 @@
 #!/bin/bash
-# FoldBench plugin entry point for OpenDDE.
+# =============================================================================
+# PROVENANCE: OURS, written to somebody else's contract.
 #
-# Same five-argument contract and same shape as FoldBench's own Protenix plugin
-# (vendor/foldbench-protenix-plugin/make_predictions.sh); only the inference
-# command differs. The sampling budget below is not ours to choose -- it is the
-# budget FoldBench runs its reference model at, and it coincides with OpenDDE's
-# own documented defaults (docs/supported_models.md: N_cycle 10, N_step 200).
+# The five-argument contract and the overall shape are FoldBench's, copied from
+# its own Protenix plugin; only the inference command is different.
+#
+#   Contract spec : https://github.com/BEAM-Labs/FoldBench
+#                   (algorithms/README.md -- the four-file plugin interface)
+#   Shape copied  : vendor/foldbench-protenix-plugin/make_predictions.sh
+#   Inference CLI : https://github.com/aurekaresearch/OpenDDE
+#                   docs/inference_instructions.md
+#
+# Nothing about the sampling budget below is our choice. It is what FoldBench
+# runs its reference model at, and it coincides with OpenDDE's own documented
+# recommendation (docs/supported_models.md: N_cycle 10, N_step 200).
+# =============================================================================
 set -euo pipefail
 
 af3_input_json=$1

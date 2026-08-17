@@ -1,9 +1,16 @@
 """Fill an OpenDDE input JSON with MSAs, ahead of the GPU stage, and verify them.
 
-`runner.msa_search` is a library, not a command, so a shim is needed either way.
-The verification around it is not optional decoration -- it is the whole point.
+PROVENANCE: this file is OURS. The search itself is not -- every MSA is fetched
+by OpenDDE's own per-task routine, `runner.msa_search.update_seq_msa`:
 
-OpenDDE's own documentation says so plainly (docs/msa_template_pipeline.md):
+  https://github.com/aurekaresearch/OpenDDE/blob/main/runner/msa_search.py
+
+which is a library function and not a command, so a shim is needed either way.
+What we add around it is pacing, depth verification and re-fetching. That is not
+optional decoration -- it is the whole point of the file.
+
+OpenDDE's own documentation says why, plainly
+(https://github.com/aurekaresearch/OpenDDE/blob/main/docs/msa_template_pipeline.md):
 
     `opendde msa` uses the public ColabFold MMseqs2 API ... The service is
     shared and rate-limited; for batch runs, provide precomputed A3M files.

@@ -2,6 +2,14 @@
 # sampling budget. No training: this run defines the baseline everything later
 # is compared against.
 #
+# PROVENANCE: ours (paths and run identity). The values under "protocol" are
+# not -- they are FoldBench's reference budget and OpenDDE's documented
+# defaults, recorded here only so one file describes a run:
+#   OpenDDE   https://github.com/aurekaresearch/OpenDDE
+#             docs/supported_models.md -- N_cycle 10, N_step 200
+#   FoldBench https://github.com/BEAM-Labs/FoldBench
+#             algorithms/Protenix/make_predictions.sh -- 5 samples, 5 seeds
+#
 # Every path below already exists on RIKYU. Nothing is downloaded.
 run_id: baseline-pretrained
 

@@ -1,5 +1,10 @@
 # GPU stage: sample FoldBench protein-protein targets with OpenDDE.
 #
+# PROVENANCE: ours. Nothing here is copied from upstream; it exists only to hand
+# the cluster an environment. The software it points at:
+#   OpenDDE   https://github.com/aurekaresearch/OpenDDE
+#   FoldBench https://github.com/BEAM-Labs/FoldBench
+#
 # The container carries the orchestrator, not the model. OpenDDE itself, its
 # virtualenv, its checkpoint and its common assets all live on RIKYU's /data1
 # and are reached through the bind mount (the cluster binds /data1/rkp00041).

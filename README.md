@@ -12,20 +12,32 @@ the ruler they will be measured against, so it has to be somebody else's ruler.
 
 ## What is reproduced, and from where
 
-| Piece | Source | Modified? |
-|---|---|---|
-| Model weights | `opendde.pt`, sha256 `7b8266…07cc` | no — hash matches the published manifest |
-| Sampling | `opendde pred` (OpenDDE CLI) | no |
-| MSA search | `runner/msa_search.py` (OpenDDE) | no |
-| Benchmark targets, ground truths, AF3 inputs | FoldBench | no |
-| AF3-JSON → model input | FoldBench `algorithms/Protenix/preprocess.py` | **no — vendored verbatim** |
-| Model output → mmCIF + `prediction_reference.csv` | same plugin's `postprocess.py` | two output-path templates only |
-| Scoring (OpenStructure / DockQ) | FoldBench `evaluate.py` | no |
-| Score tables | FoldBench `task_score_summary.py` | no |
-| Target selection + stage sequencing | `src/main.py` | ours |
+Upstream projects, cited once:
 
-Upstream copies live in `vendor/foldbench-protenix-plugin/`, so any drift from
-them is a two-file diff away from being visible.
+- **OpenDDE** — <https://github.com/aurekaresearch/OpenDDE> ·
+  [arXiv:2607.03787](https://arxiv.org/abs/2607.03787) ·
+  [weights](https://huggingface.co/aurekaresearch/OpenDDE)
+- **FoldBench** — <https://github.com/BEAM-Labs/FoldBench> ·
+  [doi:10.1038/s41467-025-67127-3](https://doi.org/10.1038/s41467-025-67127-3)
+
+| Piece | Source | Ours? |
+|---|---|---|
+| Model weights | `opendde.pt`, sha256 `7b8266…07cc` | no — hash matches OpenDDE's published manifest |
+| Sampling | `opendde pred` — [OpenDDE CLI](https://github.com/aurekaresearch/OpenDDE/blob/main/docs/inference_instructions.md) | no |
+| MSA search | [`runner/msa_search.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/runner/msa_search.py) | no — but see MSA note below |
+| Benchmark targets, ground truths, AF3 inputs | [FoldBench](https://github.com/BEAM-Labs/FoldBench) | no |
+| AF3-JSON → model input | FoldBench `algorithms/Protenix/preprocess.py` | no — **vendored verbatim** |
+| Model output → mmCIF + `prediction_reference.csv` | the same plugin's `postprocess.py` | two output-path templates only |
+| Scoring (OpenStructure / DockQv2) | FoldBench `evaluate.py` | no |
+| Score tables | FoldBench `task_score_summary.py` | no |
+| Plugin entry point | `algorithms/OpenDDE/make_predictions.sh` | **ours**, to FoldBench's five-argument contract |
+| Target selection, stage sequencing, sharding, drop-detectors | `src/main.py` | **ours** |
+| MSA pacing / depth verification / re-fetch | `src/msa_prefetch.py` | **ours**, around OpenDDE's own search |
+| Environment | `docker/Dockerfile.predict` | **ours** |
+
+Every source file carries a `PROVENANCE:` header saying which of these it is.
+Pristine upstream copies live in `vendor/` (see `vendor/README.md`), so "we
+changed only X" is a `diff` away from being checked rather than believed.
 
 ## Protocol
 
@@ -43,10 +55,44 @@ OpenDDE's documented defaults (`docs/supported_models.md`).
 | Targets | 279 interfaces across 239 assemblies |
 | Metric | DockQ success rate (> 0.23); lDDT reported alongside |
 
-MSA and templates being on is the whole point. An earlier run of ours with them
-off scored 10.5% on the antibody–antigen task against a published 70.0%, and
-OpenDDE itself warns at runtime that turning MSA off "might degrade performance
-significantly".
+## The MSA protocol, in full
+
+The OpenDDE report does not say how it built MSAs for its FoldBench evaluation —
+its only mentions of MSA search concern *training* data. So this is our protocol,
+recorded because the number depends on it. It is OpenDDE's own client at its own
+settings ([`msa_service_client.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/opendde/data/msa/msa_service_client.py)):
+
+| | Unpaired (every chain) | Paired (multi-chain only) |
+|---|---|---|
+| Endpoint | `api.colabfold.com/ticket/msa` | `.../ticket/pair` |
+| `use_env` | `true` | `false` |
+| `use_filter` | `true` | — |
+| Pairing strategy | — | `greedy` |
+| Derived mode | `env` | `pairgreedy` |
+
+Two things are **not** ours to pin, and are reproducibility caveats:
+
+- **Which databases `env` maps to** is decided by the ColabFold server, not by
+  OpenDDE. We observed `uniref` and `bfd.mgnify30.metaeuk30.smag30` in the
+  returned artefacts; a server-side change would change our MSAs.
+- **Returned depth** is likewise server-side. It matters less than it looks:
+  the model reads at most `msa_depth = 1280` sequences
+  ([`opendde/config/data.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/opendde/config/data.py)),
+  so the real distinction is *an MSA* versus *no MSA*.
+
+**Why depth is verified.** OpenDDE's search catches every exception and falls
+back to a query-only MSA "so inference can still run". Batching all 239 targets
+at the shared public service — which its
+[docs](https://github.com/aurekaresearch/OpenDDE/blob/main/docs/msa_template_pipeline.md)
+explicitly warn against — made that fallback fire for 111 of them. Nothing
+downstream could tell: the JSON had a path, the file existed, and the run
+proceeded in effectively single-sequence mode. `src/msa_prefetch.py` therefore
+counts what came back and fails rather than passing an empty MSA on.
+
+**Templates are off**, which is OpenDDE's shipped default
+(`use_template: False`). They would also be impossible here: no chain carries a
+`templatesPath`, and template search needs HMMER plus a
+`pdb_seqres_2022_09_28.fasta` database that is not installed.
 
 ## Stages
 
