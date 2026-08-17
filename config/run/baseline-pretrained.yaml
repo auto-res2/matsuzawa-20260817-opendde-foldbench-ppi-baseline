@@ -1,0 +1,42 @@
+# OpenDDE pre-trained weights on FoldBench protein-protein, at FoldBench's own
+# sampling budget. No training: this run defines the baseline everything later
+# is compared against.
+#
+# Every path below already exists on RIKYU. Nothing is downloaded.
+run_id: baseline-pretrained
+
+# --- benchmark (read-only, shared) -----------------------------------------
+foldbench_dir: /data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench
+targets_dir: /data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets
+input_json_dir: /data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json
+ground_truth_dir: /data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520
+
+# --- model ------------------------------------------------------------------
+# OPENDDE_ROOT_DIR is how OpenDDE finds checkpoint/opendde.pt and common assets.
+opendde_root: /data1/rkp00041/rku00122/opendde-multinode/opendde_data
+opendde_src: /data1/rkp00041/rku00122/opendde-multinode/opendde-src
+python: /data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python
+
+# --- outputs ----------------------------------------------------------------
+# Products stay under rku00122/, never in the shared project directories.
+work_dir: /data1/rkp00041/rku00122/foldbench-ppi-baseline
+input_dir: /data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE
+prediction_dir: /data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE
+evaluation_dir: /data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
+msa_dir: /data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa
+
+# --- protocol ---------------------------------------------------------------
+# Not tunables. These mirror FoldBench's reference plugin and OpenDDE's
+# documented defaults; they live in algorithms/OpenDDE/make_predictions.sh and
+# are recorded here only so a run can be read back from one file.
+target_type: interface_protein_protein
+n_cycle: 10
+n_step: 200
+n_sample: 5
+seeds: "42,66,101,2024,8888"
+use_msa: true
+use_template: true
+
+# 0 runs all 239 assemblies. The pilot sets this small to measure cost first --
+# the full sweep is ~150x the per-target cost of our earlier low-budget run.
+limit: 0
