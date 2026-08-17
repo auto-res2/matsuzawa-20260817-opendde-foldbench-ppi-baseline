@@ -200,6 +200,32 @@ def stage_predict(args: argparse.Namespace) -> int:
         ],
         cwd=algorithm_dir,
     )
+    return report_dropped_targets(Path(args.prediction_dir), input_dir)
+
+
+def report_dropped_targets(prediction_dir: Path, input_dir: Path) -> int:
+    """Fail if OpenDDE quarantined any target, instead of scoring around it.
+
+    `opendde pred` moves a target it could not finish into <dump_dir>/ERR
+    (runner/inference.py:274) and carries on. Those targets then have no
+    prediction, FoldBench left-joins them away, and the success rate comes out
+    lower with nothing saying why. A reproduction that quietly drops targets is
+    not a reproduction, so this is an error and names the casualties.
+    """
+    err_dir = prediction_dir / "ERR"
+    dropped = sorted(p.name for p in err_dir.iterdir()) if err_dir.is_dir() else []
+    requested = len(json.loads((input_dir / "inputs.json").read_text()))
+    produced = len([p for p in prediction_dir.iterdir() if p.is_dir() and p.name != "ERR"])
+
+    logger.info("targets: %d requested, %d produced, %d quarantined",
+                requested, produced, len(dropped))
+    if dropped:
+        logger.error("OpenDDE quarantined %d target(s) in %s: %s",
+                     len(dropped), err_dir, dropped)
+        return 1
+    if produced < requested:
+        logger.error("%d target(s) produced no output directory at all", requested - produced)
+        return 1
     return 0
 
 
