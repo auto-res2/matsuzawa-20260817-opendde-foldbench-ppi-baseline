@@ -147,6 +147,18 @@ def stage_predict(args: argparse.Namespace) -> int:
     index, count = shard_of(args.shard, args.num_shards)
     input_dir = Path(args.input_dir)
 
+    if args.limit > 0:
+        # Pilot: a prefix of the prepared inputs, so cost is measured before the
+        # full sweep is committed to. Applied before sharding so a one-worker
+        # pilot sees exactly --limit assemblies.
+        full = json.loads((input_dir / "inputs.json").read_text())
+        subset = full[: args.limit]
+        input_dir = input_dir.parent / f"{input_dir.name}-limit{args.limit}"
+        input_dir.mkdir(parents=True, exist_ok=True)
+        (input_dir / "inputs.json").write_text(json.dumps(subset, indent=2))
+        (input_dir / "alphafold3_inputs.json").write_text(json.dumps(subset, indent=2))
+        logger.info("pilot: %d of %d assemblies", len(subset), len(full))
+
     if count > 1:
         # Round-robin rather than contiguous blocks: target cost tracks assembly
         # size, and the targets CSV is not shuffled, so contiguous slices would
@@ -248,23 +260,38 @@ STAGES = {
 }
 
 
+def env_default(name: str, fallback: str | None = None):
+    """Argparse default taken from the environment.
+
+    The GPU stage is launched by the container's own CMD, which the execution
+    platform runs verbatim, so per-run configuration cannot arrive as command
+    line flags there -- it arrives as environment variables set on the image or
+    the job. Every path therefore has an env fallback, and stays a flag for
+    running the same code by hand.
+    """
+    import os
+
+    value = os.environ.get(name, fallback)
+    return {"default": value, "required": value is None}
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--stage", choices=sorted(STAGES), required=True)
-    p.add_argument("--foldbench-dir", required=True)
-    p.add_argument("--targets-dir", required=True)
-    p.add_argument("--input-json-dir", required=True)
-    p.add_argument("--ground-truth-dir", required=True)
-    p.add_argument("--opendde-src", required=True)
-    p.add_argument("--algorithm-dir", default="algorithms/OpenDDE")
-    p.add_argument("--input-dir", default="outputs/input/OpenDDE")
-    p.add_argument("--prediction-dir", default="outputs/prediction/OpenDDE")
-    p.add_argument("--evaluation-dir", default="outputs/evaluation/OpenDDE")
-    p.add_argument("--msa-dir", default="outputs/msa")
+    p.add_argument("--stage", choices=sorted(STAGES), **env_default("FB_STAGE"))
+    p.add_argument("--foldbench-dir", **env_default("FB_FOLDBENCH_DIR"))
+    p.add_argument("--targets-dir", **env_default("FB_TARGETS_DIR"))
+    p.add_argument("--input-json-dir", **env_default("FB_INPUT_JSON_DIR"))
+    p.add_argument("--ground-truth-dir", **env_default("FB_GROUND_TRUTH_DIR"))
+    p.add_argument("--opendde-src", **env_default("FB_OPENDDE_SRC"))
+    p.add_argument("--algorithm-dir", **env_default("FB_ALGORITHM_DIR", "algorithms/OpenDDE"))
+    p.add_argument("--input-dir", **env_default("FB_INPUT_DIR", "outputs/input/OpenDDE"))
+    p.add_argument("--prediction-dir", **env_default("FB_PREDICTION_DIR", "outputs/prediction/OpenDDE"))
+    p.add_argument("--evaluation-dir", **env_default("FB_EVALUATION_DIR", "outputs/evaluation/OpenDDE"))
+    p.add_argument("--msa-dir", **env_default("FB_MSA_DIR", "outputs/msa"))
     p.add_argument("--target-type", default=TARGET_TYPE)
     # 0 means the whole task; the pilot uses a small positive number to measure
     # cost before committing to all 239 assemblies.
-    p.add_argument("--limit", type=int, default=0)
+    p.add_argument("--limit", type=int, default=int(__import__("os").environ.get("FB_LIMIT", "0")))
     p.add_argument("--gpu-id", default="0")
     # Default to the launcher's RANK/WORLD_SIZE; set explicitly to shard by hand.
     p.add_argument("--shard", type=int, default=None)

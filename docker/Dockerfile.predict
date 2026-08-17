@@ -2,9 +2,15 @@
 #
 # The container carries the orchestrator, not the model. OpenDDE itself, its
 # virtualenv, its checkpoint and its common assets all live on RIKYU's /data1
-# and are reached through the bind mount, exactly as the earlier multi-node run
-# did. Rebuilding a 2.6 GB checkpoint and a CUDA stack into an image would only
+# and are reached through the bind mount (the cluster binds /data1/rkp00041).
+# Rebuilding a 2.6 GB checkpoint and a CUDA stack into an image would only
 # create a second copy that can drift from the one whose sha256 we verified.
+#
+# NOTE ON CMD -- this is the trap that cost us a run. When the platform builds
+# from a committed Dockerfile it executes this CMD verbatim and ignores the
+# analysis entry_point, so `CMD ["bash"]` exits 0 having done nothing and is
+# reported as a successful run. The CMD below must invoke the work, and every
+# knob it needs must reach it through ENV rather than through flags.
 FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED=1 \
@@ -28,4 +34,23 @@ ENV OPENDDE_CLI=/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin
 ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ENV PYTHONPATH=/workspace
 
-CMD ["bash"]
+# Benchmark inputs, read-only and shared.
+ENV FB_STAGE=predict \
+    FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
+    FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
+    FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
+    FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
+    FB_OPENDDE_SRC=/data1/rkp00041/rku00122/opendde-multinode/opendde-src
+
+# Run products, under rku00122/ as required. Override FB_INPUT_DIR and friends
+# per run to point at the pilot subset instead of the full sweep.
+ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
+    FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE \
+    FB_MSA_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa
+
+# Both the orchestrator and the model run on OpenDDE's own interpreter, which
+# already carries pandas, biotite and torch. Installing a second dependency set
+# into the image would only give the two stages different library versions.
+# Sharding comes from RANK/WORLD_SIZE, which the launcher sets.
+CMD ["/data1/rkp00041/rku00122/opendde-multinode/opendde-src/.venv/bin/python", "-u", "-m", "src.main"]
