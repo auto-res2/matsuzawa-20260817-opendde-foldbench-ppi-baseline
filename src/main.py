@@ -298,21 +298,24 @@ def stage_predict(args: argparse.Namespace) -> int:
     index, count = shard_of(args.shard, args.num_shards)
     input_dir = Path(args.input_dir)
 
+    # Read once, and narrow in memory from here on. Every worker derives the same
+    # intermediate lists at the same moment, so anything written on the way to a
+    # worker's own share is written by all of them to one path -- and read back
+    # mid-write. Only the final per-worker list is materialised.
+    full = json.loads((input_dir / "inputs.json").read_text())
+
     if args.limit > 0:
         # Pilot: a prefix of the prepared inputs, so cost is measured before the
         # full sweep is committed to. Applied before sharding so a one-worker
         # pilot sees exactly --limit assemblies.
-        full = json.loads((input_dir / "inputs.json").read_text())
-        subset = full[: args.limit]
-        input_dir = write_input_dir(scratch_dir(args) / f"limit{args.limit}", subset)
-        logger.info("pilot: %d of %d assemblies", len(subset), len(full))
+        logger.info("pilot: %d of %d assemblies", min(args.limit, len(full)), len(full))
+        full = full[: args.limit]
 
     # Hold back the targets that cannot fit one card, before sharding rather than
     # after. Sharding round-robins to spread cost evenly; leaving targets in that
     # are certain to die of OOM would both waste the slot and skew that balance.
     # They are run separately by the predict-oversized stage, which gives each
     # one several GPUs.
-    full = json.loads((input_dir / "inputs.json").read_text())
     fits, oversized = split_oversized(full, args.foldcp_threshold, args.foldcp_targets)
     if oversized:
         logger.info(
@@ -333,18 +336,22 @@ def stage_predict(args: argparse.Namespace) -> int:
     if not todo:
         logger.info("sweep already complete")
         return 0
-    input_dir = write_input_dir(scratch_dir(args) / "todo", todo)
 
+    # The narrowing from here to this worker's share happens in memory. Writing
+    # the intermediate list out and reading it back cost a run: all sixteen
+    # workers derive the same list at the same moment, so all sixteen wrote it to
+    # one path and then read whatever state it was in -- half of them got a
+    # half-written file and died on JSONDecodeError inside 40 seconds. Only the
+    # final per-worker list reaches disk, at a path no other worker writes.
     if count > 1:
         # Round-robin rather than contiguous blocks: target cost tracks assembly
         # size, and the targets CSV is not shuffled, so contiguous slices would
         # hand one worker a run of the largest complexes.
-        full = json.loads((input_dir / "inputs.json").read_text())
-        mine = full[index::count]
-        input_dir = write_input_dir(
-            scratch_dir(args) / f"shard{index}of{count}", mine
-        )
-        logger.info("shard %d/%d: %d of %d assemblies", index, count, len(mine), len(full))
+        mine = todo[index::count]
+        logger.info("shard %d/%d: %d of %d assemblies", index, count, len(mine), len(todo))
+    else:
+        mine = todo
+    input_dir = write_input_dir(scratch_dir(args) / f"shard{index}of{count}", mine)
 
     # Each shard writes its own prediction_reference.csv; the evaluate stage
     # concatenates them. One shared path would have the workers overwrite each
