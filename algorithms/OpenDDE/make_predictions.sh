@@ -94,7 +94,31 @@ seeds="42,66,101,2024,8888"
 # assemblies of 1,872-2,304 residues each drove a single process past the 184 GB
 # on one GB200 and were quarantined. Splitting the context is what lets them run
 # at the same sampling budget as everything else -- lowering N_sample would have
-# made their numbers incomparable with the other 233.
+# made their numbers incomparable with the other 233. The OpenDDE report's
+# Table 3 measures the same trade: 2,000 tokens OOMs on one card and fits in
+# ~79 GiB under CP4, and Appendix C states Fold-CP "does not change model
+# weights, architecture, or inference semantics", so mixing it in for six
+# targets does not change the protocol.
+#
+# WARNING: setting FB_FOLDCP_MODE=distributed here CANNOT WORK YET. Two things
+# below are wrong for it, and neither is a one-line fix:
+#
+#   1. Fold-CP wants torchrun with size_dp * size_cp processes
+#      (opendde/distributed/foldcp/config.py, launch_hint). This script starts
+#      one process and pins RANK=0 WORLD_SIZE=1 just above, so
+#      runner/inference.py raises "Distributed Fold-CP must be launched with
+#      torchrun using N processes" before any work happens. It fails loudly
+#      rather than silently degrading, which is the one mercy here.
+#   2. The input JSON must hold exactly ONE target per invocation. The sampler
+#      shards by world_size, not by size_dp
+#      (opendde/data/inference/infer_dataloader.py), so with one entry its
+#      padding hands all ranks the same target -- which is the point -- but with
+#      two or more each rank gets a different one and the collectives break.
+#
+# So the six are six separate torchrun invocations, each with a one-entry
+# inputs.json. Measure peak memory and wall-clock on one target before
+# committing the rest; Table 3's sampling config is not stated and ours is
+# heavier, and the largest target exceeds the 2,000 tokens it measured.
 FOLDCP_ARGS=""
 if [ "${FB_FOLDCP_MODE:-single}" = "distributed" ]; then
     FOLDCP_ARGS="--foldcp_mode distributed --foldcp_size_cp ${FB_FOLDCP_SIZE_CP:-4}"
