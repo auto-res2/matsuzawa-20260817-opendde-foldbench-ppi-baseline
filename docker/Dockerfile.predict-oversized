@@ -27,7 +27,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 COPY . .
 
-ENV OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
+# Where OpenDDE finds checkpoint/opendde.pt and its CCD data. Declared under our
+# own name rather than as OPENDDE_ROOT_DIR, and re-exported under that name by
+# src/main.py when it launches the sampler: a variable called OPENDDE_ROOT_DIR
+# registered on the execution platform silently replaced this image's value and
+# pointed a run's model inputs at a personal directory.
+ENV FB_OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
 ENV OPENDDE_PYTHON=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python
 ENV OPENDDE_CLI=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/opendde
 # DIFFERS from Dockerfile.predict. Fold-CP is launched by torchrun rather than by
@@ -60,10 +65,10 @@ ENV FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench
 # Run products. The prediction directory is shared with Dockerfile.predict on
 # purpose: these targets belong to the same sweep as the other 233 and the
 # scoring stage reads one tree.
-ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
+ENV FB_INPUT_DIR=/data1/rkp00041/foldbench-ppi-baseline/input/OpenDDE \
+    FB_MSA_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/opendde/msa \
     FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
-    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE \
-    FB_MSA_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
 
 # Targets are taken by size (FB_FOLDCP_THRESHOLD) unless FB_FOLDCP_TARGETS names
 # them, and are shared across node-level workers by RANK/WORLD_SIZE. Run this

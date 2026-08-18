@@ -97,6 +97,26 @@ def build_af3_inputs(
     return [e["name"] for e in entries]
 
 
+def inference_env(args: argparse.Namespace, extra: dict | None = None) -> dict:
+    """The environment the sampler runs in, with the model's data root pinned.
+
+    OpenDDE reads OPENDDE_ROOT_DIR from the environment at import time and hangs
+    the checkpoint, the CCD component definitions and the template databases off
+    it. Whatever arrives from outside is therefore discarded and replaced here:
+    a variable registered on the execution platform had already replaced the
+    image's own setting once, and pointed a run's weights at a personal
+    directory. Reproducing an experiment means reading the inputs someone else
+    can also read, so this value comes from a flag, which nothing can override.
+    """
+    import os as _os
+
+    env = dict(_os.environ)
+    env["OPENDDE_ROOT_DIR"] = str(args.opendde_root_dir)
+    if extra:
+        env.update(extra)
+    return env
+
+
 def run_cmd(cmd: list[str], cwd: Path | None = None, env: dict | None = None) -> None:
     logger.info("$ %s", " ".join(str(c) for c in cmd))
     subprocess.run([str(c) for c in cmd], cwd=cwd, env=env, check=True)
@@ -327,6 +347,7 @@ def stage_predict(args: argparse.Namespace) -> int:
     # against it a second time.
     algorithm_dir = Path(args.algorithm_dir).resolve()
     script = algorithm_dir / "make_predictions.sh"
+    logger.info("OpenDDE data root: %s", args.opendde_root_dir)
     run_cmd(
         [
             "bash",
@@ -338,6 +359,7 @@ def stage_predict(args: argparse.Namespace) -> int:
             str(args.gpu_id),
         ],
         cwd=algorithm_dir,
+        env=inference_env(args),
     )
     return report_dropped_targets(
         Path(args.prediction_dir),
@@ -453,14 +475,14 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
         eval_dir = eval_root / f"foldcp-{name}"
         eval_dir.mkdir(parents=True, exist_ok=True)
 
-        env = _os.environ | {
+        env = inference_env(args, {
             "FB_FOLDCP_MODE": "distributed",
             "FB_FOLDCP_SIZE_CP": str(args.foldcp_size_cp),
             # Per-module timing and peak memory, which only Fold-CP emits. Written
             # per target so a failure does not cost the measurements of the ones
             # that already ran.
             "FB_FOLDCP_METRICS": str(eval_dir / "foldcp_metrics.jsonl"),
-        }
+        })
         try:
             run_cmd(
                 [
@@ -776,6 +798,13 @@ def main() -> None:
     # target that OOMed anyway without moving the threshold for everything else.
     p.add_argument("--foldcp-targets", **env_default("FB_FOLDCP_TARGETS", None, optional=True))
     p.add_argument("--python", default=sys.executable)
+    # Where OpenDDE finds the checkpoint and the CCD data it builds features
+    # from. Passed explicitly rather than left to OPENDDE_ROOT_DIR in the
+    # environment: a registered platform variable overrode that and pointed a
+    # run at a personal directory instead of the shared install. The bytes
+    # happened to be identical, which is not the point -- an experiment whose
+    # inputs live in one person's directory cannot be repeated by anyone else.
+    p.add_argument("--opendde-root-dir", **env_default("FB_OPENDDE_ROOT_DIR"))
     p.add_argument("--opendde-cli", **env_default("OPENDDE_CLI", "opendde"))
     p.add_argument("--eval-python", **env_default("FB_EVAL_PYTHON", "python"))
     p.add_argument("--ost-bin-dir", **env_default("FB_OST_BIN_DIR", None, optional=True))

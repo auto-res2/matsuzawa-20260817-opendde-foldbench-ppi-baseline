@@ -33,8 +33,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /workspace
 COPY . .
 
-# Where OpenDDE finds checkpoint/opendde.pt and its common assets.
-ENV OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
+# Where OpenDDE finds checkpoint/opendde.pt and its CCD data. Declared under our
+# own name rather than as OPENDDE_ROOT_DIR, and re-exported under that name by
+# src/main.py when it launches the sampler: a variable called OPENDDE_ROOT_DIR
+# registered on the execution platform silently replaced this image's value and
+# pointed a run's model inputs at a personal directory. Setting it from a name
+# nothing outside this repository uses puts the value back under this file's
+# control, which is where it is readable.
+ENV FB_OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
 # make_predictions.sh defers to these, so the plugin script itself stays free of
 # absolute paths and remains readable as the FoldBench plugin it is.
 ENV OPENDDE_PYTHON=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python
@@ -42,20 +48,25 @@ ENV OPENDDE_CLI=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv
 ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ENV PYTHONPATH=/workspace
 
-# Benchmark inputs, read-only and shared.
+# EVERYTHING THE MODEL READS LIVES UNDER A SHARED PATH. No personal directory
+# appears on the input side, on purpose and not as a detail: an experiment whose
+# inputs sit in one account's home cannot be reproduced from another account, so
+# a matching checksum does not rescue it. The one input that is generated rather
+# than distributed -- inputs.json, which carries the MSA paths -- is kept in the
+# group directory for the same reason.
 ENV FB_STAGE=predict \
     FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
     FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
     FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
     FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
-    FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde
+    FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde \
+    FB_INPUT_DIR=/data1/rkp00041/foldbench-ppi-baseline/input/OpenDDE \
+    FB_MSA_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/opendde/msa
 
-# Run products, under rku00122/ as required. Override FB_INPUT_DIR and friends
-# per run to point at the pilot subset instead of the full sweep.
-ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
-    FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
-    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE \
-    FB_MSA_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa
+# Run products. These may live anywhere, and do not affect whether someone else
+# can repeat the run.
+ENV FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
 
 # Both the orchestrator and the model run on OpenDDE's own interpreter, which
 # already carries pandas, biotite and torch. Installing a second dependency set

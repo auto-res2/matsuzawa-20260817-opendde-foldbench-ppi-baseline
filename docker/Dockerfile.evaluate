@@ -36,7 +36,8 @@ ENV FB_STAGE=evaluate \
     FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
     FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde
 
-ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
+# Inputs under a shared path; run products may live anywhere.
+ENV FB_INPUT_DIR=/data1/rkp00041/foldbench-ppi-baseline/input/OpenDDE \
     FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
     FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
 
@@ -50,6 +51,9 @@ ENV FB_OST_BIN_DIR=/data1/rkp00041/.local/bin
 # needs parallelbar, biopython and friends even for a protein-protein run that
 # only uses OpenStructure. They live in a venv of their own rather than in
 # OpenDDE's, which stays exactly as shipped. See docs/evaluation-env.md.
-ENV FB_EVAL_PYTHON=/data1/rkp00041/rku00122/foldbench-ppi-baseline/evalenv/bin/python
+# In the group directory rather than a personal one: the interpreter that runs
+# the scorer is part of what produced the number, so a reader who cannot reach
+# it cannot check the number.
+ENV FB_EVAL_PYTHON=/data1/rkp00041/foldbench-ppi-baseline/evalenv/bin/python
 
 CMD ["/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python", "-u", "-m", "src.main"]
