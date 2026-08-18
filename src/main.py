@@ -39,6 +39,7 @@ import json
 import logging
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -107,28 +108,19 @@ def run_label(args: argparse.Namespace) -> str:
     job would find the first job's structures, conclude the work was done, and
     exit having produced a run that is really a copy of another one.
 
-    Set it per experiment, not per job. One experiment is several jobs -- the
-    sweep, the Fold-CP pass that finishes what the sweep could not, and the
-    scoring -- and they have to agree on where the artefacts are or the later
-    ones will not find what the earlier ones produced. FB_RUN_LABEL registered
-    on the execution platform is the practical way to do that, changed between
-    experiments.
+    The default is the directory the repository was staged into, which the
+    platform names after the job. With the `all` stage one job is one whole
+    experiment, so that name identifies the experiment too, and three jobs
+    dispatched at once separate themselves with nothing configured.
 
-    The fallback is the directory the repository was staged into, which the
-    platform names after the job. That keeps a run from ever writing into
-    another run's tree by accident, but it differs per job, so a run left on the
-    fallback would scatter its three stages across three directories. It is a
-    guard, not a default to rely on.
+    That is the reason the stages are chained inside a job rather than split
+    across three. A label carried between jobs would have to come from a
+    platform environment variable, which is set per repository and holds one
+    value at a time -- so the three experiments could not have run together.
     """
     if args.run_label:
         return args.run_label
-    label = Path(__file__).resolve().parent.parent.name
-    logger.warning(
-        "no --run-label/FB_RUN_LABEL; falling back to %r. Every stage of one "
-        "experiment must use the same label, and this one changes per job.",
-        label,
-    )
-    return label
+    return Path(__file__).resolve().parent.parent.name
 
 
 def run_dir(base: str, label: str) -> Path:
@@ -280,6 +272,40 @@ def write_input_dir(path: Path, entries: list[dict]) -> Path:
     return path
 
 
+def visible_gpus() -> list[str]:
+    """The GPU ids this process may use, in the launcher's order."""
+    import os as _os
+
+    raw = _os.environ.get("CUDA_VISIBLE_DEVICES", "")
+    ids = [x.strip() for x in raw.split(",") if x.strip()]
+    return ids or ["0"]
+
+
+def run_concurrently(jobs: list[tuple[list[str], Path, dict]]) -> list[int]:
+    """Run several sampler invocations at once and wait for all of them.
+
+    One worker owns a node here rather than a GPU, because the Fold-CP pass in
+    the same job needs every card on the node for a single target. Left alone
+    that would idle three cards in four during the sweep, so the sweep fans its
+    own share of the targets out across the node's GPUs itself.
+
+    Every job is waited for even after one fails. A failure leaves its targets
+    short of their candidates, and the residual pass is what deals with that --
+    killing the siblings would only enlarge the residual.
+    """
+    procs = [
+        (subprocess.Popen([str(c) for c in cmd], cwd=cwd, env=env), cmd)
+        for cmd, cwd, env in jobs
+    ]
+    codes = []
+    for proc, cmd in procs:
+        code = proc.wait()
+        codes.append(code)
+        if code != 0:
+            logger.error("exit %s from %s", code, " ".join(str(c) for c in cmd))
+    return codes
+
+
 def stage_predict(args: argparse.Namespace) -> int:
     """Sample with OpenDDE and convert the output for the evaluators."""
     index, count = shard_of(args.shard, args.num_shards)
@@ -386,19 +412,42 @@ def stage_predict(args: argparse.Namespace) -> int:
     algorithm_dir = Path(args.algorithm_dir).resolve()
     script = algorithm_dir / "make_predictions.sh"
     logger.info("OpenDDE data root: %s", args.opendde_root_dir)
-    run_cmd(
-        [
-            "bash",
-            str(script),
-            str(input_dir / "alphafold3_inputs.json"),
-            str(input_dir),
-            str(args.prediction_dir),
-            str(eval_dir),
-            str(args.gpu_id),
-        ],
-        cwd=algorithm_dir,
-        env=inference_env(args),
-    )
+
+    # Fan this worker's targets across the GPUs it owns. CUDA_VISIBLE_DEVICES is
+    # narrowed to one card per invocation rather than left as the launcher set
+    # it, because OpenDDE picks its device by LOCAL_RANK and every one of these
+    # would otherwise land on the same card.
+    gpus = visible_gpus()
+    entries = json.loads((input_dir / "inputs.json").read_text())
+    lanes = [(i, entries[i::len(gpus)]) for i in range(len(gpus))]
+    lanes = [(i, e) for i, e in lanes if e]
+    logger.info("%d GPU(s) available; %d lane(s) over %d targets",
+                len(gpus), len(lanes), len(entries))
+
+    jobs = []
+    for lane, lane_entries in lanes:
+        lane_input = write_input_dir(
+            input_dir.parent / f"{input_dir.name}-gpu{lane}", lane_entries)
+        lane_eval = eval_dir / f"gpu{lane}" if len(lanes) > 1 else eval_dir
+        lane_eval.mkdir(parents=True, exist_ok=True)
+        env = inference_env(args, {
+            "CUDA_VISIBLE_DEVICES": gpus[lane],
+            # The sampler is told it is alone on its card; LOCAL_RANK indexes
+            # into CUDA_VISIBLE_DEVICES, which now holds exactly one entry.
+            "LOCAL_RANK": "0",
+        })
+        jobs.append((
+            ["bash", str(script),
+             str(lane_input / "alphafold3_inputs.json"), str(lane_input),
+             str(args.prediction_dir), str(lane_eval), gpus[lane]],
+            algorithm_dir, env,
+        ))
+
+    codes = run_concurrently(jobs)
+    if any(codes):
+        logger.error("%d of %d lanes failed; the residual pass will pick up "
+                     "whatever they left short", sum(1 for c in codes if c), len(codes))
+
     return report_dropped_targets(
         Path(args.prediction_dir),
         input_dir,
@@ -775,11 +824,53 @@ def stage_evaluate(args: argparse.Namespace) -> int:
     return 0
 
 
+def stage_all(args: argparse.Namespace) -> int:
+    """One experiment, start to finish, inside one job.
+
+    Three experiments are three jobs rather than nine, and that is not only
+    tidiness: the label that keeps their artefacts apart comes from the job, so
+    stages split across jobs would need it configured, and the platform carries
+    such settings per repository rather than per job -- which would have forced
+    the three experiments to run one after another. As one job each they run at
+    the same time, and the wall clock is one experiment rather than three.
+
+    The residual pass runs even when the sweep reports failures, because that is
+    exactly what it is for. Scoring runs only once per experiment, on the worker
+    that owns the first shard, and only after every worker has finished: a score
+    computed while structures are still being written would be a score over a
+    partial run, which this project refuses to produce.
+    """
+    index, count = shard_of(args.shard, args.num_shards)
+
+    if (code := stage_predict(args)) != 0:
+        logger.warning("sweep reported %s; continuing to the residual pass", code)
+
+    if (code := stage_predict_oversized(args)) != 0:
+        logger.error("targets are still unfinished after the residual pass")
+        return code
+
+    if count > 1:
+        done = Path(args.evaluation_dir) / f"worker{index}_complete"
+        done.parent.mkdir(parents=True, exist_ok=True)
+        done.write_text("")
+        if index != 0:
+            logger.info("worker %d done; scoring is worker 0's", index)
+            return 0
+        logger.info("waiting for %d workers before scoring", count)
+        for other in range(count):
+            marker = Path(args.evaluation_dir) / f"worker{other}_complete"
+            while not marker.exists():
+                time.sleep(30)
+
+    return stage_evaluate(args)
+
+
 STAGES = {
     "prepare": stage_prepare,
     "predict": stage_predict,
     "predict-oversized": stage_predict_oversized,
     "evaluate": stage_evaluate,
+    "all": stage_all,
 }
 
 
