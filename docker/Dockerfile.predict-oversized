@@ -38,9 +38,14 @@ ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ENV PYTHONPATH=/workspace
 
 # Benchmark inputs, read-only and shared.
-# DIFFERS from Dockerfile.predict: FB_STAGE.
-ENV FB_STAGE=predict-oversized \
-    FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
+#
+# FB_STAGE is deliberately NOT set here. The platform injects values for every
+# environment variable the analysis lists as a dependency, and an unregistered
+# one arrives as the placeholder "AAA" -- which overrode this image's FB_STAGE
+# and made the first Fold-CP run die on `KeyError: 'AAA'` before it did any
+# work. The stage is therefore passed as a command line flag below, where
+# argparse takes it over anything the environment says.
+ENV FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
     FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
     FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
     FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
@@ -58,4 +63,13 @@ ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/O
 # them, and are shared across node-level workers by RANK/WORLD_SIZE. Run this
 # WITHOUT process-per-GPU: one process must own a node's GPUs so torchrun can
 # spend all of them on a single target.
-CMD ["/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python", "-u", "-m", "src.main"]
+#
+# The env dump is not debris. This image's settings can be silently replaced by
+# platform-injected placeholders (see FB_STAGE above), and when that happens the
+# failure appears deep inside the run as a nonsensical path or an unknown stage.
+# Printing what the process actually received, before it acts on any of it, makes
+# that a first line rather than an autopsy. It costs one line of output per run.
+#
+# --stage is a flag rather than FB_STAGE for the same reason: a flag cannot be
+# overridden by the environment.
+CMD ["/bin/sh", "-c", "echo '--- env as received ---'; env | grep -E '^(FB_|OPENDDE_|RANK=|WORLD_SIZE=|LOCAL_RANK=|CUDA_VISIBLE_DEVICES=)' | sort; echo '--- end env ---'; exec /data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python -u -m src.main --stage predict-oversized"]
