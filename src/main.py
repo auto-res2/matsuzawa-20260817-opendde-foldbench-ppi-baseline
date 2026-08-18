@@ -281,31 +281,6 @@ def visible_gpus() -> list[str]:
     return ids or ["0"]
 
 
-def run_concurrently(jobs: list[tuple[list[str], Path, dict]]) -> list[int]:
-    """Run several sampler invocations at once and wait for all of them.
-
-    One worker owns a node here rather than a GPU, because the Fold-CP pass in
-    the same job needs every card on the node for a single target. Left alone
-    that would idle three cards in four during the sweep, so the sweep fans its
-    own share of the targets out across the node's GPUs itself.
-
-    Every job is waited for even after one fails. A failure leaves its targets
-    short of their candidates, and the residual pass is what deals with that --
-    killing the siblings would only enlarge the residual.
-    """
-    procs = [
-        (subprocess.Popen([str(c) for c in cmd], cwd=cwd, env=env), cmd)
-        for cmd, cwd, env in jobs
-    ]
-    codes = []
-    for proc, cmd in procs:
-        code = proc.wait()
-        codes.append(code)
-        if code != 0:
-            logger.error("exit %s from %s", code, " ".join(str(c) for c in cmd))
-    return codes
-
-
 def stage_predict(args: argparse.Namespace) -> int:
     """Sample with OpenDDE and convert the output for the evaluators."""
     index, count = shard_of(args.shard, args.num_shards)
@@ -413,41 +388,23 @@ def stage_predict(args: argparse.Namespace) -> int:
     script = algorithm_dir / "make_predictions.sh"
     logger.info("OpenDDE data root: %s", args.opendde_root_dir)
 
-    # Fan this worker's targets across the GPUs it owns. CUDA_VISIBLE_DEVICES is
-    # narrowed to one card per invocation rather than left as the launcher set
-    # it, because OpenDDE picks its device by LOCAL_RANK and every one of these
-    # would otherwise land on the same card.
-    gpus = visible_gpus()
-    entries = json.loads((input_dir / "inputs.json").read_text())
-    lanes = [(i, entries[i::len(gpus)]) for i in range(len(gpus))]
-    lanes = [(i, e) for i, e in lanes if e]
-    logger.info("%d GPU(s) available; %d lane(s) over %d targets",
-                len(gpus), len(lanes), len(entries))
-
-    jobs = []
-    for lane, lane_entries in lanes:
-        lane_input = write_input_dir(
-            input_dir.parent / f"{input_dir.name}-gpu{lane}", lane_entries)
-        lane_eval = eval_dir / f"gpu{lane}" if len(lanes) > 1 else eval_dir
-        lane_eval.mkdir(parents=True, exist_ok=True)
-        env = inference_env(args, {
-            "CUDA_VISIBLE_DEVICES": gpus[lane],
-            # The sampler is told it is alone on its card; LOCAL_RANK indexes
-            # into CUDA_VISIBLE_DEVICES, which now holds exactly one entry.
-            "LOCAL_RANK": "0",
-        })
-        jobs.append((
-            ["bash", str(script),
-             str(lane_input / "alphafold3_inputs.json"), str(lane_input),
-             str(args.prediction_dir), str(lane_eval), gpus[lane]],
-            algorithm_dir, env,
-        ))
-
-    codes = run_concurrently(jobs)
-    if any(codes):
-        logger.error("%d of %d lanes failed; the residual pass will pick up "
-                     "whatever they left short", sum(1 for c in codes if c), len(codes))
-
+    # One GPU per worker, chosen by the launcher. Asking for 16 GPUs starts 16
+    # processes, each shown all four cards of its node and distinguished by
+    # LOCAL_RANK, which is exactly what OpenDDE selects its device by. Splitting
+    # the work again here would put four samplers on every card.
+    run_cmd(
+        [
+            "bash",
+            str(script),
+            str(input_dir / "alphafold3_inputs.json"),
+            str(input_dir),
+            str(args.prediction_dir),
+            str(eval_dir),
+            str(args.gpu_id),
+        ],
+        cwd=algorithm_dir,
+        env=inference_env(args),
+    )
     return report_dropped_targets(
         Path(args.prediction_dir),
         input_dir,
@@ -840,28 +797,57 @@ def stage_all(args: argparse.Namespace) -> int:
     computed while structures are still being written would be a score over a
     partial run, which this project refuses to produce.
     """
+    import os as _os
+
     index, count = shard_of(args.shard, args.num_shards)
+    local_rank = int(_os.environ.get("LOCAL_RANK", "0"))
+    node = _os.environ.get("SLURMD_NODENAME") or _os.uname().nodename
+    markers = Path(args.evaluation_dir) / "_progress"
+
+    def signal(name: str) -> None:
+        markers.mkdir(parents=True, exist_ok=True)
+        (markers / name).write_text("")
+
+    def wait_for(names: list[str], what: str) -> None:
+        logger.info("waiting for %s (%d)", what, len(names))
+        while not all((markers / n).exists() for n in names):
+            time.sleep(30)
 
     if (code := stage_predict(args)) != 0:
         logger.warning("sweep reported %s; continuing to the residual pass", code)
+    signal(f"swept_{index}")
 
-    if (code := stage_predict_oversized(args)) != 0:
-        logger.error("targets are still unfinished after the residual pass")
-        return code
+    # Fold-CP wants every card on a node for one target, so only one worker per
+    # node may run it, and only once its node-mates have stopped sampling. The
+    # others wait rather than exit: the job is not finished until the residual
+    # is, and a worker that exited early would let the platform call the job
+    # complete while targets were still short.
+    wait_for([f"swept_{i}" for i in range(count)], "all workers to finish sampling")
 
-    if count > 1:
-        done = Path(args.evaluation_dir) / f"worker{index}_complete"
-        done.parent.mkdir(parents=True, exist_ok=True)
-        done.write_text("")
-        if index != 0:
-            logger.info("worker %d done; scoring is worker 0's", index)
-            return 0
-        logger.info("waiting for %d workers before scoring", count)
-        for other in range(count):
-            marker = Path(args.evaluation_dir) / f"worker{other}_complete"
-            while not marker.exists():
-                time.sleep(30)
+    if local_rank == 0:
+        # Only one worker per node reaches here, so the residual is divided
+        # between nodes rather than between all workers. Sharding it over the
+        # full worker count would hand slices to workers that never run it, and
+        # those targets would simply never be sampled.
+        per_node = max(1, len(visible_gpus()))
+        args.shard, args.num_shards = index // per_node, max(1, count // per_node)
+        logger.info("node %s: residual pass as node %d of %d, on %d GPUs",
+                    node, args.shard, args.num_shards, per_node)
+        if (code := stage_predict_oversized(args)) != 0:
+            logger.error("targets are still unfinished after the residual pass")
+            signal(f"filled_{index}")
+            return code
+    else:
+        logger.info("node %s worker %d: the residual pass is local rank 0's",
+                    node, index)
+    signal(f"filled_{index}")
 
+    wait_for([f"filled_{i}" for i in range(count)], "the residual pass")
+    if index != 0:
+        return 0
+
+    # Scored once, by one worker, after every structure exists. Scoring while
+    # sampling is still running would score a partial run.
     return stage_evaluate(args)
 
 
