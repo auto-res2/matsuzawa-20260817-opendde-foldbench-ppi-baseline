@@ -1,0 +1,61 @@
+# GPU stage: the targets that do not fit one card, spread across several.
+#
+# PROVENANCE: ours, and deliberately a near-copy of Dockerfile.predict.
+#
+# WHY A SECOND FILE. The platform runs one committed Dockerfile per run and
+# executes its CMD verbatim, so the stage a run performs is fixed by FB_STAGE in
+# the image. Two stages that need different machines therefore need two images:
+# the sweep puts one worker on each GPU of a node, while Fold-CP gives one
+# target a whole node's GPUs, and no single run can be both shapes at once.
+#
+# KEEP IN STEP WITH Dockerfile.predict. Everything below is identical to it
+# except the two values marked DIFFERS. This project has already been bitten
+# once by configuration held in two places drifting apart -- a config file that
+# claimed use_template: true for a run that had templates off -- so if you
+# change a path, a mount assumption or the CMD in one file, change it in both.
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git curl kalign \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+COPY . .
+
+ENV OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
+ENV OPENDDE_PYTHON=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python
+ENV OPENDDE_CLI=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/opendde
+# DIFFERS from Dockerfile.predict. Fold-CP is launched by torchrun rather than by
+# the console script, because it needs size_dp * size_cp processes and only a
+# launcher can start them (opendde/distributed/foldcp/config.py, launch_hint).
+ENV OPENDDE_TORCHRUN=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/torchrun
+ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+ENV PYTHONPATH=/workspace
+
+# Benchmark inputs, read-only and shared.
+# DIFFERS from Dockerfile.predict: FB_STAGE.
+ENV FB_STAGE=predict-oversized \
+    FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
+    FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
+    FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
+    FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
+    FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde
+
+# Run products. The prediction directory is shared with Dockerfile.predict on
+# purpose: these targets belong to the same sweep as the other 233 and the
+# scoring stage reads one tree.
+ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/OpenDDE \
+    FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE \
+    FB_MSA_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa
+
+# Targets are taken by size (FB_FOLDCP_THRESHOLD) unless FB_FOLDCP_TARGETS names
+# them, and are shared across node-level workers by RANK/WORLD_SIZE. Run this
+# WITHOUT process-per-GPU: one process must own a node's GPUs so torchrun can
+# spend all of them on a single target.
+CMD ["/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python", "-u", "-m", "src.main"]

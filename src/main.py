@@ -371,9 +371,30 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
     input_dir = Path(args.input_dir)
     entries = json.loads((input_dir / "inputs.json").read_text())
     _, oversized = split_oversized(entries, args.foldcp_threshold, args.foldcp_targets)
+    # Smallest first. Every target here is one that has never run, on a path that
+    # has never run, so the first one is really a test of the path -- and the
+    # cheapest target answers "does Fold-CP start at all" for the least GPU time.
+    # Ordering by cost also means a memory ceiling shows up as the largest ones
+    # failing at the end, rather than as the first target failing and saying
+    # nothing about the rest.
+    oversized.sort(key=residue_count)
     if not oversized:
         logger.info("nothing at or above %d residues; nothing to do", args.foldcp_threshold)
         return 0
+
+    # One target needs a whole node, so several nodes can take several targets at
+    # once. The launcher's RANK/WORLD_SIZE identify this process among the
+    # node-level workers; unset, shard_of yields (0, 1) and the list runs
+    # serially, which is the right behaviour on a single node.
+    index, count = shard_of(args.shard, args.num_shards)
+    if count > 1:
+        mine = oversized[index::count]
+        logger.info("worker %d/%d takes %d of %d targets: %s",
+                    index, count, len(mine), len(oversized),
+                    ", ".join(e["name"] for e in mine))
+        oversized = mine
+        if not oversized:
+            return 0
 
     algorithm_dir = Path(args.algorithm_dir).resolve()
     script = algorithm_dir / "make_predictions.sh"
@@ -433,7 +454,10 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
         else:
             logger.info("%s: %d candidates", name, produced)
 
-    (eval_root / "foldcp_summary.json").write_text(json.dumps({
+    # Per worker, because several of them write here at once and one shared path
+    # would have them overwrite each other's record of what ran.
+    summary = f"foldcp_summary{f'_shard{index}of{count}' if count > 1 else ''}.json"
+    (eval_root / summary).write_text(json.dumps({
         "threshold_residues": args.foldcp_threshold,
         "size_cp": args.foldcp_size_cp,
         "expected_candidates": EXPECTED_CANDIDATES,
