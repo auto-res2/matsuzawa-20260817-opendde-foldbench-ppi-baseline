@@ -335,6 +335,23 @@ def stage_predict(args: argparse.Namespace) -> int:
     )
 
 
+EXPECTED_CANDIDATES = 25  # 5 seeds x 5 samples, FoldBench's protocol
+
+
+def count_candidates(prediction_dir: Path, name: str) -> int:
+    """Sampled structures on disk for one target.
+
+    `*_postprocessed.cif` is excluded deliberately. postprocess.py writes a
+    converted copy beside every prediction, so counting all CIFs doubles the
+    total -- an earlier version of this project read that doubled number as
+    progress and believed a sweep was twice as far along as it was.
+    """
+    root = prediction_dir / name
+    if not root.is_dir():
+        return 0
+    return sum(1 for p in root.rglob("*.cif") if not p.name.endswith("_postprocessed.cif"))
+
+
 def stage_predict_oversized(args: argparse.Namespace) -> int:
     """Run the targets that do not fit one card, one at a time, over several GPUs.
 
@@ -401,11 +418,28 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
             # complete one.
             logger.error("%s failed (exit %s)", name, exc.returncode)
             failures.append(name)
+            continue
+
+        # Exiting zero is not the same as having produced a target. A rank that
+        # dies partway, or a seed that runs out of memory on its own, can leave
+        # some of the 25 candidates written and still return success -- and a
+        # target scored on 15 candidates is not comparable with one scored on 25,
+        # while nothing downstream would notice the difference.
+        produced = count_candidates(Path(args.prediction_dir), name)
+        if produced != EXPECTED_CANDIDATES:
+            logger.error("%s produced %d candidates, expected %d",
+                         name, produced, EXPECTED_CANDIDATES)
+            failures.append(name)
+        else:
+            logger.info("%s: %d candidates", name, produced)
 
     (eval_root / "foldcp_summary.json").write_text(json.dumps({
         "threshold_residues": args.foldcp_threshold,
         "size_cp": args.foldcp_size_cp,
+        "expected_candidates": EXPECTED_CANDIDATES,
         "attempted": [e["name"] for e in oversized],
+        "candidates": {e["name"]: count_candidates(Path(args.prediction_dir), e["name"])
+                       for e in oversized},
         "failed": failures,
     }, indent=2))
 
