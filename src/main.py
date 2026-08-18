@@ -158,6 +158,70 @@ def shard_of(index: int, count: int) -> tuple[int, int]:
     return index, count
 
 
+def residue_count(entry: dict) -> int:
+    """Total residues an assembly asks the model to build.
+
+    Peak memory is dominated by the token-pair representation, which grows with
+    the square of the token count (OpenDDE report, Appendix C), so this is the
+    quantity that decides whether a target fits one card. Counting residues
+    rather than tokens is an approximation -- ligands and modified residues
+    tokenize per atom -- but the protein-protein task has neither, so for this
+    benchmark the two coincide.
+    """
+    total = 0
+    for chain in entry.get("sequences", []):
+        for value in chain.values():
+            if isinstance(value, dict) and "sequence" in value:
+                total += len(value["sequence"]) * int(value.get("count", 1))
+    return total
+
+
+def split_oversized(
+    entries: list[dict], threshold: int, explicit: str | None
+) -> tuple[list[dict], list[dict]]:
+    """Partition into (fits one card, needs Fold-CP).
+
+    The boundary is measured, not guessed. In the 239-assembly sweep the largest
+    target that finished was 1,836 residues and the smallest that died of CUDA
+    OOM was 1,872, with nothing in between -- so any threshold in that gap
+    reproduces the observed split exactly. The default sits just under 1,872
+    because the margin at 1,836 was thin: it fit 184 GB, but not by much, and
+    allocator fragmentation could plausibly push it over on a later run.
+
+    `explicit` overrides the size rule with a comma-separated list of names. That
+    is how a target that OOMs anyway gets retried on the Fold-CP path without
+    moving the threshold for everything else.
+    """
+    if explicit:
+        wanted = {name.strip() for name in explicit.split(",") if name.strip()}
+        unknown = wanted - {e["name"] for e in entries}
+        if unknown:
+            raise ValueError(f"not in the input set: {sorted(unknown)}")
+        chosen = [e for e in entries if e["name"] in wanted]
+        rest = [e for e in entries if e["name"] not in wanted]
+        return rest, chosen
+
+    rest, chosen = [], []
+    for entry in entries:
+        (chosen if residue_count(entry) >= threshold else rest).append(entry)
+    return rest, chosen
+
+
+def write_input_dir(path: Path, entries: list[dict]) -> Path:
+    """Materialise an input directory holding exactly `entries`.
+
+    Both files are written because FoldBench's plugin contract passes
+    alphafold3_inputs.json as its first argument; with inputs.json present the
+    plugin keeps the latter (it carries the MSA paths) and never reads the
+    former, but the argument still has to point at something.
+    """
+    path.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(entries, indent=2)
+    (path / "inputs.json").write_text(payload)
+    (path / "alphafold3_inputs.json").write_text(payload)
+    return path
+
+
 def stage_predict(args: argparse.Namespace) -> int:
     """Sample with OpenDDE and convert the output for the evaluators."""
     index, count = shard_of(args.shard, args.num_shards)
@@ -175,18 +239,32 @@ def stage_predict(args: argparse.Namespace) -> int:
         (input_dir / "alphafold3_inputs.json").write_text(json.dumps(subset, indent=2))
         logger.info("pilot: %d of %d assemblies", len(subset), len(full))
 
+    # Hold back the targets that cannot fit one card, before sharding rather than
+    # after. Sharding round-robins to spread cost evenly; leaving targets in that
+    # are certain to die of OOM would both waste the slot and skew that balance.
+    # They are run separately by the predict-oversized stage, which gives each
+    # one several GPUs.
+    full = json.loads((input_dir / "inputs.json").read_text())
+    fits, oversized = split_oversized(full, args.foldcp_threshold, args.foldcp_targets)
+    if oversized:
+        logger.info(
+            "deferred to Fold-CP (>= %d residues): %s",
+            args.foldcp_threshold,
+            ", ".join(f"{e['name']}({residue_count(e)})" for e in oversized),
+        )
+        input_dir = write_input_dir(
+            input_dir.parent / f"{input_dir.name}-fits", fits
+        )
+
     if count > 1:
         # Round-robin rather than contiguous blocks: target cost tracks assembly
         # size, and the targets CSV is not shuffled, so contiguous slices would
         # hand one worker a run of the largest complexes.
         full = json.loads((input_dir / "inputs.json").read_text())
         mine = full[index::count]
-        input_dir = input_dir.parent / f"{input_dir.name}-shard{index}of{count}"
-        input_dir.mkdir(parents=True, exist_ok=True)
-        (input_dir / "inputs.json").write_text(json.dumps(mine, indent=2))
-        # Carried over only so the plugin's five-argument contract still holds;
-        # with inputs.json present the plugin will not read it.
-        (input_dir / "alphafold3_inputs.json").write_text(json.dumps(mine, indent=2))
+        input_dir = write_input_dir(
+            input_dir.parent / f"{input_dir.name}-shard{index}of{count}", mine
+        )
         logger.info("shard %d/%d: %d of %d assemblies", index, count, len(mine), len(full))
 
     # Each shard writes its own prediction_reference.csv; the evaluate stage
@@ -255,6 +333,88 @@ def stage_predict(args: argparse.Namespace) -> int:
         input_dir,
         eval_dir / "dropped_targets.json",
     )
+
+
+def stage_predict_oversized(args: argparse.Namespace) -> int:
+    """Run the targets that do not fit one card, one at a time, over several GPUs.
+
+    Separate from `predict` because the two need different machines, not just
+    different flags. The sharded sweep puts one worker on each GPU of a node;
+    Fold-CP needs all of a node's GPUs for a single target, so the two cannot
+    share a node. Running this as its own stage keeps that visible instead of
+    letting the two contend for the same cards.
+
+    Each target gets its own invocation with a one-entry input directory. That
+    is not a convenience: OpenDDE's inference sampler shards by world_size, so a
+    multi-entry input would hand each rank a different target and the Fold-CP
+    collectives would then disagree about tensor shapes.
+    """
+    import os as _os
+
+    input_dir = Path(args.input_dir)
+    entries = json.loads((input_dir / "inputs.json").read_text())
+    _, oversized = split_oversized(entries, args.foldcp_threshold, args.foldcp_targets)
+    if not oversized:
+        logger.info("nothing at or above %d residues; nothing to do", args.foldcp_threshold)
+        return 0
+
+    algorithm_dir = Path(args.algorithm_dir).resolve()
+    script = algorithm_dir / "make_predictions.sh"
+    eval_root = Path(args.evaluation_dir)
+    failures: list[str] = []
+
+    for position, entry in enumerate(oversized, start=1):
+        name = entry["name"]
+        logger.info(
+            "[%d/%d] %s (%d residues) with Fold-CP size_cp=%d",
+            position, len(oversized), name, residue_count(entry), args.foldcp_size_cp,
+        )
+        one = write_input_dir(input_dir.parent / f"{input_dir.name}-foldcp-{name}", [entry])
+        eval_dir = eval_root / f"foldcp-{name}"
+        eval_dir.mkdir(parents=True, exist_ok=True)
+
+        env = _os.environ | {
+            "FB_FOLDCP_MODE": "distributed",
+            "FB_FOLDCP_SIZE_CP": str(args.foldcp_size_cp),
+            # Per-module timing and peak memory, which only Fold-CP emits. Written
+            # per target so a failure does not cost the measurements of the ones
+            # that already ran.
+            "FB_FOLDCP_METRICS": str(eval_dir / "foldcp_metrics.jsonl"),
+        }
+        try:
+            run_cmd(
+                [
+                    "bash", str(script),
+                    str(one / "alphafold3_inputs.json"),
+                    str(one),
+                    str(args.prediction_dir),
+                    str(eval_dir),
+                    str(args.gpu_id),
+                ],
+                cwd=algorithm_dir,
+                env=env,
+            )
+        except subprocess.CalledProcessError as exc:
+            # One target failing must not cost the rest of the list. Which ones
+            # failed is recorded and re-raised at the end, so the stage still
+            # exits non-zero and the caller cannot mistake a partial run for a
+            # complete one.
+            logger.error("%s failed (exit %s)", name, exc.returncode)
+            failures.append(name)
+
+    (eval_root / "foldcp_summary.json").write_text(json.dumps({
+        "threshold_residues": args.foldcp_threshold,
+        "size_cp": args.foldcp_size_cp,
+        "attempted": [e["name"] for e in oversized],
+        "failed": failures,
+    }, indent=2))
+
+    if failures:
+        logger.error("%d of %d Fold-CP targets failed: %s",
+                     len(failures), len(oversized), ", ".join(failures))
+        return 1
+    logger.info("all %d Fold-CP targets completed", len(oversized))
+    return 0
 
 
 def report_dropped_targets(prediction_dir: Path, input_dir: Path, record_to: Path) -> int:
@@ -444,6 +604,7 @@ def stage_evaluate(args: argparse.Namespace) -> int:
 STAGES = {
     "prepare": stage_prepare,
     "predict": stage_predict,
+    "predict-oversized": stage_predict_oversized,
     "evaluate": stage_evaluate,
 }
 
@@ -490,6 +651,16 @@ def main() -> None:
     # Default to the launcher's RANK/WORLD_SIZE; set explicitly to shard by hand.
     p.add_argument("--shard", type=int, default=None)
     p.add_argument("--num-shards", type=int, default=None)
+    # Residues at or above this go to the Fold-CP stage instead of the sweep. The
+    # measured boundary is 1,836 (largest that fit) / 1,872 (smallest that OOMed);
+    # see split_oversized for why the default sits below the observed failure.
+    p.add_argument("--foldcp-threshold", type=int,
+                   default=int(__import__("os").environ.get("FB_FOLDCP_THRESHOLD", "1850")))
+    p.add_argument("--foldcp-size-cp", type=int,
+                   default=int(__import__("os").environ.get("FB_FOLDCP_SIZE_CP", "4")))
+    # Comma-separated assembly names, overriding the size rule. For retrying a
+    # target that OOMed anyway without moving the threshold for everything else.
+    p.add_argument("--foldcp-targets", **env_default("FB_FOLDCP_TARGETS", None, optional=True))
     p.add_argument("--python", default=sys.executable)
     p.add_argument("--opendde-cli", **env_default("OPENDDE_CLI", "opendde"))
     p.add_argument("--eval-python", **env_default("FB_EVAL_PYTHON", "python"))

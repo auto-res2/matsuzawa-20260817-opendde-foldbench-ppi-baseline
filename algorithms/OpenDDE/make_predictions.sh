@@ -61,18 +61,6 @@ if [ -z "${CUDA_VISIBLE_DEVICES:-}" ]; then
     export CUDA_VISIBLE_DEVICES=$gpu_id
 fi
 
-# `opendde pred` reads RANK/WORLD_SIZE and distributes the input JSON across
-# them by itself -- the run log shows "[Rank 1] ... [Rank 13]" from a single
-# invocation. Since src/main.py has already split the targets and handed this
-# process its own shard, leaving those variables set makes the work be divided
-# twice: a 15-target shard was split again 16 ways and the process ran "0/1".
-# Every shard then finished after roughly one target, and the missing-target
-# check fired and took the whole job down with it.
-#
-# So the model is told it is alone. The sharding stays where it is visible and
-# ours, in stage_predict.
-export RANK=0
-export WORLD_SIZE=1
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 
 N_sample=5
@@ -89,52 +77,90 @@ seeds="42,66,101,2024,8888"
 # because the shipped default has them off, the OpenDDE report does not say it
 # evaluated with them, and FoldBench's own reference plugin passes no template
 # flag either. Turning them on additionally needs a kalign binary.
-# Fold-CP spreads ONE target's activations across several GPUs. It is off by
-# default and exists for the targets that do not fit a single card: six
-# assemblies of 1,872-2,304 residues each drove a single process past the 184 GB
-# on one GB200 and were quarantined. Splitting the context is what lets them run
-# at the same sampling budget as everything else -- lowering N_sample would have
-# made their numbers incomparable with the other 233. The OpenDDE report's
-# Table 3 measures the same trade: 2,000 tokens OOMs on one card and fits in
-# ~79 GiB under CP4, and Appendix C states Fold-CP "does not change model
-# weights, architecture, or inference semantics", so mixing it in for six
-# targets does not change the protocol.
 #
-# WARNING: setting FB_FOLDCP_MODE=distributed here CANNOT WORK YET. Two things
-# below are wrong for it, and neither is a one-line fix:
-#
-#   1. Fold-CP wants torchrun with size_dp * size_cp processes
-#      (opendde/distributed/foldcp/config.py, launch_hint). This script starts
-#      one process and pins RANK=0 WORLD_SIZE=1 just above, so
-#      runner/inference.py raises "Distributed Fold-CP must be launched with
-#      torchrun using N processes" before any work happens. It fails loudly
-#      rather than silently degrading, which is the one mercy here.
-#   2. The input JSON must hold exactly ONE target per invocation. The sampler
-#      shards by world_size, not by size_dp
-#      (opendde/data/inference/infer_dataloader.py), so with one entry its
-#      padding hands all ranks the same target -- which is the point -- but with
-#      two or more each rank gets a different one and the collectives break.
-#
-# So the six are six separate torchrun invocations, each with a one-entry
-# inputs.json. Measure peak memory and wall-clock on one target before
-# committing the rest; Table 3's sampling config is not stated and ours is
-# heavier, and the largest target exceeds the 2,000 tokens it measured.
-FOLDCP_ARGS=""
-if [ "${FB_FOLDCP_MODE:-single}" = "distributed" ]; then
-    FOLDCP_ARGS="--foldcp_mode distributed --foldcp_size_cp ${FB_FOLDCP_SIZE_CP:-4}"
-fi
+# The sampling arguments below are identical on both paths. Only the launcher
+# differs, and that is the whole point: Fold-CP is a way of executing this same
+# command, not a different command.
+PRED_ARGS=(
+    -i "${input_dir}/inputs.json"
+    -o "${prediction_dir}"
+    -s "${seeds}"
+    -c "${N_cycle}"
+    -p "${N_step}"
+    -e "${N_sample}"
+    -n opendde_v1
+    --use_msa true
+    --use_template "${FB_USE_TEMPLATE:-false}"
+)
 
-$OPENDDE_CLI pred \
-    -i "${input_dir}/inputs.json" \
-    -o "${prediction_dir}" \
-    -s "${seeds}" \
-    -c ${N_cycle} \
-    -p ${N_step} \
-    -e ${N_sample} \
-    -n opendde_v1 \
-    --use_msa true \
-    --use_template "${FB_USE_TEMPLATE:-false}" \
-    ${FOLDCP_ARGS}
+if [ "${FB_FOLDCP_MODE:-single}" = "distributed" ]; then
+    # ---- Fold-CP: ONE target spread across several GPUs -------------------
+    #
+    # For the assemblies that do not fit a single card. Six of them (1,872-2,304
+    # residues) drove a single process past the 184 GB on one GB200 and were
+    # quarantined. The report's Table 3 measures the same trade -- 2,000 tokens
+    # OOMs on one card and fits in ~79 GiB under CP4 -- and Appendix C states
+    # Fold-CP "does not change model weights, architecture, or inference
+    # semantics". So this runs the six at the same sampling budget as the other
+    # 233 rather than lowering N_sample, which would have made their numbers
+    # incomparable.
+    #
+    # Two constraints, both discovered by reading OpenDDE rather than by running
+    # it, and both fatal if ignored:
+    #
+    #   1. It must be torchrun with size_dp * size_cp processes
+    #      (opendde/distributed/foldcp/config.py, launch_hint). A single process
+    #      makes runner/inference.py raise "Distributed Fold-CP must be launched
+    #      with torchrun using N processes". RANK/WORLD_SIZE must therefore NOT
+    #      be pinned here -- torchrun assigns them per process, and the single
+    #      path's RANK=0 WORLD_SIZE=1 would be read as world_size 1.
+    #
+    #   2. inputs.json must hold exactly ONE target. The sampler shards by
+    #      world_size, not by size_dp
+    #      (opendde/data/inference/infer_dataloader.py), so at one entry its
+    #      padding hands every rank the same target -- which is what Fold-CP
+    #      needs -- while at two or more each rank gets a different target and
+    #      the collectives deadlock or crash. src/main.py enforces this by
+    #      building a one-entry input directory per oversized target.
+    #
+    # Only rank 0 writes structures; OpenDDE suppresses the others because all
+    # ranks compute the same sample (runner/inference.py, the foldcp guard on
+    # dumper.dump).
+    CP=${FB_FOLDCP_SIZE_CP:-4}
+    n_entries=$($PYTHON_PATH -c 'import json,sys; print(len(json.load(open(sys.argv[1]))))' "${input_dir}/inputs.json")
+    if [ "${n_entries}" -ne 1 ]; then
+        echo "Fold-CP needs exactly one target per invocation; ${input_dir}/inputs.json holds ${n_entries}." >&2
+        exit 2
+    fi
+    # torchrun owns the rendezvous and the per-process rank assignment. Leaving a
+    # stale RANK/WORLD_SIZE in the environment would be read before torchrun's.
+    unset RANK WORLD_SIZE
+    TORCHRUN="${OPENDDE_TORCHRUN:-torchrun}"
+    echo "Fold-CP: ${CP} processes for 1 target"
+    $TORCHRUN --standalone --nnodes=1 --nproc_per_node="${CP}" \
+        -m runner.batch_inference pred \
+        "${PRED_ARGS[@]}" \
+        --foldcp_mode distributed \
+        --foldcp_size_dp 1 \
+        --foldcp_size_cp "${CP}" \
+        ${FB_FOLDCP_METRICS:+--foldcp_metrics_jsonl "${FB_FOLDCP_METRICS}"}
+else
+    # ---- Single card: one process handles this whole shard ------------------
+    #
+    # `opendde pred` reads RANK/WORLD_SIZE and distributes the input JSON across
+    # them by itself -- the run log shows "[Rank 1] ... [Rank 13]" from a single
+    # invocation. Since src/main.py has already split the targets and handed this
+    # process its own shard, leaving those variables set makes the work be
+    # divided twice: a 15-target shard was split again 16 ways and the process
+    # ran "0/1". Every shard then finished after roughly one target, and the
+    # missing-target check fired and took the whole job down with it.
+    #
+    # So the model is told it is alone. The sharding stays where it is visible
+    # and ours, in stage_predict.
+    export RANK=0
+    export WORLD_SIZE=1
+    $OPENDDE_CLI pred "${PRED_ARGS[@]}"
+fi
 
 # OpenDDE output -> mmCIF that OpenStructure/DockQv2 accept, plus the
 # prediction_reference.csv FoldBench's evaluator reads.
