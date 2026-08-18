@@ -89,6 +89,17 @@ seeds="42,66,101,2024,8888"
 # because the shipped default has them off, the OpenDDE report does not say it
 # evaluated with them, and FoldBench's own reference plugin passes no template
 # flag either. Turning them on additionally needs a kalign binary.
+# Fold-CP spreads ONE target's activations across several GPUs. It is off by
+# default and exists for the targets that do not fit a single card: six
+# assemblies of 1,872-2,304 residues each drove a single process past the 184 GB
+# on one GB200 and were quarantined. Splitting the context is what lets them run
+# at the same sampling budget as everything else -- lowering N_sample would have
+# made their numbers incomparable with the other 233.
+FOLDCP_ARGS=""
+if [ "${FB_FOLDCP_MODE:-single}" = "distributed" ]; then
+    FOLDCP_ARGS="--foldcp_mode distributed --foldcp_size_cp ${FB_FOLDCP_SIZE_CP:-4}"
+fi
+
 $OPENDDE_CLI pred \
     -i "${input_dir}/inputs.json" \
     -o "${prediction_dir}" \
@@ -98,7 +109,8 @@ $OPENDDE_CLI pred \
     -e ${N_sample} \
     -n opendde_v1 \
     --use_msa true \
-    --use_template "${FB_USE_TEMPLATE:-false}"
+    --use_template "${FB_USE_TEMPLATE:-false}" \
+    ${FOLDCP_ARGS}
 
 # OpenDDE output -> mmCIF that OpenStructure/DockQv2 accept, plus the
 # prediction_reference.csv FoldBench's evaluator reads.
