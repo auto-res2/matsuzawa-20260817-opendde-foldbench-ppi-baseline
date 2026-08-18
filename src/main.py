@@ -252,9 +252,20 @@ def stage_predict(args: argparse.Namespace) -> int:
             args.foldcp_threshold,
             ", ".join(f"{e['name']}({residue_count(e)})" for e in oversized),
         )
-        input_dir = write_input_dir(
-            input_dir.parent / f"{input_dir.name}-fits", fits
-        )
+
+    # Targets that already have their candidates are skipped, which makes this
+    # stage resumable: dispatching it again after a partial run fills the holes
+    # instead of recomputing eight hours of work that is already on disk. The
+    # threshold above only decides what never enters the sweep; what has
+    # actually been produced decides the rest.
+    todo = incomplete_targets(fits, Path(args.prediction_dir))
+    done = len(fits) - len(todo)
+    if done:
+        logger.info("%d of %d already complete; %d to run", done, len(fits), len(todo))
+    if not todo:
+        logger.info("sweep already complete")
+        return 0
+    input_dir = write_input_dir(input_dir.parent / f"{input_dir.name}-todo", todo)
 
     if count > 1:
         # Round-robin rather than contiguous blocks: target cost tracks assembly
@@ -338,6 +349,24 @@ def stage_predict(args: argparse.Namespace) -> int:
 EXPECTED_CANDIDATES = 25  # 5 seeds x 5 samples, FoldBench's protocol
 
 
+def incomplete_targets(entries: list[dict], prediction_dir: Path) -> list[dict]:
+    """The entries that do not yet have their full set of candidates on disk.
+
+    This is the residual, and it is read from the artefacts rather than
+    predicted from a rule. A target is unfinished for reasons a size threshold
+    cannot enumerate -- it ran out of memory, a rank died, a seed failed on its
+    own, the job hit its wall clock -- and all of them look identical here,
+    which is what makes re-running converge instead of guessing.
+
+    The denominator of the published metric is fixed at the task's interfaces,
+    so a run is not a smaller run when it loses targets; it is a run that cannot
+    be compared with any other. Finishing this list is therefore not clean-up,
+    it is the condition for the run existing at all.
+    """
+    return [e for e in entries
+            if count_candidates(prediction_dir, e["name"]) != EXPECTED_CANDIDATES]
+
+
 def count_candidates(prediction_dir: Path, name: str) -> int:
     """Sampled structures on disk for one target.
 
@@ -370,17 +399,30 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
 
     input_dir = Path(args.input_dir)
     entries = json.loads((input_dir / "inputs.json").read_text())
-    _, oversized = split_oversized(entries, args.foldcp_threshold, args.foldcp_targets)
-    # Smallest first. Every target here is one that has never run, on a path that
-    # has never run, so the first one is really a test of the path -- and the
-    # cheapest target answers "does Fold-CP start at all" for the least GPU time.
-    # Ordering by cost also means a memory ceiling shows up as the largest ones
-    # failing at the end, rather than as the first target failing and saying
+    prediction_dir = Path(args.prediction_dir)
+
+    if args.foldcp_targets:
+        _, oversized = split_oversized(entries, args.foldcp_threshold, args.foldcp_targets)
+    else:
+        # Whatever is unfinished, not whatever is large. The size threshold is a
+        # prediction about which targets will not fit; this is a measurement of
+        # which ones did not get produced, and only the second one converges. A
+        # target that the sweep lost to something other than memory is picked up
+        # here too, and running it under Fold-CP is safe because Fold-CP does not
+        # change inference semantics -- it is the same computation on more cards.
+        oversized = incomplete_targets(entries, prediction_dir)
+
+    # Smallest first: the cheapest target answers "does this path work at all"
+    # for the least GPU time, and a memory ceiling then shows up as the largest
+    # ones failing at the end rather than as the first failing and saying
     # nothing about the rest.
     oversized.sort(key=residue_count)
     if not oversized:
-        logger.info("nothing at or above %d residues; nothing to do", args.foldcp_threshold)
+        logger.info("every target has its %d candidates; nothing to do", EXPECTED_CANDIDATES)
         return 0
+    logger.info("%d of %d targets unfinished: %s", len(oversized), len(entries),
+                ", ".join(f"{e['name']}({count_candidates(prediction_dir, e['name'])}/{EXPECTED_CANDIDATES})"
+                          for e in oversized))
 
     # One target needs a whole node, so several nodes can take several targets at
     # once. The launcher's RANK/WORLD_SIZE identify this process among the
@@ -467,11 +509,25 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
         "failed": failures,
     }, indent=2))
 
-    if failures:
-        logger.error("%d of %d Fold-CP targets failed: %s",
-                     len(failures), len(oversized), ", ".join(failures))
+    # The stage's verdict is the state of the whole task, not of this pass. A
+    # pass that finished its own list while other targets are still short has
+    # not produced a comparable run, and saying "0 failures" there would be the
+    # difference between a run that can be quoted and one that cannot.
+    remaining = incomplete_targets(entries, prediction_dir)
+    if remaining:
+        logger.error(
+            "%d target(s) still short of %d candidates; dispatch this stage "
+            "again to continue: %s",
+            len(remaining), EXPECTED_CANDIDATES,
+            ", ".join(f"{e['name']}({count_candidates(prediction_dir, e['name'])})"
+                      for e in remaining),
+        )
+        if failures:
+            logger.error("failed this pass: %s", ", ".join(failures))
         return 1
-    logger.info("all %d Fold-CP targets completed", len(oversized))
+
+    logger.info("all %d targets complete with %d candidates each",
+                len(entries), EXPECTED_CANDIDATES)
     return 0
 
 
