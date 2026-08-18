@@ -205,7 +205,24 @@ def stage_predict(args: argparse.Namespace) -> int:
     # the sweep worked. It had already failed. A marker makes the question
     # answerable from disk.
     import os as _os
+    import subprocess as _sp
+
+    def _git(*args: str) -> str | None:
+        """The commit this code is, read from the checkout it is running from."""
+        try:
+            return _sp.run(["git", *args], cwd=Path(__file__).resolve().parent.parent,
+                           capture_output=True, text=True, check=True).stdout.strip()
+        except Exception:  # noqa: BLE001 - provenance must not break the run
+            return None
+
     (eval_dir / "run_marker.json").write_text(json.dumps({
+        # Which code produced these structures. Without this the artefacts on
+        # disk cannot be tied to a version: predictions made under one commit
+        # sit in the same tree as predictions made under a later one, and
+        # nothing on disk says which is which. `git_dirty` matters as much as
+        # the hash -- a clean hash on a modified tree is a false claim.
+        "git_commit": _git("rev-parse", "HEAD"),
+        "git_dirty": bool(_git("status", "--porcelain")),
         "slurm_job_id": _os.environ.get("SLURM_JOB_ID"),
         "slurm_step_id": _os.environ.get("SLURM_STEP_ID"),
         "hostname": _os.environ.get("SLURMD_NODENAME") or _os.uname().nodename,
