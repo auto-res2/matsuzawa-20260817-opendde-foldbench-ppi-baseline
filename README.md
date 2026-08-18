@@ -54,14 +54,35 @@ OpenDDE's documented defaults (`docs/supported_models.md`).
 | Candidates per target | 25 |
 | MSA / templates | **on** |
 | Targets | 279 interfaces across 239 assemblies |
-| Metric | DockQ success rate (> 0.23); lDDT reported alongside |
+| Metric | DockQ success rate (≥ 0.23); lDDT reported alongside |
 
 ## The MSA protocol, in full
 
-The OpenDDE report does not say how it built MSAs for its FoldBench evaluation —
-its only mentions of MSA search concern *training* data. So this is our protocol,
-recorded because the number depends on it. It is OpenDDE's own client at its own
-settings ([`msa_service_client.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/opendde/data/msa/msa_service_client.py)):
+The OpenDDE *report* does not say how it built MSAs for its FoldBench evaluation
+— its only mentions of MSA search concern *training* data. The OpenDDE *project*
+does, and what follows is that documented procedure rather than anything we
+chose:
+
+- [`docs/msa_template_pipeline.md`](https://github.com/aurekaresearch/OpenDDE/blob/main/docs/msa_template_pipeline.md)
+  states that `opendde msa` searches the public ColabFold MMseqs2 API, and that
+  batch runs should **supply precomputed A3M files** instead of hammering the
+  shared service. Prefetching the MSAs and writing `unpairedMsaPath` into the
+  input JSON — which is what `src/msa_prefetch.py` does — follows that
+  instruction; it is not a deviation from it.
+- The query parameters below are not settings we picked. They are hard-coded in
+  `search_and_build_msa()`
+  ([`msa_service_client.py`](https://github.com/aurekaresearch/OpenDDE/blob/main/opendde/data/msa/msa_service_client.py)),
+  which calls `run_mmseqs2` twice: `use_env=True, use_pairing=False` for the
+  unpaired search and `use_env=False, use_pairing=True` for the paired one.
+
+FoldBench does not supply MSAs either: its plugin contract
+([`algorithms/README.md`](https://github.com/BEAM-Labs/FoldBench/blob/main/algorithms/README.md))
+says nothing about them, and its reference plugin passes `--use_msa_server`
+(`vendor/foldbench-protenix-plugin/make_predictions.sh:31`) so the model builds
+its own. Each model bringing its own MSA search *is* the benchmark's convention.
+
+What that leaves genuinely unpinnable is the *result*, not the procedure — see
+`docs/reproducibility.md`. The resulting parameters:
 
 | | Unpaired (every chain) | Paired (multi-chain only) |
 |---|---|---|
