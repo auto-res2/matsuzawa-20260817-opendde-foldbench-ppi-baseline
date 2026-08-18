@@ -39,12 +39,18 @@ ENV PYTHONPATH=/workspace
 
 # Benchmark inputs, read-only and shared.
 #
-# FB_STAGE is deliberately NOT set here. The platform injects values for every
-# environment variable the analysis lists as a dependency, and an unregistered
-# one arrives as the placeholder "AAA" -- which overrode this image's FB_STAGE
-# and made the first Fold-CP run die on `KeyError: 'AAA'` before it did any
-# work. The stage is therefore passed as a command line flag below, where
-# argparse takes it over anything the environment says.
+# FB_STAGE is deliberately NOT set here; the stage is a command line flag below,
+# where argparse takes it over anything the environment says.
+#
+# The first Fold-CP run died in 38 seconds on `KeyError: 'AAA'`, having read
+# FB_STAGE=AAA despite this image setting it correctly. The cause was a stray
+# FB_STAGE registered as a platform environment variable, which is injected into
+# the container and wins over the image's own ENV. It has since been removed, so
+# the immediate fault is gone -- but the shape of it is not: an environment
+# variable registered anywhere outside this file can silently replace a value
+# this file sets, and FB_STAGE is the first thing the program reads. A flag
+# closes that off for good, which is why this stays even though the offending
+# variable is deleted.
 ENV FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
     FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
     FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
@@ -64,11 +70,12 @@ ENV FB_INPUT_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/input/O
 # WITHOUT process-per-GPU: one process must own a node's GPUs so torchrun can
 # spend all of them on a single target.
 #
-# The env dump is not debris. This image's settings can be silently replaced by
-# platform-injected placeholders (see FB_STAGE above), and when that happens the
-# failure appears deep inside the run as a nonsensical path or an unknown stage.
-# Printing what the process actually received, before it acts on any of it, makes
-# that a first line rather than an autopsy. It costs one line of output per run.
+# The env dump is not debris. This image's settings can be replaced by
+# platform-registered environment variables (see FB_STAGE above), and outside the
+# stage -- which now fails loudly -- that would surface deep inside the run as a
+# path that does not exist, on a node already taken. Printing what the process
+# actually received, before it acts on any of it, makes that a first line rather
+# than an autopsy. It costs one line of output per run.
 #
 # --stage is a flag rather than FB_STAGE for the same reason: a flag cannot be
 # overridden by the environment.
