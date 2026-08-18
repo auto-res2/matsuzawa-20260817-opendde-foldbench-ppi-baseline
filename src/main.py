@@ -97,6 +97,44 @@ def build_af3_inputs(
     return [e["name"] for e in entries]
 
 
+def run_label(args: argparse.Namespace) -> str:
+    """A name for this run, unique per job unless one is given.
+
+    Repeated runs of the same protocol are the whole point of running three
+    times, and they only measure anything if their artefacts stay apart. One
+    shared prediction tree would do worse than mix them up: the resume logic
+    reads what is on disk to decide what still needs computing, so the second
+    job would find the first job's structures, conclude the work was done, and
+    exit having produced a run that is really a copy of another one.
+
+    Set it per experiment, not per job. One experiment is several jobs -- the
+    sweep, the Fold-CP pass that finishes what the sweep could not, and the
+    scoring -- and they have to agree on where the artefacts are or the later
+    ones will not find what the earlier ones produced. FB_RUN_LABEL registered
+    on the execution platform is the practical way to do that, changed between
+    experiments.
+
+    The fallback is the directory the repository was staged into, which the
+    platform names after the job. That keeps a run from ever writing into
+    another run's tree by accident, but it differs per job, so a run left on the
+    fallback would scatter its three stages across three directories. It is a
+    guard, not a default to rely on.
+    """
+    if args.run_label:
+        return args.run_label
+    label = Path(__file__).resolve().parent.parent.name
+    logger.warning(
+        "no --run-label/FB_RUN_LABEL; falling back to %r. Every stage of one "
+        "experiment must use the same label, and this one changes per job.",
+        label,
+    )
+    return label
+
+
+def run_dir(base: str, label: str) -> Path:
+    return Path(base) / label
+
+
 def inference_env(args: argparse.Namespace, extra: dict | None = None) -> dict:
     """The environment the sampler runs in, with the model's data root pinned.
 
@@ -797,6 +835,10 @@ def main() -> None:
     # Comma-separated assembly names, overriding the size rule. For retrying a
     # target that OOMed anyway without moving the threshold for everything else.
     p.add_argument("--foldcp-targets", **env_default("FB_FOLDCP_TARGETS", None, optional=True))
+    # Names this run's artefacts. Defaults to the staging directory, which the
+    # platform names per job, so three dispatched jobs separate themselves. Give
+    # it explicitly to continue a run that was interrupted.
+    p.add_argument("--run-label", **env_default("FB_RUN_LABEL", None, optional=True))
     p.add_argument("--python", default=sys.executable)
     # Where OpenDDE finds the checkpoint and the CCD data it builds features
     # from. Passed explicitly rather than left to OPENDDE_ROOT_DIR in the
@@ -811,6 +853,19 @@ def main() -> None:
     args = p.parse_args()
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+
+    # Resolved once, here, rather than at each of the places that write: every
+    # stage of one run has to agree on where that run's artefacts are, and a
+    # stage that disagreed would silently score one run's structures as another
+    # run's. Inputs are deliberately not labelled -- all three runs read the same
+    # inputs, which is what makes them comparable at all.
+    label = run_label(args)
+    args.prediction_dir = str(run_dir(args.prediction_dir, label))
+    args.evaluation_dir = str(run_dir(args.evaluation_dir, label))
+    logger.info("run %s", label)
+    logger.info("  predictions -> %s", args.prediction_dir)
+    logger.info("  evaluation  -> %s", args.evaluation_dir)
+
     raise SystemExit(STAGES[args.stage](args))
 
 
