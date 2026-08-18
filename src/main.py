@@ -257,6 +257,18 @@ def split_oversized(
     return rest, chosen
 
 
+def scratch_dir(args: argparse.Namespace) -> Path:
+    """Where this run puts the input lists it derives for its own workers.
+
+    Under the run's own output tree, never beside the inputs it read. These
+    directories are named after a shard, not after a run, so three experiments
+    running at once would write different target lists to the same path and read
+    each other's -- and they would land in the shared input tree, where a
+    reproduction's scratch has no business being.
+    """
+    return Path(args.prediction_dir) / "_worklists"
+
+
 def write_input_dir(path: Path, entries: list[dict]) -> Path:
     """Materialise an input directory holding exactly `entries`.
 
@@ -292,10 +304,7 @@ def stage_predict(args: argparse.Namespace) -> int:
         # pilot sees exactly --limit assemblies.
         full = json.loads((input_dir / "inputs.json").read_text())
         subset = full[: args.limit]
-        input_dir = input_dir.parent / f"{input_dir.name}-limit{args.limit}"
-        input_dir.mkdir(parents=True, exist_ok=True)
-        (input_dir / "inputs.json").write_text(json.dumps(subset, indent=2))
-        (input_dir / "alphafold3_inputs.json").write_text(json.dumps(subset, indent=2))
+        input_dir = write_input_dir(scratch_dir(args) / f"limit{args.limit}", subset)
         logger.info("pilot: %d of %d assemblies", len(subset), len(full))
 
     # Hold back the targets that cannot fit one card, before sharding rather than
@@ -324,7 +333,7 @@ def stage_predict(args: argparse.Namespace) -> int:
     if not todo:
         logger.info("sweep already complete")
         return 0
-    input_dir = write_input_dir(input_dir.parent / f"{input_dir.name}-todo", todo)
+    input_dir = write_input_dir(scratch_dir(args) / "todo", todo)
 
     if count > 1:
         # Round-robin rather than contiguous blocks: target cost tracks assembly
@@ -333,7 +342,7 @@ def stage_predict(args: argparse.Namespace) -> int:
         full = json.loads((input_dir / "inputs.json").read_text())
         mine = full[index::count]
         input_dir = write_input_dir(
-            input_dir.parent / f"{input_dir.name}-shard{index}of{count}", mine
+            scratch_dir(args) / f"shard{index}of{count}", mine
         )
         logger.info("shard %d/%d: %d of %d assemblies", index, count, len(mine), len(full))
 
@@ -515,7 +524,7 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
             "[%d/%d] %s (%d residues) with Fold-CP size_cp=%d",
             position, len(oversized), name, residue_count(entry), args.foldcp_size_cp,
         )
-        one = write_input_dir(input_dir.parent / f"{input_dir.name}-foldcp-{name}", [entry])
+        one = write_input_dir(scratch_dir(args) / f"foldcp-{name}", [entry])
         eval_dir = eval_root / f"foldcp-{name}"
         eval_dir.mkdir(parents=True, exist_ok=True)
 
