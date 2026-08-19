@@ -1,0 +1,108 @@
+# One whole experiment in one job: sweep, Fold-CP residual, then scoring.
+#
+# PROVENANCE: ours. It exists only to hand the cluster an environment; the model,
+# its weights and the scorer all live on the shared filesystem.
+#
+# WHY ONE IMAGE AND ONE JOB. Three experiments have to run at the same time to
+# be worth running at all -- sequentially they are three wall clocks instead of
+# one -- and they must not share an output tree, or the second would find the
+# first's structures and conclude its work was done. The label that separates
+# them comes from the job, so every stage of an experiment has to live in the
+# same job; a label carried between jobs would need a platform environment
+# variable, which holds one value per repository and would have serialised them
+# again.
+#
+# WHY A SECOND FILE. The platform runs one committed Dockerfile per run and
+# executes its CMD verbatim, so the stage a run performs is fixed by FB_STAGE in
+# the image. Two stages that need different machines therefore need two images:
+# the sweep puts one worker on each GPU of a node, while Fold-CP gives one
+# target a whole node's GPUs, and no single run can be both shapes at once.
+#
+# KEEP IN STEP WITH Dockerfile.predict. Everything below is identical to it
+# except the two values marked DIFFERS. This project has already been bitten
+# once by configuration held in two places drifting apart -- a config file that
+# claimed use_template: true for a run that had templates off -- so if you
+# change a path, a mount assumption or the CMD in one file, change it in both.
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git curl kalign \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+COPY . .
+
+# Where OpenDDE finds checkpoint/opendde.pt and its CCD data. Declared under our
+# own name rather than as OPENDDE_ROOT_DIR, and re-exported under that name by
+# src/main.py when it launches the sampler: a variable called OPENDDE_ROOT_DIR
+# registered on the execution platform silently replaced this image's value and
+# pointed a run's model inputs at a personal directory.
+ENV FB_OPENDDE_ROOT_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde_data
+ENV OPENDDE_PYTHON=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python
+ENV OPENDDE_CLI=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/opendde
+# DIFFERS from Dockerfile.predict. Fold-CP is launched by torchrun rather than by
+# the console script, because it needs size_dp * size_cp processes and only a
+# launcher can start them (opendde/distributed/foldcp/config.py, launch_hint).
+ENV OPENDDE_TORCHRUN=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/torchrun
+ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+ENV PYTHONPATH=/workspace
+
+# Benchmark inputs, read-only and shared.
+#
+# FB_STAGE is deliberately NOT set here; the stage is a command line flag below,
+# where argparse takes it over anything the environment says.
+#
+# The first Fold-CP run died in 38 seconds on `KeyError: 'AAA'`, having read
+# FB_STAGE=AAA despite this image setting it correctly. The cause was a stray
+# FB_STAGE registered as a platform environment variable, which is injected into
+# the container and wins over the image's own ENV. It has since been removed, so
+# the immediate fault is gone -- but the shape of it is not: an environment
+# variable registered anywhere outside this file can silently replace a value
+# this file sets, and FB_STAGE is the first thing the program reads. A flag
+# closes that off for good, which is why this stays even though the offending
+# variable is deleted.
+ENV FB_FOLDBENCH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench \
+    FB_TARGETS_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/FoldBench/targets \
+    FB_INPUT_JSON_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/input_json \
+    FB_GROUND_TRUTH_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/ground_truth_20250520 \
+    FB_OPENDDE_SRC=/data1/rkp00041/plinder_lddt_pli_improvement/model/opendde
+
+# Run products. The prediction directory is shared with Dockerfile.predict on
+# purpose: these targets belong to the same sweep as the other 233 and the
+# scoring stage reads one tree.
+ENV FB_INPUT_DIR=/data1/rkp00041/foldbench-ppi-baseline/input/OpenDDE \
+    FB_MSA_DIR=/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/opendde/msa \
+    FB_PREDICTION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/prediction/OpenDDE \
+    FB_EVALUATION_DIR=/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/evaluation/OpenDDE
+
+# Scoring, in the same image because it is the same job. `ost` is invoked by
+# bare name from FoldBench's own code without its exit status being checked, so
+# src/main.py refuses to start unless this directory really holds it.
+ENV FB_OST_BIN_DIR=/data1/rkp00041/.local/bin \
+    FB_EVAL_PYTHON=/data1/rkp00041/foldbench-ppi-baseline/evalenv/bin/python
+
+# Targets are taken by size (FB_FOLDCP_THRESHOLD) unless FB_FOLDCP_TARGETS names
+# them, and are shared across node-level workers by RANK/WORLD_SIZE. Run this
+# WITHOUT process-per-GPU: one process must own a node's GPUs so torchrun can
+# spend all of them on a single target.
+#
+# The env dump is not debris. This image's settings can be replaced by
+# platform-registered environment variables (see FB_STAGE above), and outside the
+# stage -- which now fails loudly -- that would surface deep inside the run as a
+# path that does not exist, on a node already taken. Printing what the process
+# actually received, before it acts on any of it, makes that a first line rather
+# than an autopsy. It costs one line of output per run.
+#
+# --stage is a flag rather than FB_STAGE for the same reason: a flag cannot be
+# overridden by the environment.
+# Resume an existing output tree instead of starting an empty one.
+# GENERATED by docker/make_resume_images.sh -- edit Dockerfile.run,
+# then regenerate; do not edit this file by hand.
+ENV FB_RUN_LABEL=9d5deeb3-4414-423b-acf9-b059bc81f5f2
+
+CMD ["/bin/sh", "-c", "echo '--- env as received ---'; env | grep -E '^(FB_|OPENDDE_|RANK=|WORLD_SIZE=|LOCAL_RANK=|CUDA_VISIBLE_DEVICES=)' | sort; echo '--- end env ---'; exec /data1/rkp00041/plinder_lddt_pli_improvement/model/opendde/.venv/bin/python -u -m src.main --stage all"]

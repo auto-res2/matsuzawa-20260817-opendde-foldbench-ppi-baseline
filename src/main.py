@@ -430,6 +430,12 @@ def stage_predict(args: argparse.Namespace) -> int:
 
 EXPECTED_CANDIDATES = 25  # 5 seeds x 5 samples, FoldBench's protocol
 
+# How many times a node tries its share of the residual before the run is called
+# short. Two rather than one because the denominator is fixed and a transient
+# loss is not a smaller run; not more than two because a target that fails
+# deterministically would spend hours failing again.
+RESIDUAL_ATTEMPTS = 2
+
 
 def incomplete_targets(entries: list[dict], prediction_dir: Path) -> list[dict]:
     """The entries that do not yet have their full set of candidates on disk.
@@ -591,16 +597,24 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
         "failed": failures,
     }, indent=2))
 
-    # The stage's verdict is the state of the whole task, not of this pass. A
-    # pass that finished its own list while other targets are still short has
-    # not produced a comparable run, and saying "0 failures" there would be the
-    # difference between a run that can be quoted and one that cannot.
-    remaining = incomplete_targets(entries, prediction_dir)
+    # The verdict covers this worker's own list when the residual is shared out,
+    # and the whole task when it is not.
+    #
+    # It used to always cover the whole task, and that cost a run. A node that
+    # had finished its slice read the global residual, saw the targets its peers
+    # were still sampling, called itself failed and exited non-zero; srun
+    # cancelled the step for task failure and killed those peers mid-target --
+    # one of them fifteen candidates into a target that takes two hours. Peers
+    # still working is the normal middle of a sharded pass, not a failure of it.
+    # Only a pass that runs after the barrier can judge the whole task, and in
+    # `all` that is stage_all's job.
+    scope, whose = (oversized, "this worker's") if count > 1 else (entries, "the task's")
+    remaining = incomplete_targets(scope, prediction_dir)
     if remaining:
         logger.error(
-            "%d target(s) still short of %d candidates; dispatch this stage "
-            "again to continue: %s",
-            len(remaining), EXPECTED_CANDIDATES,
+            "%d of %s %d target(s) still short of %d candidates; dispatch this "
+            "stage again to continue: %s",
+            len(remaining), whose, len(scope), EXPECTED_CANDIDATES,
             ", ".join(f"{e['name']}({count_candidates(prediction_dir, e['name'])})"
                       for e in remaining),
         )
@@ -608,8 +622,8 @@ def stage_predict_oversized(args: argparse.Namespace) -> int:
             logger.error("failed this pass: %s", ", ".join(failures))
         return 1
 
-    logger.info("all %d targets complete with %d candidates each",
-                len(entries), EXPECTED_CANDIDATES)
+    logger.info("all %d targets in %s list complete with %d candidates each",
+                len(scope), whose, EXPECTED_CANDIDATES)
     return 0
 
 
@@ -818,7 +832,16 @@ def stage_all(args: argparse.Namespace) -> int:
     index, count = shard_of(args.shard, args.num_shards)
     local_rank = int(_os.environ.get("LOCAL_RANK", "0"))
     node = _os.environ.get("SLURMD_NODENAME") or _os.uname().nodename
-    markers = Path(args.evaluation_dir) / "_progress"
+
+    # Scoped by the job, not by the run label. A resumed run is handed its
+    # predecessor's label on purpose -- that is how it finds the 233 targets
+    # already on disk instead of sampling them again -- which means it also
+    # inherits that run's evaluation directory. Markers written by the job that
+    # died would then read as this job's workers having already arrived, and the
+    # barrier would wave scoring through while structures were still being
+    # written. The staging directory is named after the job, so it is the same
+    # for all sixteen workers of this run and different from any other.
+    markers = Path(args.evaluation_dir) / "_progress" / Path(__file__).resolve().parent.parent.name
 
     def signal(name: str) -> None:
         markers.mkdir(parents=True, exist_ok=True)
@@ -849,18 +872,48 @@ def stage_all(args: argparse.Namespace) -> int:
         args.shard, args.num_shards = index // per_node, max(1, count // per_node)
         logger.info("node %s: residual pass as node %d of %d, on %d GPUs",
                     node, args.shard, args.num_shards, per_node)
-        if (code := stage_predict_oversized(args)) != 0:
-            logger.error("targets are still unfinished after the residual pass")
-            signal(f"filled_{index}")
-            return code
+        # Tried more than once because the denominator is fixed: a target lost to
+        # something transient is not a smaller run, it is a run that cannot be
+        # compared with any other. The retry costs nothing when the first pass
+        # succeeds, and stage_predict_oversized re-reads what is short from disk,
+        # so a second pass samples only what is actually missing.
+        for attempt in range(1, RESIDUAL_ATTEMPTS + 1):
+            residual = stage_predict_oversized(args)
+            if residual == 0:
+                break
+            logger.warning("node %s: residual attempt %d of %d left its share short",
+                           node, attempt, RESIDUAL_ATTEMPTS)
     else:
         logger.info("node %s worker %d: the residual pass is local rank 0's",
                     node, index)
     signal(f"filled_{index}")
 
+    # Every worker reaches the barrier, including one whose own share came up
+    # short. Returning early here is how this job used to die: srun cancels the
+    # whole step when any task exits non-zero, so the first node to give up took
+    # the others down with it -- one of them two hours into a target it would
+    # have finished. Nothing is reported as failed until after the barrier, by
+    # the one worker that can see the whole task, when there is no longer any
+    # peer left to kill.
     wait_for([f"filled_{i}" for i in range(count)], "the residual pass")
     if index != 0:
         return 0
+
+    # The whole-task verdict, in the one place that is entitled to give it. A
+    # score over a partial run is worse than no score: it looks quotable and is
+    # not comparable with anything, so it is refused rather than published.
+    entries = json.loads((Path(args.input_dir) / "inputs.json").read_text())
+    prediction_dir = Path(args.prediction_dir)
+    short = incomplete_targets(entries, prediction_dir)
+    if short:
+        logger.error(
+            "%d of %d target(s) short of %d candidates after the residual pass; "
+            "refusing to score a partial run: %s",
+            len(short), len(entries), EXPECTED_CANDIDATES,
+            ", ".join(f"{e['name']}({count_candidates(prediction_dir, e['name'])})"
+                      for e in short),
+        )
+        return 1
 
     # Scored once, by one worker, after every structure exists. Scoring while
     # sampling is still running would score a partial run.
