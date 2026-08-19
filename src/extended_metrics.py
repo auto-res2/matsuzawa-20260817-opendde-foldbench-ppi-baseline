@@ -229,10 +229,14 @@ def main() -> None:
         eval_dir, pred_dir = Path(eval_dir), Path(pred_dir)
         raw_csv = eval_dir / "raw" / f"{args.target_type}_ost.csv"
         frame = collect(raw_csv, eval_dir / "detail", pred_dir, args.metric_type)
+        # OpenStructure only began stamping its own version into the output
+        # around 2.9; under the version FoldBench pins the key is absent, which
+        # is not an error and must not read as one.
+        stamped = (frame["ost_version"].dropna().unique().tolist()
+                   if "ost_version" in frame.columns else [])
         logger.info("%s: %d interfaces, %d assemblies, ost %s",
                     label, len(frame), frame["pdb_id"].nunique(),
-                    frame.get("ost_version", pd.Series(["?"])).dropna().iloc[0]
-                    if "ost_version" in frame else "?")
+                    ", ".join(map(str, stamped)) or "unstamped (2.8.x)")
         report[label] = {
             "n_interfaces": int(len(frame)),
             "n_assemblies": int(frame["pdb_id"].nunique()),
