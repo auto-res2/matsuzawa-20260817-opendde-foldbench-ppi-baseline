@@ -84,26 +84,31 @@ ENV FB_INPUT_DIR=/data1/rkp00041/foldbench-ppi-baseline/input/OpenDDE \
 # bare name from FoldBench's own code without its exit status being checked, so
 # src/main.py refuses to start unless this directory really holds it.
 #
-# PINNED, and not to the newest. FoldBench's environment.yml asks for
-# openstructure 2.8.0; the shared /data1/rkp00041/.local/bin/ost this used to
-# point at is 2.11.1, installed as `mamba create ... openstructure` with no
-# version, which resolves to whatever is newest -- the furthest thing from what
-# the benchmark specifies. Under 2.11.1 two of the task's interfaces could not
-# be scored at all:
+# PINNED to the version FoldBench asks for. Its environment.yml specifies
+# openstructure 2.8.0, and nothing prebuilt supplies that here: the aivant
+# channel publishes 2.8.0 for linux-64 only, bioconda's aarch64 builds start at
+# 2.9.3, and the official container registry keeps only its newest tags. This
+# cluster is aarch64, so 2.8.0 was built from the GitLab source tag natively and
+# installed beside the scoring interpreter.
+#
+# It matters which version scores. The shared /data1/rkp00041/.local/bin/ost is
+# 2.11.1, installed as `mamba create ... openstructure` with no version, which
+# resolves to whatever is newest -- the furthest thing from the pin. Under it,
+# two of the task's 279 interfaces could not be scored at all:
 #
 #   8i82  RuntimeError: Sequence mismatch of residue "C.KBE1" with olc "?"
 #   8qjk  RuntimeError: Target chain specified in chain_mapping (B) does not
 #         exist. Target has chains: ['A', 'A-2', 'A-3', 'A-4']
 #
-# Both score under 2.9.3, so they were a version defect and not a property of
-# the targets. 2.8.0 itself cannot be used here: it is published only for
-# linux-64 (channel aivant), the official container registry keeps only its
-# newest tags, and this cluster is aarch64 -- so the closest obtainable version
-# to the one the benchmark pins is 2.9.3, from bioconda.
+# Both score under 2.8.0, so they were a defect in the scorer and not a property
+# of the targets. The versions also disagree about what an interface is: for the
+# 8qjk homotetramer 2.8.0 enumerates four reference interfaces and 2.9.3
+# enumerates twenty-six, which is reason enough to use the pinned one rather
+# than the nearest available.
 #
 # In the group directory rather than a personal one, for the same reason as
 # FB_EVAL_PYTHON: the tool that produced the number is part of the number.
-ENV FB_OST_BIN_DIR=/data1/rkp00041/foldbench-ppi-baseline/ost293/bin \
+ENV FB_OST_BIN_DIR=/data1/rkp00041/foldbench-ppi-baseline/ost280/bin \
     FB_EVAL_PYTHON=/data1/rkp00041/foldbench-ppi-baseline/evalenv/bin/python
 
 # Targets are taken by size (FB_FOLDCP_THRESHOLD) unless FB_FOLDCP_TARGETS names
