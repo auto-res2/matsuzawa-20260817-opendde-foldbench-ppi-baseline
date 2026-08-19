@@ -1,0 +1,584 @@
+% 日本語論文のため LuaTeX + luatexja を用いる。pdflatex では日本語文字ごとに
+% "LaTeX Error: Unicode character" が発生し、本文が PDF から欠落する。
+% 同梱の英語会議用テンプレート (mdpi / iclr2024 / agents4science_2025) は
+% CJK 非対応のため使用せず、自前のプリアンブルで組む。
+\documentclass[11pt,a4paper]{article}
+\usepackage{luatexja-fontspec}
+\setmainjfont{IPAexMincho}
+\setsansjfont{IPAexGothic}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=25mm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small}
+
+\title{公開ベンチマーク再現における評価器の同定\\
+\large ---- OpenDDE の FoldBench タンパク質--タンパク質 DockQ 成功率 0.769 を独立に測り直した記録 ----}
+\author{松澤 拓海}
+\date{2026年8月19日}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+公開された性能値を独立に再現する作業では、モデルとデータを揃えても値が一致しないことがある。
+本研究は、生体分子構造予測モデル OpenDDE が FoldBench のタンパク質--タンパク質
+インターフェース予測で報告した DockQ 成功率 0.769 を、公開チェックポイントと公開ベンチマークから
+測り直した記録である。学習は行わず、推論と採点のみを実施した。
+239 アセンブリ・279 インターフェースに対し、5 シード $\times$ 5 サンプルの計 25 候補を
+ターゲットごとに生成し (総計 5,975 構造)、FoldBench の評価スクリプトで採点した。
+得られた成功率は 0.7319 (202/276)、Wilson 95\% 区間は $[0.677, 0.781]$ であり、
+公称値 0.769 は区間内に収まる。同一プロトコルの 3 回の実行で成功率の標本標準偏差は 0.0000、
+成否が反転したインターフェースは 0 件であった。
+差の原因を切り分ける過程で、採点器である OpenStructure のバージョンが結果を左右することが判明した。
+FoldBench が指定する 2.8.0 では 279 インターフェースのうち 3 件が採点できず、
+別バージョンではその内訳が入れ替わる。ただしバージョン間の成功率の幅は 0.5 ポイントであり、
+公称値との約 4 ポイント差を説明しない。
+さらに、界面 lDDT と鎖ごとの CA RMSD を追加で算出し、失敗が折りたたみの失敗ではなく
+配置の失敗であることを示した。単鎖 CA RMSD が 2 \AA{} 未満でありながら DockQ が 0.23 未満の
+インターフェースが 276 件中 35 件 (12.7\%) 存在する。
+候補選択の分析からは、25 候補のオラクル上限 0.7899 に対しモデル自身の \texttt{ranking\_score} が
+0.7319 しか拾えていないこと、すなわち 5.8 ポイントが生成ではなく選択の失敗であることが分かった。
+本研究の主張は精度の向上ではなく、公開値の再現において何が固定でき何が固定できないかの同定である。
+\end{abstract}
+
+\section{はじめに}
+
+公開されたモデルの性能値を独立に測り直すことは、その値を後続の実験の基準として使うための前提である。
+基準が定まらなければ、改良を加えたときに得られた差が改良によるものか測定によるものかを区別できない。
+
+本研究の目的は、OpenDDE \cite{opendde} が技術報告書で示した FoldBench \cite{foldbench}
+タンパク質--タンパク質インターフェース予測の DockQ 成功率 0.769 を、
+公開されている資材のみから再現し、再現できる部分とできない部分を分離することにある。
+学習は行わない。公開チェックポイントによる推論と、ベンチマーク付属の採点スクリプトによる評価のみを行う。
+
+作業の過程で明らかになった主要な事実は三つある。
+第一に、得られた成功率 0.7319 は公称値 0.769 より約 4 ポイント低いが、
+276 インターフェースという標本規模では両者を統計的に区別できない。
+第二に、採点器 OpenStructure のバージョンが「何件を採点できるか」を左右し、
+指定版が最も多く採点できるとは限らない。
+第三に、シードが固定されているため 3 回の実行はほぼ完全に決定的であり、
+このベンチマークの分解能は約 $\pm 5$ ポイントである。
+
+\section{関連研究}
+
+生体分子の複合体構造予測は AlphaFold 3 \cite{af3} 以降、拡散モデルによる構造生成と
+Pairformer による表現学習という共通の骨格を持つモデル群に収束している。
+Chai-1、Boltz-1、Protenix、OpenFold 3、HelixFold 3、そして本研究の対象である OpenDDE は
+いずれもこの系統に属し、公開実装と公開重みを持つ。
+
+これらを共通の条件で比較する目的で構築されたのが FoldBench \cite{foldbench} である。
+2023 年 1 月 13 日以降に公開された構造のみを対象とし、それ以前の PDB に対して低相同性となるよう
+構成することで、学習データの混入を避けている。
+公式リーダーボードのタンパク質--タンパク質タスクの値を表~\ref{tab:leaderboard} に示す。
+
+本研究が扱うのは新しいモデルや新しいベンチマークではなく、
+既に公開されている値を独立に測り直したときに何が一致し何が一致しないか、という問題である。
+機械学習における再現性の議論は主として学習の再現に向けられてきたが、
+本研究が示すのは、学習を伴わない推論と採点だけの設定においても、
+採点器の版という要素が結果を左右しうるという点である。
+
+\section{背景}
+
+\subsection{ベンチマークの定義}
+
+FoldBench のタンパク質--タンパク質タスクは 239 アセンブリ・279 インターフェースからなる。
+対象は 2023 年 1 月 13 日以降に公開された構造に限定され、それ以前の PDB に対して
+低相同性となるよう構築されている。インターフェースの一覧は静的な CSV として配布されており、
+評価時に再計算されることはない。すなわち採点器のバージョンを変えても対象集合は動かない。
+
+\subsection{採点の仕組み}
+
+FoldBench は候補構造ごとに OpenStructure の \texttt{compare-structures} を呼び出し、
+DockQ・lDDT・TM-score・iRMSD・LRMSD を得る。呼び出しは以下の形である。
+
+\begin{quote}\small
+\texttt{ost compare-structures -m <model> -r <reference> -o <out>}\\
+\texttt{\ \ --fault-tolerant --min-pep-length 4 --min-nuc-length 4}\\
+\texttt{\ \ --lddt --rigid-scores --tm-score --dockq}
+\end{quote}
+
+集計時、DockQ が得られなかった行は除外される
+(\texttt{task\_score\_summary.py} の \texttt{df = df[df[metric].notna()]})。
+したがって成功率の分母は「採点できたインターフェース数」であり、必ずしも 279 ではない。
+本研究もこの流儀に従う。
+
+\section{実験設定}
+
+\subsection{モデルと推論}
+
+OpenDDE の公開チェックポイントを用い、同梱の CLI をその既定値で実行した。
+すなわち Pairformer のリサイクル回数 10、拡散ステップ数 200、1 シードあたり 5 サンプルである。
+シードは 42, 66, 101, 2024, 8888 の 5 種を用い、ターゲットあたり 25 候補、
+総計 5,975 構造を生成した。テンプレートは OpenDDE の既定に従い無効とした。
+
+技術報告書の Table 1(b) には \texttt{N\_cycle} 4、\texttt{N\_step} 20 という値があるが、
+これは学習時の設定であり (同表に \texttt{diffusion\_batch\_size} や
+\texttt{train\_noise\_sampler} が併記されている)、推論時の設定は報告書に記載がない。
+CLI の \texttt{--use-default-params} のヘルプに
+「currently redundant for opendde\_v1」とあることから、
+既定値 10/200 がモデル既定値であると判断した。
+
+\subsection{MSA}
+
+MSA は OpenDDE の \texttt{msa} サブコマンド経由で ColabFold の MMseqs2 公開サービスから取得し、
+事前にキャッシュした上で GPU 推論をオフラインで実行した。
+この検索対象データベースは日付で固定できないため、本研究で再現できない唯一の入力である。
+
+\subsection{採点環境}
+
+FoldBench の \texttt{environment.yml} は \texttt{aivant::openstructure=2.8.0} を指定する。
+このビルドは linux-64 向けにしか配布されておらず、bioconda の aarch64 ビルドは 2.9.3 以降しか存在しない。
+実行環境が aarch64 であるため、公式ソースのタグ 2.8.0 からネイティブビルドしたものを用いた。
+
+\subsection{計算環境}
+
+理化学研究所 RIKYU クラスタ (aarch64) を用いた。構造生成は 16 ワーカー各 4 GPU で実行し、
+1 ワーカーあたり 5 時間 3 分を要した。1,850 残基以上の 6 ターゲットは
+単一 GPU に収まらないため Fold-CP (コンテキスト並列、$\mathrm{size\_cp}=4$) で実行した。
+採点は CPU のみで行った。
+
+推論時間として記録するのは OpenDDE が \texttt{Model forward time} として出力する値である
+(\texttt{runner/inference.py})。これは特徴量テンソルが揃った時点から出力ファイルの書き出しが
+終わるまでを計測し、10 回のリサイクルと 200 ステップの拡散を 5 サンプルぶんすべて含む。
+MSA 検索は事前にキャッシュした別工程であり、DataLoader 側の特徴量化とモデルロードとともに
+この計測には含まれない。
+
+\section{結果}
+
+\subsection{成功率}
+
+表~\ref{tab:rates} に閾値別の成功率を示す。DockQ $\geq 0.23$ における成功率は 0.7319 (202/276)、
+Wilson 95\% 区間は $[0.677, 0.781]$ であり、公称値 0.769 を含む。
+図~\ref{fig:ci} にこれを示す。
+
+\begin{table}[htbp]
+\centering
+\caption{DockQ 閾値別の成功率。ランキング選択はモデル自身の \texttt{ranking\_score} が
+最大の候補を、オラクル選択は正解 DockQ が最大の候補を選ぶ。
+括弧内は 95\% Wilson 区間。}
+\label{tab:rates}
+\begin{tabular}{lcc}
+\toprule
+閾値 & ランキング選択 & オラクル選択 \\
+\midrule
+DockQ $\geq$ 0.23 & 0.7319 (202/276) $[0.677, 0.781]$ & 0.7899 (218/276) $[0.738, 0.834]$ \\
+DockQ $\geq$ 0.49 & 0.6413 (177/276) $[0.583, 0.696]$ & 0.6920 (191/276) $[0.635, 0.744]$ \\
+DockQ $\geq$ 0.80 & 0.4094 (113/276) $[0.353, 0.468]$ & 0.5254 (145/276) $[0.467, 0.583]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{FoldBench 公式リーダーボードのタンパク質--タンパク質タスク。
+本研究の再現値は AlphaFold 3 とほぼ同水準にあり、OpenDDE が主張する
+AF3 に対する約 4 ポイントの優位は再現されなかった。
+なお技術報告書 Figure 8 の値はリーダーボードと一致するが、Protenix だけは
+報告書が Protenix-v1 で 0.727、リーダーボードが Protenix で 0.682 と異なる。別のモデルである。}
+\label{tab:leaderboard}
+\begin{tabular}{lc}
+\toprule
+モデル & DockQ $\geq$ 0.23 成功率 \\
+\midrule
+OpenDDE (技術報告書の主張) & 76.90\% \\
+\textbf{OpenDDE (本研究の再現値)} & \textbf{73.19\%} \\
+AlphaFold 3 & 72.93\% \\
+OpenFold 3 (preview) & 69.96\% \\
+Chai-1 & 68.53\% \\
+Boltz-1 & 68.25\% \\
+Protenix & 68.18\% \\
+HelixFold 3 & 66.27\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{images/chart/success_rate_ci.pdf}
+\caption{閾値別の成功率と 95\% Wilson 区間。破線は OpenDDE が報告した 0.769。
+DockQ $\geq 0.23$ のランキング選択の区間は公称値を含む。}
+\label{fig:ci}
+\end{figure}
+
+図~\ref{fig:cumulative} に DockQ の累積分布を、図~\ref{fig:perif} にインターフェースごとの
+DockQ を降順に並べたものを示す。後者は分布が二峰的であることを示している。
+DockQ が 0.8 を超える良好な予測が 113 件ある一方、0.05 未満に潰れた予測が 60 件以上あり、
+中間帯は薄い。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{images/chart/dockq_cumulative.pdf}
+\caption{DockQ の累積分布。横軸の各閾値を超えるインターフェースの割合。
+破線は 0.23, 0.49, 0.80。}
+\label{fig:cumulative}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{images/chart/dockq_per_interface.pdf}
+\caption{インターフェースごとの DockQ を降順に並べたもの (ランキング選択、276 件)。
+分布は二峰的で、中間帯が薄い。}
+\label{fig:perif}
+\end{figure}
+
+\subsection{候補選択が 6 ポイントを取りこぼしている}
+\label{sec:selection}
+
+FoldBench の候補選択は、インターフェースを表す組 (\texttt{pdb\_id}, \texttt{chain\_1}, \texttt{chain\_2})
+で行をまとめ、その中で \texttt{ranking\_score} が最大の 1 行を採る。
+シードはまとめる鍵に含まれない。したがって 5 シード $\times$ 5 サンプルの 25 候補は
+単一のプールとして競合し、シードごとの平均や多数決は取られない。
+実際、選ばれた候補のシード内訳は 22.9 / 22.5 / 19.1 / 18.6 / 16.9\% とほぼ均等に散っている。
+
+ただし選ばれた 236 件はすべて \texttt{sample} が 0 であった。
+これは OpenDDE が候補を \texttt{ranking\_score} の降順に並べてから
+\texttt{\{pdb\_id\}\_sample\_\{rank\}.cif} として書き出すためで、
+ファイル名の番号は生成順ではなく順位である。
+すなわちシード内では \texttt{sample} 0 が常にそのシードの最良ドローであり、
+実質の競争は 5 シードの最良ドロー 5 個の間で起きている。
+実測でも \texttt{sample} 0 のみに絞った選択は 25 候補プールと 1 件も違わない (表~\ref{tab:seeds})。
+
+\begin{table}[htbp]
+\centering
+\caption{候補プールを変えたときの成功率 (DockQ $\geq$ 0.23、276 界面)。
+5 シードが買っているのは約 0.9 ポイントである一方、
+オラクルとの差 5.8 ポイントは候補の中に正解があるのに選べていないぶんである。}
+\label{tab:seeds}
+\begin{tabular}{lc}
+\toprule
+候補プール & 成功率 \\
+\midrule
+単一シード 42 (5 候補) & 0.7283 (201/276) \\
+単一シード 66 (5 候補) & 0.7246 (200/276) \\
+単一シード 101 (5 候補) & 0.7246 (200/276) \\
+単一シード 2024 (5 候補) & 0.7283 (201/276) \\
+単一シード 8888 (5 候補) & 0.7101 (196/276) \\
+\midrule
+単一シードの平均 & 0.7232 \\
+\texttt{sample} 0 のみ (各シードの最良ドロー 5 個) & 0.7319 (202/276) \\
+25 候補すべて (\texttt{ranking\_score} 選択) & 0.7319 (202/276) \\
+25 候補すべて (オラクル選択) & 0.7899 (218/276) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ここから二つのことが読める。
+第一に、シードを 1 本から 5 本に増やして得られるのは約 0.9 ポイントに過ぎない。
+一方でシード単体の当たり外れは 0.7101 から 0.7283 まで 1.8 ポイントの幅がある。
+第二に、より大きいのは選択の失敗である。25 候補の中にはオラクルで 0.7899 に届く構造が含まれているのに、
+\texttt{ranking\_score} で選ぶと 0.7319 しか拾えない。この 5.8 ポイントは、
+より良い構造を生成することではなく、既に生成された構造から正しいものを選ぶことで回収できる余地である。
+技術報告書自身も抗体--抗原ベンチマークについて、ランキング選択とオラクル選択の差は
+「confidence estimation あるいは candidate selection の改善によって実現精度に変換しうる」と述べている。
+本研究はタンパク質--タンパク質タスクでも同じ構図が成り立つことを定量的に示した。
+
+\subsection{3 回の実行はほぼ完全に決定的である}
+
+同一プロトコルで 3 回実行した結果を表~\ref{tab:variance} に示す。
+シードが固定されているため 3 回は同一計算の再実行であり、
+動きうるのは浮動小数点演算の非決定性のみである。
+
+DockQ $\geq 0.23$ と $\geq 0.49$ では成功率が完全に一致し、成否が反転したインターフェースは 0 件であった。
+$\geq 0.80$ でのみ 276 件中 2 件が反転した。DockQ の値そのものも 276 件中 240 件 (87\%) で
+3 回とも完全に一致し、差が出た場合でも最大 0.210 であった。
+判定境界の近傍でのみ非決定性が観測されるという構図である。
+
+\begin{table}[htbp]
+\centering
+\caption{3 回の実行における成功率の変動。標本標準偏差は 3 つの成功率に対するもの
+(\texttt{np.std(rates, ddof=1)})。}
+\label{tab:variance}
+\begin{tabular}{lccc}
+\toprule
+閾値 & 3 回の成功率 & 標本標準偏差 & 反転した界面 \\
+\midrule
+DockQ $\geq$ 0.23 & 0.731884 $\times$ 3 & 0.0000 & 0 \\
+DockQ $\geq$ 0.49 & 0.641304 $\times$ 3 & 0.0000 & 0 \\
+DockQ $\geq$ 0.80 & 0.409420 / 0.402174 / 0.409420 & 0.0042 & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{採点器のバージョンが採点可能件数を左右する}
+
+差の原因を探る過程で、OpenStructure のバージョンによって採点できるインターフェースが
+入れ替わることが判明した (表~\ref{tab:ostver})。
+
+\begin{table}[htbp]
+\centering
+\caption{OpenStructure のバージョンによる採点結果の違い。
+いずれも同一の予測構造に対する採点である。}
+\label{tab:ostver}
+\begin{tabular}{lccl}
+\toprule
+バージョン & 採点できた界面 & 成功率 & 採点できなかった界面 \\
+\midrule
+2.11.1 & 276 & 0.7283 (201/276) & 8gqp, 8i82, 8qjk \\
+2.9.3 & 278 & 0.7338 (204/278) & 8gqp \\
+2.8.0 (指定版) & 276 & 0.7319 (202/276) & 8gqp, 8ows, 8q00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+指定版が最も多く採点できるわけではない。採点できなかった 3 件の原因は次のとおりである。
+
+\begin{itemize}
+\item \textbf{8gqp}: 正解構造には A--B 界面が存在するが、モデルが接触を形成していない
+(\texttt{dockq\_interfaces} が空、lDDT 0.074、TM-score 0.233)。
+全バージョンで共通であり、モデルの真の失敗である。
+\item \textbf{8ows}: 2.8.0 の QS-score 計算が \texttt{IndexError} で停止する。
+モデルの鎖数 (2) が正解構造 (4) より少ないため対応先のない界面が生じ、空のインデックス格子が
+浮動小数点型として生成されることによる。鎖の対応付けは DockQ の前段であるため何も採点されない。
+2.9.3 以降では修正されている。
+\item \textbf{8q00}: DockQ 自体は 0.821 と計算できているが、正解構造に 1 残基の鎖が 3 本あるため
+\texttt{--rigid-scores} の重ね合わせが失敗し、出力 JSON が一括で書かれる設計により
+成功した DockQ ごと破棄される。
+\end{itemize}
+
+すなわちモデルに起因する失敗は 1 件のみで、2 件は評価器側の問題である。
+バージョン間の成功率の幅は 0.5 ポイントであり、公称値との約 4 ポイント差を説明しない。
+
+\subsection{失敗は折りたたみではなく配置である}
+
+DockQ だけでは、鎖の折りたたみに失敗したのか、折りたたみは正しく配置を誤ったのかを区別できない。
+FoldBench が出力する \texttt{rmsd} は複合体全体を一度に重ね合わせた値であるため、
+両者が同じように悪化する。
+
+そこで二つの指標を追加した。ひとつは界面 lDDT (\texttt{--ilddt}) であり、
+鎖間接触のみに基づく lDDT で、重ね合わせに依存しない。
+もうひとつは鎖ごとの CA RMSD であり、各鎖を単独で対応する鎖に重ね合わせて算出する。
+結果を表~\ref{tab:decompose} に示す。
+
+\begin{table}[htbp]
+\centering
+\caption{折りたたみと配置の分離。界面 lDDT は成功群と失敗群で 30 倍の差がある。}
+\label{tab:decompose}
+\begin{tabular}{lc}
+\toprule
+指標 & 中央値 \\
+\midrule
+単鎖 CA RMSD (最大鎖) & 1.556 \AA{} \\
+全体 lDDT & 0.871 \\
+界面 lDDT & 0.780 \\
+\ \ うち DockQ $\geq$ 0.23 の群 & 0.857 \\
+\ \ うち DockQ $<$ 0.23 の群 & 0.028 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+失敗群の界面 lDDT は 0.028 であり、鎖間接触をほとんど再現できていない。
+一方で単鎖 CA RMSD の中央値は 1.556 \AA{}、全体 lDDT の中央値は 0.871 であり、
+鎖そのものは良好に折りたたまれている。
+実際、単鎖 CA RMSD が 2 \AA{} 未満でありながら DockQ が 0.23 未満のインターフェースが
+276 件中 35 件 (12.7\%) 存在し、いずれも \texttt{fnat} が 0.0、すなわち正解接触を
+ひとつも再現していない。これらの界面では ipTM も 0.21--0.43 と低く、
+モデル自身が界面の確信の低さを申告している。
+
+界面 lDDT は DockQ と強く相関し (Pearson 0.929、Spearman 0.884)、
+DockQ が測れなかった界面の代替指標として機能する。
+
+\subsection{破綻構造は信頼度スコアで検出されている}
+
+4 アセンブリ (8iq5, 8ic7, 7x36, 8rja) では、モデルが正解の約 1,000 倍の接触を生成していた
+(8iq5 では \texttt{nmdl} 283,542 に対し \texttt{nnat} 225、\texttt{fnonnat} 0.999)。
+構造が破綻し、全原子が互いに接触している状態である。
+
+これらはすべて OpenDDE 自身の \texttt{has\_clash} が真であり、
+\texttt{ranking\_score} は約 $-99.2$ となっている。
+\texttt{ranking\_score} は
+$0.8 \cdot \mathrm{ipTM} + 0.2 \cdot \mathrm{pTM} + 0.5 \cdot \mathrm{disorder} - 100 \cdot \mathrm{has\_clash}$
+と定義されており、衝突ペナルティが機能している。
+しかし 25 候補すべてが同じ破綻をしているため、ランキング選択でも回避できていない。
+
+この 4 アセンブリが接触数・衝突数・\texttt{ranking\_score} の平均を支配する
+(\texttt{ranking\_score} の平均 $-0.950$ に対し中央値 0.849)。
+本報告では中央値を主たる要約統計量として用いる。
+
+\subsection{推論時間はトークン数に対し超線形である}
+
+構造生成時のログから 1,237 の (ターゲット, シード) 組について、
+トークン数と forward 時間を抽出した (図~\ref{fig:timing})。
+1 組は 5 サンプルぶんの計算に相当する。
+
+帯域別の中央値を表~\ref{tab:timing} に示す。トークン数の上限が 300 の帯と 1,500 の帯を比べると、
+トークン数 5 倍に対して時間は 21 倍 (14.5 秒 $\to$ 305.6 秒) になる。
+最大の帯ではさらに 1,095 秒に達し、最小の帯の 76 倍である。
+Pairformer の $O(N^2)$ 項と triangle attention の $O(N^3)$ 項による。
+
+分布は中央値 38.2 秒に対し平均 201.9 秒と強く右に裾を引くため、
+総所要時間を中央値から見積もると大きく外れる。実際の総和は 249,807 秒 (69.4 時間) であり、
+16 ワーカーに分ければ 4.34 時間となる。実測のワーカー壁時計 5 時間 3 分に対し、
+forward が 86\% を占める計算であり、この二つは整合する。
+
+\begin{table}[htbp]
+\centering
+\caption{トークン数の帯域別に見た 1 シードあたりの forward 時間の中央値。
+1 シードは 5 サンプルぶんの計算に相当する。}
+\label{tab:timing}
+\begin{tabular}{lrr}
+\toprule
+N\_token & 件数 & forward 時間の中央値 \\
+\midrule
+0--300 & 370 & 14.5 s \\
+300--600 & 380 & 31.6 s \\
+600--1000 & 250 & 92.6 s \\
+1000--1500 & 110 & 305.6 s \\
+1500--2500 & 127 & 1,095.3 s \\
+\midrule
+全体 & 1,237 & 38.2 s (平均 201.9 s、範囲 12.4--2,765.7 s) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{images/chart/inference_time.pdf}
+\caption{1 シードあたりの forward 時間とトークン数の関係 (対数軸)。
+青は単一 GPU の中央値と四分位範囲で、表~\ref{tab:timing} より細かい 150 トークン刻みの帯域による。
+橙は Fold-CP (4 GPU) の個別実測値。}
+\label{fig:timing}
+\end{figure}
+
+Fold-CP による大型ターゲットの実測では、2,313 トークンの 8ff9 において
+1 シードあたり 23.7 分、ピークメモリ 55.1 GiB であった。
+このうち Pairformer trunk が 12 分 40 秒を占め、支配的である。
+GPU 容量 184 GiB に対して余裕があり、コンテキスト並列数を下げてデータ並列に振り替える余地がある。
+
+\section{考察}
+
+\subsection{公称値との差について}
+
+一致を確認できた要素は、ベンチマーク定義 (279 界面・239 アセンブリ)、推論設定
+(リサイクル 10、拡散ステップ 200、5 シード $\times$ 5 サンプル)、モデル重み、
+テンプレートの無効化、採点スクリプトとその指定バージョンである。
+採点器のバージョンによる揺れは実測で 0.5 ポイントに留まる。
+
+残る候補は次の三つであり、いずれも本研究の側で切り分ける手段がない。
+
+第一に MSA である。ColabFold の検索対象データベースは継続的に更新されており、
+日付で固定できない。著者らの実行時期とは内容が異なる。
+複合体予測において MSA の深さは精度に直結するため、これが最も有力な候補である。
+
+第二に、著者側の実際の分母である。技術報告書の図には $n=279$ と記されているが、
+FoldBench の集計スクリプトは DockQ が得られなかった行を除外してから割り算を行う。
+したがって $n=279$ はデータセットの公称サイズであり、実際に用いられた分母とは異なる可能性が高い。
+著者らの環境で何件が採点できたかは公表されていない。
+
+第三に、統計的な揺らぎである。3.7 ポイントの差は Wilson 区間の内側にある。
+
+\subsection{このベンチマークの分解能}
+\label{sec:resolution}
+
+$n = 276$、$p = 0.73$ における標準誤差は 0.0267 であり、95\% 区間の幅は $\pm 5.2$ ポイントとなる。
+これは実装の問題ではなく標本規模による。
+したがって二つの独立した実行の成功率を比較する形式では、
+約 5 ポイント未満の改善は検出できない。
+
+ただし本研究で示したとおり、実行は決定的であり、対象となるインターフェースの集合も同一である。
+したがってベースラインと改良版を同一のインターフェース上で対応づけて比較すれば、
+片方のみが成功したインターフェースの数に基づく検定が可能であり、
+独立二標本の比較よりはるかに高い検出力が得られる。
+
+\subsection{評価器の同定という作業}
+
+本研究で最も時間を要したのは、モデルの実行ではなく採点器の同定であった。
+指定バージョンが存在するにもかかわらず対象アーキテクチャ向けに配布されておらず、
+既定の導入手順が最新版を選ぶために指定から最も遠いバージョンが使われていた。
+その差は成功率としては 0.5 ポイントに過ぎないが、
+「何件を採点できたか」という分母の問題として現れるため、
+それを確認しない限り差の原因を切り分けられない。
+
+また FoldBench の界面照合は、OpenStructure が返す 4 要素タプルへの
+メンバシップ判定によって行われ、ループに \texttt{break} がないため最後の一致が採用される。
+このタプルはモデル側とリファレンス側の鎖名を混在させて保持するため、
+別の界面のスコアが選ばれうる。例えば 8i82 では
+\texttt{[['A','B','B','A'], ['B','C','A','C']]} の双方が A--B を含むと判定され、
+記録される DockQ は後者のものとなる。
+公称値もこの挙動の上で計算されているため、再現側も同じ挙動に合わせた。
+
+\section{限界}
+
+本研究は学習を行っておらず、示したのは推論と採点の再現性のみである。
+
+MSA を固定できていない。これは ColabFold の公開サービスに依存する構成上の制約であり、
+本研究の範囲では解消できない。
+
+採点器は公式ソースからビルドした 2.8.0 であるが、化合物辞書は 2026 年 8 月時点の CCD から
+生成したものであり、著者らが用いた辞書とは異なる可能性がある。
+
+比較できる公表値は DockQ $\geq 0.23$ の 1 点のみである。
+技術報告書の Figure 8 はタンパク質--タンパク質について成功率を 1 つ示すだけで、
+閾値ごとの内訳もオラクル選択も載せていない。FoldBench の公式リーダーボードも同様である。
+閾値の分解とオラクル選択は同報告書の Figure 2、累積 DockQ 曲線は Figure 3 にあるが、
+いずれも抗体--抗原ベンチマークに限られる。
+したがって本研究が示した DockQ $\geq 0.49$、$\geq 0.80$、オラクル選択の値には
+突き合わせるべき公表値が存在しない。
+
+比較対象は単一条件のみである。ファインチューニング等との比較を行う場合、
+第~\ref{sec:resolution} 節で述べた対応づけによる比較を用いるべきである。
+
+\section{結論}
+
+OpenDDE の FoldBench タンパク質--タンパク質 DockQ 成功率を独立に測り直し、
+0.7319 (202/276、95\% Wilson 区間 $[0.677, 0.781]$) を得た。
+公称値 0.769 は区間内にあり、この標本規模では両者を区別できない。
+
+同一プロトコルの 3 回の実行における成功率の標本標準偏差は 0.0000 であり、
+成否が反転したインターフェースは緩い閾値では 0 件であった。
+このベースラインは決定的であり、後続の実験の基準として機能する。
+
+採点器のバージョンは「何件を採点できるか」を左右するが、
+成功率としての影響は 0.5 ポイントに留まる。
+公称値との約 4 ポイント差は、本研究で固定できなかった MSA、
+公表されていない著者側の分母、および統計的な揺らぎのいずれか、
+あるいはそれらの組み合わせによる。
+
+追加で算出した界面 lDDT と鎖ごとの CA RMSD により、
+失敗の 12.7\% が折りたたみではなく配置の失敗であることを示した。
+これは DockQ 単独では観測できない分解であり、
+改良の方向を定める上での手がかりとなる。
+
+また候補選択の分析から、25 候補のオラクル上限 0.7899 に対し
+\texttt{ranking\_score} による選択が 0.7319 に留まることを示した。
+生成の改善より選択の改善のほうが取りしろが大きい。
+
+\begin{thebibliography}{9}
+\bibitem{opendde}
+OpenDDE Project, Aureka AI Research.
+\newblock Folding, Reasoning, and Scaling with Open-source Drug Discovery Engine.
+\newblock arXiv:2607.03787, 2026.
+\newblock \url{https://github.com/aurekaresearch/OpenDDE}
+
+\bibitem{af3}
+J. Abramson et al.
+\newblock Accurate structure prediction of biomolecular interactions with AlphaFold 3.
+\newblock Nature 630, 493--500, 2024.
+
+\bibitem{foldbench}
+BEAM Labs.
+\newblock FoldBench: a low-homology benchmark for biomolecular structure prediction.
+\newblock Nature Communications, doi:10.1038/s41467-025-67127-3.
+\newblock \url{https://github.com/BEAM-Labs/FoldBench}
+
+\bibitem{openstructure}
+Biozentrum, University of Basel.
+\newblock OpenStructure: an integrated software framework for computational structural biology.
+\newblock \url{https://openstructure.org/}
+
+\bibitem{dockq}
+S. Basu and B. Wallner.
+\newblock DockQ: A Quality Measure for Protein-Protein Docking Models.
+\newblock PLoS ONE 11(8): e0161879, 2016.
+
+\bibitem{colabfold}
+M. Mirdita, K. Sch\"utze, Y. Moriwaki, L. Heo, S. Ovchinnikov, M. Steinegger.
+\newblock ColabFold: making protein folding accessible to all.
+\newblock Nature Methods 19, 679--682, 2022.
+\newblock \url{https://github.com/sokrypton/ColabFold}
+\end{thebibliography}
+
+\end{document}

@@ -30,8 +30,8 @@ logger = logging.getLogger(__name__)
 
 def per_chain_rmsd(model_path: str, reference_path: str) -> dict:
     """CA RMSD for every chain the two structures share, after aligning each alone."""
-    from ost import io, mol, seq
-    from ost.mol.alg import Superpose
+    from ost import io
+    from ost.mol.alg import SuperposeSVD
 
     mdl = io.LoadMMCIF(model_path, fault_tolerant=True)
     ref = io.LoadMMCIF(reference_path, fault_tolerant=True)
@@ -65,7 +65,11 @@ def per_chain_rmsd(model_path: str, reference_path: str) -> dict:
         if paired < 3:
             out[mdl_chain.name] = {"n_ca": paired, "rmsd": None}
             continue
-        result = Superpose(mdl_view, ref_view, mol.alg.SuperpositionStrategy.NUMBER)
+        # SuperposeSVD rather than Superpose: the atoms are already paired one
+        # to one above, so no matching strategy is wanted and none should be
+        # guessed. apply_transform=False leaves the loaded structure alone --
+        # every chain is superposed against the same untouched model.
+        result = SuperposeSVD(mdl_view, ref_view, False)
         out[mdl_chain.name] = {"n_ca": paired, "rmsd": float(result.rmsd)}
     return out
 
