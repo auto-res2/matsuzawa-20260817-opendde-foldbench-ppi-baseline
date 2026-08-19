@@ -824,10 +824,83 @@ def require_ost(extra_bin_dir: str | None) -> dict:
     return env
 
 
+def ost_identity(env: dict) -> str:
+    """The scorer, named the way a cache key has to name it."""
+    import shutil
+    import subprocess as _sp
+
+    resolved = shutil.which("ost", path=env.get("PATH")) or "ost"
+    try:
+        out = _sp.run([resolved, "--version"], capture_output=True, text=True,
+                      env=env, timeout=120).stdout.strip().splitlines()
+        version = out[0] if out else "unknown"
+    except Exception as exc:                      # noqa: BLE001 - recorded, not raised
+        version = f"unknown ({exc.__class__.__name__})"
+    return f"{version} @ {Path(resolved).resolve()}"
+
+
+def drop_stale_ost_cache(evaluation_dir: Path, env: dict) -> int:
+    """Delete FoldBench's per-candidate ost output when the scorer has changed.
+
+    FoldBench caches one JSON per candidate under <evaluation_dir>/detail and
+    skips any that already exists:
+
+        output_path = f'{detail_path}/{pdb_id}_{seed}_{sample}_{mode}_ost.json'
+        if os.path.exists(output_path):
+            ...                                  # eval_by_ost.py:140-141
+
+    That makes re-scoring a no-op, and a no-op that looks exactly like work:
+    swapping the scorer from OpenStructure 2.11.1 to 2.9.3, re-running, and
+    watching the progress bar cross 6975 candidates produced byte-identical
+    numbers -- including the two interfaces the new version was installed to
+    recover, whose cached files hold nothing but
+
+        {"exception": ..., "status": ..., "traceback": ...}
+
+    from the version that crashed on them. A stale cache does not merely delay
+    the fix; it presents the old answer as the new one, which is worse than an
+    error.
+
+    So the scorer's identity is written beside the cache, and the cache is
+    dropped when it stops matching. Identity rather than version alone: the
+    same version installed at a different prefix is a different binary, and
+    this project has already had two of them on one filesystem.
+    """
+    detail = evaluation_dir / "detail"
+    stamp = evaluation_dir / "ost_identity.txt"
+    identity = ost_identity(env)
+    previous = stamp.read_text().strip() if stamp.is_file() else None
+
+    if previous == identity:
+        return 0
+
+    dropped = 0
+    if detail.is_dir():
+        for path in detail.glob("*_ost.json"):
+            path.unlink()
+            dropped += 1
+    if previous is None:
+        # An unlabelled cache is a cache of unknown provenance, and reusing one
+        # is the failure this function exists to prevent -- so it goes, and the
+        # count says so rather than leaving a large deletion to be inferred.
+        logger.warning(
+            "no scorer recorded for this tree, so %d cached comparison(s) of "
+            "unknown provenance were dropped and will be recomputed with %s",
+            dropped, identity)
+    else:
+        logger.warning(
+            "scorer changed, so %d cached comparison(s) were dropped and will "
+            "be recomputed\n  was: %s\n  now: %s", dropped, previous, identity)
+    stamp.parent.mkdir(parents=True, exist_ok=True)
+    stamp.write_text(identity + "\n")
+    return dropped
+
+
 def stage_evaluate(args: argparse.Namespace) -> int:
     """Score with FoldBench's own evaluator and summary table."""
     foldbench = Path(args.foldbench_dir)
     env = require_ost(args.ost_bin_dir)
+    drop_stale_ost_cache(Path(args.evaluation_dir), env)
     repair_missing_indexes(args)
     merge_shard_references(Path(args.evaluation_dir))
 
