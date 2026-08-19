@@ -687,16 +687,35 @@ def merge_shard_references(evaluation_dir: Path) -> int:
     just quietly lowers the success rate.
     """
     shards = sorted(evaluation_dir.glob("shard*/prediction_reference.csv"))
-    if not shards:
+
+    # The residual pass writes its own index, one directory per target, and it
+    # has to be merged here too. It was not, and the omission is invisible in
+    # every count this file prints: the sweep's own targets were all present, so
+    # the merge looked complete while the six targets that only Fold-CP can run
+    # -- eight of the task's 279 interfaces -- were missing from the index
+    # FoldBench reads. FoldBench left-joins that index against the target list,
+    # so those interfaces would not have failed, they would simply have been
+    # absent, and the run would have reported a rate over 271 interfaces as if
+    # it were the published one over 279.
+    residual = sorted(evaluation_dir.glob("foldcp-*/prediction_reference.csv"))
+    if not shards and not residual:
         return 0
-    expected = int(shards[0].parent.name.split("of")[-1])
-    if len(shards) != expected:
-        found = {p.parent.name for p in shards}
-        raise RuntimeError(
-            f"{len(shards)} of {expected} shard indexes present; missing "
-            f"{sorted({f'shard{i}of{expected}' for i in range(expected)} - found)}"
-        )
-    merged = pd.concat([pd.read_csv(p) for p in shards], ignore_index=True)
+    if shards:
+        expected = int(shards[0].parent.name.split("of")[-1])
+        if len(shards) != expected:
+            found = {p.parent.name for p in shards}
+            raise RuntimeError(
+                f"{len(shards)} of {expected} shard indexes present; missing "
+                f"{sorted({f'shard{i}of{expected}' for i in range(expected)} - found)}"
+            )
+    parts = shards + residual
+    merged = pd.concat([pd.read_csv(p) for p in parts], ignore_index=True)
+
+    # A target the sweep started and the residual finished appears in both
+    # indexes, naming the same files both times. Left in, FoldBench would score
+    # those interfaces twice and the denominator would come out above 279 --
+    # the same class of error as coming out below it.
+    merged = merged.drop_duplicates(ignore_index=True)
     out = evaluation_dir / "prediction_reference.csv"
     merged.to_csv(out, index=False)
 
@@ -708,8 +727,9 @@ def merge_shard_references(evaluation_dir: Path) -> int:
     (evaluation_dir / "scored_targets.json").write_text(
         json.dumps({"n_rows": len(merged), "n_targets": len(scored), "targets": scored}, indent=2)
     )
-    logger.info("merged %d shard indexes into %s (%d rows over %d targets)",
-                len(shards), out, len(merged), len(scored))
+    logger.info("merged %d shard and %d residual indexes into %s "
+                "(%d rows over %d targets)",
+                len(shards), len(residual), out, len(merged), len(scored))
     return len(merged)
 
 
@@ -761,6 +781,28 @@ def stage_evaluate(args: argparse.Namespace) -> int:
     if still_missing:
         logger.error("%d target(s) have no prediction and would silently lower "
                      "the score: %s", len(still_missing), still_missing)
+        return 1
+
+    # And the check that answers the question the one above cannot: is every
+    # target the task defines actually in the index about to be scored?
+    #
+    # The check above reads the sweep's own record of what it dropped, so it can
+    # only see targets the sweep knew about. The six that go to Fold-CP are
+    # split off before the sweep begins and appear in no shard's record, so when
+    # their index was left out of the merge nothing noticed -- not the merge,
+    # which counted only what it had been handed, and not this guard. Comparing
+    # against inputs.json instead compares against the task, and the task is the
+    # only authority on what 279 interfaces means.
+    indexed = set(pd.read_csv(Path(args.evaluation_dir) / "prediction_reference.csv")
+                  .pdb_id.unique())
+    defined = {e["name"] for e in
+               json.loads((Path(args.input_dir) / "inputs.json").read_text())}
+    unindexed = sorted(defined - indexed)
+    if unindexed:
+        logger.error(
+            "%d of %d target(s) have structures but are absent from the index "
+            "FoldBench will read, which would score them as if they did not "
+            "exist: %s", len(unindexed), len(defined), unindexed)
         return 1
     # evaluate.py appends the algorithm name to --evaluation_dir itself, so it
     # is handed the parent of the directory postprocess.py wrote into.
