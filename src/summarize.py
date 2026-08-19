@@ -263,12 +263,39 @@ def main() -> None:
 
     per_run, per_interface, short = {}, [], []
     for label, raw in zip(labels, args.raw):
-        rows = select_candidates(pd.read_csv(raw), args.metric_type)
-        logger.info("%s: %d interfaces over %d assemblies",
-                    label, len(rows), rows["pdb_id"].nunique())
-        if len(rows) != args.expected_interfaces:
-            short.append(f"{label}: {len(rows)} of {args.expected_interfaces}")
+        raw_df = pd.read_csv(raw)
+        reached = raw_df.groupby(INTERFACE_KEYS).ngroups
+        rows = select_candidates(raw_df, args.metric_type)
+        logger.info("%s: %d of %d interfaces reached scoring, %d scorable, "
+                    "%d assemblies", label, reached, args.expected_interfaces,
+                    len(rows), rows["pdb_id"].nunique())
+
+        # Two different questions, and only the first is ours to answer.
+        #
+        # Whether all 279 interfaces reached the scorer is this pipeline's
+        # responsibility: a target lost to a crashed shard or an index that was
+        # never merged is our defect, and a rate computed without it is the
+        # wrong number quietly. That is what is checked here.
+        #
+        # Whether a scored interface yields a DockQ is FoldBench's business.
+        # task_score_summary.py drops rows the metric is null for before it
+        # divides (`df = df[df[metric].notna()]`, task_score_summary.py:89), so
+        # an interface the model failed to form -- no contacts, nothing for
+        # DockQ to be defined on -- leaves the denominator. select_candidates
+        # applies the same filter, so the rate here matches the benchmark's own
+        # rather than a variant of it. The count that leaves is reported, not
+        # decided.
+        if reached != args.expected_interfaces:
+            short.append(f"{label}: {reached} of {args.expected_interfaces} "
+                         f"interfaces reached scoring")
+        if (unscorable := reached - len(rows)):
+            logger.warning(
+                "%s: %d of %d interfaces have no DockQ and so leave the "
+                "denominator, which is what FoldBench does with them",
+                label, unscorable, reached)
         per_run[label] = summarise(rows)
+        per_run[label]["n_interfaces_reached_scoring"] = int(reached)
+        per_run[label]["n_interfaces_unscorable"] = int(unscorable)
         per_run[label]["cumulative"] = cumulative_curve(rows)
 
         keep = [c for c in INTERFACE_KEYS + ["dockq_score", "lddt", "irmsd", "lrmsd",
@@ -285,10 +312,13 @@ def main() -> None:
         # to compute -- so the incomplete run reads as the better one. Finish
         # them and come back.
         raise SystemExit(
-            "incomplete, so nothing was summarised:\n  "
+            "interfaces are missing from the scorer's input, so nothing was "
+            "summarised:\n  "
             + "\n  ".join(short)
-            + "\nComplete the missing targets, or pass --allow-incomplete to "
-              "inspect a run that will not be compared with anything."
+            + "\nThis is about targets that never reached scoring, not about "
+              "targets FoldBench could not score. Complete them, or pass "
+              "--allow-incomplete to inspect a run that will not be compared "
+              "with anything."
         )
 
     tidy_all = pd.concat(per_interface)
