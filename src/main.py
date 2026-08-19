@@ -678,6 +678,69 @@ def report_dropped_targets(prediction_dir: Path, input_dir: Path, record_to: Pat
     return 0
 
 
+def repair_missing_indexes(args: argparse.Namespace) -> list[str]:
+    """Convert and index targets whose structures exist but were never postprocessed.
+
+    Sampling and postprocessing are two steps, and a job that dies between them
+    leaves a target that looks finished and is not. One did: 8oq1 had all 25
+    structures and all 25 confidence files, no converted CIFs and no index row,
+    because the pass that would have written them was killed after the sampler
+    exited and before postprocess.py ran.
+
+    Nothing upstream could see it. `incomplete_targets` counts sampled
+    structures, so the target was complete by the only measure the residual pass
+    consults, and the residual therefore skipped it -- correctly, since
+    re-sampling it would have cost ninety minutes of GPU to reproduce files that
+    were already on disk. What was missing was the cheap half: FoldBench scores
+    `*_postprocessed.cif`, and those are written by postprocess.py from
+    structures that already exist.
+
+    So this runs that step, and only that step. It is not a fallback for a
+    target that failed to sample -- such a target has fewer than 25 structures
+    and belongs to the residual pass, which is why the count is checked here.
+    """
+    import os as _os
+
+    evaluation_dir = Path(args.evaluation_dir)
+    prediction_dir = Path(args.prediction_dir)
+    entries = json.loads((Path(args.input_dir) / "inputs.json").read_text())
+
+    indexed: set[str] = set()
+    for csv in sorted(evaluation_dir.glob("shard*/prediction_reference.csv")) + \
+               sorted(evaluation_dir.glob("foldcp-*/prediction_reference.csv")):
+        indexed |= set(pd.read_csv(csv).pdb_id.unique())
+
+    orphans = [e for e in entries
+               if e["name"] not in indexed
+               and count_candidates(prediction_dir, e["name"]) == EXPECTED_CANDIDATES]
+    if not orphans:
+        return []
+
+    script = Path(args.algorithm_dir).resolve() / "postprocess.py"
+    python = _os.environ.get("OPENDDE_PYTHON") or args.python
+    repaired: list[str] = []
+    for entry in orphans:
+        name = entry["name"]
+        logger.info("%s has its %d structures but no index; postprocessing it",
+                    name, EXPECTED_CANDIDATES)
+        one = write_input_dir(scratch_dir(args) / f"repair-{name}", [entry])
+        eval_dir = evaluation_dir / f"foldcp-{name}"
+        eval_dir.mkdir(parents=True, exist_ok=True)
+        run_cmd(
+            [
+                python, str(script),
+                f"--input_dir={one}",
+                f"--prediction_dir={prediction_dir}",
+                f"--evaluation_dir={eval_dir}",
+            ],
+            cwd=script.parent,
+        )
+        repaired.append(name)
+    logger.info("postprocessed %d target(s) that had been sampled but not "
+                "converted: %s", len(repaired), ", ".join(repaired))
+    return repaired
+
+
 def merge_shard_references(evaluation_dir: Path) -> int:
     """Concatenate the per-shard prediction indexes into the one FoldBench reads.
 
@@ -765,6 +828,7 @@ def stage_evaluate(args: argparse.Namespace) -> int:
     """Score with FoldBench's own evaluator and summary table."""
     foldbench = Path(args.foldbench_dir)
     env = require_ost(args.ost_bin_dir)
+    repair_missing_indexes(args)
     merge_shard_references(Path(args.evaluation_dir))
 
     # The refusal the predict stage deliberately does not make. Here every
