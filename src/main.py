@@ -868,8 +868,26 @@ def stage_evaluate(args: argparse.Namespace) -> int:
             "FoldBench will read, which would score them as if they did not "
             "exist: %s", len(unindexed), len(defined), unindexed)
         return 1
-    # evaluate.py appends the algorithm name to --evaluation_dir itself, so it
-    # is handed the parent of the directory postprocess.py wrote into.
+    # FoldBench joins <evaluation_dir>/<algorithm_name> to find both the index it
+    # reads and the directory it writes into, so the algorithm name has to be the
+    # last component of this run's tree. It is not: the three runs are kept apart
+    # by a label, and the tree is <...>/OpenDDE/<label>. Handing evaluate.py the
+    # parent therefore sent it to <...>/OpenDDE/OpenDDE, which does not exist.
+    #
+    # Before the label existed the parent happened to be right, which is why this
+    # surfaced only once three runs had to be told apart -- and it surfaced as a
+    # missing file rather than as a wrong number, which is the good case.
+    #
+    # So FoldBench is handed a directory in which the algorithm name resolves to
+    # this run's tree, and it then reads and writes exactly where the rest of the
+    # pipeline already looks. The link points at its own grandparent; nothing
+    # here walks the tree with symlinks followed, and the name says what it is.
+    fb_root = Path(args.evaluation_dir) / "_foldbench_root"
+    fb_root.mkdir(parents=True, exist_ok=True)
+    link = fb_root / ALGORITHM
+    if not link.is_symlink():
+        link.symlink_to(Path(args.evaluation_dir).resolve(), target_is_directory=True)
+
     run_cmd(
         [
             args.eval_python,
@@ -877,7 +895,7 @@ def stage_evaluate(args: argparse.Namespace) -> int:
             "--targets_dir",
             str(Path(args.targets_dir)),
             "--evaluation_dir",
-            str(Path(args.evaluation_dir).parent),
+            str(fb_root),
             "--algorithm_name",
             ALGORITHM,
             "--ground_truth_dir",
@@ -897,15 +915,20 @@ def stage_evaluate(args: argparse.Namespace) -> int:
     # selects by ground-truth DockQ, which is the oracle: the ceiling reachable
     # by fixing ranking alone, given these same 25 candidates. The gap between
     # them prices the ranking axis, and FoldBench computes both for free.
-    eval_root = Path(args.evaluation_dir).parent
+    #
+    # The summaries land in this run's own tree rather than beside it. They used
+    # to be written to the parent, which is shared by all three runs, so each
+    # would have overwritten the last and the three numbers this experiment
+    # exists to compare would have been one number.
+    run_dir_ = Path(args.evaluation_dir)
     for metric_type in ("rank", "best"):
         run_cmd(
             [
                 args.eval_python,
                 "task_score_summary.py",
-                "--evaluation_dir", str(eval_root),
+                "--evaluation_dir", str(fb_root),
                 "--target_dir", str(Path(args.targets_dir)),
-                "--output_path", str(eval_root / f"summary_{metric_type}.csv"),
+                "--output_path", str(run_dir_ / f"summary_{metric_type}.csv"),
                 "--algorithm_names", ALGORITHM,
                 "--targets", args.target_type,
                 "--metric_type", metric_type,
@@ -913,7 +936,7 @@ def stage_evaluate(args: argparse.Namespace) -> int:
             cwd=foldbench,
             env=env,
         )
-        logger.info("wrote %s", eval_root / f"summary_{metric_type}.csv")
+        logger.info("wrote %s", run_dir_ / f"summary_{metric_type}.csv")
     return 0
 
 
