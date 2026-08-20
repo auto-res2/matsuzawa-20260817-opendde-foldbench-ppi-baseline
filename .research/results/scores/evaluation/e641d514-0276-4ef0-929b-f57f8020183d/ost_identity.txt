@@ -1,0 +1,1 @@
+OpenStructure 2.8.0 @ /data1/rkp00041/foldbench-ppi-baseline/ost280/bin/ost

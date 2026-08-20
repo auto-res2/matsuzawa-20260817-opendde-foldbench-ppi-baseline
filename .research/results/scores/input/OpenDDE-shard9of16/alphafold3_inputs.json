@@ -1,0 +1,524 @@
+[
+  {
+    "name": "8i82-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MGILQANRVLLSRLLPGVEPEGLTVRHGQFHQVVIASDRVVCLPRTAAAAARLPRRAAVMRVLAGLDLGCRTPRPLCEGSAEGAVELPFLVLSRVPGAPLEADALEDSKVAEVVAAQYVTLLSGLASAGADEKVRAALPAPQGRWRQFAADVRAELFPLMSDGGCRQAERELAALDSLPDITEAVVHGNLGAENVLWVRDDGLPRLSGVIDWDEVSIGDPAEDLAAIGAGYGKDFLDQVLTLGGWSDRRMATRIATIRATFALQQALSACRDGDEEELADGLTGYR",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8i82-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8i82-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "proteinChain": {
+          "sequence": "XAXXAS",
+          "count": 1,
+          "modifications": [
+            {
+              "ptmType": "CCD_KBE",
+              "ptmPosition": 1
+            },
+            {
+              "ptmType": "CCD_DPP",
+              "ptmPosition": 2
+            },
+            {
+              "ptmType": "CCD_UAL",
+              "ptmPosition": 3
+            },
+            {
+              "ptmType": "CCD_MYN",
+              "ptmPosition": 4
+            },
+            {
+              "ptmType": "CCD_DPP",
+              "ptmPosition": 5
+            }
+          ],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8i82-assembly1/msa/1/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8i82-assembly1/msa/1/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_ACT",
+          "count": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "8onf-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MDIGINSDPHHHHHHGGLDIVNNATGDDNRDDLNIRTYGATETSSLIMLRARGTASAPAAVQTGDRLGGVLFRGWNGTAWMGSGQILSVAEENFTTAVKTNLQFHVGGAGEAMRISNTGNVGIGTTTTTEKLNVQGNVAVSGEITSVRSWGIKRGPTSFSANYINVWNSGYHVGSSIDCTTSTTGCRILKAGTYEIRCVQRAGTSGNSVYVGIALNGDRTALESRNDVLWNHSHTAYSGSYTESNFMGTLSANDLITCGAPVNTMAADLVYAVPAYNGTMQIKRVD",
+          "count": 3,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8onf-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8onf-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_EDO",
+          "count": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "7yuj-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "GPGSSAFSYHCKTPDCKGWCFFEDDVNEFTCPVCFHVNCLLCKAIHEQMNCKEYQEDLALRAQNDVAARQTTEMLKVMLQQGEAMRCPQCQIVVQKKDGCDWIRCTVCHTEICWVTKGPRWGPGGPGDTSGGCRCRVNGIPCHPSCQNCH",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/7yuj-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/7yuj-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_ZN",
+          "count": 10
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PEG",
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "7x36-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MLFTVSLLLSGLLAVSPSLSAVLPRASSATGSVPLPERLLHHWPNGTWVENIAVRPNGNLLLTTSTPNGTVWHVKKPWTDTPEVELAYNFDEWVDRLIGIGETTPDKYIVVGSRFYSPDAYSSHVDRTFAAMELDFTKEPPSTRMVAWMPEAELLQGVAALPWDRSIVLISDQYVLRPRYKQVDWTPSPGQIWRLDTKTGDYELVMTDYAEMNTTYAHGPDVGINGIRILGNELYWVNQDNGGVYRVEIQKNGHPVPPAVPEVVSVVESQLWDDFAFGPGDEDLLWVTGLNAVYAVSKKNGTAVVVDGVGTSNNMSFPGPTSCQFGRTKHDSNVLYVTGNLYSVPDSLLDVKIGGWVRAIDTTGFHLHHHHHH",
+          "count": 4,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/7x36-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/7x36-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_NAG_NAG",
+          "count": 10
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_NAG_NAG_BMA",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_NAG_NAG_BMA_MAN",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_NAG",
+          "count": 4
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CA",
+          "count": 4
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_BEZ",
+          "count": 3
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_EDO",
+          "count": 13
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PEG",
+          "count": 3
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_GOL",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_MAN",
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "8r9t-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "STKNILYAVMALLGELEDEDLVYVRREIEQRIGGR",
+          "count": 4,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8r9t-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8r9t-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CA",
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "8bjj-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "DEDETTALVCDNGSGLVKAGFAGDDAPRAVFPSIVGRPRHQGVMVGMGQKDSYVGDEAQSKRGILTLKYPIEHGIITNWDDMEKIWHHTFYNELRVAPEEHPTLLTEAPLNPKANREKMTQIMFETFNVPAMYVAIQAVLSLYASGRTTGIVLDSGDGVTHNVPIYEGYALPHAIMRLDLAGRDLTDYLMKILTERGYSFVTTAEREIVRDIKEKLCYVALDFENEMATAASSSSLEKSYELPDGQVITIGNERFRCPETLFQPSFIGMESAGIHETTYNSIMKCDIDIRKDLYANNVMSGGTTMYPGIADRMQKEITALAPSTMKIKIIAPPERKYSVWIGGSILASLSTFQQMWITKQEYDEAGPSIVHRKCF",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/1/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/1/non_pairing.a3m"
+        }
+      },
+      {
+        "proteinChain": {
+          "sequence": "AGWNAYIDNLMADGTCQDAAIVGYKDSPSVWAAVPGKTFVNITPAEVGVLVGKDRSSFYVNGLTLGGQKCSVIRDSLLQDGEFSMDLRTKSTGGAPTFNVTVTKTDKTLVLLMGKEGVHGGLINKKCYEMASHLRRSQY",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "proteinChain": {
+          "sequence": "GPGSQEATPNQDGSHKTYQSRDLVLEPIQHPKSIELGMPEVDQSVLAEVAERENVIIGVRPVDEKSKSLIASKMYSSKGLFVKAKSSDWGPMSGFIPVDQSFAKASARRDLEKFNEYAEQSILSGNAVSANLYLNQVRIEELVSKYESLTPLELDVDSGMYKTTATNGDQTIPFFLNKVTVDDKELWQVHYLREGELAPFKVIGDPVSKQPMTADYDLLTVMYTYGDLGPQDKVKQPLTWEQWKESVTYEDLSPKYKARYDNQALYEKQDGASLGMVSDRLKELKDVINTSLGRTDGLEMVHHGADDANPYAVMADNFPATFFVPKHFFDDDGLGEGKGSIQTYFNVNEQGAVVIQNPQEFSNFQQVAINASYRASLNDKWNSGLDSPLFTTKRKLSHDYLDARDEVAKKLGL",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/2/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8bjj-assembly1/msa/2/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_ATP",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_MG",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_LAB",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_TRS",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_SO4",
+          "count": 4
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PEO",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PG4",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_GOL",
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "8kck-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "GAEAAAAAAVTAELRAFRAAGGTVELEDLPVTPETLARAEAALARLPPESVAVETYTVPAPTPEAFLAALEAALARLAAEGLPAILLRVVDADGNLVGSILVAAAGPPAESAAATGRVLTIYVASSPEGLKVARGLAIETRDAGGLALAIGASGAWALAGLAGALALARRLAEAHGAPVRVVTIGDPANPTDAALAAAIRAAYAAALEHHHHHH",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8kck-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8kck-assembly1/msa/0/non_pairing.a3m"
+        }
+      }
+    ]
+  },
+  {
+    "name": "8onb-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "GGTNDAFSLSFETNNTPRMTIDDVGRVGVGTTAPTSALHVIGTGEVARFVTSATGGVVIDSTALNYNPSLIYRKTNINRWSMMVNAASETGGNAGSNLSILRYDDTGATLGAAVTIDRASGFFGINTAAPAYNIHVTGTAGLSTGSAWTVAS",
+          "count": 3,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8onb-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8onb-assembly1/msa/0/non_pairing.a3m"
+        }
+      }
+    ]
+  },
+  {
+    "name": "8q29-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "GGSLINFTDGFESTGVNQQPSGWGNFVGWQSNNPNNNIGQSVYALVDNTRAFTGNNSVHFKGGAAPAQIVRTLPAGLDKVYLKAMVYMSKKLGNEAGDNHEHIFGVRGNVAQADNEVRFGQIKGHVGTNEMPSDDISPPQSQWYSGPEIAADTWHCVVVEMLGGNRPYHQLHAYLDNQLIHSIDSISDWNNGGVNGNTQWLDGKLNYAFFGWHSFSNNNADVWMDDIEISDQPISCDSRELEHHHHHH",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8q29-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8q29-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CA",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_MG",
+          "count": 4
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_EDO",
+          "count": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "8ic7-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MSKIKSRRARRIPHTAESVAFPLGGIGTGNVSLGARGELRDWEFENLPDKGRLNPRSFFAIHAAPQGGPSATRVLEARSSGRHDRDAGYGFDELAGLPRLDSAGLHGEYPVVDIDFTDATLPVTVSLHAFTPLVPLDADASGIPAAVLRYRVVNPGDAPVTVTVVGSMSHTAGRGAPGPDAPWGMRGTQSVRWRESDGIRGLDFDIDLDHDDPGYGTMSLTTTDSSTTVKPQWVTSYWPDGARLFWNDLADDGLLAPEARLTLEDKPRGLFAERDADPDAPALTEEQMLAKLPRVRTGSLGIVHTLAPGEERDFEFVLAWSFPNRRRGWHGHIIFDDALEDGAPDLRDELGPIVRNHYAVRWPDAWAAAAQLHRDLPALEGATDAFVEELYGGSLDPVLADAVGANIAALRSTTCFVLESPTPELGDGPVFAAWEGSFDHGGSCEGTCTHVWSYAQTAAWLFPGLERSARRAEYLLETDESGAQKFRGNRIFGAPRWFIGPAVDGQLGTFLRLHREWRFCGDDEFLRELWPAAARTLDYAAREWDHDGDGLLDGEMHNTYDIEFHGVEPLSNIIHLAALRAGVRMAGHLGDTARAQEWALRADHVAAAIEGVLWNGEYYRQVIDDVDAHRYQYGDGVLSDQLLGQFHAFLGGLGYLLPEAHVRSALDAIVQHNHRGDLRDHESTQRVYALNDEGGLLLASWPEGGRPALPFVYADEVWTGIEHQVAVSLLFAGRYDDALRIERTLRARYDGAHRSPWNEIECGNHYARSLASWGLLIGASGAQWDAGARTLSFDPVLPGDARFLFTTATGWGGVEIGDDVITLRLHGGALDLDELRLRGEVAGRGIHLDAGETRTLTLTLEHHHHHH",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8ic7-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8ic7-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_MG",
+          "count": 15
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CL",
+          "count": 3
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_BXX",
+          "count": 5
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_MPD",
+          "count": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "8j0l-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "GGVVNPNEVFCSVPGRLSLLSSTSKYKVTVAEVQRRLSPPECLNASLLGGVLRRAKSKNGGRSLREKLDKIGLNLPAGRRKAANVTLLTSLVEGEAVHLARDFGYVCETEFPAKAVAEFLNRQHSDPNEQVTRKNMLLATKQICKEFTDLLAQDRSPLGNSRPNPILEPGIQSCLTHFNLISHGFGSPAVCAAVTALQNYLTEALKAMDKMYLSNNPNS",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8j0l-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8j0l-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_GOL",
+          "count": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "8an5-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "NAVESTLRRVAKDLTGLRQRWALVGGFAVSARSEPRFTRDVDIVVAVANDDAAESLVRQLLTQQYHLLASVEQDAARRLAAVRLGATADTAANVVVDLLFASCGIEPEIAEAAEEIEILPDLVAPVATTAHLIAMKLLARDDDRRPQDRSDLRALVDAASPQDIQDARKAIELITLRGFHRDRDLAAEWTRLAAKW",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8an5-assembly1/msa/1/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8an5-assembly1/msa/1/non_pairing.a3m"
+        }
+      },
+      {
+        "proteinChain": {
+          "sequence": "AVSVAAQKLRLALDMYEVGEQMQRMRLGRERPNADVVEIEAAIDAWRMTRPGAEEGDSAGPTSTRFT",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8an5-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8an5-assembly1/msa/0/non_pairing.a3m"
+        }
+      }
+    ]
+  },
+  {
+    "name": "8t48-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MGSSHHHHHHSSGLVPRGSHMQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGGMQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8t48-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8t48-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "proteinChain": {
+          "sequence": "MHHHHHHGENLYFQGSQRSSAETSELREALLKIFPDSEQKLKIDQILAAHPYMKDLNALSALVLDGNS",
+          "count": 1,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8t48-assembly1/msa/1/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8t48-assembly1/msa/1/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_GOL",
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "8axi-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MAPVPEPEVVATPPADAGRGLIRVDSREIRHYSGTRKEPDYLVSRDNGKTWEMKAAPAGYPPNYGGIPKESPAIVRNPLTREFIRVQPIGGFVFLSRGGLDGKWLAVTNDGKLEEDWKDPEKRKNLKKLGGIMRTPVFVNKGRRVIVPFHNMGGGTKFHISDDGGLTWHVSRNGVTSPRHEARPPHQGVRWFNNAVEATVLEMKDGTLWALARTSQDQAWQAFSKDYGETWSKPEPSRFFGTLTMNTLGRLDDGTIVSLWTNTMALPENATAGNGTWEDVFTNRDSHHIAMSGDEGKTWYGFREIILDEHRNHPGYATLDGPEDRGKHQSEMVQLDKNRILISLGQHKNHRRLVIVDRRWVGAKTRATQTGKDLDSQWTIHTYIPQKKGHCSYNRKPSAELVQDPSGGTKKVLQIKRLDDPELVNEKSNVDYRNGGATWNFPNGTTGLVKFRFRVVDGEQADDSGLQVSLTDRLFNACDSTTKDYALFTFPIRLKPAPHLLLGMKKVPFTPGAWHEISLLWQGGQAVVSLDGKKAGTLKMANKSPNGASYIHFISTGSQPDAGILLDTVNARVKLE",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8axi-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8axi-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_LXB_GAL",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_DAN",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_GAL",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_EDO",
+          "count": 2
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CL",
+          "count": 5
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CA",
+          "count": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "8utk-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MPLWQVFYLLNTCIKRTGDPTCKKLAKALRECLKKGDLKACNELADKAVKYINSLE",
+          "count": 2,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8utk-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/rku00122/foldbench-ppi-baseline/outputs/msa/8utk-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PG6",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_SO4",
+          "count": 1
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_PG5",
+          "count": 1
+        }
+      }
+    ]
+  }
+]

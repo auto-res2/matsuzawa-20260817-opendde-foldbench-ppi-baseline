@@ -1,0 +1,12 @@
+{
+  "threshold_residues": 1850,
+  "size_cp": 4,
+  "expected_candidates": 25,
+  "attempted": [
+    "8ff9-assembly1"
+  ],
+  "candidates": {
+    "8ff9-assembly1": 25
+  },
+  "failed": []
+}

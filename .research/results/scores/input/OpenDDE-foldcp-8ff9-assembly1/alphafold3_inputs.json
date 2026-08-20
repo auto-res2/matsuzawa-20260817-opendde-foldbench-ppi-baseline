@@ -1,0 +1,34 @@
+[
+  {
+    "name": "8ff9-assembly1",
+    "sequences": [
+      {
+        "proteinChain": {
+          "sequence": "MEINIGIGEQDRAAIAEGLSRLLADTYTLYLKTHNFHWNVTGPMFNTLHLMFEGQYTELAVAVDDIAERIRALGFPAPGTYAAYARLSSIKEEEGVPEAEEMIRQLVQGQEAVVRTARSIFPLLDKVSDEPTADLLTQRMQVHEKTAWMLRSLLAS",
+          "count": 12,
+          "modifications": [],
+          "pairedMsaPath": "/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/opendde/msa/8ff9-assembly1/msa/0/pairing.a3m",
+          "unpairedMsaPath": "/data1/rkp00041/plinder_lddt_pli_improvement/data/foldbench/opendde/msa/8ff9-assembly1/msa/0/non_pairing.a3m"
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_CL",
+          "count": 24
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_SO4",
+          "count": 81
+        }
+      },
+      {
+        "ligand": {
+          "ligand": "CCD_NA",
+          "count": 12
+        }
+      }
+    ]
+  }
+]

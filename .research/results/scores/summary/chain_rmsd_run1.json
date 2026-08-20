@@ -1,0 +1,8894 @@
+{
+  "label": "run1",
+  "rows": [
+    {
+      "run": "run1",
+      "pdb_id": "8pqr-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.4187619388103485,
+      "mean_chain_ca_rmsd": 0.38643883913755417,
+      "per_chain": {
+        "A": {
+          "n_ca": 154,
+          "rmsd": 0.33992549777030945
+        },
+        "B": {
+          "n_ca": 154,
+          "rmsd": 0.41013792157173157
+        },
+        "C": {
+          "n_ca": 152,
+          "rmsd": 0.37692999839782715
+        },
+        "D": {
+          "n_ca": 154,
+          "rmsd": 0.4187619388103485
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8kbh-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 1.3121302127838135,
+      "mean_chain_ca_rmsd": 1.2448245684305828,
+      "per_chain": {
+        "A": {
+          "n_ca": 124,
+          "rmsd": 1.3121302127838135
+        },
+        "B": {
+          "n_ca": 124,
+          "rmsd": 1.254894733428955
+        },
+        "C": {
+          "n_ca": 124,
+          "rmsd": 1.2888226509094238
+        },
+        "D": {
+          "n_ca": 124,
+          "rmsd": 1.275496006011963
+        },
+        "E": {
+          "n_ca": 124,
+          "rmsd": 1.2795978784561157
+        },
+        "F": {
+          "n_ca": 123,
+          "rmsd": 1.058005928993225
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ipg-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 1.24673330783844,
+      "mean_chain_ca_rmsd": 0.847775436937809,
+      "per_chain": {
+        "A": {
+          "n_ca": 43,
+          "rmsd": 0.9910429120063782
+        },
+        "B": {
+          "n_ca": 42,
+          "rmsd": 1.008233666419983
+        },
+        "C": {
+          "n_ca": 44,
+          "rmsd": 1.0234671831130981
+        },
+        "D": {
+          "n_ca": 32,
+          "rmsd": 1.24673330783844
+        },
+        "E": {
+          "n_ca": 32,
+          "rmsd": 0.6079304814338684
+        },
+        "F": {
+          "n_ca": 31,
+          "rmsd": 0.20924507081508636
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q9n-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.704548716545105,
+      "mean_chain_ca_rmsd": 1.191450039545695,
+      "per_chain": {
+        "A": {
+          "n_ca": 91,
+          "rmsd": 0.49763965606689453
+        },
+        "B": {
+          "n_ca": 93,
+          "rmsd": 1.3721617460250854
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 17,
+          "rmsd": 1.704548716545105
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7uq2-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 1.131291151046753,
+      "mean_chain_ca_rmsd": 0.9750928580760956,
+      "per_chain": {
+        "A": {
+          "n_ca": 89,
+          "rmsd": 1.0334209203720093
+        },
+        "B": {
+          "n_ca": 87,
+          "rmsd": 0.9513370394706726
+        },
+        "C": {
+          "n_ca": 87,
+          "rmsd": 0.9669604301452637
+        },
+        "D": {
+          "n_ca": 86,
+          "rmsd": 1.131291151046753
+        },
+        "E": {
+          "n_ca": 86,
+          "rmsd": 0.7730808854103088
+        },
+        "F": {
+          "n_ca": 87,
+          "rmsd": 0.9944667220115662
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 1,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9bka-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.5541596412658691,
+      "mean_chain_ca_rmsd": 0.5541596412658691,
+      "per_chain": {
+        "A": {
+          "n_ca": 132,
+          "rmsd": 0.5541596412658691
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rpx-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.5536130666732788,
+      "mean_chain_ca_rmsd": 0.5225753784179688,
+      "per_chain": {
+        "A": {
+          "n_ca": 158,
+          "rmsd": 0.5536130666732788
+        },
+        "B": {
+          "n_ca": 156,
+          "rmsd": 0.4915376901626587
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8osw-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5528544187545776,
+      "mean_chain_ca_rmsd": 1.0959643423557281,
+      "per_chain": {
+        "A": {
+          "n_ca": 339,
+          "rmsd": 0.6390742659568787
+        },
+        "B": {
+          "n_ca": 340,
+          "rmsd": 1.5528544187545776
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8onb-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.4674726724624634,
+      "mean_chain_ca_rmsd": 0.44154327114423114,
+      "per_chain": {
+        "A": {
+          "n_ca": 116,
+          "rmsd": 0.4505949914455414
+        },
+        "B": {
+          "n_ca": 127,
+          "rmsd": 0.4065621495246887
+        },
+        "C": {
+          "n_ca": 116,
+          "rmsd": 0.4674726724624634
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8axr-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.29138895869255066,
+      "mean_chain_ca_rmsd": 0.2779410481452942,
+      "per_chain": {
+        "A": {
+          "n_ca": 31,
+          "rmsd": 0.29138895869255066
+        },
+        "B": {
+          "n_ca": 29,
+          "rmsd": 0.2644931375980377
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8axo-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.48702630400657654,
+      "mean_chain_ca_rmsd": 0.39473479986190796,
+      "per_chain": {
+        "A": {
+          "n_ca": 32,
+          "rmsd": 0.3024432957172394
+        },
+        "B": {
+          "n_ca": 33,
+          "rmsd": 0.48702630400657654
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9eqo-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.2555055618286133,
+      "mean_chain_ca_rmsd": 1.0269266366958618,
+      "per_chain": {
+        "A": {
+          "n_ca": 61,
+          "rmsd": 0.7983477115631104
+        },
+        "B": {
+          "n_ca": 65,
+          "rmsd": 1.2555055618286133
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8iqa-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.3383402824401855,
+      "mean_chain_ca_rmsd": 0.967669352889061,
+      "per_chain": {
+        "A": {
+          "n_ca": 225,
+          "rmsd": 0.7114935517311096
+        },
+        "B": {
+          "n_ca": 229,
+          "rmsd": 0.9816654920578003
+        },
+        "C": {
+          "n_ca": 234,
+          "rmsd": 1.3383402824401855
+        },
+        "D": {
+          "n_ca": 230,
+          "rmsd": 0.8391780853271484
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8j2w-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7412878274917603,
+      "mean_chain_ca_rmsd": 0.7305333912372589,
+      "per_chain": {
+        "A": {
+          "n_ca": 330,
+          "rmsd": 0.7412878274917603
+        },
+        "B": {
+          "n_ca": 329,
+          "rmsd": 0.7197789549827576
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8c0h-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 0.4902259111404419,
+      "mean_chain_ca_rmsd": 0.45020722846190137,
+      "per_chain": {
+        "A": {
+          "n_ca": 374,
+          "rmsd": 0.44526922702789307
+        },
+        "B": {
+          "n_ca": 374,
+          "rmsd": 0.43164026737213135
+        },
+        "C": {
+          "n_ca": 374,
+          "rmsd": 0.4516702890396118
+        },
+        "D": {
+          "n_ca": 373,
+          "rmsd": 0.433391809463501
+        },
+        "E": {
+          "n_ca": 374,
+          "rmsd": 0.449045866727829
+        },
+        "F": {
+          "n_ca": 374,
+          "rmsd": 0.4902259111404419
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7vub-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.569505512714386,
+      "mean_chain_ca_rmsd": 0.5691172778606415,
+      "per_chain": {
+        "A": {
+          "n_ca": 150,
+          "rmsd": 0.568729043006897
+        },
+        "B": {
+          "n_ca": 148,
+          "rmsd": 0.569505512714386
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jqf-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.5969882011413574,
+      "mean_chain_ca_rmsd": 0.5246540457010269,
+      "per_chain": {
+        "A": {
+          "n_ca": 289,
+          "rmsd": 0.5969882011413574
+        },
+        "B": {
+          "n_ca": 286,
+          "rmsd": 0.4523198902606964
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8iq8-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.7059531807899475,
+      "mean_chain_ca_rmsd": 0.6906619817018509,
+      "per_chain": {
+        "A": {
+          "n_ca": 282,
+          "rmsd": 0.7059531807899475
+        },
+        "B": {
+          "n_ca": 282,
+          "rmsd": 0.6769536733627319
+        },
+        "C": {
+          "n_ca": 282,
+          "rmsd": 0.7026837468147278
+        },
+        "D": {
+          "n_ca": 282,
+          "rmsd": 0.6770573258399963
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h1m-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.7746914625167847,
+      "mean_chain_ca_rmsd": 1.7746914625167847,
+      "per_chain": {
+        "A": {
+          "n_ca": 421,
+          "rmsd": 1.7746914625167847
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bry-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.5131986737251282,
+      "mean_chain_ca_rmsd": 0.4801676422357559,
+      "per_chain": {
+        "A": {
+          "n_ca": 388,
+          "rmsd": 0.5131986737251282
+        },
+        "B": {
+          "n_ca": 386,
+          "rmsd": 0.44713661074638367
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9f2c-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.227674961090088,
+      "mean_chain_ca_rmsd": 0.8872861862182617,
+      "per_chain": {
+        "A": {
+          "n_ca": 58,
+          "rmsd": 1.227674961090088
+        },
+        "B": {
+          "n_ca": 57,
+          "rmsd": 0.60728520154953
+        },
+        "C": {
+          "n_ca": 58,
+          "rmsd": 1.1096196174621582
+        },
+        "D": {
+          "n_ca": 57,
+          "rmsd": 0.6045649647712708
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tcs-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 2.0591306686401367,
+      "mean_chain_ca_rmsd": 2.0591306686401367,
+      "per_chain": {
+        "A": {
+          "n_ca": 270,
+          "rmsd": 2.0591306686401367
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ji7-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 4.866740703582764,
+      "mean_chain_ca_rmsd": 4.502351760864258,
+      "per_chain": {
+        "A": {
+          "n_ca": 230,
+          "rmsd": 4.866740703582764
+        },
+        "B": {
+          "n_ca": 229,
+          "rmsd": 4.137962818145752
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8vij-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.43112611770629883,
+      "mean_chain_ca_rmsd": 0.37410564720630646,
+      "per_chain": {
+        "A": {
+          "n_ca": 116,
+          "rmsd": 0.3409924805164337
+        },
+        "B": {
+          "n_ca": 116,
+          "rmsd": 0.3791726231575012
+        },
+        "C": {
+          "n_ca": 116,
+          "rmsd": 0.43112611770629883
+        },
+        "D": {
+          "n_ca": 116,
+          "rmsd": 0.34513136744499207
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8j0l-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.8343663811683655,
+      "mean_chain_ca_rmsd": 0.6608404219150543,
+      "per_chain": {
+        "A": {
+          "n_ca": 185,
+          "rmsd": 0.48731446266174316
+        },
+        "B": {
+          "n_ca": 192,
+          "rmsd": 0.8343663811683655
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8wt4-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.9807009696960449,
+      "mean_chain_ca_rmsd": 0.7981641292572021,
+      "per_chain": {
+        "A": {
+          "n_ca": 155,
+          "rmsd": 0.6156272888183594
+        },
+        "B": {
+          "n_ca": 134,
+          "rmsd": 0.9807009696960449
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8wwy-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7384445071220398,
+      "mean_chain_ca_rmsd": 0.5942070335149765,
+      "per_chain": {
+        "A": {
+          "n_ca": 139,
+          "rmsd": 0.4499695599079132
+        },
+        "B": {
+          "n_ca": 135,
+          "rmsd": 0.7384445071220398
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7th0-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.48934805393218994,
+      "mean_chain_ca_rmsd": 0.48934805393218994,
+      "per_chain": {
+        "A": {
+          "n_ca": 46,
+          "rmsd": 0.48934805393218994
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8sm6-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.8446422815322876,
+      "mean_chain_ca_rmsd": 0.7088014483451843,
+      "per_chain": {
+        "A": {
+          "n_ca": 350,
+          "rmsd": 0.6709244251251221
+        },
+        "B": {
+          "n_ca": 350,
+          "rmsd": 0.6705806851387024
+        },
+        "C": {
+          "n_ca": 351,
+          "rmsd": 0.6490584015846252
+        },
+        "D": {
+          "n_ca": 354,
+          "rmsd": 0.8446422815322876
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ey4-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7656477093696594,
+      "mean_chain_ca_rmsd": 0.5814581960439682,
+      "per_chain": {
+        "A": {
+          "n_ca": 58,
+          "rmsd": 0.397268682718277
+        },
+        "B": {
+          "n_ca": 88,
+          "rmsd": 0.7656477093696594
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8smf-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 3.3166186809539795,
+      "mean_chain_ca_rmsd": 1.946318507194519,
+      "per_chain": {
+        "A": {
+          "n_ca": 84,
+          "rmsd": 3.3166186809539795
+        },
+        "B": {
+          "n_ca": 75,
+          "rmsd": 1.771066427230835
+        },
+        "D": {
+          "n_ca": 80,
+          "rmsd": 0.7512704133987427
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8hfw-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.452473521232605,
+      "mean_chain_ca_rmsd": 0.42199259996414185,
+      "per_chain": {
+        "A": {
+          "n_ca": 284,
+          "rmsd": 0.3915116786956787
+        },
+        "B": {
+          "n_ca": 279,
+          "rmsd": 0.452473521232605
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yls-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5869381427764893,
+      "mean_chain_ca_rmsd": 0.9861142486333847,
+      "per_chain": {
+        "A": {
+          "n_ca": 158,
+          "rmsd": 0.38529035449028015
+        },
+        "B": {
+          "n_ca": 436,
+          "rmsd": 1.5869381427764893
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q70-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8926306366920471,
+      "mean_chain_ca_rmsd": 0.8926306366920471,
+      "per_chain": {
+        "A": {
+          "n_ca": 264,
+          "rmsd": 0.8926306366920471
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8oij-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.7017971277236938,
+      "mean_chain_ca_rmsd": 0.47161485254764557,
+      "per_chain": {
+        "A": {
+          "n_ca": 161,
+          "rmsd": 0.681002676486969
+        },
+        "B": {
+          "n_ca": 161,
+          "rmsd": 0.7017971277236938
+        },
+        "C": {
+          "n_ca": 14,
+          "rmsd": 0.22341153025627136
+        },
+        "D": {
+          "n_ca": 14,
+          "rmsd": 0.28024807572364807
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8goj-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.795379638671875,
+      "mean_chain_ca_rmsd": 1.0508357882499695,
+      "per_chain": {
+        "A": {
+          "n_ca": 22,
+          "rmsd": 0.8310415148735046
+        },
+        "B": {
+          "n_ca": 22,
+          "rmsd": 0.9657740592956543
+        },
+        "C": {
+          "n_ca": 21,
+          "rmsd": 0.611147940158844
+        },
+        "D": {
+          "n_ca": 23,
+          "rmsd": 1.795379638671875
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8b45-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.8126705288887024,
+      "mean_chain_ca_rmsd": 0.6780576854944229,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 0.8126705288887024
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 0.6359668970108032
+        },
+        "C": {
+          "n_ca": 30,
+          "rmsd": 0.7602757215499878
+        },
+        "D": {
+          "n_ca": 28,
+          "rmsd": 0.5033175945281982
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rlk-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.6211608052253723,
+      "mean_chain_ca_rmsd": 0.5912873347600301,
+      "per_chain": {
+        "A": {
+          "n_ca": 385,
+          "rmsd": 0.6159632802009583
+        },
+        "B": {
+          "n_ca": 385,
+          "rmsd": 0.5367379188537598
+        },
+        "C": {
+          "n_ca": 385,
+          "rmsd": 0.6211608052253723
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8iw5-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.8779325485229492,
+      "mean_chain_ca_rmsd": 0.7266437709331512,
+      "per_chain": {
+        "A": {
+          "n_ca": 48,
+          "rmsd": 0.8779325485229492
+        },
+        "B": {
+          "n_ca": 44,
+          "rmsd": 0.5753549933433533
+        },
+        "C": {
+          "n_ca": 1,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7y0l-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6509777903556824,
+      "mean_chain_ca_rmsd": 0.608865886926651,
+      "per_chain": {
+        "A": {
+          "n_ca": 349,
+          "rmsd": 0.5667539834976196
+        },
+        "B": {
+          "n_ca": 350,
+          "rmsd": 0.6509777903556824
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h0n-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.7066572904586792,
+      "mean_chain_ca_rmsd": 1.3357193171977997,
+      "per_chain": {
+        "A": {
+          "n_ca": 323,
+          "rmsd": 0.9647813439369202
+        },
+        "B": {
+          "n_ca": 217,
+          "rmsd": 1.7066572904586792
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gjg-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.9662292003631592,
+      "mean_chain_ca_rmsd": 0.8161061704158783,
+      "per_chain": {
+        "A": {
+          "n_ca": 162,
+          "rmsd": 0.6659831404685974
+        },
+        "B": {
+          "n_ca": 25,
+          "rmsd": 0.9662292003631592
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8biy-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.814003050327301,
+      "mean_chain_ca_rmsd": 0.814003050327301,
+      "per_chain": {
+        "A": {
+          "n_ca": 124,
+          "rmsd": 0.814003050327301
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9c68-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.2573108673095703,
+      "mean_chain_ca_rmsd": 1.2113392353057861,
+      "per_chain": {
+        "A": {
+          "n_ca": 161,
+          "rmsd": 1.2573108673095703
+        },
+        "B": {
+          "n_ca": 167,
+          "rmsd": 1.165367603302002
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8oq1-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.9230713844299316,
+      "mean_chain_ca_rmsd": 0.9230713844299316,
+      "per_chain": {
+        "A": {
+          "n_ca": 699,
+          "rmsd": 0.9230713844299316
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8buy-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.2516329288482666,
+      "mean_chain_ca_rmsd": 1.6133872866630554,
+      "per_chain": {
+        "A": {
+          "n_ca": 134,
+          "rmsd": 2.2516329288482666
+        },
+        "B": {
+          "n_ca": 127,
+          "rmsd": 0.9751416444778442
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bjj-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 2.7481276988983154,
+      "mean_chain_ca_rmsd": 1.634361485640208,
+      "per_chain": {
+        "A": {
+          "n_ca": 367,
+          "rmsd": 1.401435375213623
+        },
+        "B": {
+          "n_ca": 139,
+          "rmsd": 0.7535213828086853
+        },
+        "C": {
+          "n_ca": 355,
+          "rmsd": 2.7481276988983154
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8qjk-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8138513565063477,
+      "mean_chain_ca_rmsd": 0.8138513565063477,
+      "per_chain": {
+        "A": {
+          "n_ca": 82,
+          "rmsd": 0.8138513565063477
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8oi4-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.354677438735962,
+      "mean_chain_ca_rmsd": 0.7231115400791168,
+      "per_chain": {
+        "A": {
+          "n_ca": 389,
+          "rmsd": 0.4736782908439636
+        },
+        "B": {
+          "n_ca": 388,
+          "rmsd": 1.354677438735962
+        },
+        "C": {
+          "n_ca": 391,
+          "rmsd": 0.5748852491378784
+        },
+        "D": {
+          "n_ca": 390,
+          "rmsd": 0.48920518159866333
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8wnh-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.0029408931732178,
+      "mean_chain_ca_rmsd": 0.8404589593410492,
+      "per_chain": {
+        "A": {
+          "n_ca": 241,
+          "rmsd": 1.0029408931732178
+        },
+        "B": {
+          "n_ca": 234,
+          "rmsd": 0.6779770255088806
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8clo-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.7528194189071655,
+      "mean_chain_ca_rmsd": 1.7509322762489319,
+      "per_chain": {
+        "A": {
+          "n_ca": 308,
+          "rmsd": 1.7528194189071655
+        },
+        "B": {
+          "n_ca": 308,
+          "rmsd": 1.7490451335906982
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8qab-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 0.3918129801750183,
+      "mean_chain_ca_rmsd": 0.2932781974474589,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 0.28480520844459534
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 0.341519296169281
+        },
+        "C": {
+          "n_ca": 29,
+          "rmsd": 0.3918129801750183
+        },
+        "D": {
+          "n_ca": 30,
+          "rmsd": 0.25068703293800354
+        },
+        "E": {
+          "n_ca": 30,
+          "rmsd": 0.2118869125843048
+        },
+        "F": {
+          "n_ca": 29,
+          "rmsd": 0.2789577543735504
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8r9t-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.8653650283813477,
+      "mean_chain_ca_rmsd": 0.6557233035564423,
+      "per_chain": {
+        "A": {
+          "n_ca": 33,
+          "rmsd": 0.8015323877334595
+        },
+        "B": {
+          "n_ca": 33,
+          "rmsd": 0.5706460475921631
+        },
+        "C": {
+          "n_ca": 32,
+          "rmsd": 0.38534975051879883
+        },
+        "D": {
+          "n_ca": 35,
+          "rmsd": 0.8653650283813477
+        },
+        "E": {
+          "n_ca": 1,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8kbm-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.3634384870529175,
+      "mean_chain_ca_rmsd": 1.2568687200546265,
+      "per_chain": {
+        "A": {
+          "n_ca": 104,
+          "rmsd": 1.1502989530563354
+        },
+        "B": {
+          "n_ca": 104,
+          "rmsd": 1.3634384870529175
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8htw-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.456299901008606,
+      "mean_chain_ca_rmsd": 1.4020087718963623,
+      "per_chain": {
+        "A": {
+          "n_ca": 179,
+          "rmsd": 1.456299901008606
+        },
+        "B": {
+          "n_ca": 180,
+          "rmsd": 1.3477176427841187
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8on4-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.8702465295791626,
+      "mean_chain_ca_rmsd": 1.8702465295791626,
+      "per_chain": {
+        "A": {
+          "n_ca": 204,
+          "rmsd": 1.8702465295791626
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7zhf-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 3.181554079055786,
+      "mean_chain_ca_rmsd": 3.181554079055786,
+      "per_chain": {
+        "A": {
+          "n_ca": 250,
+          "rmsd": 3.181554079055786
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xpt-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.2030081748962402,
+      "mean_chain_ca_rmsd": 1.2030081748962402,
+      "per_chain": {
+        "A": {
+          "n_ca": 375,
+          "rmsd": 1.2030081748962402
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yul-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.7208760976791382,
+      "mean_chain_ca_rmsd": 0.7208760976791382,
+      "per_chain": {
+        "A": {
+          "n_ca": 92,
+          "rmsd": 0.7208760976791382
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xn2-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 2.0560109615325928,
+      "mean_chain_ca_rmsd": 2.0560109615325928,
+      "per_chain": {
+        "A": {
+          "n_ca": 148,
+          "rmsd": 2.0560109615325928
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8g4k-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.618999719619751,
+      "mean_chain_ca_rmsd": 1.0561168491840363,
+      "per_chain": {
+        "A": {
+          "n_ca": 101,
+          "rmsd": 0.49323397874832153
+        },
+        "B": {
+          "n_ca": 111,
+          "rmsd": 1.618999719619751
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8upc-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.288625478744507,
+      "mean_chain_ca_rmsd": 1.5650539696216583,
+      "per_chain": {
+        "A": {
+          "n_ca": 168,
+          "rmsd": 2.288625478744507
+        },
+        "B": {
+          "n_ca": 163,
+          "rmsd": 0.8414824604988098
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xl7-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.8744935393333435,
+      "mean_chain_ca_rmsd": 0.7757435441017151,
+      "per_chain": {
+        "A": {
+          "n_ca": 58,
+          "rmsd": 0.8744935393333435
+        },
+        "B": {
+          "n_ca": 49,
+          "rmsd": 0.6769935488700867
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8kce-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.3589750528335571,
+      "mean_chain_ca_rmsd": 1.3589750528335571,
+      "per_chain": {
+        "A": {
+          "n_ca": 270,
+          "rmsd": 1.3589750528335571
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8pni-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.0714727640151978,
+      "mean_chain_ca_rmsd": 0.8721151053905487,
+      "per_chain": {
+        "A": {
+          "n_ca": 158,
+          "rmsd": 1.0714727640151978
+        },
+        "B": {
+          "n_ca": 154,
+          "rmsd": 0.6727574467658997
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8amy-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.6252453327178955,
+      "mean_chain_ca_rmsd": 1.6252453327178955,
+      "per_chain": {
+        "A": {
+          "n_ca": 85,
+          "rmsd": 1.6252453327178955
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7ytu-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.239534616470337,
+      "mean_chain_ca_rmsd": 2.090313196182251,
+      "per_chain": {
+        "A": {
+          "n_ca": 64,
+          "rmsd": 2.239534616470337
+        },
+        "B": {
+          "n_ca": 67,
+          "rmsd": 1.941091775894165
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jzt-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 9.916481018066406,
+      "mean_chain_ca_rmsd": 5.32197642326355,
+      "per_chain": {
+        "A": {
+          "n_ca": 57,
+          "rmsd": 0.7274718284606934
+        },
+        "B": {
+          "n_ca": 64,
+          "rmsd": 9.916481018066406
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7quv-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 8.662452697753906,
+      "mean_chain_ca_rmsd": 4.989769438902537,
+      "per_chain": {
+        "A": {
+          "n_ca": 107,
+          "rmsd": 0.5581702589988708
+        },
+        "B": {
+          "n_ca": 89,
+          "rmsd": 8.662452697753906
+        },
+        "C": {
+          "n_ca": 18,
+          "rmsd": 5.748685359954834
+        },
+        "D": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ebb-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.5493302345275879,
+      "mean_chain_ca_rmsd": 0.5493302345275879,
+      "per_chain": {
+        "A": {
+          "n_ca": 169,
+          "rmsd": 0.5493302345275879
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jmq-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.4563608169555664,
+      "mean_chain_ca_rmsd": 1.4186394214630127,
+      "per_chain": {
+        "A": {
+          "n_ca": 171,
+          "rmsd": 1.380918025970459
+        },
+        "B": {
+          "n_ca": 171,
+          "rmsd": 1.4563608169555664
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xfr-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 26.047548294067383,
+      "mean_chain_ca_rmsd": 13.644588470458984,
+      "per_chain": {
+        "A": {
+          "n_ca": 319,
+          "rmsd": 1.241628646850586
+        },
+        "B": {
+          "n_ca": 69,
+          "rmsd": 26.047548294067383
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h0f-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 2.109119176864624,
+      "mean_chain_ca_rmsd": 1.866777499516805,
+      "per_chain": {
+        "A": {
+          "n_ca": 31,
+          "rmsd": 1.755731463432312
+        },
+        "B": {
+          "n_ca": 31,
+          "rmsd": 1.735481858253479
+        },
+        "C": {
+          "n_ca": 32,
+          "rmsd": 2.109119176864624
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gps-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.614317774772644,
+      "mean_chain_ca_rmsd": 0.614317774772644,
+      "per_chain": {
+        "A": {
+          "n_ca": 228,
+          "rmsd": 0.614317774772644
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8huc-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.2518925666809082,
+      "mean_chain_ca_rmsd": 1.2518925666809082,
+      "per_chain": {
+        "A": {
+          "n_ca": 258,
+          "rmsd": 1.2518925666809082
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h0e-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.8272348642349243,
+      "mean_chain_ca_rmsd": 1.3884228865305583,
+      "per_chain": {
+        "A": {
+          "n_ca": 32,
+          "rmsd": 1.8272348642349243
+        },
+        "B": {
+          "n_ca": 32,
+          "rmsd": 1.18863844871521
+        },
+        "C": {
+          "n_ca": 31,
+          "rmsd": 1.1493953466415405
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8a8o-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 4.064703464508057,
+      "mean_chain_ca_rmsd": 2.2428049594163895,
+      "per_chain": {
+        "A": {
+          "n_ca": 556,
+          "rmsd": 0.7260157465934753
+        },
+        "B": {
+          "n_ca": 544,
+          "rmsd": 1.155056118965149
+        },
+        "C": {
+          "n_ca": 101,
+          "rmsd": 3.025444507598877
+        },
+        "D": {
+          "n_ca": 102,
+          "rmsd": 4.064703464508057
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gzo-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.8385547399520874,
+      "mean_chain_ca_rmsd": 1.4624096949895222,
+      "per_chain": {
+        "A": {
+          "n_ca": 32,
+          "rmsd": 1.8385547399520874
+        },
+        "B": {
+          "n_ca": 32,
+          "rmsd": 1.4468231201171875
+        },
+        "C": {
+          "n_ca": 31,
+          "rmsd": 1.101851224899292
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8abt-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.674903392791748,
+      "mean_chain_ca_rmsd": 0.674903392791748,
+      "per_chain": {
+        "A": {
+          "n_ca": 235,
+          "rmsd": 0.674903392791748
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gji-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.4012436866760254,
+      "mean_chain_ca_rmsd": 1.6341034471988678,
+      "per_chain": {
+        "A": {
+          "n_ca": 167,
+          "rmsd": 0.8669632077217102
+        },
+        "B": {
+          "n_ca": 22,
+          "rmsd": 2.4012436866760254
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ih8-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 13.839776039123535,
+      "mean_chain_ca_rmsd": 7.232424408197403,
+      "per_chain": {
+        "A": {
+          "n_ca": 115,
+          "rmsd": 1.3975085020065308
+        },
+        "B": {
+          "n_ca": 113,
+          "rmsd": 12.834317207336426
+        },
+        "C": {
+          "n_ca": 118,
+          "rmsd": 13.839776039123535
+        },
+        "D": {
+          "n_ca": 130,
+          "rmsd": 0.8580958843231201
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7qwe-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.8877902626991272,
+      "mean_chain_ca_rmsd": 0.6662907501061758,
+      "per_chain": {
+        "A": {
+          "n_ca": 29,
+          "rmsd": 0.8877902626991272
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 0.6777727603912354
+        },
+        "D": {
+          "n_ca": 29,
+          "rmsd": 0.4333092272281647
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8t0p-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.7704517841339111,
+      "mean_chain_ca_rmsd": 1.124492923418681,
+      "per_chain": {
+        "A": {
+          "n_ca": 107,
+          "rmsd": 1.7704517841339111
+        },
+        "B": {
+          "n_ca": 152,
+          "rmsd": 1.0799435377120972
+        },
+        "C": {
+          "n_ca": 18,
+          "rmsd": 0.5230834484100342
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8fnr-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5405834913253784,
+      "mean_chain_ca_rmsd": 0.9799780696630478,
+      "per_chain": {
+        "A": {
+          "n_ca": 110,
+          "rmsd": 0.41937264800071716
+        },
+        "B": {
+          "n_ca": 110,
+          "rmsd": 1.5405834913253784
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8qk8-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.7697305083274841,
+      "mean_chain_ca_rmsd": 0.7697305083274841,
+      "per_chain": {
+        "A": {
+          "n_ca": 131,
+          "rmsd": 0.7697305083274841
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8p9r-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 10.987915992736816,
+      "mean_chain_ca_rmsd": 4.347408930460612,
+      "per_chain": {
+        "A": {
+          "n_ca": 74,
+          "rmsd": 0.5445955991744995
+        },
+        "B": {
+          "n_ca": 9,
+          "rmsd": 1.50971519947052
+        },
+        "C": {
+          "n_ca": 21,
+          "rmsd": 10.987915992736816
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8d0p-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8164624571800232,
+      "mean_chain_ca_rmsd": 0.8164624571800232,
+      "per_chain": {
+        "A": {
+          "n_ca": 297,
+          "rmsd": 0.8164624571800232
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8pu1-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.9723523259162903,
+      "mean_chain_ca_rmsd": 0.657355472445488,
+      "per_chain": {
+        "A": {
+          "n_ca": 75,
+          "rmsd": 0.34235861897468567
+        },
+        "B": {
+          "n_ca": 191,
+          "rmsd": 0.9723523259162903
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ada-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 15.198430061340332,
+      "mean_chain_ca_rmsd": 14.723159313201904,
+      "per_chain": {
+        "A": {
+          "n_ca": 69,
+          "rmsd": 15.198430061340332
+        },
+        "B": {
+          "n_ca": 63,
+          "rmsd": 14.247888565063477
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8utk-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6151022911071777,
+      "mean_chain_ca_rmsd": 0.5362915545701981,
+      "per_chain": {
+        "A": {
+          "n_ca": 55,
+          "rmsd": 0.6151022911071777
+        },
+        "B": {
+          "n_ca": 55,
+          "rmsd": 0.4574808180332184
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rue-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.5476686358451843,
+      "mean_chain_ca_rmsd": 0.528659462928772,
+      "per_chain": {
+        "A": {
+          "n_ca": 350,
+          "rmsd": 0.5476686358451843
+        },
+        "B": {
+          "n_ca": 349,
+          "rmsd": 0.5096502900123596
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8hfp-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.310929775238037,
+      "mean_chain_ca_rmsd": 0.9831611216068268,
+      "per_chain": {
+        "A": {
+          "n_ca": 68,
+          "rmsd": 0.6553924679756165
+        },
+        "B": {
+          "n_ca": 87,
+          "rmsd": 1.310929775238037
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jca-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.3130007982254028,
+      "mean_chain_ca_rmsd": 0.8203181773424149,
+      "per_chain": {
+        "A": {
+          "n_ca": 164,
+          "rmsd": 0.3276355564594269
+        },
+        "B": {
+          "n_ca": 165,
+          "rmsd": 1.3130007982254028
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8hhj-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.113619327545166,
+      "mean_chain_ca_rmsd": 0.7539981156587601,
+      "per_chain": {
+        "A": {
+          "n_ca": 99,
+          "rmsd": 0.3943769037723541
+        },
+        "B": {
+          "n_ca": 101,
+          "rmsd": 1.113619327545166
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9bk6-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5753686428070068,
+      "mean_chain_ca_rmsd": 0.9982778131961823,
+      "per_chain": {
+        "A": {
+          "n_ca": 101,
+          "rmsd": 1.5753686428070068
+        },
+        "B": {
+          "n_ca": 60,
+          "rmsd": 0.42118698358535767
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7z8z-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 6.042726516723633,
+      "mean_chain_ca_rmsd": 4.171529471874237,
+      "per_chain": {
+        "A": {
+          "n_ca": 61,
+          "rmsd": 2.6931891441345215
+        },
+        "B": {
+          "n_ca": 34,
+          "rmsd": 5.700056552886963
+        },
+        "C": {
+          "n_ca": 35,
+          "rmsd": 6.042726516723633
+        },
+        "D": {
+          "n_ca": 37,
+          "rmsd": 2.250145673751831
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8qvc-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 14.00621223449707,
+      "mean_chain_ca_rmsd": 7.3020757138729095,
+      "per_chain": {
+        "A": {
+          "n_ca": 324,
+          "rmsd": 0.5979391932487488
+        },
+        "B": {
+          "n_ca": 125,
+          "rmsd": 14.00621223449707
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8a51-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 4.1938605308532715,
+      "mean_chain_ca_rmsd": 2.3312304317951202,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 0.468600332736969
+        },
+        "B": {
+          "n_ca": 32,
+          "rmsd": 4.1938605308532715
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q6q-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.6884371042251587,
+      "mean_chain_ca_rmsd": 1.5165283679962158,
+      "per_chain": {
+        "A": {
+          "n_ca": 117,
+          "rmsd": 1.344619631767273
+        },
+        "B": {
+          "n_ca": 169,
+          "rmsd": 1.6884371042251587
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yfu-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 4.1686601638793945,
+      "mean_chain_ca_rmsd": 3.6355456113815308,
+      "per_chain": {
+        "A": {
+          "n_ca": 44,
+          "rmsd": 3.102431058883667
+        },
+        "B": {
+          "n_ca": 44,
+          "rmsd": 4.1686601638793945
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bds-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.2201780080795288,
+      "mean_chain_ca_rmsd": 0.7343506962060928,
+      "per_chain": {
+        "A": {
+          "n_ca": 104,
+          "rmsd": 0.4566304087638855
+        },
+        "B": {
+          "n_ca": 91,
+          "rmsd": 1.2201780080795288
+        },
+        "C": {
+          "n_ca": 147,
+          "rmsd": 0.4801027178764343
+        },
+        "D": {
+          "n_ca": 127,
+          "rmsd": 0.7804916501045227
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ioo-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5351109504699707,
+      "mean_chain_ca_rmsd": 1.5229933857917786,
+      "per_chain": {
+        "A": {
+          "n_ca": 327,
+          "rmsd": 1.5108758211135864
+        },
+        "B": {
+          "n_ca": 325,
+          "rmsd": 1.5351109504699707
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9biy-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.0121374130249023,
+      "mean_chain_ca_rmsd": 1.3765585124492645,
+      "per_chain": {
+        "A": {
+          "n_ca": 263,
+          "rmsd": 2.0121374130249023
+        },
+        "B": {
+          "n_ca": 84,
+          "rmsd": 0.7409796118736267
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8hhv-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.6964603662490845,
+      "mean_chain_ca_rmsd": 0.6964603662490845,
+      "per_chain": {
+        "A": {
+          "n_ca": 479,
+          "rmsd": 0.6964603662490845
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8zmm-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.882477879524231,
+      "mean_chain_ca_rmsd": 1.3875608046849568,
+      "per_chain": {
+        "A": {
+          "n_ca": 26,
+          "rmsd": 1.882477879524231
+        },
+        "B": {
+          "n_ca": 27,
+          "rmsd": 1.27977454662323
+        },
+        "C": {
+          "n_ca": 25,
+          "rmsd": 1.0004299879074097
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8an5-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.8484680652618408,
+      "mean_chain_ca_rmsd": 1.1751258373260498,
+      "per_chain": {
+        "A": {
+          "n_ca": 194,
+          "rmsd": 1.8484680652618408
+        },
+        "B": {
+          "n_ca": 184,
+          "rmsd": 1.1720725297927856
+        },
+        "C": {
+          "n_ca": 51,
+          "rmsd": 0.504836916923523
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8b3w-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.407301902770996,
+      "mean_chain_ca_rmsd": 1.407301902770996,
+      "per_chain": {
+        "A": {
+          "n_ca": 353,
+          "rmsd": 1.407301902770996
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8wmt-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6074351668357849,
+      "mean_chain_ca_rmsd": 0.5826052129268646,
+      "per_chain": {
+        "A": {
+          "n_ca": 239,
+          "rmsd": 0.5577752590179443
+        },
+        "B": {
+          "n_ca": 240,
+          "rmsd": 0.6074351668357849
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7txy-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 25.44731330871582,
+      "mean_chain_ca_rmsd": 11.989719316363335,
+      "per_chain": {
+        "A": {
+          "n_ca": 275,
+          "rmsd": 0.8031577467918396
+        },
+        "B": {
+          "n_ca": 249,
+          "rmsd": 20.379989624023438
+        },
+        "C": {
+          "n_ca": 274,
+          "rmsd": 25.44731330871582
+        },
+        "D": {
+          "n_ca": 292,
+          "rmsd": 1.3284165859222412
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tw0-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 2.044309139251709,
+      "mean_chain_ca_rmsd": 1.867107590039571,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 1.6826157569885254
+        },
+        "B": {
+          "n_ca": 29,
+          "rmsd": 2.044309139251709
+        },
+        "C": {
+          "n_ca": 30,
+          "rmsd": 1.874397873878479
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8btj-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.5693628787994385,
+      "mean_chain_ca_rmsd": 1.5675137639045715,
+      "per_chain": {
+        "A": {
+          "n_ca": 403,
+          "rmsd": 1.5693628787994385
+        },
+        "B": {
+          "n_ca": 402,
+          "rmsd": 1.5656646490097046
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7x80-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 6.069319725036621,
+      "mean_chain_ca_rmsd": 5.489090442657471,
+      "per_chain": {
+        "A": {
+          "n_ca": 148,
+          "rmsd": 6.069319725036621
+        },
+        "B": {
+          "n_ca": 142,
+          "rmsd": 4.90886116027832
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ifx-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 20.354129791259766,
+      "mean_chain_ca_rmsd": 10.638567060232162,
+      "per_chain": {
+        "A": {
+          "n_ca": 328,
+          "rmsd": 0.9230043292045593
+        },
+        "B": {
+          "n_ca": 195,
+          "rmsd": 20.354129791259766
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8qfl-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.3795443773269653,
+      "mean_chain_ca_rmsd": 1.2599847316741943,
+      "per_chain": {
+        "A": {
+          "n_ca": 151,
+          "rmsd": 1.3795443773269653
+        },
+        "B": {
+          "n_ca": 149,
+          "rmsd": 1.1404250860214233
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8onf-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 3.891723394393921,
+      "mean_chain_ca_rmsd": 3.7865254084269204,
+      "per_chain": {
+        "A": {
+          "n_ca": 258,
+          "rmsd": 3.7671306133270264
+        },
+        "B": {
+          "n_ca": 255,
+          "rmsd": 3.891723394393921
+        },
+        "C": {
+          "n_ca": 256,
+          "rmsd": 3.7007222175598145
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8of7-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 3.7435073852539062,
+      "mean_chain_ca_rmsd": 2.4023770689964294,
+      "per_chain": {
+        "A": {
+          "n_ca": 139,
+          "rmsd": 3.7435073852539062
+        },
+        "B": {
+          "n_ca": 119,
+          "rmsd": 1.0612467527389526
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bz2-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 17.492097854614258,
+      "mean_chain_ca_rmsd": 17.41834004720052,
+      "per_chain": {
+        "A": {
+          "n_ca": 83,
+          "rmsd": 17.461990356445312
+        },
+        "B": {
+          "n_ca": 83,
+          "rmsd": 17.492097854614258
+        },
+        "C": {
+          "n_ca": 82,
+          "rmsd": 17.300931930541992
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9cys-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.7250173091888428,
+      "mean_chain_ca_rmsd": 1.5842695087194443,
+      "per_chain": {
+        "A": {
+          "n_ca": 229,
+          "rmsd": 0.4435217082500458
+        },
+        "B": {
+          "n_ca": 277,
+          "rmsd": 2.7250173091888428
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8kc1-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.6455215215682983,
+      "mean_chain_ca_rmsd": 1.6455215215682983,
+      "per_chain": {
+        "A": {
+          "n_ca": 83,
+          "rmsd": 1.6455215215682983
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7y37-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.4620915651321411,
+      "mean_chain_ca_rmsd": 1.3220922946929932,
+      "per_chain": {
+        "A": {
+          "n_ca": 27,
+          "rmsd": 1.1961383819580078
+        },
+        "B": {
+          "n_ca": 27,
+          "rmsd": 1.3080469369888306
+        },
+        "C": {
+          "n_ca": 27,
+          "rmsd": 1.4620915651321411
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7y16-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.539691209793091,
+      "mean_chain_ca_rmsd": 1.7329003810882568,
+      "per_chain": {
+        "A": {
+          "n_ca": 156,
+          "rmsd": 2.539691209793091
+        },
+        "B": {
+          "n_ca": 143,
+          "rmsd": 0.9261095523834229
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8zmw-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.708212971687317,
+      "mean_chain_ca_rmsd": 1.6736139853795369,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 1.708212971687317
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 1.6975183486938477
+        },
+        "C": {
+          "n_ca": 30,
+          "rmsd": 1.6151106357574463
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7spq-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.5599384307861328,
+      "mean_chain_ca_rmsd": 1.5599384307861328,
+      "per_chain": {
+        "A": {
+          "n_ca": 316,
+          "rmsd": 1.5599384307861328
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9j23-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.7379813194274902,
+      "mean_chain_ca_rmsd": 0.702256460984548,
+      "per_chain": {
+        "A": {
+          "n_ca": 29,
+          "rmsd": 0.6782539486885071
+        },
+        "B": {
+          "n_ca": 28,
+          "rmsd": 0.7379813194274902
+        },
+        "C": {
+          "n_ca": 27,
+          "rmsd": 0.6905341148376465
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ss1-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.7485722303390503,
+      "mean_chain_ca_rmsd": 0.7485722303390503,
+      "per_chain": {
+        "A": {
+          "n_ca": 98,
+          "rmsd": 0.7485722303390503
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8p6k-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.639569044113159,
+      "mean_chain_ca_rmsd": 2.4745476245880127,
+      "per_chain": {
+        "A": {
+          "n_ca": 110,
+          "rmsd": 2.639569044113159
+        },
+        "B": {
+          "n_ca": 108,
+          "rmsd": 2.309526205062866
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9j1r-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.8325010538101196,
+      "mean_chain_ca_rmsd": 0.7675932049751282,
+      "per_chain": {
+        "A": {
+          "n_ca": 28,
+          "rmsd": 0.7871040105819702
+        },
+        "B": {
+          "n_ca": 28,
+          "rmsd": 0.8325010538101196
+        },
+        "C": {
+          "n_ca": 29,
+          "rmsd": 0.6831745505332947
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8g0p-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.687819719314575,
+      "mean_chain_ca_rmsd": 2.4021652936935425,
+      "per_chain": {
+        "A": {
+          "n_ca": 143,
+          "rmsd": 2.1165108680725098
+        },
+        "B": {
+          "n_ca": 98,
+          "rmsd": 2.687819719314575
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8k4w-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.966078519821167,
+      "mean_chain_ca_rmsd": 0.9381904800732931,
+      "per_chain": {
+        "A": {
+          "n_ca": 28,
+          "rmsd": 0.966078519821167
+        },
+        "B": {
+          "n_ca": 26,
+          "rmsd": 0.9584413170814514
+        },
+        "C": {
+          "n_ca": 28,
+          "rmsd": 0.8900516033172607
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7qrj-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 8.884573936462402,
+      "mean_chain_ca_rmsd": 8.632708549499512,
+      "per_chain": {
+        "A": {
+          "n_ca": 181,
+          "rmsd": 8.380843162536621
+        },
+        "B": {
+          "n_ca": 182,
+          "rmsd": 8.884573936462402
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ipj-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7349563837051392,
+      "mean_chain_ca_rmsd": 0.6708532869815826,
+      "per_chain": {
+        "A": {
+          "n_ca": 363,
+          "rmsd": 0.6067501902580261
+        },
+        "B": {
+          "n_ca": 72,
+          "rmsd": 0.7349563837051392
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8hhi-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.4239076375961304,
+      "mean_chain_ca_rmsd": 1.3757172028223674,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 1.4239076375961304
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 1.3495891094207764
+        },
+        "C": {
+          "n_ca": 30,
+          "rmsd": 1.3536548614501953
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9c90-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.7009507417678833,
+      "mean_chain_ca_rmsd": 0.7009507417678833,
+      "per_chain": {
+        "A": {
+          "n_ca": 60,
+          "rmsd": 0.7009507417678833
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9j26-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.3961716890335083,
+      "mean_chain_ca_rmsd": 1.2178170283635457,
+      "per_chain": {
+        "A": {
+          "n_ca": 30,
+          "rmsd": 1.0529403686523438
+        },
+        "B": {
+          "n_ca": 28,
+          "rmsd": 1.3961716890335083
+        },
+        "C": {
+          "n_ca": 28,
+          "rmsd": 1.2043390274047852
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h7a-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6551227569580078,
+      "mean_chain_ca_rmsd": 0.6434592604637146,
+      "per_chain": {
+        "A": {
+          "n_ca": 77,
+          "rmsd": 0.6551227569580078
+        },
+        "B": {
+          "n_ca": 77,
+          "rmsd": 0.6317957639694214
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q1k-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6540026068687439,
+      "mean_chain_ca_rmsd": 0.6325570344924927,
+      "per_chain": {
+        "A": {
+          "n_ca": 420,
+          "rmsd": 0.6111114621162415
+        },
+        "B": {
+          "n_ca": 420,
+          "rmsd": 0.6540026068687439
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8whi-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 3.76052188873291,
+      "mean_chain_ca_rmsd": 2.7151939868927,
+      "per_chain": {
+        "A": {
+          "n_ca": 228,
+          "rmsd": 1.1758010387420654
+        },
+        "B": {
+          "n_ca": 98,
+          "rmsd": 3.209259033203125
+        },
+        "C": {
+          "n_ca": 105,
+          "rmsd": 3.76052188873291
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8h6q-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.9854673147201538,
+      "mean_chain_ca_rmsd": 0.8135785460472107,
+      "per_chain": {
+        "A": {
+          "n_ca": 334,
+          "rmsd": 0.9854673147201538
+        },
+        "B": {
+          "n_ca": 325,
+          "rmsd": 0.7772610783576965
+        },
+        "C": {
+          "n_ca": 326,
+          "rmsd": 0.7452114224433899
+        },
+        "D": {
+          "n_ca": 318,
+          "rmsd": 0.7463743686676025
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gad-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.3324533700942993,
+      "mean_chain_ca_rmsd": 1.111083835363388,
+      "per_chain": {
+        "A": {
+          "n_ca": 105,
+          "rmsd": 0.8897143006324768
+        },
+        "B": {
+          "n_ca": 104,
+          "rmsd": 1.3324533700942993
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xft-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.657692551612854,
+      "mean_chain_ca_rmsd": 0.657692551612854,
+      "per_chain": {
+        "A": {
+          "n_ca": 86,
+          "rmsd": 0.657692551612854
+        },
+        "B": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8x3g-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 1.3047078847885132,
+      "mean_chain_ca_rmsd": 0.9340896010398865,
+      "per_chain": {
+        "A": {
+          "n_ca": 350,
+          "rmsd": 1.3016107082366943
+        },
+        "B": {
+          "n_ca": 350,
+          "rmsd": 1.3047078847885132
+        },
+        "C": {
+          "n_ca": 337,
+          "rmsd": 0.8591704368591309
+        },
+        "D": {
+          "n_ca": 311,
+          "rmsd": 0.6813304424285889
+        },
+        "E": {
+          "n_ca": 336,
+          "rmsd": 0.8013156652450562
+        },
+        "F": {
+          "n_ca": 305,
+          "rmsd": 0.6564024686813354
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ff9-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 12,
+      "max_chain_ca_rmsd": 0.5764404535293579,
+      "mean_chain_ca_rmsd": 0.4764050096273422,
+      "per_chain": {
+        "A": {
+          "n_ca": 155,
+          "rmsd": 0.5239000916481018
+        },
+        "B": {
+          "n_ca": 156,
+          "rmsd": 0.45591530203819275
+        },
+        "C": {
+          "n_ca": 156,
+          "rmsd": 0.43973004817962646
+        },
+        "D": {
+          "n_ca": 155,
+          "rmsd": 0.3800302743911743
+        },
+        "E": {
+          "n_ca": 155,
+          "rmsd": 0.4210185408592224
+        },
+        "F": {
+          "n_ca": 156,
+          "rmsd": 0.5023579001426697
+        },
+        "G": {
+          "n_ca": 155,
+          "rmsd": 0.4847387671470642
+        },
+        "H": {
+          "n_ca": 156,
+          "rmsd": 0.5764404535293579
+        },
+        "I": {
+          "n_ca": 156,
+          "rmsd": 0.4380347430706024
+        },
+        "J": {
+          "n_ca": 155,
+          "rmsd": 0.5283378958702087
+        },
+        "K": {
+          "n_ca": 156,
+          "rmsd": 0.40365052223205566
+        },
+        "L": {
+          "n_ca": 155,
+          "rmsd": 0.5627055764198303
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AB": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AC": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AD": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AE": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "BA": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "BB": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "BC": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "BD": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "BE": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "CA": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "CB": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "CC": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "CD": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "CE": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "DA": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "DB": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "DC": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "DD": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "DE": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8adb-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 5.946568012237549,
+      "mean_chain_ca_rmsd": 3.3176642060279846,
+      "per_chain": {
+        "A": {
+          "n_ca": 209,
+          "rmsd": 5.946568012237549
+        },
+        "B": {
+          "n_ca": 75,
+          "rmsd": 0.6887603998184204
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8a4o-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 2.935584545135498,
+      "mean_chain_ca_rmsd": 2.935584545135498,
+      "per_chain": {
+        "A": {
+          "n_ca": 195,
+          "rmsd": 2.935584545135498
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gpv-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.6757977604866028,
+      "mean_chain_ca_rmsd": 0.6757977604866028,
+      "per_chain": {
+        "A": {
+          "n_ca": 255,
+          "rmsd": 0.6757977604866028
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8wk1-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 18.2684326171875,
+      "mean_chain_ca_rmsd": 9.172767207026482,
+      "per_chain": {
+        "A": {
+          "n_ca": 223,
+          "rmsd": 0.6541650295257568
+        },
+        "B": {
+          "n_ca": 183,
+          "rmsd": 17.38970947265625
+        },
+        "C": {
+          "n_ca": 194,
+          "rmsd": 18.2684326171875
+        },
+        "D": {
+          "n_ca": 182,
+          "rmsd": 0.3787617087364197
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8upb-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 2.513399600982666,
+      "mean_chain_ca_rmsd": 2.513399600982666,
+      "per_chain": {
+        "A": {
+          "n_ca": 64,
+          "rmsd": 2.513399600982666
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ok4-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.3619869947433472,
+      "mean_chain_ca_rmsd": 1.3619869947433472,
+      "per_chain": {
+        "A": {
+          "n_ca": 365,
+          "rmsd": 1.3619869947433472
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tto-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.8344265222549438,
+      "mean_chain_ca_rmsd": 1.769910991191864,
+      "per_chain": {
+        "A": {
+          "n_ca": 42,
+          "rmsd": 1.8344265222549438
+        },
+        "B": {
+          "n_ca": 41,
+          "rmsd": 1.7053954601287842
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8s1j-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.2509831190109253,
+      "mean_chain_ca_rmsd": 1.1080885231494904,
+      "per_chain": {
+        "A": {
+          "n_ca": 300,
+          "rmsd": 0.9651939272880554
+        },
+        "B": {
+          "n_ca": 302,
+          "rmsd": 1.2509831190109253
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9bt4-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 15.014784812927246,
+      "mean_chain_ca_rmsd": 7.976578563451767,
+      "per_chain": {
+        "A": {
+          "n_ca": 402,
+          "rmsd": 0.9383723139762878
+        },
+        "D": {
+          "n_ca": 178,
+          "rmsd": 15.014784812927246
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9jf5-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6275179982185364,
+      "mean_chain_ca_rmsd": 0.4955101013183594,
+      "per_chain": {
+        "A": {
+          "n_ca": 381,
+          "rmsd": 0.6275179982185364
+        },
+        "B": {
+          "n_ca": 41,
+          "rmsd": 0.3635022044181824
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tlf-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.932616114616394,
+      "mean_chain_ca_rmsd": 0.932616114616394,
+      "per_chain": {
+        "A": {
+          "n_ca": 104,
+          "rmsd": 0.932616114616394
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8r7a-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 7.933888912200928,
+      "mean_chain_ca_rmsd": 5.716470122337341,
+      "per_chain": {
+        "A": {
+          "n_ca": 75,
+          "rmsd": 3.499051332473755
+        },
+        "B": {
+          "n_ca": 112,
+          "rmsd": 7.933888912200928
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8and-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 8.050358772277832,
+      "mean_chain_ca_rmsd": 8.004746198654175,
+      "per_chain": {
+        "A": {
+          "n_ca": 91,
+          "rmsd": 8.050358772277832
+        },
+        "B": {
+          "n_ca": 90,
+          "rmsd": 7.959133625030518
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8fcf-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.8648709058761597,
+      "mean_chain_ca_rmsd": 1.7094475626945496,
+      "per_chain": {
+        "A": {
+          "n_ca": 83,
+          "rmsd": 1.5540242195129395
+        },
+        "B": {
+          "n_ca": 79,
+          "rmsd": 1.8648709058761597
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8j49-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.9413699507713318,
+      "mean_chain_ca_rmsd": 0.7628064453601837,
+      "per_chain": {
+        "A": {
+          "n_ca": 66,
+          "rmsd": 0.9308937191963196
+        },
+        "B": {
+          "n_ca": 100,
+          "rmsd": 0.9413699507713318
+        },
+        "C": {
+          "n_ca": 97,
+          "rmsd": 0.4161556661128998
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9asx-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.37518638372421265,
+      "mean_chain_ca_rmsd": 0.35076598326365155,
+      "per_chain": {
+        "A": {
+          "n_ca": 223,
+          "rmsd": 0.3260784149169922
+        },
+        "B": {
+          "n_ca": 218,
+          "rmsd": 0.35103315114974976
+        },
+        "C": {
+          "n_ca": 98,
+          "rmsd": 0.37518638372421265
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yzt-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.4506264626979828,
+      "mean_chain_ca_rmsd": 0.4496060013771057,
+      "per_chain": {
+        "B": {
+          "n_ca": 306,
+          "rmsd": 0.44858554005622864
+        },
+        "C": {
+          "n_ca": 306,
+          "rmsd": 0.4506264626979828
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8a50-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.9498252868652344,
+      "mean_chain_ca_rmsd": 0.717834547162056,
+      "per_chain": {
+        "A": {
+          "n_ca": 29,
+          "rmsd": 0.48584380745887756
+        },
+        "B": {
+          "n_ca": 30,
+          "rmsd": 0.9498252868652344
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8vva-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.8494768142700195,
+      "mean_chain_ca_rmsd": 1.805152416229248,
+      "per_chain": {
+        "A": {
+          "n_ca": 78,
+          "rmsd": 1.8494768142700195
+        },
+        "B": {
+          "n_ca": 76,
+          "rmsd": 1.7608280181884766
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7wr3-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 24.000463485717773,
+      "mean_chain_ca_rmsd": 24.000463485717773,
+      "per_chain": {
+        "A": {
+          "n_ca": 794,
+          "rmsd": 24.000463485717773
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ad2-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.4160540103912354,
+      "mean_chain_ca_rmsd": 1.4117445349693298,
+      "per_chain": {
+        "A": {
+          "n_ca": 165,
+          "rmsd": 1.4074350595474243
+        },
+        "B": {
+          "n_ca": 165,
+          "rmsd": 1.4160540103912354
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8j48-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 11.491848945617676,
+      "mean_chain_ca_rmsd": 6.12385194003582,
+      "per_chain": {
+        "A": {
+          "n_ca": 36,
+          "rmsd": 0.4050632119178772
+        },
+        "B": {
+          "n_ca": 51,
+          "rmsd": 11.491848945617676
+        },
+        "C": {
+          "n_ca": 38,
+          "rmsd": 11.047901153564453
+        },
+        "D": {
+          "n_ca": 99,
+          "rmsd": 1.550594449043274
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8phb-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 3.149831533432007,
+      "mean_chain_ca_rmsd": 3.0711677074432373,
+      "per_chain": {
+        "A": {
+          "n_ca": 379,
+          "rmsd": 3.149831533432007
+        },
+        "B": {
+          "n_ca": 372,
+          "rmsd": 2.9925038814544678
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8gy0-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.951953172683716,
+      "mean_chain_ca_rmsd": 2.8802623748779297,
+      "per_chain": {
+        "A": {
+          "n_ca": 314,
+          "rmsd": 2.8085715770721436
+        },
+        "B": {
+          "n_ca": 314,
+          "rmsd": 2.951953172683716
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8r7i-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8881593942642212,
+      "mean_chain_ca_rmsd": 0.8881593942642212,
+      "per_chain": {
+        "A": {
+          "n_ca": 628,
+          "rmsd": 0.8881593942642212
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8p9c-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 11.276036262512207,
+      "mean_chain_ca_rmsd": 4.8941676417986555,
+      "per_chain": {
+        "A": {
+          "n_ca": 54,
+          "rmsd": 2.7272369861602783
+        },
+        "B": {
+          "n_ca": 46,
+          "rmsd": 0.6792296767234802
+        },
+        "C": {
+          "n_ca": 50,
+          "rmsd": 11.276036262512207
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8a2g-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 4.677778720855713,
+      "mean_chain_ca_rmsd": 4.452445983886719,
+      "per_chain": {
+        "A": {
+          "n_ca": 143,
+          "rmsd": 4.227113246917725
+        },
+        "B": {
+          "n_ca": 146,
+          "rmsd": 4.677778720855713
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9gsq-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.7064383029937744,
+      "mean_chain_ca_rmsd": 2.1371667981147766,
+      "per_chain": {
+        "A": {
+          "n_ca": 187,
+          "rmsd": 2.7064383029937744
+        },
+        "B": {
+          "n_ca": 188,
+          "rmsd": 1.5678952932357788
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8pr6-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 4.941835880279541,
+      "mean_chain_ca_rmsd": 4.287294149398804,
+      "per_chain": {
+        "A": {
+          "n_ca": 78,
+          "rmsd": 4.941835880279541
+        },
+        "B": {
+          "n_ca": 79,
+          "rmsd": 3.6327524185180664
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8iha-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 19.367755889892578,
+      "mean_chain_ca_rmsd": 17.73556900024414,
+      "per_chain": {
+        "A": {
+          "n_ca": 129,
+          "rmsd": 19.367755889892578
+        },
+        "B": {
+          "n_ca": 116,
+          "rmsd": 16.103382110595703
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8zlz-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 4.691988468170166,
+      "mean_chain_ca_rmsd": 2.3234105308850608,
+      "per_chain": {
+        "A": {
+          "n_ca": 130,
+          "rmsd": 1.6442995071411133
+        },
+        "B": {
+          "n_ca": 130,
+          "rmsd": 0.6339436173439026
+        },
+        "C": {
+          "n_ca": 15,
+          "rmsd": 4.691988468170166
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8fmg-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 4.054666042327881,
+      "mean_chain_ca_rmsd": 2.827724575996399,
+      "per_chain": {
+        "A": {
+          "n_ca": 369,
+          "rmsd": 1.6838338375091553
+        },
+        "B": {
+          "n_ca": 354,
+          "rmsd": 4.054666042327881
+        },
+        "C": {
+          "n_ca": 368,
+          "rmsd": 1.5568287372589111
+        },
+        "D": {
+          "n_ca": 353,
+          "rmsd": 4.015569686889648
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8t48-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 10.626474380493164,
+      "mean_chain_ca_rmsd": 10.626474380493164,
+      "per_chain": {
+        "A": {
+          "n_ca": 155,
+          "rmsd": 10.626474380493164
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rkh-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 10.28054428100586,
+      "mean_chain_ca_rmsd": 10.21252965927124,
+      "per_chain": {
+        "A": {
+          "n_ca": 219,
+          "rmsd": 10.144515037536621
+        },
+        "B": {
+          "n_ca": 219,
+          "rmsd": 10.28054428100586
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xpi-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 9.768628120422363,
+      "mean_chain_ca_rmsd": 9.768628120422363,
+      "per_chain": {
+        "A": {
+          "n_ca": 363,
+          "rmsd": 9.768628120422363
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yf2-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 14.364018440246582,
+      "mean_chain_ca_rmsd": 9.948182582855225,
+      "per_chain": {
+        "A": {
+          "n_ca": 275,
+          "rmsd": 14.364018440246582
+        },
+        "C": {
+          "n_ca": 12,
+          "rmsd": 5.532346725463867
+        },
+        "E": {
+          "n_ca": 1,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8srz-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.441776841878891,
+      "mean_chain_ca_rmsd": 0.41817203164100647,
+      "per_chain": {
+        "A": {
+          "n_ca": 88,
+          "rmsd": 0.441776841878891
+        },
+        "B": {
+          "n_ca": 88,
+          "rmsd": 0.39456722140312195
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8b46-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 6,
+      "max_chain_ca_rmsd": 7.60482931137085,
+      "mean_chain_ca_rmsd": 3.084899127483368,
+      "per_chain": {
+        "A": {
+          "n_ca": 194,
+          "rmsd": 0.9778271317481995
+        },
+        "B": {
+          "n_ca": 194,
+          "rmsd": 2.4782721996307373
+        },
+        "C": {
+          "n_ca": 194,
+          "rmsd": 1.6302876472473145
+        },
+        "D": {
+          "n_ca": 26,
+          "rmsd": 7.60482931137085
+        },
+        "E": {
+          "n_ca": 13,
+          "rmsd": 5.731054782867432
+        },
+        "F": {
+          "n_ca": 3,
+          "rmsd": 0.08712369203567505
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tnd-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 1.0775490999221802,
+      "mean_chain_ca_rmsd": 1.0031148393948872,
+      "per_chain": {
+        "A": {
+          "n_ca": 147,
+          "rmsd": 0.9326750040054321
+        },
+        "B": {
+          "n_ca": 147,
+          "rmsd": 1.0775490999221802
+        },
+        "C": {
+          "n_ca": 147,
+          "rmsd": 0.9991204142570496
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8dpa-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 3.2278294563293457,
+      "mean_chain_ca_rmsd": 2.5951271057128906,
+      "per_chain": {
+        "A": {
+          "n_ca": 141,
+          "rmsd": 3.2278294563293457
+        },
+        "B": {
+          "n_ca": 125,
+          "rmsd": 1.9624247550964355
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8cqm-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.1218228340148926,
+      "mean_chain_ca_rmsd": 1.668972134590149,
+      "per_chain": {
+        "A": {
+          "n_ca": 221,
+          "rmsd": 1.2161214351654053
+        },
+        "B": {
+          "n_ca": 230,
+          "rmsd": 2.1218228340148926
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8pb3-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.874625325202942,
+      "mean_chain_ca_rmsd": 1.8440179824829102,
+      "per_chain": {
+        "A": {
+          "n_ca": 310,
+          "rmsd": 1.874625325202942
+        },
+        "B": {
+          "n_ca": 310,
+          "rmsd": 1.8134106397628784
+        },
+        "C": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8sbq-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 24.616592407226562,
+      "mean_chain_ca_rmsd": 24.448833465576172,
+      "per_chain": {
+        "A": {
+          "n_ca": 277,
+          "rmsd": 24.28107452392578
+        },
+        "B": {
+          "n_ca": 277,
+          "rmsd": 24.616592407226562
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9jst-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 8,
+      "max_chain_ca_rmsd": 18.439435958862305,
+      "mean_chain_ca_rmsd": 18.263549327850342,
+      "per_chain": {
+        "A": {
+          "n_ca": 35,
+          "rmsd": 18.439435958862305
+        },
+        "B": {
+          "n_ca": 35,
+          "rmsd": 18.24636459350586
+        },
+        "C": {
+          "n_ca": 35,
+          "rmsd": 18.35782814025879
+        },
+        "D": {
+          "n_ca": 35,
+          "rmsd": 18.41600227355957
+        },
+        "E": {
+          "n_ca": 35,
+          "rmsd": 18.277931213378906
+        },
+        "F": {
+          "n_ca": 35,
+          "rmsd": 18.19124984741211
+        },
+        "G": {
+          "n_ca": 35,
+          "rmsd": 18.129535675048828
+        },
+        "H": {
+          "n_ca": 35,
+          "rmsd": 18.050046920776367
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8th1-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 8,
+      "max_chain_ca_rmsd": 2.752619981765747,
+      "mean_chain_ca_rmsd": 1.3653486855328083,
+      "per_chain": {
+        "A": {
+          "n_ca": 137,
+          "rmsd": 1.9854556322097778
+        },
+        "B": {
+          "n_ca": 133,
+          "rmsd": 0.4661564230918884
+        },
+        "C": {
+          "n_ca": 133,
+          "rmsd": 1.3155657052993774
+        },
+        "D": {
+          "n_ca": 137,
+          "rmsd": 1.8157634735107422
+        },
+        "E": {
+          "n_ca": 7,
+          "rmsd": 0.4775190055370331
+        },
+        "F": {
+          "n_ca": 8,
+          "rmsd": 0.6412931680679321
+        },
+        "G": {
+          "n_ca": 8,
+          "rmsd": 1.4684160947799683
+        },
+        "H": {
+          "n_ca": 14,
+          "rmsd": 2.752619981765747
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8smq-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 20.48798179626465,
+      "mean_chain_ca_rmsd": 20.483694076538086,
+      "per_chain": {
+        "A": {
+          "n_ca": 171,
+          "rmsd": 20.48798179626465
+        },
+        "B": {
+          "n_ca": 170,
+          "rmsd": 20.479406356811523
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8axi-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6280500292778015,
+      "mean_chain_ca_rmsd": 0.5894237160682678,
+      "per_chain": {
+        "A": {
+          "n_ca": 571,
+          "rmsd": 0.5507974028587341
+        },
+        "B": {
+          "n_ca": 572,
+          "rmsd": 0.6280500292778015
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 1,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9c5s-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.7964565753936768,
+      "mean_chain_ca_rmsd": 1.4679812639951706,
+      "per_chain": {
+        "A": {
+          "n_ca": 14,
+          "rmsd": 1.6472342014312744
+        },
+        "B": {
+          "n_ca": 14,
+          "rmsd": 1.693904995918274
+        },
+        "C": {
+          "n_ca": 14,
+          "rmsd": 1.7964565753936768
+        },
+        "D": {
+          "n_ca": 14,
+          "rmsd": 0.7343292832374573
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q1w-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 0.6933241486549377,
+      "mean_chain_ca_rmsd": 0.6806119283040365,
+      "per_chain": {
+        "A": {
+          "n_ca": 80,
+          "rmsd": 0.6764124631881714
+        },
+        "B": {
+          "n_ca": 80,
+          "rmsd": 0.6933241486549377
+        },
+        "C": {
+          "n_ca": 79,
+          "rmsd": 0.6720991730690002
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7zop-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.1021010875701904,
+      "mean_chain_ca_rmsd": 0.7691195458173752,
+      "per_chain": {
+        "A": {
+          "n_ca": 126,
+          "rmsd": 0.43613800406455994
+        },
+        "B": {
+          "n_ca": 130,
+          "rmsd": 1.1021010875701904
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7yuj-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 10.040940284729004,
+      "mean_chain_ca_rmsd": 9.76999044418335,
+      "per_chain": {
+        "A": {
+          "n_ca": 149,
+          "rmsd": 9.499040603637695
+        },
+        "B": {
+          "n_ca": 150,
+          "rmsd": 10.040940284729004
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8woj-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 15.389298439025879,
+      "mean_chain_ca_rmsd": 15.352538585662842,
+      "per_chain": {
+        "A": {
+          "n_ca": 75,
+          "rmsd": 15.389298439025879
+        },
+        "B": {
+          "n_ca": 76,
+          "rmsd": 15.315778732299805
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8yla-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.433821201324463,
+      "mean_chain_ca_rmsd": 1.4271557927131653,
+      "per_chain": {
+        "A": {
+          "n_ca": 328,
+          "rmsd": 1.433821201324463
+        },
+        "B": {
+          "n_ca": 323,
+          "rmsd": 1.4204903841018677
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jdh-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 7.629948616027832,
+      "mean_chain_ca_rmsd": 6.349315881729126,
+      "per_chain": {
+        "A": {
+          "n_ca": 150,
+          "rmsd": 7.629948616027832
+        },
+        "B": {
+          "n_ca": 145,
+          "rmsd": 5.06868314743042
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rxa-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.6398365497589111,
+      "mean_chain_ca_rmsd": 1.4627541303634644,
+      "per_chain": {
+        "A": {
+          "n_ca": 95,
+          "rmsd": 1.6398365497589111
+        },
+        "B": {
+          "n_ca": 92,
+          "rmsd": 1.2856717109680176
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8p6m-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7379797101020813,
+      "mean_chain_ca_rmsd": 0.6309511065483093,
+      "per_chain": {
+        "A": {
+          "n_ca": 129,
+          "rmsd": 0.7379797101020813
+        },
+        "B": {
+          "n_ca": 131,
+          "rmsd": 0.5239225029945374
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ju7-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.2862346172332764,
+      "mean_chain_ca_rmsd": 1.092382550239563,
+      "per_chain": {
+        "A": {
+          "n_ca": 104,
+          "rmsd": 1.2862346172332764
+        },
+        "B": {
+          "n_ca": 100,
+          "rmsd": 0.8985304832458496
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8z2m-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8390150666236877,
+      "mean_chain_ca_rmsd": 0.8390150666236877,
+      "per_chain": {
+        "A": {
+          "n_ca": 287,
+          "rmsd": 0.8390150666236877
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8u48-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.6573349833488464,
+      "mean_chain_ca_rmsd": 0.6558251976966858,
+      "per_chain": {
+        "A": {
+          "n_ca": 264,
+          "rmsd": 0.6543154120445251
+        },
+        "B": {
+          "n_ca": 264,
+          "rmsd": 0.6573349833488464
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7ydo-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 5.091377258300781,
+      "mean_chain_ca_rmsd": 4.831968069076538,
+      "per_chain": {
+        "A": {
+          "n_ca": 73,
+          "rmsd": 4.860462188720703
+        },
+        "B": {
+          "n_ca": 73,
+          "rmsd": 4.379370212554932
+        },
+        "C": {
+          "n_ca": 73,
+          "rmsd": 4.996662616729736
+        },
+        "D": {
+          "n_ca": 73,
+          "rmsd": 5.091377258300781
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xrb-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 1.5943729877471924,
+      "mean_chain_ca_rmsd": 1.5943729877471924,
+      "per_chain": {
+        "A": {
+          "n_ca": 223,
+          "rmsd": 1.5943729877471924
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bny-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.9146025776863098,
+      "mean_chain_ca_rmsd": 0.5296082198619843,
+      "per_chain": {
+        "A": {
+          "n_ca": 35,
+          "rmsd": 0.3694336414337158
+        },
+        "B": {
+          "n_ca": 34,
+          "rmsd": 0.3528597056865692
+        },
+        "C": {
+          "n_ca": 35,
+          "rmsd": 0.48153695464134216
+        },
+        "D": {
+          "n_ca": 36,
+          "rmsd": 0.9146025776863098
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8k8f-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 2.1956639289855957,
+      "mean_chain_ca_rmsd": 2.1956639289855957,
+      "per_chain": {
+        "A": {
+          "n_ca": 179,
+          "rmsd": 2.1956639289855957
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ye5-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 2.627241849899292,
+      "mean_chain_ca_rmsd": 1.7902005314826965,
+      "per_chain": {
+        "A": {
+          "n_ca": 125,
+          "rmsd": 2.627241849899292
+        },
+        "B": {
+          "n_ca": 119,
+          "rmsd": 0.9531592130661011
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7qrr-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 12.183719635009766,
+      "mean_chain_ca_rmsd": 12.123072624206543,
+      "per_chain": {
+        "A": {
+          "n_ca": 148,
+          "rmsd": 12.183719635009766
+        },
+        "B": {
+          "n_ca": 147,
+          "rmsd": 12.06242561340332
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8u12-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 8,
+      "max_chain_ca_rmsd": 1.9823416471481323,
+      "mean_chain_ca_rmsd": 1.4907418638467789,
+      "per_chain": {
+        "A": {
+          "n_ca": 50,
+          "rmsd": 1.0432883501052856
+        },
+        "B": {
+          "n_ca": 49,
+          "rmsd": 1.939833164215088
+        },
+        "C": {
+          "n_ca": 49,
+          "rmsd": 1.9493402242660522
+        },
+        "D": {
+          "n_ca": 50,
+          "rmsd": 1.012264370918274
+        },
+        "E": {
+          "n_ca": 49,
+          "rmsd": 1.9823416471481323
+        },
+        "F": {
+          "n_ca": 50,
+          "rmsd": 1.0025439262390137
+        },
+        "G": {
+          "n_ca": 50,
+          "rmsd": 1.0467157363891602
+        },
+        "H": {
+          "n_ca": 49,
+          "rmsd": 1.949607491493225
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9ard-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.4250754117965698,
+      "mean_chain_ca_rmsd": 1.4121026992797852,
+      "per_chain": {
+        "A": {
+          "n_ca": 132,
+          "rmsd": 1.3991299867630005
+        },
+        "B": {
+          "n_ca": 132,
+          "rmsd": 1.4250754117965698
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8kck-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 19.08439064025879,
+      "mean_chain_ca_rmsd": 19.08439064025879,
+      "per_chain": {
+        "A": {
+          "n_ca": 206,
+          "rmsd": 19.08439064025879
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8htd-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 17.28327178955078,
+      "mean_chain_ca_rmsd": 9.635452270507812,
+      "per_chain": {
+        "A": {
+          "n_ca": 218,
+          "rmsd": 17.28327178955078
+        },
+        "B": {
+          "n_ca": 75,
+          "rmsd": 1.9876327514648438
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8avz-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.8001238703727722,
+      "mean_chain_ca_rmsd": 0.8001238703727722,
+      "per_chain": {
+        "A": {
+          "n_ca": 317,
+          "rmsd": 0.8001238703727722
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bbt-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 23.251325607299805,
+      "mean_chain_ca_rmsd": 23.251325607299805,
+      "per_chain": {
+        "A": {
+          "n_ca": 230,
+          "rmsd": 23.251325607299805
+        },
+        "B": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8yk2-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 5.830743312835693,
+      "mean_chain_ca_rmsd": 5.563642978668213,
+      "per_chain": {
+        "A": {
+          "n_ca": 651,
+          "rmsd": 5.830743312835693
+        },
+        "B": {
+          "n_ca": 646,
+          "rmsd": 5.296542644500732
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8i82-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 3.6038544178009033,
+      "mean_chain_ca_rmsd": 2.6289819478988647,
+      "per_chain": {
+        "A": {
+          "n_ca": 286,
+          "rmsd": 2.80820894241333
+        },
+        "B": {
+          "n_ca": 277,
+          "rmsd": 1.4748824834823608
+        },
+        "C": {
+          "n_ca": 6,
+          "rmsd": 3.6038544178009033
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jd7-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.7582780122756958,
+      "mean_chain_ca_rmsd": 1.7347795963287354,
+      "per_chain": {
+        "A": {
+          "n_ca": 510,
+          "rmsd": 1.7582780122756958
+        },
+        "B": {
+          "n_ca": 510,
+          "rmsd": 1.711281180381775
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8r5w-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 8,
+      "max_chain_ca_rmsd": 2.7334532737731934,
+      "mean_chain_ca_rmsd": 1.3469277694821358,
+      "per_chain": {
+        "A": {
+          "n_ca": 115,
+          "rmsd": 2.7020514011383057
+        },
+        "B": {
+          "n_ca": 109,
+          "rmsd": 0.9222957491874695
+        },
+        "C": {
+          "n_ca": 107,
+          "rmsd": 0.5822495222091675
+        },
+        "D": {
+          "n_ca": 106,
+          "rmsd": 1.2901631593704224
+        },
+        "E": {
+          "n_ca": 112,
+          "rmsd": 2.7334532737731934
+        },
+        "F": {
+          "n_ca": 110,
+          "rmsd": 0.8722289800643921
+        },
+        "G": {
+          "n_ca": 108,
+          "rmsd": 0.7188880443572998
+        },
+        "H": {
+          "n_ca": 104,
+          "rmsd": 0.9540920257568359
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8tn8-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 23.132122039794922,
+      "mean_chain_ca_rmsd": 23.080190658569336,
+      "per_chain": {
+        "A": {
+          "n_ca": 252,
+          "rmsd": 23.02825927734375
+        },
+        "B": {
+          "n_ca": 253,
+          "rmsd": 23.132122039794922
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8jyv-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 14.066166877746582,
+      "mean_chain_ca_rmsd": 14.066166877746582,
+      "per_chain": {
+        "A": {
+          "n_ca": 241,
+          "rmsd": 14.066166877746582
+        },
+        "B": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8k7y-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.8257830739021301,
+      "mean_chain_ca_rmsd": 0.8244251906871796,
+      "per_chain": {
+        "A": {
+          "n_ca": 672,
+          "rmsd": 0.823067307472229
+        },
+        "B": {
+          "n_ca": 672,
+          "rmsd": 0.8257830739021301
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7ztw-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 8.733142852783203,
+      "mean_chain_ca_rmsd": 8.722927570343018,
+      "per_chain": {
+        "A": {
+          "n_ca": 142,
+          "rmsd": 8.712712287902832
+        },
+        "B": {
+          "n_ca": 142,
+          "rmsd": 8.733142852783203
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8x6v-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.3962603807449341,
+      "mean_chain_ca_rmsd": 0.35860419273376465,
+      "per_chain": {
+        "A": {
+          "n_ca": 261,
+          "rmsd": 0.3962603807449341
+        },
+        "B": {
+          "n_ca": 260,
+          "rmsd": 0.3209480047225952
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ixw-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 18.921415328979492,
+      "mean_chain_ca_rmsd": 18.388456344604492,
+      "per_chain": {
+        "A": {
+          "n_ca": 168,
+          "rmsd": 17.855497360229492
+        },
+        "B": {
+          "n_ca": 162,
+          "rmsd": 18.921415328979492
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8s0u-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.2630261182785034,
+      "mean_chain_ca_rmsd": 1.2596877217292786,
+      "per_chain": {
+        "A": {
+          "n_ca": 257,
+          "rmsd": 1.2563493251800537
+        },
+        "B": {
+          "n_ca": 257,
+          "rmsd": 1.2630261182785034
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8q29-assembly1",
+      "seed": "8888",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 0.7408048510551453,
+      "mean_chain_ca_rmsd": 0.5591940134763718,
+      "per_chain": {
+        "A": {
+          "n_ca": 242,
+          "rmsd": 0.7408048510551453
+        },
+        "B": {
+          "n_ca": 241,
+          "rmsd": 0.37758317589759827
+        },
+        "C": {
+          "n_ca": 1,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8acx-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 0.744343638420105,
+      "mean_chain_ca_rmsd": 0.744343638420105,
+      "per_chain": {
+        "A": {
+          "n_ca": 112,
+          "rmsd": 0.744343638420105
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8aa9-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 7.618842124938965,
+      "mean_chain_ca_rmsd": 7.292516231536865,
+      "per_chain": {
+        "A": {
+          "n_ca": 178,
+          "rmsd": 6.966190338134766
+        },
+        "B": {
+          "n_ca": 178,
+          "rmsd": 7.618842124938965
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "9fvt-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 0.97034752368927,
+      "mean_chain_ca_rmsd": 0.9503542184829712,
+      "per_chain": {
+        "A": {
+          "n_ca": 519,
+          "rmsd": 0.97034752368927
+        },
+        "B": {
+          "n_ca": 519,
+          "rmsd": 0.9649245738983154
+        },
+        "C": {
+          "n_ca": 519,
+          "rmsd": 0.9499592185020447
+        },
+        "D": {
+          "n_ca": 519,
+          "rmsd": 0.9161855578422546
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bvk-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 5.702375411987305,
+      "mean_chain_ca_rmsd": 4.153391122817993,
+      "per_chain": {
+        "A": {
+          "n_ca": 225,
+          "rmsd": 5.702375411987305
+        },
+        "B": {
+          "n_ca": 214,
+          "rmsd": 2.6044068336486816
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8bey-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 1.3256738185882568,
+      "mean_chain_ca_rmsd": 1.2675660252571106,
+      "per_chain": {
+        "A": {
+          "n_ca": 416,
+          "rmsd": 1.3256738185882568
+        },
+        "B": {
+          "n_ca": 416,
+          "rmsd": 1.2094582319259644
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7xvq-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 1.2948040962219238,
+      "mean_chain_ca_rmsd": 1.1748697757720947,
+      "per_chain": {
+        "A": {
+          "n_ca": 87,
+          "rmsd": 1.2948040962219238
+        },
+        "B": {
+          "n_ca": 88,
+          "rmsd": 1.2605642080307007
+        },
+        "C": {
+          "n_ca": 81,
+          "rmsd": 1.095272183418274
+        },
+        "D": {
+          "n_ca": 88,
+          "rmsd": 1.0488386154174805
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8z4f-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 1,
+      "max_chain_ca_rmsd": 18.447900772094727,
+      "mean_chain_ca_rmsd": 18.447900772094727,
+      "per_chain": {
+        "B": {
+          "n_ca": 300,
+          "rmsd": 18.447900772094727
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8rja-assembly1",
+      "seed": "66",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 22.489269256591797,
+      "mean_chain_ca_rmsd": 21.21407127380371,
+      "per_chain": {
+        "A": {
+          "n_ca": 566,
+          "rmsd": 22.369342803955078
+        },
+        "B": {
+          "n_ca": 429,
+          "rmsd": 22.489269256591797
+        },
+        "C": {
+          "n_ca": 253,
+          "rmsd": 18.783601760864258
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AC": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "7x36-assembly1",
+      "seed": "2024",
+      "sample": "0",
+      "n_chains_compared": 4,
+      "max_chain_ca_rmsd": 17.918787002563477,
+      "mean_chain_ca_rmsd": 17.493991374969482,
+      "per_chain": {
+        "A": {
+          "n_ca": 340,
+          "rmsd": 17.918787002563477
+        },
+        "B": {
+          "n_ca": 338,
+          "rmsd": 16.992652893066406
+        },
+        "C": {
+          "n_ca": 339,
+          "rmsd": 17.65935707092285
+        },
+        "D": {
+          "n_ca": 339,
+          "rmsd": 17.405168533325195
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8iq5-assembly1",
+      "seed": "101",
+      "sample": "0",
+      "n_chains_compared": 3,
+      "max_chain_ca_rmsd": 32.68614196777344,
+      "mean_chain_ca_rmsd": 32.42355982462565,
+      "per_chain": {
+        "A": {
+          "n_ca": 563,
+          "rmsd": 32.68614196777344
+        },
+        "B": {
+          "n_ca": 563,
+          "rmsd": 32.012611389160156
+        },
+        "C": {
+          "n_ca": 563,
+          "rmsd": 32.57192611694336
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    },
+    {
+      "run": "run1",
+      "pdb_id": "8ic7-assembly1",
+      "seed": "42",
+      "sample": "0",
+      "n_chains_compared": 2,
+      "max_chain_ca_rmsd": 26.873510360717773,
+      "mean_chain_ca_rmsd": 26.798209190368652,
+      "per_chain": {
+        "A": {
+          "n_ca": 855,
+          "rmsd": 26.873510360717773
+        },
+        "B": {
+          "n_ca": 853,
+          "rmsd": 26.72290802001953
+        },
+        "C": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "D": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "E": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "F": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "G": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "H": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "I": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "J": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "K": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "L": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "M": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "N": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "O": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "P": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Q": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "R": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "S": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "T": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "U": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "V": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "W": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "X": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Y": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "Z": {
+          "n_ca": 0,
+          "rmsd": null
+        },
+        "AA": {
+          "n_ca": 0,
+          "rmsd": null
+        }
+      }
+    }
+  ],
+  "failed": []
+}
